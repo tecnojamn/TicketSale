@@ -28,7 +28,6 @@
         <AssociationConnector Association="TicketSaleModel.FK_PaypalPayment_Payment" ManuallyRouted="false" />
         <AssociationConnector Association="TicketSaleModel.FK_SubOrder_Ticket" ManuallyRouted="false" />
         <AssociationConnector Association="TicketSaleModel.FK_Ticket_TicketType" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="TicketSaleModel.sysdiagrams" Width="1.5" PointX="10.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

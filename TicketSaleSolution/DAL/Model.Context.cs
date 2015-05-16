@@ -38,6 +38,5 @@ namespace DAL
         public DbSet<Ticket> Ticket { get; set; }
         public DbSet<TicketType> TicketType { get; set; }
         public DbSet<User> User { get; set; }
-        public DbSet<sysdiagrams> sysdiagrams { get; set; }
     }
 }
