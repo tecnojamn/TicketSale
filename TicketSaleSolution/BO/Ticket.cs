@@ -20,7 +20,7 @@ namespace BO
         }
     
         public int id { get; set; }
-        public string description { get; set; }
+        public int number { get; set; }
         public int idTicketType { get; set; }
     
         public virtual ICollection<SubOrder> SubOrder { get; set; }

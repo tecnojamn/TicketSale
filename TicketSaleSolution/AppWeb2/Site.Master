@@ -1,0 +1,41 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="AppWeb2.Site" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+        <div id="header">
+            <h4>ESTA ES UNA PAGINA PIOLA DE PRUEBA</h4>
+        </div>
+        <div id="menu">
+            <ul>
+                <li><a href="Default.aspx">Default</a></li>
+                <li><a href="About.aspx">About</a></li>
+                <li><a href="Usuarios.aspx">Inicio</a></li>
+            </ul>
+        </div>
+        <div id="contenido">
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">        
+        </asp:ContentPlaceHolder>
+        </div>
+        <div id="footer">
+        <asp:ContentPlaceHolder ID="cpHFooter" runat="server">        
+        
+            <p>Copyright - Todos los derechos reservados 2015</p>
+        </asp:ContentPlaceHolder>
+        </div>
+        
+
+        
+    </div>
+    </form>
+</body>
+</html>
