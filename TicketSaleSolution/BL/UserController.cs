@@ -3,21 +3,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using BO;
-using DAL;
 
 namespace BL
 {
     public class UserController
     {
-        public User getUser(int pid)
+        public BO.User getUser(int pid)
         {
-            User us = null;
+            BO.User us = null;
             try
             {
-                using (TicketSaleEntities context = new TicketSaleEntities())
+                using (DAL.TicketSaleEntities context = new DAL.TicketSaleEntities())
                 {
+                    /*var consulta = from u in context.User
+                                   select new { u.id, u.name, u.lastName, u.mail };
+                    return consulta;*/
+                    
                     us = context.User.FirstOrDefault(u => u.id == pid);
+                    return us;
                 }
 
             }
@@ -25,7 +28,28 @@ namespace BL
             {
                 throw;
             }
-            return us;
+        }
+        public List<BO.User> getUsers()
+        {
+            List<BO.User> users = new List<BO.User>();
+            try
+            {
+                using (DAL.TicketSaleEntities context = new DAL.TicketSaleEntities())
+                {
+                    /*var consulta = from u in context.User
+                                   select new { u.id, u.name, u.lastName, u.mail };
+                    return consulta;*/
+
+                    var query = from u in context.User select u;
+                    users = query.ToList();
+                    return users;
+                }
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
     }
 }

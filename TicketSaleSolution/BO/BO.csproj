@@ -82,6 +82,9 @@
     <Compile Include="SubOrder.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="sysdiagrams.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Ticket.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>

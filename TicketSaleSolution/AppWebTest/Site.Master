@@ -1,0 +1,42 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="AppWebTest.Site" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>TicketSale</title>
+    <style>
+        #header{
+            border: groove;
+            height: 80px;
+            margin-bottom: 20px;
+        }
+        #header h2{
+            text-align: center;
+            color: blue;
+        }
+        #footer {
+            border-top: groove;
+            margin-top: 50px;
+        }
+    </style>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <div id="header"> 
+        <h2>TicketSale</h2>   
+        <a href="Usuarios.aspx">Ver Usuarios</a>
+    </div>
+    <form id="form1" runat="server">
+    <div>
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">    
+        </asp:ContentPlaceHolder>
+    </div>
+    </form>   
+    <div id="footer">
+        Copyright 2015 - TecnoJAMN
+    </div>
+</body> 
+</html>
