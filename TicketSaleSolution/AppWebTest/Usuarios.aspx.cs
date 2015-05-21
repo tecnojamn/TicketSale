@@ -13,9 +13,19 @@ namespace AppWebTest
         {
             BL.UserController uc = new BL.UserController();
 
-            GridView1.DataSource = uc.getUsers();
-            GridView1.DataBind();
+            grvUsuarios.DataSource = uc.getUsers();
+            grvUsuarios.DataBind();
             
+        }
+
+        protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            int index = Convert.ToInt32(e.CommandArgument);
+            GridViewRow gvRow = grvUsuarios.Rows[index];
+            if(e.CommandName == "eliminar"){
+                BL.UserController cu = new BL.UserController();
+
+            }
         }
     }
 }

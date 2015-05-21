@@ -9,7 +9,7 @@
     <style>
         #header{
             border: groove;
-            height: 80px;
+            height: 90px;
             margin-bottom: 20px;
         }
         #header h2{

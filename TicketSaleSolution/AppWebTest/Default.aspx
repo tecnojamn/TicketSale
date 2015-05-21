@@ -2,6 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    
+    - CONTENIDO PAGINA DE INICIO (DEFAULT.ASPX) -
 
-    - CONTENIDO PAGINA DE INICIO -
 </asp:Content>
