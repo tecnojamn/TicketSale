@@ -13,7 +13,7 @@ namespace WS
     {
         public BO.User getUser()
         {
-            return null;
+            return null; 
         }
     }
 }
