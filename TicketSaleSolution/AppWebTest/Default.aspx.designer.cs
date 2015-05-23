@@ -7,7 +7,7 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace AppWebTest {
+namespace AppWeb {
     
     
     public partial class Default {

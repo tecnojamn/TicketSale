@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="AppWebTest.Site" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="AppWeb.Site" %>
 
 <!DOCTYPE html>
 
@@ -6,21 +6,10 @@
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>TicketSale</title>
-    <style>
-        #header{
-            border: groove;
-            height: 90px;
-            margin-bottom: 20px;
-        }
-        #header h2{
-            text-align: center;
-            color: blue;
-        }
-        #footer {
-            border-top: groove;
-            margin-top: 50px;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="Content/bootstrap.min.css"/>
+    <link rel="stylesheet" href="Content/bootswatch.min.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script> 
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
@@ -29,12 +18,11 @@
         <h2>TicketSale</h2>   
         <a href="Usuarios.aspx">Ver Usuarios</a>
     </div>
-    <form id="form1" runat="server">
+    
     <div>
         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">    
         </asp:ContentPlaceHolder>
-    </div>
-    </form>   
+    </div> 
     <div id="footer">
         Copyright 2015 - TecnoJAMN
     </div>

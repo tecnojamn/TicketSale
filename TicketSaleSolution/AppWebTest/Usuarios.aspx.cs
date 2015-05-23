@@ -5,16 +5,26 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace AppWebTest
+namespace AppWeb
 {
     public partial class Usuarios : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            BL.UserController uc = new BL.UserController();
-
-            grvUsuarios.DataSource = uc.getUsers();
-            grvUsuarios.DataBind();
+            BL.OrderController oc = new BL.OrderController();
+            oc.getReservationsByUser(2);
+            /*BL.UserController uc = new BL.UserController();
+            BO.User user = new BO.User();
+            user.name = "prueba";
+            user.lastName = "prueba";
+            user.mail = "prueba@prueba";
+            user.mobileNum = 2123123;
+            user.Order = null;
+            user.password = "123456";
+            user.userType = 1;
+            uc.push(user);*/
+            //grvUsuarios.DataSource = uc.getUser(3);
+            //grvUsuarios.DataBind();
             
         }
 
