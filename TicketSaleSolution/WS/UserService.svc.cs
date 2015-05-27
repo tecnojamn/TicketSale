@@ -4,15 +4,19 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using BO;
+using BL;
 
 namespace WS
 {
-    // NOTA: puede usar el comando "Rename" del menú "Refactorizar" para cambiar el nombre de clase "UserService" en el código, en svc y en el archivo de configuración a la vez.
-    // NOTA: para iniciar el Cliente de prueba WCF para probar este servicio, seleccione UserService.svc o UserService.svc.cs en el Explorador de soluciones e inicie la depuración.
+    //Servicio Usuario
     public class UserService : IUserService
     {
-        public void DoWork()
+        public User authorize(string mail, string pass)
         {
+            UserController uc = new UserController();
+            User user = uc.authorize(mail, pass);
+            return user;
         }
     }
 }

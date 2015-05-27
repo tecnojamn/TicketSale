@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using BO;
 
 namespace AppWeb
 {
@@ -11,6 +12,7 @@ namespace AppWeb
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            //Llamada a metodo del singleton web service de usuario
             ProxyManager.getUserService().DoWork();
 
         }

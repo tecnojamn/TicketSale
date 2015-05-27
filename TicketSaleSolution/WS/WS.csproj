@@ -80,6 +80,16 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BL\BL.csproj">
+      <Project>{f69a46a4-6ef3-48c2-91de-3a77385ca933}</Project>
+      <Name>BL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BO\BO.csproj">
+      <Project>{788288fb-551a-49ff-b9a9-532208d8886f}</Project>
+      <Name>BO</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
