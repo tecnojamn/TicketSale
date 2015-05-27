@@ -13,7 +13,7 @@ namespace AppWeb
         protected void Page_Load(object sender, EventArgs e)
         {
             //Llamada a metodo del singleton web service de usuario
-            ProxyManager.getUserService().DoWork();
+            ProxyManager.getUserService().authorize("penalunandres@gmail.com", "123456");
 
         }
     }

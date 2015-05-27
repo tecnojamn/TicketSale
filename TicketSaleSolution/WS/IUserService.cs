@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using BO;
 
 namespace WS
 {
@@ -12,6 +13,6 @@ namespace WS
     public interface IUserService
     {
         [OperationContract]
-        void DoWork();
+        User authorize(string mail,string pass);
     }
 }
