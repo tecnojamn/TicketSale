@@ -7,9 +7,9 @@ using System.Text;
 
 namespace WS
 {
-    // NOTA: puede usar el comando "Rename" del menú "Refactorizar" para cambiar el nombre de interfaz "IServiceTest" en el código y en el archivo de configuración a la vez.
+    // NOTA: puede usar el comando "Rename" del menú "Refactorizar" para cambiar el nombre de interfaz "IUserService" en el código y en el archivo de configuración a la vez.
     [ServiceContract]
-    public interface IServiceTest
+    public interface IUserService
     {
         [OperationContract]
         void DoWork();

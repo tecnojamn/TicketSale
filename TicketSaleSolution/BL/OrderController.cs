@@ -9,33 +9,13 @@ namespace BL
     public class OrderController
     {
         //Nueva Orden (paga)
-        public bool newOrder(BO.Order o)
+        public bool newOrder(BO.Reservation o)
         {
             try
             {
                 using (DAL.TicketSaleEntities context = new DAL.TicketSaleEntities())
                 {
-                    if (context.Order.Add(o) != null) //Devuelve null si no inserta
-                    {
-                        context.SaveChanges();
-                    }
-                    else { return false; }
-                }
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            return true;
-        }
-        //Nueva Orden con reserva (Web o Movil)
-        public bool newReservation(BO.Reservation r)
-        {
-            try
-            {
-                using (DAL.TicketSaleEntities context = new DAL.TicketSaleEntities())
-                {
-                    if (context.Reservation.Add(r) != null) //Devuelve null si no inserta
+                    if (context.Reservation.Add(o) != null) //Devuelve null si no inserta
                     {
                         context.SaveChanges();
                     }
@@ -57,14 +37,14 @@ namespace BL
             }
         }
         //Listar reservas de Usuario
-        public List<BO.Reservation> getReservationsByUser(int idUs)
+        /*public List<BO.Reservation> getReservationsByUser(int idUs)
         {
             List<BO.Reservation> res = null;
             try
             {
                 using (DAL.TicketSaleEntities context = new DAL.TicketSaleEntities())
                 {
-                    res = context.Order.Select(o => o).
+                    res = context.Reservation.Select(o => o).
                         Where(o => o.idUser == idUs && o.Reservation != null).
                         Select(o => o.Reservation).ToList();
                 }
@@ -74,9 +54,9 @@ namespace BL
                 throw;
             }
             return res;            
-        }
+        }*/
         //Listar todas las reservas
-        public List<BO.Reservation> getReservations()
+        /*public List<BO.Reservation> getReservations()
         {
             List<BO.Reservation> res = null;
             try
@@ -91,6 +71,6 @@ namespace BL
                 throw;
             }
             return res;
-        }
+        }*/
     }
 }
