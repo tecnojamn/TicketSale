@@ -12,7 +12,7 @@ namespace AppWeb
         protected void Page_Load(object sender, EventArgs e)
         {
             BL.OrderController oc = new BL.OrderController();
-            oc.getReservationsByUser(2);
+            //oc.getReservationsByUser(2);
             /*BL.UserController uc = new BL.UserController();
             BO.User user = new BO.User();
             user.name = "prueba";

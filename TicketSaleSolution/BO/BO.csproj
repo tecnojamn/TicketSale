@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{8B21F7F6-4505-4F0E-92ED-5C9FBA936BB9}</ProjectGuid>
+    <ProjectGuid>{788288FB-551A-49FF-B9A9-532208D8886F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>BO</RootNamespace>
@@ -61,9 +61,6 @@
     <Compile Include="Model.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Order.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Payment.cs">
