@@ -26,7 +26,9 @@ namespace WS
                 name=name,
                 lastName=lastName,
                 dateBirth=dateBirth,
-                password=pass 
+                password=pass, 
+                userType=0,
+                mobileNum=0
             };
             return uc.newUser(user);
         }
