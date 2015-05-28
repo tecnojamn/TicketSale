@@ -20,6 +20,12 @@ namespace AppWeb.UserServiceClient {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/authorize", ReplyAction="http://tempuri.org/IUserService/authorizeResponse")]
         System.Threading.Tasks.Task<BO.User> authorizeAsync(string mail, string pass);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/newUser", ReplyAction="http://tempuri.org/IUserService/newUserResponse")]
+        bool newUser(string mail, string name, string lastName, System.DateTime dateBirth, string pass);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/newUser", ReplyAction="http://tempuri.org/IUserService/newUserResponse")]
+        System.Threading.Tasks.Task<bool> newUserAsync(string mail, string name, string lastName, System.DateTime dateBirth, string pass);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -55,6 +61,14 @@ namespace AppWeb.UserServiceClient {
         
         public System.Threading.Tasks.Task<BO.User> authorizeAsync(string mail, string pass) {
             return base.Channel.authorizeAsync(mail, pass);
+        }
+        
+        public bool newUser(string mail, string name, string lastName, System.DateTime dateBirth, string pass) {
+            return base.Channel.newUser(mail, name, lastName, dateBirth, pass);
+        }
+        
+        public System.Threading.Tasks.Task<bool> newUserAsync(string mail, string name, string lastName, System.DateTime dateBirth, string pass) {
+            return base.Channel.newUserAsync(mail, name, lastName, dateBirth, pass);
         }
     }
 }

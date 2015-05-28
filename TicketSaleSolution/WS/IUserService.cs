@@ -14,5 +14,8 @@ namespace WS
     {
         [OperationContract]
         User authorize(string mail,string pass);
+
+        [OperationContract]
+        bool newUser(string mail, string name, string lastName, DateTime dateBirth, string pass);
     }
 }

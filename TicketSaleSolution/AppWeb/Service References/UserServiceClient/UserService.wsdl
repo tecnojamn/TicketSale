@@ -13,16 +13,35 @@
   <wsdl:message name="IUserService_authorize_OutputMessage">
     <wsdl:part name="parameters" element="tns:authorizeResponse" />
   </wsdl:message>
+  <wsdl:message name="IUserService_newUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:newUser" />
+  </wsdl:message>
+  <wsdl:message name="IUserService_newUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:newUserResponse" />
+  </wsdl:message>
   <wsdl:portType name="IUserService">
     <wsdl:operation name="authorize">
       <wsdl:input wsaw:Action="http://tempuri.org/IUserService/authorize" message="tns:IUserService_authorize_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUserService/authorizeResponse" message="tns:IUserService_authorize_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="newUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserService/newUser" message="tns:IUserService_newUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserService/newUserResponse" message="tns:IUserService_newUser_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IUserService" type="tns:IUserService">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="authorize">
       <soap:operation soapAction="http://tempuri.org/IUserService/authorize" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="newUser">
+      <soap:operation soapAction="http://tempuri.org/IUserService/newUser" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

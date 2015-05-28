@@ -44,6 +44,7 @@ namespace BL
             }
             catch (Exception)
             {
+                return null;
                 throw;
             }
             return us;

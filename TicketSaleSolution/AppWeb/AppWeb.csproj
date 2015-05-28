@@ -107,26 +107,162 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\bootstrap-theme.css" />
-    <Content Include="Content\bootstrap-theme.min.css" />
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
-    <Content Include="css\base.css" />
-    <Content Include="css\default.css" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Content\bootstrap-theme.css.map" />
-    <Content Include="Content\bootstrap.css.map" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Content\dist\css\datepicker.css" />
+    <Content Include="Content\dist\css\vendor\bootstrap-theme.css" />
+    <Content Include="Content\dist\css\vendor\bootstrap-theme.min.css" />
+    <Content Include="Content\dist\css\vendor\bootstrap.css" />
+    <Content Include="Content\dist\css\vendor\bootstrap.min.css" />
+    <Content Include="Content\dist\css\vendor\bootstrap_ms.css" />
+    <Content Include="Content\dist\css\base-style.css" />
+    <Content Include="Content\dist\css\style.css" />
+    <Content Include="Content\dist\css\flat-ui.css" />
+    <Content Include="Content\dist\css\flat-ui.min.css" />
+    <Content Include="Content\dist\css\base.css" />
+    <Content Include="Content\dist\css\default.css" />
+    <Content Include="Content\dist\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\dist\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\dist\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\dist\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\dist\css\vendor\bootstrap-theme.css.map" />
+    <Content Include="Content\dist\css\vendor\bootstrap.css.map" />
+    <Content Include="Content\dist\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Content\dist\fonts\glyphicons\flat-ui-icons-regular.svg" />
+    <Content Include="Content\dist\fonts\lato\lato-black.svg" />
+    <Content Include="Content\dist\fonts\lato\lato-bold.svg" />
+    <Content Include="Content\dist\fonts\lato\lato-bolditalic.svg" />
+    <Content Include="Content\dist\fonts\lato\lato-italic.svg" />
+    <Content Include="Content\dist\fonts\lato\lato-light.svg" />
+    <Content Include="Content\dist\fonts\lato\lato-regular.svg" />
+    <Content Include="Content\dist\img\icons\png\Book.png" />
+    <Content Include="Content\dist\img\icons\png\Calendar.png" />
+    <Content Include="Content\dist\img\icons\png\Chat.png" />
+    <Content Include="Content\dist\img\icons\png\Clipboard.png" />
+    <Content Include="Content\dist\img\icons\png\Compas.png" />
+    <Content Include="Content\dist\img\icons\png\Gift-Box.png" />
+    <Content Include="Content\dist\img\icons\png\Infinity-Loop.png" />
+    <Content Include="Content\dist\img\icons\png\Mail.png" />
+    <Content Include="Content\dist\img\icons\png\Map.png" />
+    <Content Include="Content\dist\img\icons\png\Pensils.png" />
+    <Content Include="Content\dist\img\icons\png\Pocket.png" />
+    <Content Include="Content\dist\img\icons\png\Retina-Ready.png" />
+    <Content Include="Content\dist\img\icons\png\Toilet-Paper.png" />
+    <Content Include="Content\dist\img\icons\png\Watches.png" />
+    <Content Include="Content\dist\img\icons\svg\book.svg" />
+    <Content Include="Content\dist\img\icons\svg\calendar.svg" />
+    <Content Include="Content\dist\img\icons\svg\chat.svg" />
+    <Content Include="Content\dist\img\icons\svg\clipboard.svg" />
+    <Content Include="Content\dist\img\icons\svg\clocks.svg" />
+    <Content Include="Content\dist\img\icons\svg\compas.svg" />
+    <Content Include="Content\dist\img\icons\svg\gift-box.svg" />
+    <Content Include="Content\dist\img\icons\svg\loop.svg" />
+    <Content Include="Content\dist\img\icons\svg\mail.svg" />
+    <Content Include="Content\dist\img\icons\svg\map.svg" />
+    <Content Include="Content\dist\img\icons\svg\paper-bag.svg" />
+    <Content Include="Content\dist\img\icons\svg\pencils.svg" />
+    <Content Include="Content\dist\img\icons\svg\retina.svg" />
+    <Content Include="Content\dist\img\icons\svg\ribbon.svg" />
+    <Content Include="Content\dist\img\icons\svg\toilet-paper.svg" />
+    <Content Include="Content\dist\img\login\icon.png" />
+    <Content Include="Content\dist\img\login\imac-2x.png" />
+    <Content Include="Content\dist\img\login\imac.png" />
+    <Content Include="Content\dist\img\tile\ribbon-2x.png" />
+    <Content Include="Content\dist\img\tile\ribbon.png" />
+    <Content Include="Content\dist\js\boostrap-datapicker.js" />
+    <Content Include="Content\dist\js\radiocheck.js" />
     <Content Include="Properties\DataSources\BO.User.datasource" />
-    <None Include="Scripts\jquery-1.9.1.intellisense.js" />
-    <Content Include="img\SEM_landing_pages_4.jpg" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Scripts\jquery-1.9.1.js" />
-    <Content Include="Scripts\jquery-1.9.1.min.js" />
+    <Content Include="Content\dist\css\flat-ui.css.map" />
+    <Content Include="Content\dist\fonts\glyphicons\flat-ui-icons-regular.eot" />
+    <Content Include="Content\dist\fonts\glyphicons\flat-ui-icons-regular.ttf" />
+    <Content Include="Content\dist\fonts\glyphicons\flat-ui-icons-regular.woff" />
+    <Content Include="Content\dist\fonts\glyphicons\selection.json" />
+    <Content Include="Content\dist\fonts\lato\lato-black.eot" />
+    <Content Include="Content\dist\fonts\lato\lato-black.ttf" />
+    <Content Include="Content\dist\fonts\lato\lato-black.woff" />
+    <Content Include="Content\dist\fonts\lato\lato-bold.eot" />
+    <Content Include="Content\dist\fonts\lato\lato-bold.ttf" />
+    <Content Include="Content\dist\fonts\lato\lato-bold.woff" />
+    <Content Include="Content\dist\fonts\lato\lato-bolditalic.eot" />
+    <Content Include="Content\dist\fonts\lato\lato-bolditalic.ttf" />
+    <Content Include="Content\dist\fonts\lato\lato-bolditalic.woff" />
+    <Content Include="Content\dist\fonts\lato\lato-italic.eot" />
+    <Content Include="Content\dist\fonts\lato\lato-italic.ttf" />
+    <Content Include="Content\dist\fonts\lato\lato-italic.woff" />
+    <Content Include="Content\dist\fonts\lato\lato-light.eot" />
+    <Content Include="Content\dist\fonts\lato\lato-light.ttf" />
+    <Content Include="Content\dist\fonts\lato\lato-light.woff" />
+    <Content Include="Content\dist\fonts\lato\lato-regular.eot" />
+    <Content Include="Content\dist\fonts\lato\lato-regular.ttf" />
+    <Content Include="Content\dist\fonts\lato\lato-regular.woff" />
+    <Content Include="Content\dist\js\.jscs.json" />
+    <Content Include="Content\dist\js\.jshintrc" />
+    <None Include="Content\dist\js\jquery-1.9.1.intellisense.js" />
+    <Content Include="Content\dist\img\SEM_landing_pages_4.jpg" />
+    <Content Include="Content\dist\js\bootstrap.js" />
+    <Content Include="Content\dist\js\bootstrap.min.js" />
+    <Content Include="Content\dist\js\jquery-1.9.1.js" />
+    <Content Include="Content\dist\js\jquery-1.9.1.min.js" />
+    <Content Include="Content\less\.csscomb.json" />
+    <Content Include="Content\less\.csslintrc" />
+    <Content Include="Content\less\flat-ui.less" />
+    <Content Include="Content\less\mixins.less" />
+    <Content Include="Content\less\mixins\background-clip.less" />
+    <Content Include="Content\less\mixins\background-variant.less" />
+    <Content Include="Content\less\mixins\border-radius.less" />
+    <Content Include="Content\less\mixins\buttons.less" />
+    <Content Include="Content\less\mixins\center-block.less" />
+    <Content Include="Content\less\mixins\clearfix.less" />
+    <Content Include="Content\less\mixins\forms.less" />
+    <Content Include="Content\less\mixins\gradients.less" />
+    <Content Include="Content\less\mixins\grid.less" />
+    <Content Include="Content\less\mixins\hide-text.less" />
+    <Content Include="Content\less\mixins\image.less" />
+    <Content Include="Content\less\mixins\nav-divider.less" />
+    <Content Include="Content\less\mixins\navbar-vertical-align.less" />
+    <Content Include="Content\less\mixins\opacity.less" />
+    <Content Include="Content\less\mixins\pagination.less" />
+    <Content Include="Content\less\mixins\pallets.less" />
+    <Content Include="Content\less\mixins\reset-filter.less" />
+    <Content Include="Content\less\mixins\resize.less" />
+    <Content Include="Content\less\mixins\responsive-visibility.less" />
+    <Content Include="Content\less\mixins\select.less" />
+    <Content Include="Content\less\mixins\size.less" />
+    <Content Include="Content\less\mixins\switches.less" />
+    <Content Include="Content\less\mixins\tab-focus.less" />
+    <Content Include="Content\less\mixins\text-emphasis.less" />
+    <Content Include="Content\less\mixins\text-overflow.less" />
+    <Content Include="Content\less\mixins\vendor-prefixes.less" />
+    <Content Include="Content\less\modules\button-groups.less" />
+    <Content Include="Content\less\modules\buttons.less" />
+    <Content Include="Content\less\modules\code.less" />
+    <Content Include="Content\less\modules\dropdowns.less" />
+    <Content Include="Content\less\modules\footer.less" />
+    <Content Include="Content\less\modules\forms.less" />
+    <Content Include="Content\less\modules\glyphicons.less" />
+    <Content Include="Content\less\modules\input-groups.less" />
+    <Content Include="Content\less\modules\local-fonts.less" />
+    <Content Include="Content\less\modules\login.less" />
+    <Content Include="Content\less\modules\navbar.less" />
+    <Content Include="Content\less\modules\pager.less" />
+    <Content Include="Content\less\modules\pagination.less" />
+    <Content Include="Content\less\modules\palette.less" />
+    <Content Include="Content\less\modules\print.less" />
+    <Content Include="Content\less\modules\progress-bars.less" />
+    <Content Include="Content\less\modules\radiocheck.less" />
+    <Content Include="Content\less\modules\scaffolding.less" />
+    <Content Include="Content\less\modules\select.less" />
+    <Content Include="Content\less\modules\share.less" />
+    <Content Include="Content\less\modules\slider.less" />
+    <Content Include="Content\less\modules\switch.less" />
+    <Content Include="Content\less\modules\tagsinput.less" />
+    <Content Include="Content\less\modules\thumbnails.less" />
+    <Content Include="Content\less\modules\tiles.less" />
+    <Content Include="Content\less\modules\todo-list.less" />
+    <Content Include="Content\less\modules\tooltip.less" />
+    <Content Include="Content\less\modules\type.less" />
+    <Content Include="Content\less\modules\typeahead.less" />
+    <Content Include="Content\less\modules\video.less" />
+    <Content Include="Content\less\spaces.less" />
+    <Content Include="Content\less\variables.less" />
     <None Include="Service References\UserServiceClient\UserService.disco" />
     <None Include="Service References\UserServiceClient\configuration91.svcinfo" />
     <None Include="Service References\UserServiceClient\configuration.svcinfo" />
@@ -136,7 +272,7 @@
     </None>
     <Content Include="Site.Master" />
     <Content Include="packages.config" />
-    <Content Include="Scripts\jquery-1.9.1.min.map" />
+    <Content Include="Content\dist\js\jquery-1.9.1.min.map" />
     <None Include="Service References\UserServiceClient\UserService.wsdl" />
     <None Include="Service References\UserServiceClient\UserService.xsd">
       <SubType>Designer</SubType>
@@ -155,17 +291,18 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Default.aspx" />
-    <Content Include="Usuarios.aspx" />
+    <Content Include="Views\Default.aspx" />
+    <Content Include="Views\Signup.aspx" />
+    <Content Include="Views\Usuarios.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BootstrapBundleConfig.cs" />
-    <Compile Include="Default.aspx.cs">
+    <Compile Include="Views\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Default.aspx.designer.cs">
+    <Compile Include="Views\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -182,11 +319,18 @@
     <Compile Include="Site.Master.designer.cs">
       <DependentUpon>Site.Master</DependentUpon>
     </Compile>
-    <Compile Include="Usuarios.aspx.cs">
+    <Compile Include="Views\Signup.aspx.cs">
+      <DependentUpon>Signup.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Signup.aspx.designer.cs">
+      <DependentUpon>Signup.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Usuarios.aspx.cs">
       <DependentUpon>Usuarios.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Usuarios.aspx.designer.cs">
+    <Compile Include="Views\Usuarios.aspx.designer.cs">
       <DependentUpon>Usuarios.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
@@ -202,6 +346,7 @@
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\UserServiceClient\" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

@@ -1,0 +1,13 @@
+﻿body {
+}
+
+div {
+    margin: 0;
+    padding: 0;
+}
+
+.form-cont {
+    background: rgba(0,0,0,0.7);
+    border-radius: 5px;
+    color: #ffffff;
+}

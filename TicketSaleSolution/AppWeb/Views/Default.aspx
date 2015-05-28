@@ -1,0 +1,43 @@
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="AppWeb.Views.Default" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <!--Agregar estilos acá-->
+    <link href="../Content/dist/css/style.css" rel="stylesheet" />
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder" runat="server">
+
+    </script>
+
+    <div class="container-fluid banner">
+        <div class="container-fluid container-banner">
+            <div class="row">
+                <div class="radius col-lg-3 col-md-3 col-sm-5 col-ms-7 col-xs-12 form-cont login-form">
+                    <form name="form" role="form" method="post" id="formLogin" class="form" runat="server">
+                        <h4>Iniciar Sesión</h4>
+                        <div class="form-group">
+                            <input type="email" class="form-control login-field" placeholder="Correo" id="login-mail" />
+                            <label class="login-field-icon fui-mail" for="login-mail"></label>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" id="login-pass" placeholder="Contraseña" />
+                            <label class="login-field-icon fui-lock" for="login-pass"></label>
+                        </div>
+                        <asp:Button CssClass="form-group btn btn-primary btn-block" ID="login" runat="server" Text="Iniciar Sesión" />
+
+                        <label id="lblForm" runat="server" for="signup">Aun no tengo cuenta:</label>
+                        <asp:Button CssClass="form-group btn btn-primary btn-block" ID="signup" runat="server" OnClick="signup_Click" Text="Registrarme" />
+                    </form>
+                        
+                    
+                </div>
+                <div class="col-lg-9 col-md-9 col-sm-7 col-xs-12">
+                    <h3>PROBANDOOOO ASHDGBKAJSBHDVKAHSBDKJASD
+                        ASIDBAKSJDAS
+                        DASDBALKSD
+                        ASDKASBDASD
+                    </h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</asp:Content>

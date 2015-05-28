@@ -18,5 +18,17 @@ namespace WS
             User user = uc.authorize(mail, pass);
             return user;
         }
+        public bool newUser(string mail, string name, string lastName, DateTime dateBirth, string pass)
+        {
+            UserController uc = new UserController();
+            User user = new User() { 
+                mail=mail,
+                name=name,
+                lastName=lastName,
+                dateBirth=dateBirth,
+                password=pass 
+            };
+            return uc.newUser(user);
+        }
     }
 }
