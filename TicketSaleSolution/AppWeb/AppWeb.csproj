@@ -45,7 +45,7 @@
     </Reference>
     <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -284,6 +284,7 @@
     <None Include="Service References\UserServiceClient\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </None>
     <None Include="Service References\SRUser\configuration91.svcinfo" />
     <None Include="Service References\SRUser\configuration.svcinfo" />
@@ -302,9 +303,6 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\UserServiceClient\UserService11.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\UserServiceClient\UserService2.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Web.Debug.config">
@@ -370,7 +368,12 @@
     <WCFMetadataStorage Include="Service References\SRUser\" />
     <WCFMetadataStorage Include="Service References\UserServiceClient\" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\BO\BO.csproj">
+      <Project>{071f6130-a375-4715-9ef5-0d3dec440046}</Project>
+      <Name>BO</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

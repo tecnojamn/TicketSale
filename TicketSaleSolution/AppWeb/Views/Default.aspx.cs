@@ -5,7 +5,6 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using BO;
-using BO.DTO;
 
 namespace AppWeb.Views
 {
@@ -23,8 +22,8 @@ namespace AppWeb.Views
         protected void login_Click(object sender, EventArgs e)
         {
             SRUser.UserServiceClient prox = new SRUser.UserServiceClient();
-            DTOUser dtoUser = ProxyManager.getUserService().authorize(txtMail.Text, txtPass.Text);
-            if (dtoUser != null)
+            User user = ProxyManager.getUserService().authorize(txtMail.Text, txtPass.Text);
+            if (user != null)
             {
                 Session.Add("log", 1);
                 Session.Add("mail", dtoUser.mail);
