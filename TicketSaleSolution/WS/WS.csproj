@@ -90,7 +90,7 @@
       <Name>BL</Name>
     </ProjectReference>
     <ProjectReference Include="..\BO\BO.csproj">
-      <Project>{788288fb-551a-49ff-b9a9-532208d8886f}</Project>
+      <Project>{071f6130-a375-4715-9ef5-0d3dec440046}</Project>
       <Name>BO</Name>
     </ProjectReference>
   </ItemGroup>
