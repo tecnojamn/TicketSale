@@ -12,7 +12,11 @@ namespace AppWeb.Views
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //string hola = Session["name"].ToString();
+            if (Session["log"].ToString() == "1")
+            {
+                string hola = Session["name"].ToString();
+            }
+           
         }
 
         protected void signup_Click(object sender, EventArgs e)
@@ -25,10 +29,10 @@ namespace AppWeb.Views
             User user = ProxyManager.getUserService().authorize(txtMail.Text, txtPass.Text);
             if (user != null)
             {
-                Session.Add("log", 1);
-                Session.Add("mail", dtoUser.mail);
-                Session.Add("name", dtoUser.name);
-                Session.Add("userType", dtoUser.userType);
+                Session.Add("log", "1");
+                Session.Add("mail", user.mail);
+                Session.Add("name", user.name);
+                Session.Add("userType", user.userType);
             }               
             else { } //Error al iniciar sesion
         }
