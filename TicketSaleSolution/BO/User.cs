@@ -14,6 +14,7 @@ namespace BO
     
     public partial class User
     {
+
         public User()
         {
             this.Reservation = new HashSet<Reservation>();

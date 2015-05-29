@@ -8,18 +8,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace AppWeb.UserServiceClient {
+namespace AppWeb.SRUser {
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="UserServiceClient.IUserService")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="SRUser.IUserService")]
     public interface IUserService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/authorize", ReplyAction="http://tempuri.org/IUserService/authorizeResponse")]
-        BO.DTO.DTOUser authorize(string mail, string pass);
+        BO.User authorize(string mail, string pass);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/authorize", ReplyAction="http://tempuri.org/IUserService/authorizeResponse")]
-        System.Threading.Tasks.Task<BO.DTO.DTOUser> authorizeAsync(string mail, string pass);
+        System.Threading.Tasks.Task<BO.User> authorizeAsync(string mail, string pass);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/newUser", ReplyAction="http://tempuri.org/IUserService/newUserResponse")]
         bool newUser(string mail, string name, string lastName, System.DateTime dateBirth, string pass);
@@ -29,12 +29,12 @@ namespace AppWeb.UserServiceClient {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IUserServiceChannel : AppWeb.UserServiceClient.IUserService, System.ServiceModel.IClientChannel {
+    public interface IUserServiceChannel : AppWeb.SRUser.IUserService, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class UserServiceClient : System.ServiceModel.ClientBase<AppWeb.UserServiceClient.IUserService>, AppWeb.UserServiceClient.IUserService {
+    public partial class UserServiceClient : System.ServiceModel.ClientBase<AppWeb.SRUser.IUserService>, AppWeb.SRUser.IUserService {
         
         public UserServiceClient() {
         }
@@ -55,11 +55,11 @@ namespace AppWeb.UserServiceClient {
                 base(binding, remoteAddress) {
         }
         
-        public BO.DTO.DTOUser authorize(string mail, string pass) {
+        public BO.User authorize(string mail, string pass) {
             return base.Channel.authorize(mail, pass);
         }
         
-        public System.Threading.Tasks.Task<BO.DTO.DTOUser> authorizeAsync(string mail, string pass) {
+        public System.Threading.Tasks.Task<BO.User> authorizeAsync(string mail, string pass) {
             return base.Channel.authorizeAsync(mail, pass);
         }
         

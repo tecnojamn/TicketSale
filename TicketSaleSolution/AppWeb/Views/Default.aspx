@@ -5,9 +5,6 @@
     <link href="../Content/dist/css/style.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder" runat="server">
-
-    </script>
-
     <div class="container-fluid banner">
         <div class="container-fluid container-banner">
             <div class="row">
@@ -15,20 +12,18 @@
                     <form name="form" role="form" method="post" id="formLogin" class="form" runat="server">
                         <h4>Iniciar Sesión</h4>
                         <div class="form-group">
-                            <input type="email" class="form-control login-field" placeholder="Correo" id="login-mail" />
-                            <label class="login-field-icon fui-mail" for="login-mail"></label>
+                            <asp:TextBox ID="txtMail" CssClass="form-control login-field" placeholder="Correo" runat="server"></asp:TextBox>
+                            <label class="login-field-icon fui-mail" for="txtMail"></label>
                         </div>
                         <div class="form-group">
-                            <input type="password" class="form-control" id="login-pass" placeholder="Contraseña" />
-                            <label class="login-field-icon fui-lock" for="login-pass"></label>
+                            <asp:TextBox ID="txtPass" TextMode="Password" CssClass="form-control login-field" placeholder="Contraseña" runat="server"></asp:TextBox>
+                            <label class="login-field-icon fui-lock" for="txtPass"></label>
                         </div>
-                        <asp:Button CssClass="form-group btn btn-primary btn-block" ID="login" runat="server" Text="Iniciar Sesión" />
+                        <asp:Button CssClass="form-group btn btn-primary btn-block" ID="login" runat="server" OnClick="login_Click" Text="Iniciar Sesión" />
 
                         <label id="lblForm" runat="server" for="signup">Aun no tengo cuenta:</label>
-                        <asp:Button CssClass="form-group btn btn-primary btn-block" ID="signup" runat="server" OnClick="signup_Click" Text="Registrarme" />
+                        <asp:Button CssClass="form-group btn btn-info btn-block" ID="signup" runat="server" OnClick="signup_Click" Text="Registrarme" />
                     </form>
-                        
-                    
                 </div>
                 <div class="col-lg-9 col-md-9 col-sm-7 col-xs-12">
                     <h3>PROBANDOOOO ASHDGBKAJSBHDVKAHSBDKJASD

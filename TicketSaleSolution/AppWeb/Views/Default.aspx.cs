@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using BO;
+using BO.DTO;
 
 namespace AppWeb.Views
 {
@@ -12,14 +13,25 @@ namespace AppWeb.Views
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //Llamada a metodo del singleton web service de usuario
-            //ProxyManager.getUserService().authorize("penalunandres@gmail.com", "123456");
-
+            //string hola = Session["name"].ToString();
         }
 
         protected void signup_Click(object sender, EventArgs e)
         {
             Response.Redirect("Signup.aspx");
+        }
+        protected void login_Click(object sender, EventArgs e)
+        {
+            SRUser.UserServiceClient prox = new SRUser.UserServiceClient();
+            DTOUser dtoUser = ProxyManager.getUserService().authorize(txtMail.Text, txtPass.Text);
+            if (dtoUser != null)
+            {
+                Session.Add("log", 1);
+                Session.Add("mail", dtoUser.mail);
+                Session.Add("name", dtoUser.name);
+                Session.Add("userType", dtoUser.userType);
+            }               
+            else { } //Error al iniciar sesion
         }
     }
 }

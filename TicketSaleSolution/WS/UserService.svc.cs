@@ -5,6 +5,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
 using BO;
+using BO.DTO;
 using BL;
 
 namespace WS
@@ -12,11 +13,13 @@ namespace WS
     //Servicio Usuario
     public class UserService : IUserService
     {
-        public User authorize(string mail, string pass)
+        public DTOUser authorize(string mail, string pass)
         {
+            
             UserController uc = new UserController();
-            User user = uc.authorize(mail, pass);
-            return user;
+            
+            return uc.authorize(mail, pass);
+            
         }
         public bool newUser(string mail, string name, string lastName, DateTime dateBirth, string pass)
         {

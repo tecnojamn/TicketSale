@@ -22,6 +22,7 @@
     <MetadataSource Address="http://localhost:3643/UserService.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
+    <MetadataFile FileName="UserService2.xsd" MetadataType="Schema" ID="5170cd7b-f14b-4d9e-bfd9-08792345854c" SourceId="1" SourceUrl="http://localhost:3643/UserService.svc?xsd=xsd3" />
     <MetadataFile FileName="UserService1.xsd" MetadataType="Schema" ID="7a82b718-469b-4325-a060-4d9317fdc571" SourceId="1" SourceUrl="http://localhost:3643/UserService.svc?xsd=xsd2" />
     <MetadataFile FileName="UserService11.xsd" MetadataType="Schema" ID="ac3c98ff-8e78-4171-ba91-35fe9472600e" SourceId="1" SourceUrl="http://localhost:3643/UserService.svc?xsd=xsd1" />
     <MetadataFile FileName="UserService.xsd" MetadataType="Schema" ID="121d32b9-f60f-4022-a175-e69feb8e088c" SourceId="1" SourceUrl="http://localhost:3643/UserService.svc?xsd=xsd0" />

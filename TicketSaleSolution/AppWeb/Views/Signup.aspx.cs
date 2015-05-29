@@ -11,12 +11,11 @@ namespace AppWeb.Views
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
         }
 
         protected void signupSubmit_Click(object sender, EventArgs e)
         {
-            ProxyManager.getUserService().newUser(txtMail.Text, txtName.Text, txtLastName.Text , Convert.ToDateTime(dateBirth.Text) , txtPass1.Text);
+            ProxyManager.getUserService().newUser(txtMail.Text, txtName.Text, txtLastName.Text, Convert.ToDateTime(dateBirth.Text), txtPass1.Text);
         }
     }
 }

@@ -43,6 +43,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
@@ -263,10 +267,27 @@
     <Content Include="Content\less\modules\video.less" />
     <Content Include="Content\less\spaces.less" />
     <Content Include="Content\less\variables.less" />
+    <Content Include="Properties\DataSources\BO.DTO.DTOUser.datasource" />
+    <None Include="Service References\SRUser\UserService.wsdl" />
+    <None Include="Service References\SRUser\UserService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SRUser\UserService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SRUser\UserService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\UserServiceClient\UserService.disco" />
     <None Include="Service References\UserServiceClient\configuration91.svcinfo" />
     <None Include="Service References\UserServiceClient\configuration.svcinfo" />
     <None Include="Service References\UserServiceClient\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\SRUser\configuration91.svcinfo" />
+    <None Include="Service References\SRUser\configuration.svcinfo" />
+    <None Include="Service References\SRUser\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
@@ -281,6 +302,9 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\UserServiceClient\UserService11.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\UserServiceClient\UserService2.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Web.Debug.config">
@@ -298,6 +322,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BootstrapBundleConfig.cs" />
+    <Compile Include="Service References\SRUser\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Views\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -344,6 +373,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadataStorage Include="Service References\SRUser\" />
     <WCFMetadataStorage Include="Service References\UserServiceClient\" />
   </ItemGroup>
   <ItemGroup />

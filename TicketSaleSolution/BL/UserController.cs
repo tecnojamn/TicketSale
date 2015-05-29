@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BO.DTO;
+using BO;
 
 namespace BL
 {
@@ -31,23 +33,36 @@ namespace BL
             return us;
         }
         //Inicio sesion
-        public BO.User authorize(string mail, string password)
+        public DTOUser authorize(string mail, string password)
         {
-            BO.User us = null;
+            User user = null;
+            DTOUser dtoUser = null;
             try
             {
                 using (DAL.TicketSaleEntities context = new DAL.TicketSaleEntities())
                 {
-                    us = context.User.First(u => u.mail == mail && u.password == password);
+                    user = context.User.First(u => u.mail == mail && u.password == password);
+                    if (user != null)
+                    {
+                        dtoUser = new DTOUser()
+                        {
+                            name = user.name,
+                            lastName = user.lastName,
+                            mail = user.mail,
+                            dateBirth = user.dateBirth,
+                            password = user.password,
+                            userType = 0,
+                            mobileNum = 0 //SACAR LUEGO
+                        };
+                    }
                 }
 
             }
             catch (Exception)
             {
-                return null;
                 throw;
             }
-            return us;
+            return dtoUser;
         }
         //Nuevo Evento
         public bool newUser(BO.User us)
