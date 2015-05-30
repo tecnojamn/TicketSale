@@ -26,9 +26,9 @@ namespace AppWeb.Views
             if (user != null)
             {
                 Session.Add("log", 1);
-                Session.Add("mail", dtoUser.mail);
-                Session.Add("name", dtoUser.name);
-                Session.Add("userType", dtoUser.userType);
+                Session.Add("mail", user.mail);
+                Session.Add("name", user.name);
+                Session.Add("userType", user.userType);
             }               
             else { } //Error al iniciar sesion
         }
