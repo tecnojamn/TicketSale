@@ -272,6 +272,7 @@
     <Content Include="Content\less\spaces.less" />
     <Content Include="Content\less\variables.less" />
     <Content Include="Properties\DataSources\BO.DTO.DTOUser.datasource" />
+    <Content Include="Properties\DataSources\BO.DTOUser.datasource" />
     <None Include="Service References\SRUser\UserService.wsdl" />
     <None Include="Service References\SRUser\UserService.xsd">
       <SubType>Designer</SubType>
@@ -282,6 +283,7 @@
     <None Include="Service References\SRUser\UserService2.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\UserServiceClient\UserService.disco" />
     <None Include="Service References\UserServiceClient\configuration91.svcinfo" />
     <None Include="Service References\UserServiceClient\configuration.svcinfo" />
     <None Include="Service References\UserServiceClient\Reference.svcmap">

@@ -11,7 +11,11 @@ namespace AppWeb.Views.Controls
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            lblName.Text = Session["name"].ToString();
+            if (Session["log"] != null && Session["log"].ToString() == "1")
+            {
+                lblName.Text = Session["name"].ToString();
+            }
+
         }
     }
 }

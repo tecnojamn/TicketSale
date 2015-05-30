@@ -12,11 +12,11 @@ namespace WS
     //Servicio Usuario
     public class UserService : IUserService
     {
-        public User authorize(string mail, string pass)
+        public DTOUser authorize(string mail, string pass)
         {
             
             UserController uc = new UserController();
-            
+                       
             return uc.authorize(mail, pass);
             
         }

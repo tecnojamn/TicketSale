@@ -13,7 +13,7 @@ namespace WS
     public interface IUserService
     {
         [OperationContract]
-        User authorize(string mail,string pass);
+        DTOUser authorize(string mail,string pass);
 
         [OperationContract]
         bool newUser(string mail, string name, string lastName, DateTime dateBirth, string pass);

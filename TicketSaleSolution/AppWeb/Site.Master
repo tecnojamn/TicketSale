@@ -20,7 +20,7 @@
 <body>
     <div id="header">
         <h2>TicketSale</h2>
-        <asp:Panel ID="panelLogin" runat="server"></asp:Panel>
+        <asp:Panel ID="panelLogged" runat="server"></asp:Panel>
     </div>
 
     <div>

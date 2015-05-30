@@ -19,7 +19,7 @@ namespace AppWeb
             }
             if (Session["log"].ToString() == "1")
             {
-                panelLogin.Controls.Add(Page.LoadControl("/Controls/HeaderSession.ascx"));
+                panelLogged.Controls.Add(Page.LoadControl("/Views/Controls/HeaderSession.ascx"));
             }
         }
 

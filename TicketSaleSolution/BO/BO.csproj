@@ -47,6 +47,7 @@
     <Compile Include="CashPayment.cs">
       <DependentUpon>model.tt</DependentUpon>
     </Compile>
+    <Compile Include="DTOUser.cs" />
     <Compile Include="Event.cs">
       <DependentUpon>model.tt</DependentUpon>
     </Compile>

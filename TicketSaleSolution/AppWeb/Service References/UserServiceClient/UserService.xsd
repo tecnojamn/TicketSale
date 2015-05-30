@@ -12,7 +12,7 @@
   <xs:element name="authorizeResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/BO" minOccurs="0" name="authorizeResult" nillable="true" type="q1:User" />
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/BO" minOccurs="0" name="authorizeResult" nillable="true" type="q1:DTOUser" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
