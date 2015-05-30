@@ -282,7 +282,6 @@
     <None Include="Service References\SRUser\UserService2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\UserServiceClient\UserService.disco" />
     <None Include="Service References\UserServiceClient\configuration91.svcinfo" />
     <None Include="Service References\UserServiceClient\configuration.svcinfo" />
     <None Include="Service References\UserServiceClient\Reference.svcmap">
@@ -317,6 +316,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Views\Controls\HeaderSession.ascx" />
     <Content Include="Views\Default.aspx" />
     <Content Include="Views\Signup.aspx" />
     <Content Include="Views\Usuarios.aspx" />
@@ -328,6 +328,13 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Controls\HeaderSession.ascx.cs">
+      <DependentUpon>HeaderSession.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Controls\HeaderSession.ascx.designer.cs">
+      <DependentUpon>HeaderSession.ascx</DependentUpon>
     </Compile>
     <Compile Include="Views\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>

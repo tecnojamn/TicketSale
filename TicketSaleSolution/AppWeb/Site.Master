@@ -20,7 +20,7 @@
 <body>
     <div id="header">
         <h2>TicketSale</h2>
-        <a href="Usuarios.aspx">Ver Usuarios</a>
+        <asp:Panel ID="panelLogin" runat="server"></asp:Panel>
     </div>
 
     <div>

@@ -41,7 +41,7 @@ namespace BL
                 {
                     user = context.User.First(u => u.mail == mail && u.password == password);                    
                 }
-
+                user.Reservation = new HashSet<Reservation>();
             }
             catch (Exception)
             {

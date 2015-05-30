@@ -5,8 +5,6 @@ using System.Web;
 
 namespace AppWeb
 {
-
-    //Clase que consume webservice
     public class ProxyManager
     {
         public static UserServiceClient.UserServiceClient _UserService;
