@@ -11,7 +11,10 @@ namespace AppWeb
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["log"].ToString() == null)
+            {
+                Session.Add("log", "0");
+            }
         }
 
     }
