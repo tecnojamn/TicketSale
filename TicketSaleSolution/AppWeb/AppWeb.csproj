@@ -320,6 +320,7 @@
   <ItemGroup>
     <Content Include="Views\Controls\HeaderSession.ascx" />
     <Content Include="Views\Default.aspx" />
+    <Content Include="Views\Login.aspx" />
     <Content Include="Views\Signup.aspx" />
     <Content Include="Views\Usuarios.aspx" />
     <Content Include="Web.config" />
@@ -358,6 +359,13 @@
     </Compile>
     <Compile Include="Site.Master.designer.cs">
       <DependentUpon>Site.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Signup.aspx.cs">
       <DependentUpon>Signup.aspx</DependentUpon>

@@ -13,9 +13,16 @@ namespace AppWeb.Views.Controls
         {
             if (Session["log"] != null && Session["log"].ToString() == "1")
             {
-                lblName.Text = Session["name"].ToString();
+                navName.Text = Session["name"].ToString();
             }
 
+        }
+
+        protected void linkExit_Click(object sender, EventArgs e)
+        {
+            //Exit Session
+            Session["log"] = "0";
+            Response.Redirect("Default.aspx");
         }
     }
 }

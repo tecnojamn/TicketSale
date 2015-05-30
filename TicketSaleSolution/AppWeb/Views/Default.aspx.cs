@@ -12,32 +12,16 @@ namespace AppWeb.Views
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["log"] != null)
+            if (Session["log"] == null)
             {
-                if (Session["log"].ToString() == "1")
-                {
-                    //do what you need
-                }
+                Session.Add("log", "0");
+                Session.Add("mail", "");
+                Session.Add("name", "");
             }
-        }
-
-        protected void signup_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("Signup.aspx");
-        }
-        protected void login_Click(object sender, EventArgs e)
-        {
-            DTOUser dtoUser = ProxyManager.getUserService().authorize(txtMail.Text, txtPass.Text);
-            if (dtoUser != null)
+            if (Session["log"].ToString() == "0")
             {
-                Session.Add("log", "1");
-                Session.Add("mail", dtoUser.mail);
-                Session.Add("name", dtoUser.name);
-                Session.Add("userType", dtoUser.userType);
-
-                Response.Redirect("Default.aspx");
+                Response.Redirect("login.aspx");
             }
-            else { } //Error al iniciar sesion
         }
     }
 }

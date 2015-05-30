@@ -13,12 +13,21 @@ namespace AppWeb.Views.Controls {
     public partial class HeaderSession {
         
         /// <summary>
-        /// Control lblName.
+        /// Control navName.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblName;
+        protected global::System.Web.UI.WebControls.HyperLink navName;
+        
+        /// <summary>
+        /// Control linkExit.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton linkExit;
     }
 }
