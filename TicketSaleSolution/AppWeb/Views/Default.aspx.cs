@@ -12,11 +12,13 @@ namespace AppWeb.Views
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["log"].ToString() == "1")
+            if (Session["log"] != null)
             {
-                string hola = Session["name"].ToString();
+                if (Session["log"].ToString() == "1")
+                {
+                    //do what you need
+                }
             }
-           
         }
 
         protected void signup_Click(object sender, EventArgs e)
@@ -25,15 +27,16 @@ namespace AppWeb.Views
         }
         protected void login_Click(object sender, EventArgs e)
         {
-            SRUser.UserServiceClient prox = new SRUser.UserServiceClient();
-            User user = ProxyManager.getUserService().authorize(txtMail.Text, txtPass.Text);
-            if (user != null)
+            DTOUser dtoUser = ProxyManager.getUserService().authorize(txtMail.Text, txtPass.Text);
+            if (dtoUser != null)
             {
                 Session.Add("log", "1");
-                Session.Add("mail", user.mail);
-                Session.Add("name", user.name);
-                Session.Add("userType", user.userType);
-            }               
+                Session.Add("mail", dtoUser.mail);
+                Session.Add("name", dtoUser.name);
+                Session.Add("userType", dtoUser.userType);
+
+                Response.Redirect("Default.aspx");
+            }
             else { } //Error al iniciar sesion
         }
     }

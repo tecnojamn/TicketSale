@@ -16,10 +16,10 @@ namespace AppWeb.UserServiceClient {
     public interface IUserService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/authorize", ReplyAction="http://tempuri.org/IUserService/authorizeResponse")]
-        BO.User authorize(string mail, string pass);
+        BO.DTOUser authorize(string mail, string pass);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/authorize", ReplyAction="http://tempuri.org/IUserService/authorizeResponse")]
-        System.Threading.Tasks.Task<BO.User> authorizeAsync(string mail, string pass);
+        System.Threading.Tasks.Task<BO.DTOUser> authorizeAsync(string mail, string pass);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/newUser", ReplyAction="http://tempuri.org/IUserService/newUserResponse")]
         bool newUser(string mail, string name, string lastName, System.DateTime dateBirth, string pass);
@@ -55,11 +55,11 @@ namespace AppWeb.UserServiceClient {
                 base(binding, remoteAddress) {
         }
         
-        public BO.User authorize(string mail, string pass) {
+        public BO.DTOUser authorize(string mail, string pass) {
             return base.Channel.authorize(mail, pass);
         }
         
-        public System.Threading.Tasks.Task<BO.User> authorizeAsync(string mail, string pass) {
+        public System.Threading.Tasks.Task<BO.DTOUser> authorizeAsync(string mail, string pass) {
             return base.Channel.authorizeAsync(mail, pass);
         }
         

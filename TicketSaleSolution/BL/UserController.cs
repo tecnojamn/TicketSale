@@ -32,14 +32,16 @@ namespace BL
             return us;
         }
         //Inicio sesion
-        public User authorize(string mail, string password)
+        public DTOUser authorize(string mail, string password)
         {
             User user = null;
+            DTOUser dtoUser = null;
+
             try
             {
                 using (DAL.TicketSaleEntities context = new DAL.TicketSaleEntities())
                 {
-                    user = context.User.First(u => u.mail == mail && u.password == password);                    
+                    user = context.User.First(u => u.mail == mail && u.password == password);
                 }
 
             }
@@ -47,7 +49,18 @@ namespace BL
             {
                 throw;
             }
-            return user;
+            dtoUser = new DTOUser()
+            {
+                id = user.id,
+                mail = user.mail,
+                name = user.name,
+                lastName = user.lastName,
+                dateBirth = user.dateBirth,
+                userType = user.userType,
+                mobileNum = user.mobileNum //sacar luego
+            };
+
+            return dtoUser;
         }
         //Nuevo Evento
         public bool newUser(BO.User us)
