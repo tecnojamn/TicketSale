@@ -22,7 +22,6 @@
         <div class="container-fluid container-banner">
             <div class="row">
                 <div class="radius col-lg-3 col-md-3 col-sm-5 col-ms-7 col-xs-12 form-cont login-form">
-                    <form name="form" role="form" method="post" id="formSignup" class="form" runat="server">
                         <h4>Registrate!</h4>
                         <div class="form-group">
                             <asp:TextBox ID="txtMail" CssClass="form-control login-field" placeholder="Correo" runat="server"></asp:TextBox>
@@ -45,7 +44,6 @@
                             <asp:TextBox TextMode="Password" ID="txtPass2" CssClass="form-control login-field" placeholder="Repetir Contraseña" runat="server"></asp:TextBox>
                         </div>
                         <asp:Button CssClass="form-group btn btn-primary btn-block" ID="signupSubmit" runat="server" OnClick="signupSubmit_Click" Text="Registrarme" />
-                    </form>
                 </div>
                 <div class="col-lg-9 col-md-9 col-sm-7 col-xs-12">
                     <h3>PROBANDOOOO ASHDGBKAJSBHDVKAHSBDKJASD

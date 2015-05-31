@@ -24,8 +24,8 @@
 @media (min-width: 1200px) {
     .navbar-brand,
     .navbar-nav li a {
-        line-height: 88px;
-        height: 88px;
+        line-height: 75px;
+        height: 75px;
         padding-top: 0;
     }
     .navbar{

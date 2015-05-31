@@ -7,19 +7,10 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace AppWeb.Views   {
+namespace AppWeb.Views {
     
     
     public partial class Signup {
-        
-        /// <summary>
-        /// Control formSignup.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm formSignup;
         
         /// <summary>
         /// Control txtMail.
@@ -28,7 +19,7 @@ namespace AppWeb.Views   {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtMail; 
+        protected global::System.Web.UI.WebControls.TextBox txtMail;
         
         /// <summary>
         /// Control txtName.

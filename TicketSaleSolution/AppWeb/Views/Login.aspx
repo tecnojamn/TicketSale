@@ -26,11 +26,7 @@
 
                 </div>
                 <div class="col-lg-9 col-md-9 col-sm-7 col-xs-12">
-                    <h3>PROBANDOOOO ASHDGBKAJSBHDVKAHSBDKJASD
-                        ASIDBAKSJDAS
-                        DASDBALKSD
-                        ASDKASBDASD
-                    </h3>
+                    <h3>Encuentra tu próxima experienca papa!</h3>
                 </div>
             </div>
         </div>

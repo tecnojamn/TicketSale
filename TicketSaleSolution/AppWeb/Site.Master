@@ -22,7 +22,8 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-4">
-                    <h2>TicketSale</h2>
+                    <asp:ImageButton ID="imgbtnLogo" ImageUrl="Content/dist/img/logo.jpg" CssClass="logo" runat="server" />
+                                     
                 </div>
                 <div class="container col-lg-3 col-lg-offset-5">
                     <asp:Panel ID="panelLogged" runat="server"></asp:Panel>

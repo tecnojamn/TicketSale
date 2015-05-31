@@ -20,9 +20,9 @@ namespace AppWeb.Views.Controls
 
         protected void linkExit_Click(object sender, EventArgs e)
         {
-            //Exit Session
+            //Desloguear y redirigir
             Session["log"] = "0";
-            Response.Redirect("Default.aspx");
+            Response.Redirect("Login.aspx");
         }
     }
 }

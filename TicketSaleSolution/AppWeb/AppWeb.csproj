@@ -177,6 +177,7 @@
     <Content Include="Content\dist\img\tile\ribbon.png" />
     <Content Include="Content\dist\js\boostrap-datapicker.js" />
     <Content Include="Content\dist\js\radiocheck.js" />
+    <Content Include="Content\dist\img\logo.jpg" />
     <Content Include="Properties\DataSources\BO.User.datasource" />
     <Content Include="Content\dist\css\flat-ui.css.map" />
     <Content Include="Content\dist\fonts\glyphicons\flat-ui-icons-regular.eot" />
