@@ -20,7 +20,7 @@ namespace AppWeb.Views
             {
                 if (txtPass1.Text == txtPass2.Text)
                 {
-                    if (txtPass1.Text.Length >= inputRestriction.minLenghtPass)
+                    if (txtPass1.Text.Length >= 6)
                     {
                         UserDTO userDTO = new UserDTO()
                         {
