@@ -5,6 +5,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
 using BO;
+using DTO;
 
 namespace WS
 {
@@ -13,9 +14,12 @@ namespace WS
     public interface IUserService
     {
         [OperationContract]
-        DTOUser authorize(string mail,string pass);
+        UserDTO authorize(string mail,string pass);
 
         [OperationContract]
+        bool newUser(UserDTO userDTO);
+/*
+        [OperationContract]
         bool newUser(string mail, string name, string lastName, DateTime dateBirth, string pass);
-    }
+    */}
 }

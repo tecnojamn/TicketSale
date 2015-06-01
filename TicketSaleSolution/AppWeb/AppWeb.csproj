@@ -274,16 +274,7 @@
     <Content Include="Content\less\variables.less" />
     <Content Include="Properties\DataSources\BO.DTO.DTOUser.datasource" />
     <Content Include="Properties\DataSources\BO.DTOUser.datasource" />
-    <None Include="Service References\SRUser\UserService.wsdl" />
-    <None Include="Service References\SRUser\UserService.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\SRUser\UserService1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\SRUser\UserService2.xsd">
-      <SubType>Designer</SubType>
-    </None>
+    <Content Include="Properties\DataSources\DTO.UserDTO.datasource" />
     <None Include="Service References\UserServiceClient\UserService.disco" />
     <None Include="Service References\UserServiceClient\configuration91.svcinfo" />
     <None Include="Service References\UserServiceClient\configuration.svcinfo" />
@@ -291,12 +282,6 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
       <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\SRUser\configuration91.svcinfo" />
-    <None Include="Service References\SRUser\configuration.svcinfo" />
-    <None Include="Service References\SRUser\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
     <Content Include="Site.Master" />
     <Content Include="packages.config" />
@@ -327,11 +312,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BootstrapBundleConfig.cs" />
-    <Compile Include="Service References\SRUser\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
     <Compile Include="Views\Controls\HeaderSession.ascx.cs">
       <DependentUpon>HeaderSession.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -379,13 +359,12 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Service References\SRUser\" />
     <WCFMetadataStorage Include="Service References\UserServiceClient\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BO\BO.csproj">
-      <Project>{071f6130-a375-4715-9ef5-0d3dec440046}</Project>
-      <Name>BO</Name>
+    <ProjectReference Include="..\DTO\DTO.csproj">
+      <Project>{c9ccbd3b-5823-4abb-a970-823461872858}</Project>
+      <Name>DTO</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

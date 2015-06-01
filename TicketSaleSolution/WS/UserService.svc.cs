@@ -7,26 +7,33 @@ using System.Text;
 using BO;
 using BL;
 using DTO;
+using AutoMapper;
 
 namespace WS
 {
     //Servicio Usuario
     public class UserService : IUserService
     {
-        public DTOUser authorize(string mail, string pass)
+        public UserDTO authorize(string mail, string pass)
         {
-
             UserController uc = new UserController();
-
-            return uc.authorize(mail, pass);
-
+            Mapper.CreateMap<User, UserDTO>()
+                .ForMember(u => u.Reservation, opt => opt.Ignore()); //No me traigas reservas, no las necesito
+            return Mapper.Map<UserDTO>(uc.authorize(mail, pass));
         }
-       // public bool newUser(string mail, string name, string lastName, DateTime dateBirth, string pass)
-        public bool newUser(DTOUser dtoUser)
+        public bool newUser(UserDTO userDTO)
+        {
+            UserController uc = new UserController();
+            Mapper.CreateMap<UserDTO, User>()
+                .ForMember(u => u.Reservation, opt => opt.Ignore()); //No me traigas reservas, no las necesito
+            return uc.newUser(Mapper.Map<User>(userDTO));
+        }
+        //public bool newUser(string mail, string name, string lastName, DateTime dateBirth, string pass)
+       /* public bool newUser(DTOUser dtoUser)
         {
             UserController uc = new UserController();
             return uc.newUser(mail, name, lastName, dateBirth, pass);
-        }
+        }*/
     }
 }
 

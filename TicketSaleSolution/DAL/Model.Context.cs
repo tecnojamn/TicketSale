@@ -12,6 +12,7 @@ namespace DAL
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using BO;
     
     public partial class TicketSaleEntities : DbContext
     {

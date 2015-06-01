@@ -10,11 +10,9 @@ namespace BL
     public class UserController
     {
         //Obtener Usuario
-        //Return null si no existe
-        public DTOUser getUser(int idUs)
+        public User getUser(int idUs)
         {
-            BO.User user = null;
-            DTOUser dtoUser = null;
+            User user = null;
             try
             {
                 using (DAL.TicketSaleEntities context = new DAL.TicketSaleEntities())
@@ -30,62 +28,28 @@ namespace BL
             {
                 throw;
             }
-            dtoUser = new DTOUser()
-            {
-                id = user.id,
-                mail = user.mail,
-                name = user.name,
-                lastName = user.lastName,
-                dateBirth = user.dateBirth,
-                userType = user.userType,
-                mobileNum = user.mobileNum //sacar luego
-            };
-            return dtoUser;
+            return user;
         }
         //Inicio sesion
-        public DTOUser authorize(string mail, string password)
+        public User authorize(string mail, string password)
         {
             User user = null;
-            DTOUser dtoUser = null;
-
             try
             {
                 using (DAL.TicketSaleEntities context = new DAL.TicketSaleEntities())
                 {
                     user = context.User.First(u => u.mail == mail && u.password == password);
                 }
-                user.Reservation = new HashSet<Reservation>();
             }
             catch (Exception)
             {
                 throw;
             }
-            dtoUser = new DTOUser()
-            {
-                id = user.id,
-                mail = user.mail,
-                name = user.name,
-                lastName = user.lastName,
-                dateBirth = user.dateBirth,
-                userType = user.userType,
-                mobileNum = user.mobileNum //sacar luego
-            };
-
-            return dtoUser;
+            return user;
         }
         //Nuevo Evento
-        public bool newUser(string mail, string name, string lastName, DateTime dateBirth, string pass)
+        public bool newUser(User user)
         {
-            User user = new User()
-            {
-                mail = mail,
-                name = name,
-                lastName = lastName,
-                dateBirth = dateBirth,
-                password = pass,
-                userType = 0,
-                mobileNum = 0
-            };
             try
             {
                 using (DAL.TicketSaleEntities context = new DAL.TicketSaleEntities())

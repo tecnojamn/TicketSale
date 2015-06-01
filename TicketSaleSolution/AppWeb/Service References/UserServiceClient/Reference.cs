@@ -16,16 +16,16 @@ namespace AppWeb.UserServiceClient {
     public interface IUserService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/authorize", ReplyAction="http://tempuri.org/IUserService/authorizeResponse")]
-        BO.DTOUser authorize(string mail, string pass);
+        DTO.UserDTO authorize(string mail, string pass);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/authorize", ReplyAction="http://tempuri.org/IUserService/authorizeResponse")]
-        System.Threading.Tasks.Task<BO.DTOUser> authorizeAsync(string mail, string pass);
+        System.Threading.Tasks.Task<DTO.UserDTO> authorizeAsync(string mail, string pass);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/newUser", ReplyAction="http://tempuri.org/IUserService/newUserResponse")]
-        bool newUser(string mail, string name, string lastName, System.DateTime dateBirth, string pass);
+        bool newUser(DTO.UserDTO userDTO);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/newUser", ReplyAction="http://tempuri.org/IUserService/newUserResponse")]
-        System.Threading.Tasks.Task<bool> newUserAsync(string mail, string name, string lastName, System.DateTime dateBirth, string pass);
+        System.Threading.Tasks.Task<bool> newUserAsync(DTO.UserDTO userDTO);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -55,20 +55,20 @@ namespace AppWeb.UserServiceClient {
                 base(binding, remoteAddress) {
         }
         
-        public BO.DTOUser authorize(string mail, string pass) {
+        public DTO.UserDTO authorize(string mail, string pass) {
             return base.Channel.authorize(mail, pass);
         }
         
-        public System.Threading.Tasks.Task<BO.DTOUser> authorizeAsync(string mail, string pass) {
+        public System.Threading.Tasks.Task<DTO.UserDTO> authorizeAsync(string mail, string pass) {
             return base.Channel.authorizeAsync(mail, pass);
         }
         
-        public bool newUser(string mail, string name, string lastName, System.DateTime dateBirth, string pass) {
-            return base.Channel.newUser(mail, name, lastName, dateBirth, pass);
+        public bool newUser(DTO.UserDTO userDTO) {
+            return base.Channel.newUser(userDTO);
         }
         
-        public System.Threading.Tasks.Task<bool> newUserAsync(string mail, string name, string lastName, System.DateTime dateBirth, string pass) {
-            return base.Channel.newUserAsync(mail, name, lastName, dateBirth, pass);
+        public System.Threading.Tasks.Task<bool> newUserAsync(DTO.UserDTO userDTO) {
+            return base.Channel.newUserAsync(userDTO);
         }
     }
 }
