@@ -23,20 +23,20 @@
             <div class="row">
                 <div class="col-lg-4">
                     <asp:ImageButton ID="imgbtnLogo" ImageUrl="Content/dist/img/logo.jpg" CssClass="logo" runat="server" />
-                                     
                 </div>
                 <div class="container col-lg-3 col-lg-offset-5">
-                    <asp:Panel ID="panelLogged" runat="server"></asp:Panel>
+                    <asp:Panel ID="panelLogin" runat="server">
+                        <asp:Button ID="btnLogin" CssClass="btn-primary btn" OnClick="btnLogin_Click" runat="server" Text="Iniciar Sesión" />
+                        <asp:Button ID="btnSignup" CssClass="btn-info btn" OnClick="btnSignup_Click" runat="server" Text="Registrarme" />
+                    </asp:Panel>
                 </div>
             </div>
         </div>
-
-
-    <div>
-        <asp:ContentPlaceHolder ID="ContentPlaceHolder" runat="server">
-        </asp:ContentPlaceHolder>
-    </div>
-        </form>
+        <div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
     <div id="footer">
         Copyright 2015 - TecnoJAMN
     </div>

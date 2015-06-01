@@ -15,15 +15,11 @@ namespace AppWeb.Views
             if (Session["log"] == null)
             {
                 //Instancia variables de sesión
-                Session.Add("log", "0");
+                Session.Add("log", SessionState.OFF);
                 Session.Add("mail", "");
                 Session.Add("name", "");
             }
-            if (Session["log"].ToString() == "0")
-            {
-                //No estoy logueado, redirigir al login form
-                Response.Redirect("Login.aspx");
-            }
+            
         }
     }
 }

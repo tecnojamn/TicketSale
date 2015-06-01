@@ -8,7 +8,6 @@
         <EntityTypeShape EntityType="TicketSaleModel.CashPayment" Width="1.5" PointX="7.5" PointY="3.875" IsExpanded="true" />
         <EntityTypeShape EntityType="TicketSaleModel.Event" Width="1.5" PointX="1.5" PointY="11.625" IsExpanded="true" />
         <EntityTypeShape EntityType="TicketSaleModel.EventLocation" Width="1.5" PointX="1.5" PointY="16" IsExpanded="true" />
-        <EntityTypeShape EntityType="TicketSaleModel.Payment" Width="1.5" PointX="5.25" PointY="3.625" IsExpanded="true" />
         <EntityTypeShape EntityType="TicketSaleModel.PaymentLocation" Width="1.5" PointX="5.25" PointY="6.875" IsExpanded="true" />
         <EntityTypeShape EntityType="TicketSaleModel.PaypalPayment" Width="1.5" PointX="7.5" PointY="6.75" IsExpanded="true" />
         <EntityTypeShape EntityType="TicketSaleModel.Reservation" Width="1.5" PointX="3" PointY="3.75" IsExpanded="true" />
@@ -16,16 +15,17 @@
         <EntityTypeShape EntityType="TicketSaleModel.Ticket" Width="1.5" PointX="3" PointY="8" IsExpanded="true" />
         <EntityTypeShape EntityType="TicketSaleModel.TicketType" Width="1.5" PointX="0.75" PointY="7.625" IsExpanded="true" />
         <EntityTypeShape EntityType="TicketSaleModel.User" Width="1.5" PointX="0.75" PointY="3.5" IsExpanded="true" />
-        <AssociationConnector Association="TicketSaleModel.FK_CashPayment_Payment" ManuallyRouted="false" />
         <AssociationConnector Association="TicketSaleModel.FK_CashPayment_PaymentLocation" ManuallyRouted="false" />
         <AssociationConnector Association="TicketSaleModel.FK_Event_EventLocation" ManuallyRouted="false" />
         <AssociationConnector Association="TicketSaleModel.FK_TicketType_Event" ManuallyRouted="false" />
-        <AssociationConnector Association="TicketSaleModel.FK_Payment_Reservation" ManuallyRouted="false" />
-        <AssociationConnector Association="TicketSaleModel.FK_PaypalPayment_Payment" ManuallyRouted="false" />
         <AssociationConnector Association="TicketSaleModel.FK_Reservation_User" ManuallyRouted="false" />
         <AssociationConnector Association="TicketSaleModel.FK_SubOrder_Reservation" ManuallyRouted="false" />
         <AssociationConnector Association="TicketSaleModel.FK_SubOrder_Ticket" ManuallyRouted="false" />
         <AssociationConnector Association="TicketSaleModel.FK_Ticket_TicketType" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="TicketSaleModel.Payment" Width="1.5" PointX="5.25" PointY="9.625" />
+        <AssociationConnector Association="TicketSaleModel.FK_CashPayment_Payment" />
+        <AssociationConnector Association="TicketSaleModel.FK_Payment_Reservation" />
+        <AssociationConnector Association="TicketSaleModel.FK_PaypalPayment_Payment" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

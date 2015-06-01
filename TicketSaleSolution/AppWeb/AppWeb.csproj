@@ -323,7 +323,6 @@
     <Content Include="Views\Default.aspx" />
     <Content Include="Views\Login.aspx" />
     <Content Include="Views\Signup.aspx" />
-    <Content Include="Views\Usuarios.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -375,13 +374,6 @@
     <Compile Include="Views\Signup.aspx.designer.cs">
       <DependentUpon>Signup.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Views\Usuarios.aspx.cs">
-      <DependentUpon>Usuarios.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Usuarios.aspx.designer.cs">
-      <DependentUpon>Usuarios.aspx</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
@@ -421,6 +413,7 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
+  <Import Project="..\packages\AutoMapper.3.3.1\tools\AutoMapper.targets" Condition="Exists('..\packages\AutoMapper.3.3.1\tools\AutoMapper.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

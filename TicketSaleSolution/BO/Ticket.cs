@@ -10,12 +10,7 @@
 namespace BO
 {
     using System;
-    using System.Runtime.Serialization;
     using System.Collections.Generic;
-    
-    [DataContract(IsReference = true)]
-    [KnownType(typeof(SubOrder))]
-    [KnownType(typeof(TicketType))]
     
     public partial class Ticket
     {
@@ -24,16 +19,11 @@ namespace BO
             this.SubOrder = new HashSet<SubOrder>();
         }
     
-    	[DataMember]
         public int id { get; set; }
-    	[DataMember]
         public int number { get; set; }
-    	[DataMember]
         public int idTicketType { get; set; }
     
-    	[DataMember]
         public virtual ICollection<SubOrder> SubOrder { get; set; }
-    	[DataMember]
         public virtual TicketType TicketType { get; set; }
     }
 }

@@ -10,25 +10,15 @@
 namespace BO
 {
     using System;
-    using System.Runtime.Serialization;
     using System.Collections.Generic;
-    
-    [DataContract(IsReference = true)]
-    [KnownType(typeof(Payment))]
-    [KnownType(typeof(PaymentLocation))]
     
     public partial class CashPayment
     {
-    	[DataMember]
         public int idPayment { get; set; }
-    	[DataMember]
         public int cod { get; set; }
-    	[DataMember]
         public int idPaymentLocation { get; set; }
     
-    	[DataMember]
-        public virtual Payment Payment { get; set; }
-    	[DataMember]
         public virtual PaymentLocation PaymentLocation { get; set; }
+        public virtual Payment Payment { get; set; }
     }
 }

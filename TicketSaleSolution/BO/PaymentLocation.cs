@@ -10,11 +10,7 @@
 namespace BO
 {
     using System;
-    using System.Runtime.Serialization;
     using System.Collections.Generic;
-    
-    [DataContract(IsReference = true)]
-    [KnownType(typeof(CashPayment))]
     
     public partial class PaymentLocation
     {
@@ -23,16 +19,11 @@ namespace BO
             this.CashPayment = new HashSet<CashPayment>();
         }
     
-    	[DataMember]
         public int id { get; set; }
-    	[DataMember]
         public int phoneNumber { get; set; }
-    	[DataMember]
         public string address { get; set; }
-    	[DataMember]
         public string name { get; set; }
     
-    	[DataMember]
         public virtual ICollection<CashPayment> CashPayment { get; set; }
     }
 }

@@ -31,13 +31,13 @@ namespace AppWeb.Views {
         protected global::System.Web.UI.WebControls.TextBox txtPass;
         
         /// <summary>
-        /// Control login.
+        /// Control btnLogin.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button login;
+        protected global::System.Web.UI.WebControls.Button btnLogin;
         
         /// <summary>
         /// Control lblForm.
@@ -49,12 +49,12 @@ namespace AppWeb.Views {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblForm;
         
         /// <summary>
-        /// Control signup.
+        /// Control btnSignup.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button signup;
+        protected global::System.Web.UI.WebControls.Button btnSignup;
     }
 }

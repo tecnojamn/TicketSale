@@ -10,27 +10,16 @@
 namespace BO
 {
     using System;
-    using System.Runtime.Serialization;
     using System.Collections.Generic;
-    
-    [DataContract(IsReference = true)]
-    [KnownType(typeof(Reservation))]
-    [KnownType(typeof(Ticket))]
     
     public partial class SubOrder
     {
-    	[DataMember]
         public int id { get; set; }
-    	[DataMember]
         public byte active { get; set; }
-    	[DataMember]
         public int idReservation { get; set; }
-    	[DataMember]
         public int idTicket { get; set; }
     
-    	[DataMember]
         public virtual Reservation Reservation { get; set; }
-    	[DataMember]
         public virtual Ticket Ticket { get; set; }
     }
 }

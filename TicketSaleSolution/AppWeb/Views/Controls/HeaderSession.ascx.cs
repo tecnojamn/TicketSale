@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using BO;
 
 namespace AppWeb.Views.Controls
 {
@@ -21,8 +22,12 @@ namespace AppWeb.Views.Controls
         protected void linkExit_Click(object sender, EventArgs e)
         {
             //Desloguear y redirigir
-            Session["log"] = "0";
+            Session["log"] = SessionState.OFF;
+            Session["name"] = ""; 
+            Session["mail"] = "";
+            Session["userType"] = "";
             Response.Redirect("Login.aspx");
+
         }
     }
 }

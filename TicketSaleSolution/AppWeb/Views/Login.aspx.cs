@@ -14,21 +14,21 @@ namespace AppWeb.Views
         {
 
         }
-        protected void login_Click(object sender, EventArgs e)
+        protected void btnLogin_Click(object sender, EventArgs e)
         {
             DTOUser dtoUser = ProxyManager.getUserService().authorize(txtMail.Text, txtPass.Text);
             if (dtoUser != null)
             {
-                Session.Add("log", "1");
+                Session.Add("log", SessionState.ON);
                 Session.Add("mail", dtoUser.mail);
                 Session.Add("name", dtoUser.name);
                 Session.Add("userType", dtoUser.userType);
 
                 Response.Redirect("Default.aspx");
             }
-            else { } //Error al iniciar sesion
+            else { } //Error al iniciar sesion?
         }
-        protected void signup_Click(object sender, EventArgs e)
+        protected void btnSignup_Click(object sender, EventArgs e)
         {
             Response.Redirect("Signup.aspx");
         }

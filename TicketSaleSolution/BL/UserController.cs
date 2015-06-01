@@ -11,9 +11,10 @@ namespace BL
     {
         //Obtener Usuario
         //Return null si no existe
-        public BO.User getUser(int idUs)
+        public DTOUser getUser(int idUs)
         {
-            BO.User us = null;
+            BO.User user = null;
+            DTOUser dtoUser = null;
             try
             {
                 using (DAL.TicketSaleEntities context = new DAL.TicketSaleEntities())
@@ -21,7 +22,7 @@ namespace BL
                     /*var consulta = from u in context.User
                             select new { u.id, u.name, u.lastName, u.mail };
                     return consulta;*/
-                    us = context.User.FirstOrDefault(u => u.id == idUs);
+                    user = context.User.FirstOrDefault(u => u.id == idUs);
                 }
 
             }
@@ -29,7 +30,17 @@ namespace BL
             {
                 throw;
             }
-            return us;
+            dtoUser = new DTOUser()
+            {
+                id = user.id,
+                mail = user.mail,
+                name = user.name,
+                lastName = user.lastName,
+                dateBirth = user.dateBirth,
+                userType = user.userType,
+                mobileNum = user.mobileNum //sacar luego
+            };
+            return dtoUser;
         }
         //Inicio sesion
         public DTOUser authorize(string mail, string password)
@@ -63,13 +74,23 @@ namespace BL
             return dtoUser;
         }
         //Nuevo Evento
-        public bool newUser(BO.User us)
+        public bool newUser(string mail, string name, string lastName, DateTime dateBirth, string pass)
         {
+            User user = new User()
+            {
+                mail = mail,
+                name = name,
+                lastName = lastName,
+                dateBirth = dateBirth,
+                password = pass,
+                userType = 0,
+                mobileNum = 0
+            };
             try
             {
                 using (DAL.TicketSaleEntities context = new DAL.TicketSaleEntities())
                 {
-                    if (context.User.Add(us) != null) //Devuelve null si no inserta
+                    if (context.User.Add(user) != null)
                     {
                         context.SaveChanges();
                     }

@@ -10,20 +10,13 @@
 namespace BO
 {
     using System;
-    using System.Runtime.Serialization;
     using System.Collections.Generic;
-    
-    [DataContract(IsReference = true)]
-    [KnownType(typeof(Payment))]
     
     public partial class PaypalPayment
     {
-    	[DataMember]
         public int idPayment { get; set; }
-    	[DataMember]
         public string transactionCod { get; set; }
     
-    	[DataMember]
         public virtual Payment Payment { get; set; }
     }
 }

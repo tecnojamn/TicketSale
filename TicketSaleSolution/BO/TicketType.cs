@@ -10,12 +10,7 @@
 namespace BO
 {
     using System;
-    using System.Runtime.Serialization;
     using System.Collections.Generic;
-    
-    [DataContract(IsReference = true)]
-    [KnownType(typeof(Event))]
-    [KnownType(typeof(Ticket))]
     
     public partial class TicketType
     {
@@ -24,22 +19,14 @@ namespace BO
             this.Ticket = new HashSet<Ticket>();
         }
     
-    	[DataMember]
         public int id { get; set; }
-    	[DataMember]
         public double cost { get; set; }
-    	[DataMember]
         public string description { get; set; }
-    	[DataMember]
         public int startNum { get; set; }
-    	[DataMember]
         public int finalNum { get; set; }
-    	[DataMember]
         public int idEvent { get; set; }
     
-    	[DataMember]
         public virtual Event Event { get; set; }
-    	[DataMember]
         public virtual ICollection<Ticket> Ticket { get; set; }
     }
 }

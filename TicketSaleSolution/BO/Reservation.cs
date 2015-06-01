@@ -10,34 +10,22 @@
 namespace BO
 {
     using System;
-    using System.Runtime.Serialization;
     using System.Collections.Generic;
-    
-    [DataContract(IsReference = true)]
-    [KnownType(typeof(Payment))]
-    [KnownType(typeof(User))]
-    [KnownType(typeof(SubOrder))]
     
     public partial class Reservation
     {
         public Reservation()
         {
-            this.Payment = new HashSet<Payment>();
             this.SubOrder = new HashSet<SubOrder>();
+            this.Payment = new HashSet<Payment>();
         }
     
-    	[DataMember]
         public int id { get; set; }
-    	[DataMember]
         public int idUser { get; set; }
-    	[DataMember]
         public System.DateTime date { get; set; }
     
-    	[DataMember]
-        public virtual ICollection<Payment> Payment { get; set; }
-    	[DataMember]
         public virtual User User { get; set; }
-    	[DataMember]
         public virtual ICollection<SubOrder> SubOrder { get; set; }
+        public virtual ICollection<Payment> Payment { get; set; }
     }
 }

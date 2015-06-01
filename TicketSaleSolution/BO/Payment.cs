@@ -10,30 +10,17 @@
 namespace BO
 {
     using System;
-    using System.Runtime.Serialization;
     using System.Collections.Generic;
-    
-    [DataContract(IsReference = true)]
-    [KnownType(typeof(CashPayment))]
-    [KnownType(typeof(Reservation))]
-    [KnownType(typeof(PaypalPayment))]
     
     public partial class Payment
     {
-    	[DataMember]
         public int id { get; set; }
-    	[DataMember]
         public System.DateTime date { get; set; }
-    	[DataMember]
-        public double mount { get; set; }
-    	[DataMember]
+        public double amount { get; set; }
         public int idReservation { get; set; }
     
-    	[DataMember]
         public virtual CashPayment CashPayment { get; set; }
-    	[DataMember]
         public virtual Reservation Reservation { get; set; }
-    	[DataMember]
         public virtual PaypalPayment PaypalPayment { get; set; }
     }
 }

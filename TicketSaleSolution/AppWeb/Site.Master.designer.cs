@@ -31,13 +31,31 @@ namespace AppWeb {
         protected global::System.Web.UI.WebControls.ImageButton imgbtnLogo;
         
         /// <summary>
-        /// Control panelLogged.
+        /// Control panelLogin.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel panelLogged;
+        protected global::System.Web.UI.WebControls.Panel panelLogin;
+        
+        /// <summary>
+        /// Control btnLogin.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnLogin;
+        
+        /// <summary>
+        /// Control btnSignup.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnSignup;
         
         /// <summary>
         /// Control ContentPlaceHolder.

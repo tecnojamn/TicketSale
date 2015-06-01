@@ -6,6 +6,7 @@ using System.ServiceModel;
 using System.Text;
 using BO;
 using BL;
+using DTO;
 
 namespace WS
 {
@@ -14,25 +15,18 @@ namespace WS
     {
         public DTOUser authorize(string mail, string pass)
         {
-            
+
             UserController uc = new UserController();
-                       
+
             return uc.authorize(mail, pass);
-            
+
         }
-        public bool newUser(string mail, string name, string lastName, DateTime dateBirth, string pass)
+       // public bool newUser(string mail, string name, string lastName, DateTime dateBirth, string pass)
+        public bool newUser(DTOUser dtoUser)
         {
             UserController uc = new UserController();
-            User user = new User() { 
-                mail=mail,
-                name=name,
-                lastName=lastName,
-                dateBirth=dateBirth,
-                password=pass, 
-                userType=0,
-                mobileNum=0
-            };
-            return uc.newUser(user);
+            return uc.newUser(mail, name, lastName, dateBirth, pass);
         }
     }
 }
+
