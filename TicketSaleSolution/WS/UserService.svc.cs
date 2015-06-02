@@ -19,27 +19,34 @@ namespace WS
             UserController uc = new UserController();
             Mapper.CreateMap<User, UserDTO>()
                 .ForMember(u => u.Reservation, opt => opt.Ignore()); //No me traigas reservas, no las necesito
-            return Mapper.Map<UserDTO>(uc.authorize(mail, pass));
+            return Mapper.Map<UserDTO>(uc.authorize(mail, pass)); 
         }
         public bool newUser(UserDTO userDTO)
         {
             UserController uc = new UserController();
-            Mapper.CreateMap<UserDTO, User>()
-                .ForMember(u => u.Reservation, opt => opt.Ignore()); //No me traigas reservas, no las necesito
+            Mapper.CreateMap<UserDTO, User>();
             return uc.newUser(Mapper.Map<User>(userDTO));
         }
-        UserDTO getUser(int id)
+        public UserDTO getUser(int id)
         {
             UserController uc = new UserController();
             Mapper.CreateMap<User, UserDTO>();
             return Mapper.Map<UserDTO>(uc.getUser(id));
         }
-        //public bool newUser(string mail, string name, string lastName, DateTime dateBirth, string pass)
-       /* public bool newUser(DTOUser dtoUser)
+        public List<UserDTO> getUsers(int page, int pageSize)
         {
             UserController uc = new UserController();
-            return uc.newUser(mail, name, lastName, dateBirth, pass);
-        }*/
+            Mapper.CreateMap<User, UserDTO>()
+                .ForMember(u => u.Reservation, opt => opt.Ignore());
+            return Mapper.Map<List<UserDTO>>(uc.getUsers(page,pageSize));
+        }
+        public bool updateUser(UserDTO userDTO)
+        {
+            UserController uc = new UserController();
+            Mapper.CreateMap<User, UserDTO>();
+            return uc.updateUser(Mapper.Map<User>(userDTO));
+        }
+
     }
 }
 

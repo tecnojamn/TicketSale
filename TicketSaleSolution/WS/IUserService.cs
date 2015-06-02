@@ -4,7 +4,6 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
-using BO;
 using DTO;
 
 namespace WS
@@ -21,5 +20,11 @@ namespace WS
 
         [OperationContract]
         UserDTO getUser(int id);
+
+        [OperationContract]
+        List<UserDTO> getUsers(int page, int pageSize);
+
+        [OperationContract]
+        bool updateUser(UserDTO userDTO);
     }
 }

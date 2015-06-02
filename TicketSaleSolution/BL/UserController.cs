@@ -47,7 +47,7 @@ namespace BL
             }
             return user;
         }
-        //Nuevo Evento
+        //Nuevo Usuario
         public bool newUser(User user)
         {
             try
@@ -74,10 +74,10 @@ namespace BL
             {
                 using (DAL.TicketSaleEntities context = new DAL.TicketSaleEntities())
                 {
-                    BO.User u = context.User.FirstOrDefault(us => us.id == id);
+                    User u = context.User.FirstOrDefault(us => us.id == id);
                     if (u != null)
                     {
-                        if (context.User.Remove(u) != null) //Devuelve null si no borra
+                        if (context.User.Remove(u) != null)
                         {
                             context.SaveChanges();
                         }
@@ -92,44 +92,43 @@ namespace BL
             }
             return false;
         }
-        //Editar datos usuario
-        public bool updateUser(int id, string mail, string password, string name, string lastName, System.DateTime dateBirth, byte userType, int mobileNum)
-        {
-            try
-            {
-                using (DAL.TicketSaleEntities context = new DAL.TicketSaleEntities())
-                {
-                    BO.User u = context.User.FirstOrDefault(us => us.id == id);
-                    if (u != null)
-                    {
-                        u.mail = mail;
-                        u.password = password;
-                        u.name = name;
-                        u.lastName = lastName;
-                        u.dateBirth = dateBirth;
-                        u.userType = userType;
-                        u.mobileNum = mobileNum;
-                        context.SaveChanges();
-                    }
-                    else { return false; }
-                }
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            return true;
+        /* //Editar datos usuario (NO SIRVE)
+         public bool updateUser(int id, string mail, string password, string name, string lastName, System.DateTime dateBirth, byte userType)
+         {
+             try
+             {
+                 using (DAL.TicketSaleEntities context = new DAL.TicketSaleEntities())
+                 {
+                     User u = context.User.FirstOrDefault(us => us.id == id);
+                     if (u != null)
+                     {
+                         u.mail = mail;
+                         u.password = password;
+                         u.name = name;
+                         u.lastName = lastName;
+                         u.dateBirth = dateBirth;
+                         u.userType = userType;
+                         context.SaveChanges();
+                     }
+                     else { return false; }
+                 }
+             }
+             catch (Exception)
+             {
+                 throw;
+             }
+             return true;
 
 
-        }
+         }*/
         //Editar datos a partir de un BO.User
-        public bool updateUser(BO.User us)
+        public bool updateUser(User us)
         {
             try
             {
                 using (DAL.TicketSaleEntities context = new DAL.TicketSaleEntities())
                 {
-                    BO.User u = context.User.FirstOrDefault(user => user.id == us.id);
+                    User u = context.User.FirstOrDefault(user => user.id == us.id);
                     if (u != null)
                     {
                         u.mail = us.mail;
@@ -138,7 +137,6 @@ namespace BL
                         u.lastName = us.lastName;
                         u.dateBirth = us.dateBirth;
                         u.userType = us.userType;
-                        u.mobileNum = us.mobileNum;
                         context.SaveChanges();
                     }
                     else { return false; }
@@ -152,16 +150,16 @@ namespace BL
 
         }
         //Obtener Lista de Usuarios
-        public List<BO.User> getUsers()
+        public List<User> getUsers(int page = 1, int pageSize = 1)
         {
-            List<BO.User> users = new List<BO.User>();
+            List<User> users = new List<User>();
             try
             {
                 using (DAL.TicketSaleEntities context = new DAL.TicketSaleEntities())
                 {
-                    //otra alternativa de hacer consultas a la que dio el bonfri
-                    var query = from u in context.User select u;
-                    users = query.ToList();
+                    //otra alternativa de hacer consultas a la que dio el bonfri (LINQ)
+                    var query = from u in context.User where u.active == 1 select u; //CAMBIAR EL ACTIVE POR CONSTANTE
+                    users = query.Skip((page-1)*pageSize).Take(pageSize).ToList();
                 }
 
             }
@@ -171,6 +169,7 @@ namespace BL
             }
             return users;
         }
+        //Usuario inactivo 
         public bool desactivateUser(int id)
         {
             try
@@ -180,7 +179,9 @@ namespace BL
                     User user = context.User.FirstOrDefault(u => u.id == id);
                     if (user != null)
                     {
-                        user.active
+                        user.active = 0;
+                        context.SaveChanges();
+                        return true;
                     }
                 }
 
@@ -189,6 +190,7 @@ namespace BL
             {
                 throw;
             }
+            return false;
         }
     }
 }

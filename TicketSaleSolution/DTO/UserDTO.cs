@@ -27,7 +27,9 @@ namespace DTO
         [DataMember]
         public byte userType { get; set; }
         [DataMember]
-        public int mobileNum { get; set; }
+        public byte active { get; set; }
+        [DataMember]
+        public string registrationLink { get; set; }
 
         [DataMember]
         public virtual ICollection<ReservationDTO> Reservation { get; set; }

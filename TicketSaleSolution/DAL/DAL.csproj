@@ -87,7 +87,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BO\BO.csproj">
-      <Project>{071f6130-a375-4715-9ef5-0d3dec440046}</Project>
+      <Project>{13a67de1-74b3-4244-ad0c-bfc539efe5bf}</Project>
       <Name>BO</Name>
     </ProjectReference>
   </ItemGroup>

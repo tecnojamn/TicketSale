@@ -5,15 +5,30 @@ using System.Web;
 
 namespace AppWeb
 {
+    //Manejador de servicios web
     public class ProxyManager
     {
         public static UserServiceClient.UserServiceClient _UserService;
+        public static EventServiceClient.EventServiceClient _EventService;
+        public static ReservationServiceClient.ReservationServiceClient _ReservationService;
 
         public static UserServiceClient.UserServiceClient getUserService()
         {
             if (_UserService == null)
                 _UserService = new UserServiceClient.UserServiceClient();
             return _UserService;
+        }
+        public static EventServiceClient.EventServiceClient getEventService()
+        {
+            if (_EventService == null)
+                _EventService = new EventServiceClient.EventServiceClient();
+            return _EventService;
+        }
+        public static ReservationServiceClient.ReservationServiceClient getReservationService()
+        {
+            if (_ReservationService == null)
+                _ReservationService = new ReservationServiceClient.ReservationServiceClient();
+            return _ReservationService;
         }
 
     }

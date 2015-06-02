@@ -24,8 +24,8 @@ namespace BO
         public int idUser { get; set; }
         public System.DateTime date { get; set; }
     
-        public virtual User User { get; set; }
         public virtual ICollection<SubOrder> SubOrder { get; set; }
         public virtual ICollection<Payment> Payment { get; set; }
+        public virtual User User { get; set; }
     }
 }

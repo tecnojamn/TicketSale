@@ -3,19 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BO;
 
 namespace BL
 {
-    public class OrderController
+    public class ReservationController
     {
-        //Nueva Orden (paga)
-        public bool newOrder(BO.Reservation o)
+        //Nueva Reserva
+        public bool newReservation(Reservation o)
         {
             try
             {
                 using (DAL.TicketSaleEntities context = new DAL.TicketSaleEntities())
                 {
-                    if (context.Reservation.Add(o) != null) //Devuelve null si no inserta
+                    if (context.Reservation.Add(o) != null)
                     {
                         context.SaveChanges();
                     }
@@ -37,33 +38,15 @@ namespace BL
             }
         }
         //Listar reservas de Usuario
-        /*public List<BO.Reservation> getReservationsByUser(int idUs)
+        public List<Reservation> getReservationsByUser(int idUser)
         {
-            List<BO.Reservation> res = null;
+            List<Reservation> res = null;
             try
             {
                 using (DAL.TicketSaleEntities context = new DAL.TicketSaleEntities())
                 {
                     res = context.Reservation.Select(o => o).
-                        Where(o => o.idUser == idUs && o.Reservation != null).
-                        Select(o => o.Reservation).ToList();
-                }
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            return res;            
-        }*/
-        //Listar todas las reservas
-        /*public List<BO.Reservation> getReservations()
-        {
-            List<BO.Reservation> res = null;
-            try
-            {
-                using (DAL.TicketSaleEntities context = new DAL.TicketSaleEntities())
-                {
-                    res = context.Reservation.Select(e => e).ToList();
+                        Where(o => o.idUser == idUser).ToList();
                 }
             }
             catch (Exception)
@@ -71,6 +54,23 @@ namespace BL
                 throw;
             }
             return res;
-        }*/
+        }
+        //Listar  reservas
+        public List<Reservation> getReservations(int page = 1, int pageSize = 1)
+        {
+            List<Reservation> res = null;
+            try
+            {
+                using (DAL.TicketSaleEntities context = new DAL.TicketSaleEntities())
+                {
+                    res = context.Reservation.Select(r => r).Skip(page).Take(pageSize).OrderBy(r=>r.date).ToList();
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            return res;
+        }
     }
 }

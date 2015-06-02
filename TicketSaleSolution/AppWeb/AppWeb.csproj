@@ -275,6 +275,14 @@
     <Content Include="Properties\DataSources\BO.DTO.DTOUser.datasource" />
     <Content Include="Properties\DataSources\BO.DTOUser.datasource" />
     <Content Include="Properties\DataSources\DTO.UserDTO.datasource" />
+    <None Include="Service References\EventServiceClient\EventService.wsdl" />
+    <None Include="Service References\EventServiceClient\EventService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ReservationServiceClient\ReservationService.wsdl" />
+    <None Include="Service References\ReservationServiceClient\ReservationService.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\UserServiceClient\UserService.disco" />
     <None Include="Service References\UserServiceClient\configuration91.svcinfo" />
     <None Include="Service References\UserServiceClient\configuration.svcinfo" />
@@ -282,6 +290,20 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
       <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ReservationServiceClient\ReservationService.disco" />
+    <None Include="Service References\ReservationServiceClient\configuration91.svcinfo" />
+    <None Include="Service References\ReservationServiceClient\configuration.svcinfo" />
+    <None Include="Service References\ReservationServiceClient\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\EventServiceClient\EventService.disco" />
+    <None Include="Service References\EventServiceClient\configuration91.svcinfo" />
+    <None Include="Service References\EventServiceClient\configuration.svcinfo" />
+    <None Include="Service References\EventServiceClient\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
     <Content Include="Site.Master" />
     <Content Include="packages.config" />
@@ -313,6 +335,16 @@
   <ItemGroup>
     <Compile Include="App_Start\BootstrapBundleConfig.cs" />
     <Compile Include="Constants.cs" />
+    <Compile Include="Service References\EventServiceClient\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\ReservationServiceClient\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Views\Controls\HeaderSession.ascx.cs">
       <DependentUpon>HeaderSession.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -360,6 +392,8 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadataStorage Include="Service References\EventServiceClient\" />
+    <WCFMetadataStorage Include="Service References\ReservationServiceClient\" />
     <WCFMetadataStorage Include="Service References\UserServiceClient\" />
   </ItemGroup>
   <ItemGroup>

@@ -26,6 +26,24 @@ namespace AppWeb.UserServiceClient {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/newUser", ReplyAction="http://tempuri.org/IUserService/newUserResponse")]
         System.Threading.Tasks.Task<bool> newUserAsync(DTO.UserDTO userDTO);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/getUser", ReplyAction="http://tempuri.org/IUserService/getUserResponse")]
+        DTO.UserDTO getUser(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/getUser", ReplyAction="http://tempuri.org/IUserService/getUserResponse")]
+        System.Threading.Tasks.Task<DTO.UserDTO> getUserAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/getUsers", ReplyAction="http://tempuri.org/IUserService/getUsersResponse")]
+        DTO.UserDTO[] getUsers(int limit, int offset);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/getUsers", ReplyAction="http://tempuri.org/IUserService/getUsersResponse")]
+        System.Threading.Tasks.Task<DTO.UserDTO[]> getUsersAsync(int limit, int offset);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/updateUser", ReplyAction="http://tempuri.org/IUserService/updateUserResponse")]
+        bool updateUser(DTO.UserDTO userDTO);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/updateUser", ReplyAction="http://tempuri.org/IUserService/updateUserResponse")]
+        System.Threading.Tasks.Task<bool> updateUserAsync(DTO.UserDTO userDTO);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -69,6 +87,30 @@ namespace AppWeb.UserServiceClient {
         
         public System.Threading.Tasks.Task<bool> newUserAsync(DTO.UserDTO userDTO) {
             return base.Channel.newUserAsync(userDTO);
+        }
+        
+        public DTO.UserDTO getUser(int id) {
+            return base.Channel.getUser(id);
+        }
+        
+        public System.Threading.Tasks.Task<DTO.UserDTO> getUserAsync(int id) {
+            return base.Channel.getUserAsync(id);
+        }
+        
+        public DTO.UserDTO[] getUsers(int limit, int offset) {
+            return base.Channel.getUsers(limit, offset);
+        }
+        
+        public System.Threading.Tasks.Task<DTO.UserDTO[]> getUsersAsync(int limit, int offset) {
+            return base.Channel.getUsersAsync(limit, offset);
+        }
+        
+        public bool updateUser(DTO.UserDTO userDTO) {
+            return base.Channel.updateUser(userDTO);
+        }
+        
+        public System.Threading.Tasks.Task<bool> updateUserAsync(DTO.UserDTO userDTO) {
+            return base.Channel.updateUserAsync(userDTO);
         }
     }
 }

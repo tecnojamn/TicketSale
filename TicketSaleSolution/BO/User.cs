@@ -26,7 +26,8 @@ namespace BO
         public string lastName { get; set; }
         public System.DateTime dateBirth { get; set; }
         public byte userType { get; set; }
-        public int mobileNum { get; set; }
+        public byte active { get; set; }
+        public string registrationLink { get; set; }
     
         public virtual ICollection<Reservation> Reservation { get; set; }
     }

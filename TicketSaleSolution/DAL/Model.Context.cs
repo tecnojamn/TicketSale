@@ -35,7 +35,7 @@ namespace DAL
         public virtual DbSet<SubOrder> SubOrder { get; set; }
         public virtual DbSet<Ticket> Ticket { get; set; }
         public virtual DbSet<TicketType> TicketType { get; set; }
-        public virtual DbSet<User> User { get; set; }
         public virtual DbSet<Payment> Payment { get; set; }
+        public virtual DbSet<User> User { get; set; }
     }
 }
