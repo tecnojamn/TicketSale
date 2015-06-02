@@ -35,6 +35,7 @@ namespace AppWeb.Views
                     }
                 }
             }
+            Response.Write("Error al registrar");
 
         }
     }

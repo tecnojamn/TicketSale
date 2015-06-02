@@ -14,12 +14,12 @@ namespace WS
     public interface IUserService
     {
         [OperationContract]
-        UserDTO authorize(string mail,string pass);
+        UserDTO authorize(string mail, string pass);
 
         [OperationContract]
         bool newUser(UserDTO userDTO);
-/*
+
         [OperationContract]
-        bool newUser(string mail, string name, string lastName, DateTime dateBirth, string pass);
-    */}
+        UserDTO getUser(int id);
+    }
 }

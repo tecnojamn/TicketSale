@@ -171,5 +171,24 @@ namespace BL
             }
             return users;
         }
+        public bool desactivateUser(int id)
+        {
+            try
+            {
+                using (DAL.TicketSaleEntities context = new DAL.TicketSaleEntities())
+                {
+                    User user = context.User.FirstOrDefault(u => u.id == id);
+                    if (user != null)
+                    {
+                        user.active
+                    }
+                }
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
     }
 }

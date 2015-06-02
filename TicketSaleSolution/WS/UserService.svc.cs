@@ -28,6 +28,12 @@ namespace WS
                 .ForMember(u => u.Reservation, opt => opt.Ignore()); //No me traigas reservas, no las necesito
             return uc.newUser(Mapper.Map<User>(userDTO));
         }
+        UserDTO getUser(int id)
+        {
+            UserController uc = new UserController();
+            Mapper.CreateMap<User, UserDTO>();
+            return Mapper.Map<UserDTO>(uc.getUser(id));
+        }
         //public bool newUser(string mail, string name, string lastName, DateTime dateBirth, string pass)
        /* public bool newUser(DTOUser dtoUser)
         {

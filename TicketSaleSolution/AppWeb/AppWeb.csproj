@@ -312,6 +312,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BootstrapBundleConfig.cs" />
+    <Compile Include="Constants.cs" />
     <Compile Include="Views\Controls\HeaderSession.ascx.cs">
       <DependentUpon>HeaderSession.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
