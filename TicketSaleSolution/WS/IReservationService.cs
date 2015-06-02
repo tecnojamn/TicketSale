@@ -13,15 +13,15 @@ namespace WS
     public interface IReservationService
     {
         [OperationContract]
-        public bool newReservation(ReservationDTO resDTO);
+        bool newReservation(ReservationDTO resDTO);
 
         [OperationContract]
-        public bool autoCancelation();
+        bool autoCancelation();
 
         [OperationContract]
-        public List<ReservationDTO> getReservationsByUser(int idUser, int page, int pageSize);
+        List<ReservationDTO> getReservationsByUser(int idUser, int page, int pageSize);
 
         [OperationContract]
-        public List<ReservationDTO> getReservations(int page, int pageSize);
+        List<ReservationDTO> getReservations(int page, int pageSize);
     }
 }

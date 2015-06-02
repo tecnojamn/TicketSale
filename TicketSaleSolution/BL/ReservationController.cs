@@ -10,13 +10,13 @@ namespace BL
     public class ReservationController
     {
         //Nueva Reserva
-        public bool newReservation(Reservation o)
+        public bool newReservation(Reservation r)
         {
             try
             {
                 using (DAL.TicketSaleEntities context = new DAL.TicketSaleEntities())
                 {
-                    if (context.Reservation.Add(o) != null)
+                    if (context.Reservation.Add(r) != null)
                     {
                         context.SaveChanges();
                     }
@@ -38,15 +38,15 @@ namespace BL
             }
         }
         //Listar reservas de Usuario
-        public List<Reservation> getReservationsByUser(int idUser)
+        public List<Reservation> getReservationsByUser(int idUser, int page, int pageSize)
         {
             List<Reservation> res = null;
             try
             {
                 using (DAL.TicketSaleEntities context = new DAL.TicketSaleEntities())
                 {
-                    res = context.Reservation.Select(o => o).
-                        Where(o => o.idUser == idUser).ToList();
+                    res = context.Reservation.Select(r => r).
+                        Where(r => r.idUser == idUser).ToList();
                 }
             }
             catch (Exception)
@@ -63,7 +63,7 @@ namespace BL
             {
                 using (DAL.TicketSaleEntities context = new DAL.TicketSaleEntities())
                 {
-                    res = context.Reservation.Select(r => r).Skip(page).Take(pageSize).OrderBy(r=>r.date).ToList();
+                    res = context.Reservation.Select(r => r).Skip(page).Take(pageSize).OrderBy(r => r.date).ToList();
                 }
             }
             catch (Exception)

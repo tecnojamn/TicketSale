@@ -6,16 +6,33 @@ using System.ServiceModel;
 using System.Text;
 using BO;
 using DTO;
+using BL;
+using AutoMapper;
 
 namespace WS
 {
-    // NOTA: puede usar el comando "Rename" del menú "Refactorizar" para cambiar el nombre de clase "ReservationService" en el código, en svc y en el archivo de configuración a la vez.
-    // NOTA: para iniciar el Cliente de prueba WCF para probar este servicio, seleccione ReservationService.svc o ReservationService.svc.cs en el Explorador de soluciones e inicie la depuración.
     public class ReservationService : IReservationService
     {
-        public bool newReservation(ReservationDTO resDTO) { return false; }
-        public bool autoCancelation() { return false; }
-        public List<ReservationDTO> getReservationsByUser(int idUser, int page, int pageSize) { return null; }
-        public List<ReservationDTO> getReservations(int page, int pageSize) { return null; }
+        public bool newReservation(ReservationDTO resDTO)
+        {
+            ReservationController rc = new ReservationController();
+            Mapper.CreateMap<ReservationDTO, Reservation>();
+            return rc.newReservation(Mapper.Map<Reservation>(resDTO));
+        }
+        public bool autoCancelation() { return false; } //Despues se ve
+        public List<ReservationDTO> getReservationsByUser(int idUser, int page, int pageSize)
+        {
+            ReservationController rc = new ReservationController();
+            Mapper.CreateMap<Reservation, ReservationDTO>()
+                .ForMember(r => r.User, opt => opt.Ignore());
+            return Mapper.Map<List<ReservationDTO>>(rc.getReservationsByUser(idUser, page, pageSize));
+        }
+        public List<ReservationDTO> getReservations(int page, int pageSize)
+        {
+            ReservationController rc = new ReservationController();
+            Mapper.CreateMap<Reservation, ReservationDTO>()
+                .ForMember(r => r.User, opt => opt.Ignore());
+            return Mapper.Map<List<ReservationDTO>>(rc.getReservations(page, pageSize));;
+        }
     }
 }

@@ -54,6 +54,7 @@ namespace BL
             {
                 using (DAL.TicketSaleEntities context = new DAL.TicketSaleEntities())
                 {
+                    user.registrationLink = "";
                     if (context.User.Add(user) != null)
                     {
                         context.SaveChanges();

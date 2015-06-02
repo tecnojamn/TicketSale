@@ -29,7 +29,7 @@ namespace BL
             }
             return true;
         }
-        //Borrar Evento
+        //Borrar Evento --- NO SIRVE
         public bool removeEvent(int idEv)
         {
             try
@@ -106,14 +106,14 @@ namespace BL
             return true;
         }
         //Listar Eventos
-        public List<Event> getEvents()
+        public List<Event> getEvents(int page, int pageSize )
         {
             List<Event> events = null;
             try
             {
                 using (DAL.TicketSaleEntities context = new DAL.TicketSaleEntities())
                 {
-                    events = context.Event.Select(e => e).ToList();
+                    events = context.Event.Select(e => e).Skip((page -1)*pageSize).Take(page).ToList();
                 }
             }
             catch (Exception)
