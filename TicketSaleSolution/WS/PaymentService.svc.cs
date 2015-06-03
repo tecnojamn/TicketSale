@@ -24,7 +24,9 @@ namespace WS
         public List<PaymentDTO> getPayments(int page, int pageSize)
         {
             PaymentController pc = new PaymentController();
-            Mapper.CreateMap<PaymentDTO, Payment>();
+            Mapper.CreateMap<PaymentDTO, Payment>()
+                .ForMember(p => p.CashPayment, opt => opt.Ignore())
+                .ForMember(p => p.PaypalPayment, opt => opt.Ignore());
             return Mapper.Map<List<PaymentDTO>>(pc.getPayments(page, pageSize));
         }
         public bool newPayment(PaymentDTO pDTO)

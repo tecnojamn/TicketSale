@@ -24,14 +24,18 @@ namespace WS
         {
             ReservationController rc = new ReservationController();
             Mapper.CreateMap<Reservation, ReservationDTO>()
-                .ForMember(r => r.User, opt => opt.Ignore());
+                .ForMember(r => r.User, opt => opt.Ignore())
+                .ForMember(r => r.Payment, opt => opt.Ignore())
+                .ForMember(r => r.SubOrder, opt => opt.Ignore());
             return Mapper.Map<List<ReservationDTO>>(rc.getReservationsByUser(idUser, page, pageSize));
         }
         public List<ReservationDTO> getReservations(int page, int pageSize)
         {
             ReservationController rc = new ReservationController();
             Mapper.CreateMap<Reservation, ReservationDTO>()
-                .ForMember(r => r.User, opt => opt.Ignore());
+                .ForMember(r => r.User, opt => opt.Ignore())
+                .ForMember(r => r.Payment, opt => opt.Ignore())
+                .ForMember(r => r.SubOrder, opt => opt.Ignore());
             return Mapper.Map<List<ReservationDTO>>(rc.getReservations(page, pageSize));;
         }
     }
