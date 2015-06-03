@@ -30,6 +30,26 @@ namespace BL
             }
             return user;
         }
+        //Obtener Lista de Usuarios
+        public List<User> getUsers(int page = 1, int pageSize = 1)
+        {
+            List<User> users = new List<User>();
+            try
+            {
+                using (DAL.TicketSaleEntities context = new DAL.TicketSaleEntities())
+                {
+                    //otra alternativa de hacer consultas a la que dio el bonfri (LINQ)
+                    var query = from u in context.User where u.active == 1 select u; //CAMBIAR EL ACTIVE POR CONSTANTE
+                    users = query.Skip((page - 1) * pageSize).Take(pageSize).ToList();
+                }
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            return users;
+        }
         //Inicio sesion
         public User authorize(string mail, string password)
         {
@@ -54,7 +74,7 @@ namespace BL
             {
                 using (DAL.TicketSaleEntities context = new DAL.TicketSaleEntities())
                 {
-                    user.registrationLink = "";
+                    user.registrationLink = ""; //Falta crear random esto antes
                     if (context.User.Add(user) != null)
                     {
                         context.SaveChanges();
@@ -150,26 +170,7 @@ namespace BL
             return true;
 
         }
-        //Obtener Lista de Usuarios
-        public List<User> getUsers(int page = 1, int pageSize = 1)
-        {
-            List<User> users = new List<User>();
-            try
-            {
-                using (DAL.TicketSaleEntities context = new DAL.TicketSaleEntities())
-                {
-                    //otra alternativa de hacer consultas a la que dio el bonfri (LINQ)
-                    var query = from u in context.User where u.active == 1 select u; //CAMBIAR EL ACTIVE POR CONSTANTE
-                    users = query.Skip((page-1)*pageSize).Take(pageSize).ToList();
-                }
 
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            return users;
-        }
         //Usuario inactivo 
         public bool desactivateUser(int id)
         {

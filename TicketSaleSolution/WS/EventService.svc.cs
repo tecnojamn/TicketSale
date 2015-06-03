@@ -42,6 +42,11 @@ namespace WS
             return Mapper.Map<List<EventDTO>>(ec.getEvents(page, pageSize));
         }
 
-        public EventDTO getEvent(int id) { return null; }
+        public EventDTO getEvent(int id)
+        {
+            EventController ec = new EventController();
+            Mapper.CreateMap<Event, EventDTO>();
+            return Mapper.Map<EventDTO>(ec.getEvent(id));
+        }
     }
 }

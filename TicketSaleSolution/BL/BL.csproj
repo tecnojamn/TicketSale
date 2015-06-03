@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EventController.cs" />
+    <Compile Include="PaymentController.cs" />
     <Compile Include="ReservationController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserController.cs" />
