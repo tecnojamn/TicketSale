@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BO;
+using COM;
 
 namespace BL
 {
@@ -64,7 +65,7 @@ namespace BL
                     Event e = context.Event.FirstOrDefault(ev => ev.id == id);
                     if (e != null)
                     {
-                        e.enable = 0; //CAMBIAR POR UNA CONSTANTE
+                        e.enable = EVENT.STATE.UNABLE;
                         context.SaveChanges();
                     }
                     else { return false; }

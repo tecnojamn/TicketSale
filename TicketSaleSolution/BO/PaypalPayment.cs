@@ -7,13 +7,16 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-
-public partial class PaypalPayment
+namespace BO
 {
-    public int idPayment { get; set; }
-    public string transactionCod { get; set; }
-
-    public virtual Payment Payment { get; set; }
+    using System;
+    using System.Collections.Generic;
+    
+    public partial class PaypalPayment
+    {
+        public int idPayment { get; set; }
+        public string transactionCod { get; set; }
+    
+        public virtual Payment Payment { get; set; }
+    }
 }

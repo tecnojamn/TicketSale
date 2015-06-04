@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using DTO;
+using COM;
 
 namespace AppWeb.Views.Controls
 {
@@ -12,7 +13,7 @@ namespace AppWeb.Views.Controls
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["log"] != null && Session["log"].ToString() == "1")
+            if (Session["log"] != null && Session["log"].ToString() == SESSION.STATE.ON)
             {
                 navName.Text = Session["name"].ToString();
             }
@@ -22,12 +23,12 @@ namespace AppWeb.Views.Controls
         protected void linkExit_Click(object sender, EventArgs e)
         {
             //Desloguear y redirigir
-            Session["log"] = SessionState.OFF;
-            Session["name"] = ""; 
+            Session["log"] = SESSION.STATE.OFF;
+            Session["name"] = USER.GUESTNAME;
             Session["mail"] = "";
             Session["userType"] = "";
-            Response.Redirect("Login.aspx");
 
+            Response.Redirect("Default.aspx");
         }
     }
 }

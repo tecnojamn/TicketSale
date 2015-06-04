@@ -7,20 +7,23 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-
-public partial class PaymentLocation
+namespace BO
 {
-    public PaymentLocation()
+    using System;
+    using System.Collections.Generic;
+    
+    public partial class PaymentLocation
     {
-        this.CashPayment = new HashSet<CashPayment>();
+        public PaymentLocation()
+        {
+            this.CashPayment = new HashSet<CashPayment>();
+        }
+    
+        public int id { get; set; }
+        public int phoneNumber { get; set; }
+        public string address { get; set; }
+        public string name { get; set; }
+    
+        public virtual ICollection<CashPayment> CashPayment { get; set; }
     }
-
-    public int id { get; set; }
-    public int phoneNumber { get; set; }
-    public string address { get; set; }
-    public string name { get; set; }
-
-    public virtual ICollection<CashPayment> CashPayment { get; set; }
 }

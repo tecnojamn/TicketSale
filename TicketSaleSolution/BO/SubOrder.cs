@@ -7,16 +7,19 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-
-public partial class SubOrder
+namespace BO
 {
-    public int id { get; set; }
-    public byte active { get; set; }
-    public int idReservation { get; set; }
-    public int idTicket { get; set; }
-
-    public virtual Reservation Reservation { get; set; }
-    public virtual Ticket Ticket { get; set; }
+    using System;
+    using System.Collections.Generic;
+    
+    public partial class SubOrder
+    {
+        public int id { get; set; }
+        public byte active { get; set; }
+        public int idReservation { get; set; }
+        public int idTicket { get; set; }
+    
+        public virtual Reservation Reservation { get; set; }
+        public virtual Ticket Ticket { get; set; }
+    }
 }

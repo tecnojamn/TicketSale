@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BO;
+using COM;
 
 namespace BL
 {
@@ -39,7 +40,7 @@ namespace BL
                 using (DAL.TicketSaleEntities context = new DAL.TicketSaleEntities())
                 {
                     //otra alternativa de hacer consultas a la que dio el bonfri (LINQ)
-                    var query = from u in context.User where u.active == 1 select u; //CAMBIAR EL ACTIVE POR CONSTANTE
+                    var query = from u in context.User where u.active == USER.STATE.ACTIVE select u;
                     users = query.Skip((page - 1) * pageSize).Take(pageSize).ToList();
                 }
 
@@ -74,7 +75,7 @@ namespace BL
             {
                 using (DAL.TicketSaleEntities context = new DAL.TicketSaleEntities())
                 {
-                    user.registrationLink = ""; //Falta crear random esto antes
+                    user.registrationLink = ""; //Falta crear random esto antes, traerlo desde el services
                     if (context.User.Add(user) != null)
                     {
                         context.SaveChanges();
@@ -181,7 +182,7 @@ namespace BL
                     User user = context.User.FirstOrDefault(u => u.id == id);
                     if (user != null)
                     {
-                        user.active = 0;
+                        user.active = USER.STATE.INACTIVE;
                         context.SaveChanges();
                         return true;
                     }

@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using DTO;
+using COM;
 
 namespace AppWeb
 {
@@ -14,27 +15,25 @@ namespace AppWeb
         {
             if (Session["log"] == null)
             {
-                Session.Add("log", SessionState.OFF);
+                Session.Add("log", SESSION.STATE.OFF);
                 Session.Add("mail", "");
-                Session.Add("name", "");
+                Session.Add("name", USER.GUESTNAME);
                 Session.Add("userType", "");
             }
-            if (Session["log"].ToString() == SessionState.ON)
+            else if (Session["log"].ToString() == SESSION.STATE.ON)
             {
                 panelLogin.Controls.Clear();
                 panelLogin.Controls.Add(Page.LoadControl("/Views/Controls/HeaderSession.ascx"));
             }
+
         }
         protected void btnLogin_Click(object sender, EventArgs e)
         {
             Response.Redirect("Login.aspx");
         }
-
         protected void btnSignup_Click(object sender, EventArgs e)
         {
             Response.Redirect("Signup.aspx");
         }
-
-
     }
 }

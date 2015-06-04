@@ -7,17 +7,20 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-
-public partial class Payment
+namespace BO
 {
-    public int id { get; set; }
-    public System.DateTime date { get; set; }
-    public double amount { get; set; }
-    public int idReservation { get; set; }
-
-    public virtual CashPayment CashPayment { get; set; }
-    public virtual Reservation Reservation { get; set; }
-    public virtual PaypalPayment PaypalPayment { get; set; }
+    using System;
+    using System.Collections.Generic;
+    
+    public partial class Payment
+    {
+        public int id { get; set; }
+        public System.DateTime date { get; set; }
+        public double amount { get; set; }
+        public int idReservation { get; set; }
+    
+        public virtual CashPayment CashPayment { get; set; }
+        public virtual Reservation Reservation { get; set; }
+        public virtual PaypalPayment PaypalPayment { get; set; }
+    }
 }

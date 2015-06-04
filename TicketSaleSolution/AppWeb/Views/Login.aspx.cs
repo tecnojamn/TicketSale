@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using DTO;
+using COM;
+
 namespace AppWeb.Views
 {
     public partial class Login : System.Web.UI.Page
@@ -18,7 +20,7 @@ namespace AppWeb.Views
             UserDTO userDTO = ProxyManager.getUserService().authorize(txtMail.Text, txtPass.Text);
             if (userDTO != null)
             {
-                Session.Add("log", SessionState.ON);
+                Session.Add("log", SESSION.STATE.ON);
                 Session.Add("mail", userDTO.mail);
                 Session.Add("name", userDTO.name);
                 Session.Add("userType", userDTO.userType);

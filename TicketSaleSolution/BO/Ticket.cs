@@ -7,20 +7,23 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-
-public partial class Ticket
+namespace BO
 {
-    public Ticket()
+    using System;
+    using System.Collections.Generic;
+    
+    public partial class Ticket
     {
-        this.SubOrder = new HashSet<SubOrder>();
+        public Ticket()
+        {
+            this.SubOrder = new HashSet<SubOrder>();
+        }
+    
+        public int id { get; set; }
+        public int number { get; set; }
+        public int idTicketType { get; set; }
+    
+        public virtual ICollection<SubOrder> SubOrder { get; set; }
+        public virtual TicketType TicketType { get; set; }
     }
-
-    public int id { get; set; }
-    public int number { get; set; }
-    public int idTicketType { get; set; }
-
-    public virtual ICollection<SubOrder> SubOrder { get; set; }
-    public virtual TicketType TicketType { get; set; }
 }

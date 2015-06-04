@@ -7,25 +7,28 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-
-public partial class Event
+namespace BO
 {
-    public Event()
+    using System;
+    using System.Collections.Generic;
+    
+    public partial class Event
     {
-        this.TicketType = new HashSet<TicketType>();
+        public Event()
+        {
+            this.TicketType = new HashSet<TicketType>();
+        }
+    
+        public int id { get; set; }
+        public System.DateTime date { get; set; }
+        public byte enable { get; set; }
+        public string name { get; set; }
+        public string description { get; set; }
+        public int idEventLocation { get; set; }
+        public string type { get; set; }
+        public string img { get; set; }
+    
+        public virtual EventLocation EventLocation { get; set; }
+        public virtual ICollection<TicketType> TicketType { get; set; }
     }
-
-    public int id { get; set; }
-    public string name { get; set; }
-    public System.DateTime date { get; set; }
-    public string description { get; set; }
-    public int idEventLocation { get; set; }
-    public string type { get; set; }
-    public string img { get; set; }
-    public byte enable { get; set; }
-
-    public virtual EventLocation EventLocation { get; set; }
-    public virtual ICollection<TicketType> TicketType { get; set; }
 }

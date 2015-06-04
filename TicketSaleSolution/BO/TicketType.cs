@@ -7,23 +7,26 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-
-public partial class TicketType
+namespace BO
 {
-    public TicketType()
+    using System;
+    using System.Collections.Generic;
+    
+    public partial class TicketType
     {
-        this.Ticket = new HashSet<Ticket>();
+        public TicketType()
+        {
+            this.Ticket = new HashSet<Ticket>();
+        }
+    
+        public int id { get; set; }
+        public double cost { get; set; }
+        public string description { get; set; }
+        public int startNum { get; set; }
+        public int finalNum { get; set; }
+        public int idEvent { get; set; }
+    
+        public virtual Event Event { get; set; }
+        public virtual ICollection<Ticket> Ticket { get; set; }
     }
-
-    public int id { get; set; }
-    public double cost { get; set; }
-    public string description { get; set; }
-    public int startNum { get; set; }
-    public int finalNum { get; set; }
-    public int idEvent { get; set; }
-
-    public virtual Event Event { get; set; }
-    public virtual ICollection<Ticket> Ticket { get; set; }
 }

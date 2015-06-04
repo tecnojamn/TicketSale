@@ -352,7 +352,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BootstrapBundleConfig.cs" />
-    <Compile Include="Constants.cs" />
     <Compile Include="Service References\EventServiceClient\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -421,6 +420,10 @@
     <WCFMetadataStorage Include="Service References\UserServiceClient\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Common\COM.csproj">
+      <Project>{52b30d4a-2b37-4f00-834c-51cd621e3eae}</Project>
+      <Name>COM</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DTO\DTO.csproj">
       <Project>{c9ccbd3b-5823-4abb-a970-823461872858}</Project>
       <Name>DTO</Name>

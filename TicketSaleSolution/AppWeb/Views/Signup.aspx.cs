@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using DTO;
+using COM;
 
 namespace AppWeb.Views
 {
@@ -20,7 +21,7 @@ namespace AppWeb.Views
             {
                 if (txtPass1.Text == txtPass2.Text)
                 {
-                    if (txtPass1.Text.Length >= 6)
+                    if (txtPass1.Text.Length >= USER.PASSWORD.MINLENGTH)
                     {
                         UserDTO userDTO = new UserDTO()
                         {
@@ -30,12 +31,15 @@ namespace AppWeb.Views
                             dateBirth = Convert.ToDateTime(dateBirth.Text),
                             password = txtPass1.Text
                         };
+
                         ProxyManager.getUserService().newUser(userDTO);
+
                         Response.Redirect("Login.aspx");
                     }
                 }
             }
-            Response.Write("Error al registrar");
+
+            Response.Write("Error de registro");
 
         }
     }

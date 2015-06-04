@@ -7,20 +7,23 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-
-public partial class EventLocation
+namespace BO
 {
-    public EventLocation()
+    using System;
+    using System.Collections.Generic;
+    
+    public partial class EventLocation
     {
-        this.Event = new HashSet<Event>();
+        public EventLocation()
+        {
+            this.Event = new HashSet<Event>();
+        }
+    
+        public int id { get; set; }
+        public string name { get; set; }
+        public int phoneNumber { get; set; }
+        public string address { get; set; }
+    
+        public virtual ICollection<Event> Event { get; set; }
     }
-
-    public int id { get; set; }
-    public string name { get; set; }
-    public int phoneNumber { get; set; }
-    public string address { get; set; }
-
-    public virtual ICollection<Event> Event { get; set; }
 }

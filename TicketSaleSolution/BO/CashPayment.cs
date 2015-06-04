@@ -7,15 +7,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-
-public partial class CashPayment
+namespace BO
 {
-    public int idPayment { get; set; }
-    public int cod { get; set; }
-    public int idPaymentLocation { get; set; }
-
-    public virtual PaymentLocation PaymentLocation { get; set; }
-    public virtual Payment Payment { get; set; }
+    using System;
+    using System.Collections.Generic;
+    
+    public partial class CashPayment
+    {
+        public int idPayment { get; set; }
+        public int cod { get; set; }
+        public int idPaymentLocation { get; set; }
+    
+        public virtual PaymentLocation PaymentLocation { get; set; }
+        public virtual Payment Payment { get; set; }
+    }
 }
