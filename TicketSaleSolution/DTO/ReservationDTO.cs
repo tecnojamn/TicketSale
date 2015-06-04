@@ -20,7 +20,6 @@ namespace DTO
         [DataMember]
         public System.DateTime date { get; set; }
         [DataMember]
-
         public virtual UserDTO User { get; set; }
         [DataMember]
         public virtual ICollection<SubOrderDTO> SubOrder { get; set; }
