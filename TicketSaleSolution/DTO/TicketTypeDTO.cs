@@ -2,22 +2,29 @@
 {
     using System;
     using System.Collections.Generic;
-
+    using System.Runtime.Serialization;
+   [DataContract]
     public class TicketTypeDTO
     {
         public TicketTypeDTO()
         {
             this.Ticket = new HashSet<TicketDTO>();
         }
-
+       [DataMember]
         public int id { get; set; }
-        public double cost { get; set; }
-        public string description { get; set; }
-        public int startNum { get; set; }
-        public int finalNum { get; set; }
-        public int idEvent { get; set; }
-
+       [DataMember]
+       public double cost { get; set; }
+       [DataMember] 
+       public string description { get; set; }
+       [DataMember] 
+       public int startNum { get; set; }
+       [DataMember] 
+       public int finalNum { get; set; }
+       [DataMember] 
+       public int idEvent { get; set; }
+       [DataMember]
         public virtual EventDTO Event { get; set; }
-        public virtual ICollection<TicketDTO> Ticket { get; set; }
+       [DataMember] 
+       public virtual ICollection<TicketDTO> Ticket { get; set; }
     }
 }

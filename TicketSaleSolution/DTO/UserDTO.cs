@@ -30,7 +30,8 @@ namespace DTO
         public byte active { get; set; }
         [DataMember]
         public string registrationLink { get; set; }
-
+        [DataMember]
+        public string img { get; set; }
         [DataMember]
         public virtual ICollection<ReservationDTO> Reservation { get; set; }
     }
