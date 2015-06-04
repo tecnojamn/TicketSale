@@ -24,6 +24,7 @@
           <Property Name="description" Type="varchar" MaxLength="150" Nullable="false" />
           <Property Name="idEventLocation" Type="int" Nullable="false" />
           <Property Name="type" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="img" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="EventLocation">
           <Key>
@@ -108,6 +109,7 @@
           <Property Name="userType" Type="tinyint" Nullable="false" />
           <Property Name="active" Type="tinyint" Nullable="false" />
           <Property Name="registrationLink" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="img" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <Association Name="FK_CashPayment_Payment">
           <End Role="Payment" Type="Self.Payment" Multiplicity="1" />
@@ -309,6 +311,7 @@
           <Property Name="type" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="EventLocation" Relationship="Self.FK_Event_EventLocation" FromRole="Event" ToRole="EventLocation" />
           <NavigationProperty Name="TicketType" Relationship="Self.FK_TicketType_Event" FromRole="Event" ToRole="TicketType" />
+          <Property Name="img" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="EventLocation">
           <Key>
@@ -570,6 +573,7 @@
           <Property Name="active" Type="Byte" Nullable="false" />
           <Property Name="registrationLink" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Reservation" Relationship="TicketSaleModel.FK_Reservation_User" FromRole="User" ToRole="Reservation" />
+          <Property Name="img" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK_Reservation_User">
           <End Type="TicketSaleModel.User" Role="User" Multiplicity="1" />
@@ -601,6 +605,7 @@
           <EntitySetMapping Name="Event">
             <EntityTypeMapping TypeName="TicketSaleModel.Event">
               <MappingFragment StoreEntitySet="Event">
+                <ScalarProperty Name="img" ColumnName="img" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="date" ColumnName="date" />
                 <ScalarProperty Name="enable" ColumnName="enable" />
@@ -692,6 +697,7 @@
           <EntitySetMapping Name="User">
             <EntityTypeMapping TypeName="TicketSaleModel.User">
               <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="img" ColumnName="img" />
                 <ScalarProperty Name="registrationLink" ColumnName="registrationLink" />
                 <ScalarProperty Name="active" ColumnName="active" />
                 <ScalarProperty Name="userType" ColumnName="userType" />

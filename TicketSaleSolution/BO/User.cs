@@ -7,28 +7,26 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BO
+using System;
+using System.Collections.Generic;
+
+public partial class User
 {
-    using System;
-    using System.Collections.Generic;
-    
-    public partial class User
+    public User()
     {
-        public User()
-        {
-            this.Reservation = new HashSet<Reservation>();
-        }
-    
-        public int id { get; set; }
-        public string mail { get; set; }
-        public string password { get; set; }
-        public string name { get; set; }
-        public string lastName { get; set; }
-        public System.DateTime dateBirth { get; set; }
-        public byte userType { get; set; }
-        public byte active { get; set; }
-        public string registrationLink { get; set; }
-    
-        public virtual ICollection<Reservation> Reservation { get; set; }
+        this.Reservation = new HashSet<Reservation>();
     }
+
+    public int id { get; set; }
+    public string mail { get; set; }
+    public string password { get; set; }
+    public string name { get; set; }
+    public string lastName { get; set; }
+    public System.DateTime dateBirth { get; set; }
+    public byte userType { get; set; }
+    public byte active { get; set; }
+    public string registrationLink { get; set; }
+    public string img { get; set; }
+
+    public virtual ICollection<Reservation> Reservation { get; set; }
 }
