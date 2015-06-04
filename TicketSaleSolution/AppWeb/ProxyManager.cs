@@ -11,6 +11,7 @@ namespace AppWeb
         public static UserServiceClient.UserServiceClient _UserService;
         public static EventServiceClient.EventServiceClient _EventService;
         public static ReservationServiceClient.ReservationServiceClient _ReservationService;
+        public static PaymentServiceClient.PaymentServiceClient _PaymentService;
 
         public static UserServiceClient.UserServiceClient getUserService()
         {
@@ -29,6 +30,12 @@ namespace AppWeb
             if (_ReservationService == null)
                 _ReservationService = new ReservationServiceClient.ReservationServiceClient();
             return _ReservationService;
+        }
+        public static PaymentServiceClient.PaymentServiceClient getPaymentService()
+        {
+            if (_PaymentService == null)
+                _PaymentService = new PaymentServiceClient.PaymentServiceClient();
+            return _PaymentService;
         }
 
     }

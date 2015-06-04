@@ -275,8 +275,19 @@
     <Content Include="Properties\DataSources\BO.DTO.DTOUser.datasource" />
     <Content Include="Properties\DataSources\BO.DTOUser.datasource" />
     <Content Include="Properties\DataSources\DTO.UserDTO.datasource" />
+    <Content Include="Properties\DataSources\DTO.PaymentDTO.datasource" />
     <None Include="Service References\EventServiceClient\EventService.wsdl" />
     <None Include="Service References\EventServiceClient\EventService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PaymentServiceClient\PaymentService.wsdl" />
+    <None Include="Service References\PaymentServiceClient\PaymentService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PaymentServiceClient\PaymentService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PaymentServiceClient\PaymentService2.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\ReservationServiceClient\ReservationService.wsdl" />
@@ -302,6 +313,13 @@
     <None Include="Service References\EventServiceClient\configuration91.svcinfo" />
     <None Include="Service References\EventServiceClient\configuration.svcinfo" />
     <None Include="Service References\EventServiceClient\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\PaymentServiceClient\PaymentService.disco" />
+    <None Include="Service References\PaymentServiceClient\configuration91.svcinfo" />
+    <None Include="Service References\PaymentServiceClient\configuration.svcinfo" />
+    <None Include="Service References\PaymentServiceClient\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
@@ -336,6 +354,11 @@
     <Compile Include="App_Start\BootstrapBundleConfig.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="Service References\EventServiceClient\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\PaymentServiceClient\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -393,6 +416,7 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\EventServiceClient\" />
+    <WCFMetadataStorage Include="Service References\PaymentServiceClient\" />
     <WCFMetadataStorage Include="Service References\ReservationServiceClient\" />
     <WCFMetadataStorage Include="Service References\UserServiceClient\" />
   </ItemGroup>
