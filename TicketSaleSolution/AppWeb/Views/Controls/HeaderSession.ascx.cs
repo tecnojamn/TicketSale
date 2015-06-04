@@ -13,10 +13,11 @@ namespace AppWeb.Views.Controls
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["log"] != null && Session["log"].ToString() == SESSION.STATE.ON)
-            {
-                navName.Text = Session["name"].ToString();
-            }
+            if (Session["log"] != null)
+                if (Session["log"].ToString() == SESSION.STATE.ON)
+                {
+                    navName.Text = Session["name"].ToString();
+                }
 
         }
 

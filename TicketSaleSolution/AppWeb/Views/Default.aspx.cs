@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using DTO;
+using COM;
 
 namespace AppWeb.Views
 {
@@ -15,11 +16,12 @@ namespace AppWeb.Views
             if (Session["log"] == null)
             {
                 //Instancia variables de sesión
-                Session.Add("log", SessionState.OFF);
+                Session.Add("log", SESSION.STATE.OFF);
                 Session.Add("mail", "");
-                Session.Add("name", "");
+                Session.Add("name", USER.GUESTNAME);
+                Session.Add("userType", "");
             }
-            
+
         }
     }
 }
