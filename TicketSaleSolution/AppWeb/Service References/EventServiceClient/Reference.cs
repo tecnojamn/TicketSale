@@ -15,11 +15,35 @@ namespace AppWeb.EventServiceClient {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="EventServiceClient.IEventService")]
     public interface IEventService {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEventService/DoWork", ReplyAction="http://tempuri.org/IEventService/DoWorkResponse")]
-        void DoWork();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEventService/newEvent", ReplyAction="http://tempuri.org/IEventService/newEventResponse")]
+        bool newEvent(DTO.EventDTO evDTO);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEventService/DoWork", ReplyAction="http://tempuri.org/IEventService/DoWorkResponse")]
-        System.Threading.Tasks.Task DoWorkAsync();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEventService/newEvent", ReplyAction="http://tempuri.org/IEventService/newEventResponse")]
+        System.Threading.Tasks.Task<bool> newEventAsync(DTO.EventDTO evDTO);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEventService/cancelEvent", ReplyAction="http://tempuri.org/IEventService/cancelEventResponse")]
+        bool cancelEvent(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEventService/cancelEvent", ReplyAction="http://tempuri.org/IEventService/cancelEventResponse")]
+        System.Threading.Tasks.Task<bool> cancelEventAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEventService/updateEvent", ReplyAction="http://tempuri.org/IEventService/updateEventResponse")]
+        bool updateEvent(DTO.EventDTO evDTO);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEventService/updateEvent", ReplyAction="http://tempuri.org/IEventService/updateEventResponse")]
+        System.Threading.Tasks.Task<bool> updateEventAsync(DTO.EventDTO evDTO);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEventService/getEvents", ReplyAction="http://tempuri.org/IEventService/getEventsResponse")]
+        DTO.EventDTO[] getEvents(int page, int pageSize);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEventService/getEvents", ReplyAction="http://tempuri.org/IEventService/getEventsResponse")]
+        System.Threading.Tasks.Task<DTO.EventDTO[]> getEventsAsync(int page, int pageSize);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEventService/getEvent", ReplyAction="http://tempuri.org/IEventService/getEventResponse")]
+        DTO.EventDTO getEvent(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEventService/getEvent", ReplyAction="http://tempuri.org/IEventService/getEventResponse")]
+        System.Threading.Tasks.Task<DTO.EventDTO> getEventAsync(int id);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -49,12 +73,44 @@ namespace AppWeb.EventServiceClient {
                 base(binding, remoteAddress) {
         }
         
-        public void DoWork() {
-            base.Channel.DoWork();
+        public bool newEvent(DTO.EventDTO evDTO) {
+            return base.Channel.newEvent(evDTO);
         }
         
-        public System.Threading.Tasks.Task DoWorkAsync() {
-            return base.Channel.DoWorkAsync();
+        public System.Threading.Tasks.Task<bool> newEventAsync(DTO.EventDTO evDTO) {
+            return base.Channel.newEventAsync(evDTO);
+        }
+        
+        public bool cancelEvent(int id) {
+            return base.Channel.cancelEvent(id);
+        }
+        
+        public System.Threading.Tasks.Task<bool> cancelEventAsync(int id) {
+            return base.Channel.cancelEventAsync(id);
+        }
+        
+        public bool updateEvent(DTO.EventDTO evDTO) {
+            return base.Channel.updateEvent(evDTO);
+        }
+        
+        public System.Threading.Tasks.Task<bool> updateEventAsync(DTO.EventDTO evDTO) {
+            return base.Channel.updateEventAsync(evDTO);
+        }
+        
+        public DTO.EventDTO[] getEvents(int page, int pageSize) {
+            return base.Channel.getEvents(page, pageSize);
+        }
+        
+        public System.Threading.Tasks.Task<DTO.EventDTO[]> getEventsAsync(int page, int pageSize) {
+            return base.Channel.getEventsAsync(page, pageSize);
+        }
+        
+        public DTO.EventDTO getEvent(int id) {
+            return base.Channel.getEvent(id);
+        }
+        
+        public System.Threading.Tasks.Task<DTO.EventDTO> getEventAsync(int id) {
+            return base.Channel.getEventAsync(id);
         }
     }
 }

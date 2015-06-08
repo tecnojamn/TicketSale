@@ -276,8 +276,15 @@
     <Content Include="Properties\DataSources\BO.DTOUser.datasource" />
     <Content Include="Properties\DataSources\DTO.UserDTO.datasource" />
     <Content Include="Properties\DataSources\DTO.PaymentDTO.datasource" />
+    <Content Include="Properties\DataSources\DTO.EventDTO.datasource" />
     <None Include="Service References\EventServiceClient\EventService.wsdl" />
     <None Include="Service References\EventServiceClient\EventService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EventServiceClient\EventService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EventServiceClient\EventService11.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\PaymentServiceClient\PaymentService.wsdl" />

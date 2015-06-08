@@ -22,6 +22,22 @@ namespace AppWeb.Views
                 Session.Add("userType", "");
             }
 
+
+        }
+
+        // El tipo devuelto puede ser modificado a IEnumerable, sin embargo, para ser compatible con
+        //paginación y ordenación // , se deben agregar los siguientes parametros:
+        //     int maximumRows
+        //     int startRowIndex
+        //     out int totalRowCount
+        //     string sortByExpression
+        public List<EventDTO> listViewEvents_GetData(int startRowIndex, int maximumRows, out int totalRowCount)
+        {
+            totalRowCount = 5; // getEventsCount
+            int page = startRowIndex/maximumRows+1;
+            int pageSize = maximumRows;
+            List<EventDTO> events = ProxyManager.getEventService().getEvents(page, pageSize).ToList();
+            return events;
         }
     }
 }

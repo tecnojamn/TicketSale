@@ -24,7 +24,9 @@
   <Metadata>
     <MetadataFile FileName="EventService.disco" MetadataType="Disco" ID="5704353b-6fa0-43ab-9ad5-9a607c4476ce" SourceId="1" SourceUrl="http://localhost:3643/EventService.svc?disco" />
     <MetadataFile FileName="EventService.xsd" MetadataType="Schema" ID="427e2188-91fe-4755-bfc2-45968a2abc11" SourceId="1" SourceUrl="http://localhost:3643/EventService.svc?xsd=xsd0" />
+    <MetadataFile FileName="EventService1.xsd" MetadataType="Schema" ID="215abf2e-2e58-459a-a71c-721666df12db" SourceId="1" SourceUrl="http://localhost:3643/EventService.svc?xsd=xsd2" />
     <MetadataFile FileName="EventService.wsdl" MetadataType="Wsdl" ID="06073eea-f249-44c9-a0c6-37c66b85bbb7" SourceId="1" SourceUrl="http://localhost:3643/EventService.svc?wsdl" />
+    <MetadataFile FileName="EventService11.xsd" MetadataType="Schema" ID="0f395306-45f0-4f68-bd78-8a1580e1c31a" SourceId="1" SourceUrl="http://localhost:3643/EventService.svc?xsd=xsd1" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

@@ -12,6 +12,7 @@ namespace WS
     [ServiceContract]
     public interface IEventService
     {
+       
         [OperationContract]
         bool newEvent(EventDTO evDTO);
 

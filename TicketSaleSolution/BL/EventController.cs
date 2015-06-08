@@ -114,7 +114,7 @@ namespace BL
             {
                 using (DAL.TicketSaleEntities context = new DAL.TicketSaleEntities())
                 {
-                    events = context.Event.Select(e => e).Skip((page -1)*pageSize).Take(page).OrderByDescending(e => e.date).ToList();
+                    events = context.Event.Select(e => e).OrderByDescending(e=>e.date).Skip((page-1)*pageSize).Take(pageSize).ToList();                    
                 }
             }
             catch (Exception)

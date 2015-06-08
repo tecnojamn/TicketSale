@@ -38,7 +38,9 @@ namespace WS
         public List<EventDTO> getEvents(int page, int pageSize)
         {
             EventController ec = new EventController();
-            Mapper.CreateMap<EventDTO, Event>();
+            Mapper.CreateMap<Event, EventDTO>()
+                .ForMember(e => e.TicketType, opt => opt.Ignore())
+                .ForMember(e => e.EventLocation, opt => opt.Ignore());
             return Mapper.Map<List<EventDTO>>(ec.getEvents(page, pageSize));
         }
 
