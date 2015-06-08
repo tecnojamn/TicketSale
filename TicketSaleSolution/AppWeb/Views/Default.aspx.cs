@@ -33,6 +33,9 @@ namespace AppWeb.Views
         //     string sortByExpression
         public List<EventDTO> listViewEvents_GetData(int startRowIndex, int maximumRows, out int totalRowCount)
         {
+            string path2 = System.Web.Hosting.HostingEnvironment.ApplicationPhysicalPath;
+            string path = System.IO.Directory.GetParent(System.IO.Directory.GetParent(System.IO.Directory.GetParent("~/").ToString()).ToString()).ToString()+"\\uploads\\events";
+            string path3 = COM.PATH.UPLOADS;
             totalRowCount = 5; // getEventsCount
             int page = startRowIndex/maximumRows+1;
             int pageSize = maximumRows;

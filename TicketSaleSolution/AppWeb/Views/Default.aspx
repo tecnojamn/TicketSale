@@ -9,10 +9,11 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-6">
-                <asp:ListView ID="listViewEvents" ItemType="DTO.EventDTO" GroupItemCount="2" SelectMethod="listViewEvents_GetData" runat="server">
+                <asp:ListView ID="listViewEvents" ItemType="DTO.EventDTO" GroupItemCount="3" SelectMethod="listViewEvents_GetData" runat="server">
                     <EmptyDataTemplate>No hay eventos</EmptyDataTemplate>
                     <GroupTemplate>
                         <div class="row">
+                            <div id="itemPlaceholder" runat="server"></div>
                         </div>
                     </GroupTemplate>
                     <GroupSeparatorTemplate>
@@ -24,6 +25,7 @@
                     </GroupSeparatorTemplate>
                     <ItemTemplate>
                         <div class="col-lg-3">
+                            <img src="../Content/dist/img/logo.jpg" />
                             <h6><a href=""><%#Eval("name") %></a></h6>
                         </div>
                     </ItemTemplate>
