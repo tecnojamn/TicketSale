@@ -28,6 +28,7 @@ namespace DTO
         public string type { get; set; }
         [DataMember]
         public string img { get; set; }
+
         [DataMember]
         public virtual EventLocationDTO EventLocation { get; set; }
         [DataMember]

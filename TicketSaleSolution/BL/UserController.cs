@@ -76,6 +76,7 @@ namespace BL
                 using (DAL.TicketSaleEntities context = new DAL.TicketSaleEntities())
                 {
                     user.registrationLink = ""; //Falta crear random esto antes, traerlo desde el services
+                    user.img = ""; //Falta agregar imagen desde form
                     if (context.User.Add(user) != null)
                     {
                         context.SaveChanges();

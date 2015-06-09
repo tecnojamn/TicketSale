@@ -22,6 +22,7 @@ namespace AppWeb.Views
                 name.InnerText = eventDTO.name;
                 lblDate.Text = eventDTO.date.ToString("dd/MM/yyyy");
                 lblTime.Text = eventDTO.date.ToString("HH:mm");
+                lblLoc.Text = eventDTO.EventLocation.name;
             }
 
             else

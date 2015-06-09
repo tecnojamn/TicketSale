@@ -24,9 +24,9 @@ namespace BL
                     else { return false; }
                 }
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                throw;
+                throw e;
             }
             return true;
         }
@@ -107,14 +107,14 @@ namespace BL
             return true;
         }
         //Listar Eventos
-        public List<Event> getEvents(int page, int pageSize )
+        public List<Event> getEvents(int page, int pageSize)
         {
             List<Event> events = null;
             try
             {
                 using (DAL.TicketSaleEntities context = new DAL.TicketSaleEntities())
                 {
-                    events = context.Event.Select(e => e).OrderByDescending(e=>e.date).Skip((page-1)*pageSize).Take(pageSize).ToList();                    
+                    events = context.Event.Select(e => e).OrderByDescending(e => e.date).Skip((page - 1) * pageSize).Take(pageSize).ToList();
                 }
             }
             catch (Exception)
@@ -135,7 +135,8 @@ namespace BL
                     /*var consulta = from u in context.User
                             select new { u.id, u.name, u.lastName, u.mail };
                     return consulta;*/
-                    ev = context.Event.FirstOrDefault(e => e.id == id);
+                    ev = context.Event.Include("EventLocation").Include("TicketType").FirstOrDefault(e => e.id == id);
+                    
                 }
 
             }

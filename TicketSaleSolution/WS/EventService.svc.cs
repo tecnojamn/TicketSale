@@ -15,6 +15,7 @@ namespace WS
     // NOTA: para iniciar el Cliente de prueba WCF para probar este servicio, seleccione EventService.svc o EventService.svc.cs en el Explorador de soluciones e inicie la depuración.
     public class EventService : IEventService
     {
+
         public bool newEvent(EventDTO evDTO)
         {
             EventController ec = new EventController();
@@ -47,7 +48,17 @@ namespace WS
         public EventDTO getEvent(int id)
         {
             EventController ec = new EventController();
-            Mapper.CreateMap<Event, EventDTO>();
+
+            //Configuracion Automapper
+            Mapper.CreateMap<Event, EventDTO>()
+                .ForMember(e => e.TicketType, opt => opt.MapFrom(x => x.TicketType))
+                .ForMember(e => e.EventLocation, opt => opt.MapFrom(x => x.EventLocation));
+            Mapper.CreateMap<EventLocation, EventLocationDTO>()
+                .ForMember(eLoc => eLoc.Event, opt => opt.Ignore());
+            Mapper.CreateMap<TicketType, TicketTypeDTO>()
+                .ForMember(t => t.Ticket, opt => opt.Ignore())
+                .ForMember(t => t.Event, opt => opt.Ignore());
+
             return Mapper.Map<EventDTO>(ec.getEvent(id));
         }
     }

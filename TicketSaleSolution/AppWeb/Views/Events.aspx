@@ -9,5 +9,8 @@
     <asp:Label ID="lblDate" runat="server" Text=""></asp:Label>
     <label runat="server">Hora: </label>
     <asp:Label ID="lblTime" runat="server" Text=""></asp:Label>
-    ENTRADAS DISPONIBLES ,etc etc
+    <label runat="server">Lugar: </label>
+    <asp:Label ID="lblLoc" runat="server" Text=""></asp:Label>
+    <label runat="server">Entradas: </label>
+    <asp:Label ID="Label1" runat="server" Text=""></asp:Label>
 </asp:Content>
