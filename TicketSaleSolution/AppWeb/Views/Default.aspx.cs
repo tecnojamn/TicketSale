@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Web.UI.WebControls.WebParts;
+using System.Web.UI.HtmlControls;
 using DTO;
 using COM;
 
@@ -24,13 +26,6 @@ namespace AppWeb.Views
 
 
         }
-
-        // El tipo devuelto puede ser modificado a IEnumerable, sin embargo, para ser compatible con
-        //paginación y ordenación // , se deben agregar los siguientes parametros:
-        //     int maximumRows
-        //     int startRowIndex
-        //     out int totalRowCount
-        //     string sortByExpression
         public List<EventDTO> listViewEvents_GetData(int startRowIndex, int maximumRows, out int totalRowCount)
         {
             string path2 = System.Web.Hosting.HostingEnvironment.ApplicationPhysicalPath;
@@ -41,6 +36,13 @@ namespace AppWeb.Views
             int pageSize = maximumRows;
             List<EventDTO> events = ProxyManager.getEventService().getEvents(page, pageSize).ToList();
             return events;
+        }
+
+        protected void linkEvent_Click(object sender, CommandEventArgs e)
+        {
+            string idEvent = e.CommandArgument.ToString();
+            Response.Redirect("Events.aspx?id="+idEvent);
+
         }
     }
 }

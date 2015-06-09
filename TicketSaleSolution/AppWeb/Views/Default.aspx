@@ -24,9 +24,8 @@
                         </tr>
                     </GroupSeparatorTemplate>
                     <ItemTemplate>
-                        <div class="col-lg-3">
-                            <img src="../Content/dist/img/logo.jpg" />
-                            <h6><a href=""><%#Eval("name") %></a></h6>
+                        <div class="col-lg-3">   
+                            <asp:LinkButton ID="linkEvent"  OnCommand="linkEvent_Click" CommandArgument='<%#Eval("id")%>' runat="server"><%#Eval("name") %></asp:LinkButton>
                         </div>
                     </ItemTemplate>
                 </asp:ListView>
