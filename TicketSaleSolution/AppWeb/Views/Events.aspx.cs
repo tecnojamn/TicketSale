@@ -17,13 +17,12 @@ namespace AppWeb.Views
             if (Int32.TryParse(Request.QueryString["id"], out idEvent))
             {
                 EventDTO eventDTO = ProxyManager.getEventService().getEvent(idEvent);
-                eventDTO.setTotalTicketCount();
-                eventDTO.setAvailableTicketCount();
 
                 name.InnerText = eventDTO.name;
                 lblDate.Text = eventDTO.date.ToString("dd/MM/yyyy");
                 lblTime.Text = eventDTO.date.ToString("HH:mm");
                 lblLoc.Text = eventDTO.EventLocation.name;
+                lblTickets.Text = eventDTO.getAvailableTicketCount().ToString() + " / "+ eventDTO.getTotalTicketCount().ToString();
 
                 grdTickets.DataSource = eventDTO.TicketType;
                 

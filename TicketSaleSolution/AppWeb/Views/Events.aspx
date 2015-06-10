@@ -5,18 +5,17 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder" runat="server">
     <h3 id="name" runat="server"></h3>
-    <label runat="server">Fecha: </label>
-    <asp:Label ID="lblDate" runat="server" Text=""></asp:Label>
-    <label runat="server">Hora: </label>
-    <asp:Label ID="lblTime" runat="server" Text=""></asp:Label>
-    <label runat="server">Lugar: </label>
-    <asp:Label ID="lblLoc" runat="server" Text=""></asp:Label>
-    <label runat="server">Entradas: </label>
+    <br />
+    <label>Fecha: </label>
+    <asp:Label ID="lblDate" runat="server" Text=""></asp:Label><br />
+    <label>Hora: </label>
+    <asp:Label ID="lblTime" runat="server" Text=""></asp:Label><br />
+    <label>Lugar: </label>
+    <asp:Label ID="lblLoc" runat="server" Text=""></asp:Label><br />
+    <label>Entradas Disponibles: </label>
+    <asp:Label ID="lblTickets" runat="server" Text=""></asp:Label><br />
+    <label>Sectores Disponibles: </label>
     <asp:GridView ID="grdTickets" runat="server">
-        <Columns>
-            <asp:BoundField DataField="description" HeaderText="Sector" />
-            <asp:BoundField DataField="cost" HeaderText="Costo" />
-        </Columns>
     </asp:GridView>
 
 </asp:Content>
