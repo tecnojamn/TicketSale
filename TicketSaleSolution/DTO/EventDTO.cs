@@ -14,14 +14,17 @@ namespace DTO
         public int getTotalTicketCount(){
             int count = 0;
             foreach(var tt in TicketType){
-                count += tt.finalNum - tt.startNum +1;
+                count += tt.getTotalTicketCount();
             }
             return count;
         }
         public int getAvailableTicketCount()
         {
             int count = 0;
-
+            foreach (var tt in TicketType)
+            {
+                count += tt.getAvailableTicketCount();
+            }
             return count;
         }
 

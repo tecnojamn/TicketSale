@@ -135,7 +135,10 @@ namespace BL
                     /*var consulta = from u in context.User
                             select new { u.id, u.name, u.lastName, u.mail };
                     return consulta;*/
-                    ev = context.Event.Include("EventLocation").Include("TicketType").FirstOrDefault(e => e.id == id);
+                    ev = context.Event
+                        .Include("EventLocation")
+                        .Include("TicketType.Ticket.SubOrder")
+                        .FirstOrDefault(e => e.id == id);
 
                 }
 

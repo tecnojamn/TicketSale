@@ -10,6 +10,24 @@
         {
             this.Ticket = new HashSet<TicketDTO>();
         }
+
+        public int getTotalTicketCount()
+        {
+            return Ticket.Count;
+        }
+        public int getAvailableTicketCount()
+        {
+            int count = 0;
+            foreach (var t in Ticket)
+            {
+                if (t.SubOrder.Count == 0)
+                {
+                    count++;
+                }
+            }
+            return count;
+        }
+
        [DataMember]
         public int id { get; set; }
        [DataMember]

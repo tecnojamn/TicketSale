@@ -49,15 +49,22 @@ namespace WS
         {
             EventController ec = new EventController();
 
-            //Configuracion Automapper
+            //Configuracion Automapper (Pasar a constructor asi queda mas prolijo?)
             Mapper.CreateMap<Event, EventDTO>()
                 .ForMember(e => e.TicketType, opt => opt.MapFrom(x => x.TicketType))
                 .ForMember(e => e.EventLocation, opt => opt.MapFrom(x => x.EventLocation));
             Mapper.CreateMap<EventLocation, EventLocationDTO>()
                 .ForMember(eLoc => eLoc.Event, opt => opt.Ignore());
             Mapper.CreateMap<TicketType, TicketTypeDTO>()
-                .ForMember(t => t.Ticket, opt => opt.Ignore())
-                .ForMember(t => t.Event, opt => opt.Ignore());
+                .ForMember(tt => tt.Ticket, opt => opt.MapFrom(x => x.Ticket))
+                .ForMember(tt => tt.Event, opt => opt.Ignore());
+            Mapper.CreateMap<Ticket, TicketDTO>()
+                .ForMember(t => t.SubOrder, opt => opt.MapFrom(x => x.SubOrder))
+                .ForMember(t => t.TicketType, opt => opt.Ignore());
+            Mapper.CreateMap<SubOrder, SubOrderDTO>()
+                .ForMember(so => so.Reservation, opt => opt.Ignore())
+                .ForMember(so => so.Ticket, opt => opt.Ignore());
+
 
             return Mapper.Map<EventDTO>(ec.getEvent(id));
         }

@@ -12,5 +12,11 @@
     <label runat="server">Lugar: </label>
     <asp:Label ID="lblLoc" runat="server" Text=""></asp:Label>
     <label runat="server">Entradas: </label>
-    <asp:Label ID="Label1" runat="server" Text=""></asp:Label>
+    <asp:GridView ID="grdTickets" runat="server">
+        <Columns>
+            <asp:BoundField DataField="description" HeaderText="Sector" />
+            <asp:BoundField DataField="cost" HeaderText="Costo" />
+        </Columns>
+    </asp:GridView>
+
 </asp:Content>
