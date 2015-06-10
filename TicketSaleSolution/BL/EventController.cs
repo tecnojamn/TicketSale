@@ -31,30 +31,30 @@ namespace BL
             return true;
         }
         //Borrar Evento --- NO SIRVE
-        public bool removeEvent(int idEv)
-        {
-            try
+        /*public bool removeEvent(int idEv)
             {
-                using (DAL.TicketSaleEntities context = new DAL.TicketSaleEntities())
+                try
                 {
-                    Event e = context.Event.FirstOrDefault(ev => ev.id == idEv);
-                    if (e != null)
+                    using (DAL.TicketSaleEntities context = new DAL.TicketSaleEntities())
                     {
-                        if (context.Event.Remove(e) != null)
+                        Event e = context.Event.FirstOrDefault(ev => ev.id == idEv);
+                        if (e != null)
                         {
-                            context.SaveChanges();
-                        }
+                            if (context.Event.Remove(e) != null)
+                            {
+                                context.SaveChanges();
+                            }
 
+                        }
+                        else { return false; }
                     }
-                    else { return false; }
                 }
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            return false;
-        }
+                catch (Exception)
+                {
+                    throw;
+                }
+                return false;
+            }*/
         //Cancelar evento (no lo borra)
         public bool cancelEvent(int id)
         {
@@ -136,7 +136,7 @@ namespace BL
                             select new { u.id, u.name, u.lastName, u.mail };
                     return consulta;*/
                     ev = context.Event.Include("EventLocation").Include("TicketType").FirstOrDefault(e => e.id == id);
-                    
+
                 }
 
             }
@@ -145,6 +145,29 @@ namespace BL
                 throw;
             }
             return ev;
+        }
+        public int getTotalTicketCount(int id)
+        {
+            Event ev = null;
+            int count = 0;
+            try
+            {
+                using (DAL.TicketSaleEntities context = new DAL.TicketSaleEntities())
+                {
+                    ev = context.Event.Include("TicketType").FirstOrDefault(e => e.id == id);
+                }
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            
+            foreach (var tt in ev.TicketType)
+            {
+                count += tt.finalNum - tt.startNum;
+            }
+            return count;
         }
     }
 }

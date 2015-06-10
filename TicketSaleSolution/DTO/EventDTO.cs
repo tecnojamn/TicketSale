@@ -11,6 +11,20 @@ namespace DTO
         {
             this.TicketType = new HashSet<TicketTypeDTO>();
         }
+        public int getTotalTicketCount(){
+            int count = 0;
+            foreach(var tt in TicketType){
+                count += tt.finalNum - tt.startNum +1;
+            }
+            return count;
+        }
+        public int getAvailableTicketCount()
+        {
+            int count = 0;
+
+            return count;
+        }
+
 
         [DataMember]
         public int id { get; set; }
@@ -28,10 +42,6 @@ namespace DTO
         public string type { get; set; }
         [DataMember]
         public string img { get; set; }
-        [DataMember]
-        public int totalTickets { get; set; }
-        [DataMember]
-        public int availableTickets { get; set; }
         [DataMember]
         public virtual EventLocationDTO EventLocation { get; set; }
         [DataMember]
