@@ -14,9 +14,10 @@ namespace AppWeb.Views
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            bool log = false;
             if (Session["log"] != null && Session["log"] == SESSION.STATE.ON)
             {
-                bool log = true;
+                log = true;
             }
 
             int idEvent;
@@ -38,8 +39,7 @@ namespace AppWeb.Views
                 dtTicketType.Columns.Add("Sector");
                 dtTicketType.Columns.Add("Costo");
                 dtTicketType.Columns.Add("Entradas");
-                dtTicketType.Columns.Add("Reservar");
-
+                
                 //Creo rows
                 foreach (var tt in eventDTO.TicketType)
                 {
@@ -47,12 +47,19 @@ namespace AppWeb.Views
                     _row["Sector"] = tt.description;
                     _row["Costo"] = tt.cost;
                     _row["Entradas"] = tt.getAvailableTicketCount() + " / " + tt.getTotalTicketCount();
-                   // _row["Reservar"] = (new Button() { Text="+"});
+                    // _row["Reservar"] = (new Button() { Text="+"});
                     dtTicketType.Rows.Add(_row);
                 }
 
+                
+
                 grdTickets.DataSource = dtTicketType;
+                if (log)
+                {
+                    grdTickets.Columns.Add(new ButtonField() { Text = "Reservar" });
+                }
                 grdTickets.DataBind();
+                
             }
 
             else
