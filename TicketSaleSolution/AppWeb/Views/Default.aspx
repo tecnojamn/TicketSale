@@ -16,6 +16,7 @@
                             <div id="itemPlaceholder" runat="server"></div>
                         </div>
                     </GroupTemplate>
+                    
                     <GroupSeparatorTemplate>
                         <tr runat="server">
                             <td colspan="3">

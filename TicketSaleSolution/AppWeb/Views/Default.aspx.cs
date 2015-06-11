@@ -31,7 +31,10 @@ namespace AppWeb.Views
             string path2 = System.Web.Hosting.HostingEnvironment.ApplicationPhysicalPath;
             string path = System.IO.Directory.GetParent(System.IO.Directory.GetParent(System.IO.Directory.GetParent("~/").ToString()).ToString()).ToString()+"\\uploads\\events";
             string path3 = COM.PATH.UPLOADS;
-            totalRowCount = 5; // getEventsCount
+
+
+
+            totalRowCount = 5; // falta funcion getEventsCount
             int page = startRowIndex/maximumRows+1;
             int pageSize = maximumRows;
             List<EventDTO> events = ProxyManager.getEventService().getEvents(page, pageSize).ToList();

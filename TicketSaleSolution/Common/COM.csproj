@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="EVENT.cs" />
     <Compile Include="PATH.cs" />
+    <Compile Include="RESERVATION.cs" />
     <Compile Include="SESSION.cs" />
     <Compile Include="USER.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

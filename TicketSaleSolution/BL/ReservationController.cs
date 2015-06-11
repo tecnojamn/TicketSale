@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BO;
+using COM;
 
 namespace BL
 {
@@ -71,6 +72,27 @@ namespace BL
                 throw;
             }
             return res;
+        }
+        public bool cancelSubOrder(int subOrderId)
+        {
+
+            try
+            {
+                using (DAL.TicketSaleEntities context = new DAL.TicketSaleEntities())
+                {
+                    SubOrder so = context.SubOrder.FirstOrDefault(s => s.id == subOrderId);
+                    if (so != null)
+                    {
+                        so.active = Convert.ToByte(RESERVATION.SUBORDER.INACTIVE);
+                    }
+                    else { return false; }
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            return true;
         }
     }
 }
