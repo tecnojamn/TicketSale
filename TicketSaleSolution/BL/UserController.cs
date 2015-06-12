@@ -58,7 +58,7 @@ namespace BL
             {
                 using (DAL.TicketSaleEntities context = new DAL.TicketSaleEntities())
                 {
-                    user = context.User.First(u => u.mail == mail && u.password == password);
+                    user = context.User.First(u => u.mail == mail && u.password == password && u.active == USER.STATE.ACTIVE);
                 }
             }
             catch (Exception)
