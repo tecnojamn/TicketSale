@@ -32,7 +32,7 @@ namespace AppWeb.Views
                             password = txtPass1.Text
                         };
 
-                        ProxyManager.getUserService().newUser(userDTO);
+                        ProxyManager.getUserService().newUser(userDTO); //bool
 
                         Response.Redirect("Login.aspx");
                     }

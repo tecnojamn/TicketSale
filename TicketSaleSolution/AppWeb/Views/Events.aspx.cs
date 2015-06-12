@@ -15,7 +15,11 @@ namespace AppWeb.Views
         protected void Page_Load(object sender, EventArgs e)
         {
             bool log = false;
-            if (Session["log"] != null && Session["log"] == SESSION.STATE.ON)
+            if (Session["log"] != null)
+            {
+                Session["log"] = SESSION.STATE.OFF;
+            }
+            if (Session["log"] == SESSION.STATE.ON)
             {
                 log = true;
             }
@@ -24,7 +28,7 @@ namespace AppWeb.Views
 
             if (Int32.TryParse(Request.QueryString["id"], out idEvent))
             {
-                //Le falta mucho style
+                //Le falta mucho style baby
                 EventDTO eventDTO = ProxyManager.getEventService().getEvent(idEvent);
 
                 name.InnerText = eventDTO.name;
@@ -39,7 +43,7 @@ namespace AppWeb.Views
                 dtTicketType.Columns.Add("Sector");
                 dtTicketType.Columns.Add("Costo");
                 dtTicketType.Columns.Add("Entradas");
-                
+
                 //Creo rows
                 foreach (var tt in eventDTO.TicketType)
                 {
@@ -51,7 +55,7 @@ namespace AppWeb.Views
                     dtTicketType.Rows.Add(_row);
                 }
 
-                
+
 
                 grdTickets.DataSource = dtTicketType;
                 if (log)
@@ -59,7 +63,7 @@ namespace AppWeb.Views
                     grdTickets.Columns.Add(new ButtonField() { Text = "Reservar" });
                 }
                 grdTickets.DataBind();
-                
+
             }
 
             else

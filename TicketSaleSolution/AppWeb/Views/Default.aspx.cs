@@ -21,13 +21,13 @@ namespace AppWeb.Views
                 Session.Add("log", SESSION.STATE.OFF);
                 Session.Add("mail", "");
                 Session.Add("name", USER.GUESTNAME);
-                Session.Add("userType", "");
             }
 
 
         }
         public List<EventDTO> listViewEvents_GetData(int startRowIndex, int maximumRows, out int totalRowCount)
         {
+            //testing paths
             string path2 = System.Web.Hosting.HostingEnvironment.ApplicationPhysicalPath;
             string path = System.IO.Directory.GetParent(System.IO.Directory.GetParent(System.IO.Directory.GetParent("~/").ToString()).ToString()).ToString()+"\\uploads\\events";
             string path3 = COM.PATH.UPLOADS;

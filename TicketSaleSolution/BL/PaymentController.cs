@@ -16,9 +16,6 @@ namespace BL
             {
                 using (DAL.TicketSaleEntities context = new DAL.TicketSaleEntities())
                 {
-                    /*var consulta = from u in context.User
-                            select new { u.id, u.name, u.lastName, u.mail };
-                    return consulta;*/
                     p = context.Payment.FirstOrDefault(pay => pay.id == id);
                 }
 
@@ -78,7 +75,7 @@ namespace BL
                     {
                         pay.amount = p.amount;
                         pay.date = p.date;
-                        //Ver si setear también las relaciones 
+                        //Ver si setear también las relaciones acá o en otra función
                         context.SaveChanges();
                     }
                     else { return false; }

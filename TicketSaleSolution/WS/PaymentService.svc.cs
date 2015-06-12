@@ -18,27 +18,45 @@ namespace WS
         public PaymentDTO getPayment(int id)
         {
             PaymentController pc = new PaymentController();
-            Mapper.CreateMap<PaymentDTO, Payment>();
+
+            Mapper.CreateMap<PaymentDTO, Payment>()
+                .ForMember(p => p.CashPayment, opt => opt.Ignore())
+                .ForMember(p => p.PaypalPayment, opt => opt.Ignore())
+                .ForMember(p => p.Reservation, opt => opt.Ignore());
+
             return Mapper.Map<PaymentDTO>(pc.getPayment(id));
         }
         public List<PaymentDTO> getPayments(int page, int pageSize)
         {
             PaymentController pc = new PaymentController();
+
             Mapper.CreateMap<PaymentDTO, Payment>()
                 .ForMember(p => p.CashPayment, opt => opt.Ignore())
-                .ForMember(p => p.PaypalPayment, opt => opt.Ignore());
+                .ForMember(p => p.PaypalPayment, opt => opt.Ignore())
+                .ForMember(p => p.Reservation, opt => opt.Ignore());
+
             return Mapper.Map<List<PaymentDTO>>(pc.getPayments(page, pageSize));
         }
         public bool newPayment(PaymentDTO pDTO)
         {
             PaymentController pc = new PaymentController();
-            Mapper.CreateMap<Payment, PaymentDTO>();
+
+            Mapper.CreateMap<Payment, PaymentDTO>()
+                .ForMember(p => p.CashPayment, opt => opt.Ignore())
+                .ForMember(p => p.PaypalPayment, opt => opt.Ignore())
+                .ForMember(p => p.Reservation, opt => opt.Ignore());
+
             return pc.newPayment(Mapper.Map<Payment>(pDTO));
         }
         public bool updatePayment(PaymentDTO pDTO)
         {
             PaymentController pc = new PaymentController();
-            Mapper.CreateMap<Payment, PaymentDTO>();
+
+            Mapper.CreateMap<Payment, PaymentDTO>()
+                .ForMember(p => p.CashPayment, opt => opt.Ignore())
+                .ForMember(p => p.PaypalPayment, opt => opt.Ignore())
+                .ForMember(p => p.Reservation, opt => opt.Ignore());
+
             return pc.updatePayment(Mapper.Map<Payment>(pDTO));
         }
     }

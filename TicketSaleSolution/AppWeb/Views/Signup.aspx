@@ -3,21 +3,23 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder" runat="server">
+
     <!-- Load jQuery and bootstrap datepicker scripts and ajax-->
     <script type='text/javascript' src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script src="../Content/dist/js/jquery-1.9.1.js"></script>
     <script src="../Content/dist/js/boostrap-datapicker.js"></script>
     <link href="../Content/dist/css/datepicker.css" rel="stylesheet" />
-    <script type="text/javascript">
+   
+     <script type="text/javascript">
         // When the document is ready
         $(document).ready(function () {
-
             $('#ContentPlaceHolder_dateBirth').datepicker({
                 format: "dd/mm/yyyy"
             });
 
         });
     </script>
+
     <div class="container-fluid banner">
         <div class="container-fluid container-banner">
             <div class="row">

@@ -11,15 +11,14 @@ using AutoMapper;
 
 namespace WS
 {
-    // NOTA: puede usar el comando "Rename" del menú "Refactorizar" para cambiar el nombre de clase "EventService" en el código, en svc y en el archivo de configuración a la vez.
-    // NOTA: para iniciar el Cliente de prueba WCF para probar este servicio, seleccione EventService.svc o EventService.svc.cs en el Explorador de soluciones e inicie la depuración.
     public class EventService : IEventService
     {
 
         public bool newEvent(EventDTO evDTO)
         {
             EventController ec = new EventController();
-            Mapper.CreateMap<EventDTO, Event>();
+            Mapper.CreateMap<EventDTO, Event>()
+                .ForMember(e => e.TicketType, opt => opt.Ignore());
             return ec.newEvent(Mapper.Map<Event>(evDTO));
         }
 
@@ -32,7 +31,8 @@ namespace WS
         public bool updateEvent(EventDTO evDTO)
         {
             EventController ec = new EventController();
-            Mapper.CreateMap<EventDTO, Event>();
+            Mapper.CreateMap<EventDTO, Event>()
+                .ForMember(e => e.TicketType, opt => opt.Ignore());
             return ec.updateEvent(Mapper.Map<Event>(evDTO));
         }
 
@@ -64,7 +64,6 @@ namespace WS
             Mapper.CreateMap<SubOrder, SubOrderDTO>()
                 .ForMember(so => so.Reservation, opt => opt.Ignore())
                 .ForMember(so => so.Ticket, opt => opt.Ignore());
-
 
             return Mapper.Map<EventDTO>(ec.getEvent(id));
         }

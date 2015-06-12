@@ -1,6 +1,23 @@
 ﻿body {
 }
 
+div {
+    margin: 0;
+    padding: 0;
+}
+
+.form-cont {
+    background: rgba(0,0,0,0.7);
+    border-radius: 5px;
+    color: #ffffff;
+}
+
+.logo {
+    background-repeat: no-repeat;
+    height: 75px;
+    width: 215px;
+}
+
 .container-banner {
     padding-top: 40px;
     padding-bottom: 40px;

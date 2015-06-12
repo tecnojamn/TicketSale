@@ -114,7 +114,11 @@ namespace BL
             {
                 using (DAL.TicketSaleEntities context = new DAL.TicketSaleEntities())
                 {
-                    events = context.Event.Select(e => e).OrderByDescending(e => e.date).Skip((page - 1) * pageSize).Take(pageSize).ToList();
+                    events = context.Event.Select(e => e)
+                        .OrderByDescending(e => e.date)
+                        .Skip((page - 1) * pageSize)
+                        .Take(pageSize)
+                        .ToList();
                 }
             }
             catch (Exception)
@@ -132,10 +136,8 @@ namespace BL
             {
                 using (DAL.TicketSaleEntities context = new DAL.TicketSaleEntities())
                 {
-                    /*var consulta = from u in context.User
-                            select new { u.id, u.name, u.lastName, u.mail };
-                    return consulta;*/
                     ev = context.Event
+                        //Traeme relaciones
                         .Include("EventLocation")
                         .Include("TicketType.Ticket.SubOrder")
                         .FirstOrDefault(e => e.id == id);
@@ -149,6 +151,7 @@ namespace BL
             }
             return ev;
         }
+        /*
         public int getTotalTicketCount(int id)
         {
             Event ev = null;
@@ -171,6 +174,6 @@ namespace BL
                 count += tt.finalNum - tt.startNum;
             }
             return count;
-        }
+        }*/
     }
 }

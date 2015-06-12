@@ -25,7 +25,7 @@ namespace COM
             public static byte INACTIVE = 0;
         }
 
-        public static string GUESTNAME = "Guest";
+        public static string GUESTNAME = "Invitado";
 
         
     }

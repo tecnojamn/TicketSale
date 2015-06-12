@@ -38,6 +38,7 @@ namespace BL
                 return false;
             }
         }
+        // -- AL PEDO
         //Listar reservas de Usuario
         public List<Reservation> getReservationsByUser(int idUser, int page, int pageSize)
         {
@@ -46,8 +47,9 @@ namespace BL
             {
                 using (DAL.TicketSaleEntities context = new DAL.TicketSaleEntities())
                 {
-                    res = context.Reservation.Select(r => r).
-                        Where(r => r.idUser == idUser).ToList();
+                    res = context.Reservation.Select(r => r)
+                        .Where(r => r.idUser == idUser)
+                        .ToList();
                 }
             }
             catch (Exception)
@@ -64,7 +66,11 @@ namespace BL
             {
                 using (DAL.TicketSaleEntities context = new DAL.TicketSaleEntities())
                 {
-                    res = context.Reservation.Select(r => r).Skip(page).Take(pageSize).OrderBy(r => r.date).ToList();
+                    res = context.Reservation.Select(r => r)
+                        .OrderBy(r => r.date)
+                        .Skip(page)
+                        .Take(pageSize)
+                        .ToList();
                 }
             }
             catch (Exception)
@@ -73,6 +79,7 @@ namespace BL
             }
             return res;
         }
+        //Cancelar suborden
         public bool cancelSubOrder(int subOrderId)
         {
 

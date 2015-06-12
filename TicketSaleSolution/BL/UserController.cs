@@ -18,9 +18,6 @@ namespace BL
             {
                 using (DAL.TicketSaleEntities context = new DAL.TicketSaleEntities())
                 {
-                    /*var consulta = from u in context.User
-                            select new { u.id, u.name, u.lastName, u.mail };
-                    return consulta;*/
                     user = context.User.FirstOrDefault(u => u.id == idUs);
                 }
 
@@ -39,9 +36,11 @@ namespace BL
             {
                 using (DAL.TicketSaleEntities context = new DAL.TicketSaleEntities())
                 {
-                    //otra alternativa de hacer consultas a la que dio el bonfri (LINQ)
                     var query = from u in context.User where u.active == USER.STATE.ACTIVE select u;
-                    users = query.Skip((page - 1) * pageSize).Take(pageSize).ToList();
+                    users = query
+                        .Skip((page - 1) * pageSize)
+                        .Take(pageSize)
+                        .ToList();
                 }
 
             }
@@ -160,6 +159,7 @@ namespace BL
                         u.lastName = us.lastName;
                         u.dateBirth = us.dateBirth;
                         u.userType = us.userType;
+                        u.active = us.active;
                         context.SaveChanges();
                     }
                     else { return false; }
