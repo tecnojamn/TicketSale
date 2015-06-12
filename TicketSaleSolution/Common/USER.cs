@@ -12,8 +12,8 @@ namespace COM
     {
         public struct TYPE
         {
-            public static string ADMIN = "1";
-            public static string USER = "0";
+            public static byte ADMIN = 1;
+            public static byte USER = 0;
         }
         public struct PASSWORD
         {

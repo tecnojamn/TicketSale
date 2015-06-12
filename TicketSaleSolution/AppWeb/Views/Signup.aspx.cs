@@ -30,12 +30,17 @@ namespace AppWeb.Views
                             lastName = txtLastName.Text,
                             dateBirth = Convert.ToDateTime(dateBirth.Text),
                             password = txtPass1.Text,
-                            active = USER.STATE.ACTIVE //CAMBIAR POR INACTIVE CUANDO SE HAGA LA CONFIRMACION POR MAIL
+                            active = USER.STATE.ACTIVE, //CAMBIAR POR INACTIVE CUANDO SE HAGA LA CONFIRMACION POR MAIL
+                            userType = USER.TYPE.USER ,
+                            img = "", //Pendiente de hacer                            
                         };
 
-                        ProxyManager.getUserService().newUser(userDTO); //bool
+                        if (ProxyManager.getUserService().newUser(userDTO))
+                        {
+                            Response.Redirect("Login.aspx");
+                        }
 
-                        Response.Redirect("Login.aspx");
+                        
                     }
                 }
             }
