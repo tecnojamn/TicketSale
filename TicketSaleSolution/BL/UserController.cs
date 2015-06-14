@@ -63,7 +63,7 @@ namespace BL
             }
             catch (Exception)
             {
-                throw;
+                return null;
             }
             return user;
         }

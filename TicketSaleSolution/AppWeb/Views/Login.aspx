@@ -1,12 +1,16 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="AppWeb.Views.Login" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-</asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder" runat="server">
     <div class="container-fluid banner">
         <div class="container-fluid container-banner">
             <div class="row">
                 <div class="radius col-lg-3 col-md-3 col-sm-5 col-ms-7 col-xs-12 form-cont login-form">
+
+                    <asp:Panel CssClass="hide" ID="AlertPanel" runat="server">
+                        <asp:Label ID="AlertLabel" runat="server" Text="Label"  CssClass="sr-only" ></asp:Label>
+                    </asp:Panel>
+                   
+
 
                     <h4>Iniciar Sesión</h4>
                     <div class="form-group">

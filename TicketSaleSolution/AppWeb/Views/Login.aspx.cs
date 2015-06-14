@@ -17,6 +17,12 @@ namespace AppWeb.Views
         }
         protected void btnLogin_Click(object sender, EventArgs e)
         {
+            if (txtMail.Text.Equals("") || txtPass.Text.Equals("")) {
+                AlertPanel.CssClass = "alert alert-danger";
+                AlertLabel.Text = "Posible falta de parámetros";
+                return;
+            }
+
             UserDTO userDTO = ProxyManager.getUserService().authorize(txtMail.Text, txtPass.Text);
             if (userDTO != null)
             {
@@ -25,8 +31,11 @@ namespace AppWeb.Views
                 Session.Add("name", userDTO.name);
 
                 Response.Redirect("Default.aspx");
-            }
-            else { } //Error al iniciar sesion?
+            }else {
+                AlertPanel.CssClass = "alert alert-danger";
+                AlertLabel.Text = "Usuario/contraseña no existentes en el sistema";
+                //Response.Redirect("Login.aspx");
+            } //Error al iniciar sesion?
         }
         protected void btnSignup_Click(object sender, EventArgs e)
         {
