@@ -44,8 +44,8 @@ namespace AppWeb.Views
                     }
                 }
             }
-
-            Response.Write("Error de registro");
+            AlertPanel.CssClass = "alert alert-danger";
+            AlertLabel.Text = "Usuario/contraseña no existentes en el sistema";
 
         }
     }

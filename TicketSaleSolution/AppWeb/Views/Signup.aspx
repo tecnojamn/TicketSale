@@ -24,7 +24,28 @@
         <div class="container-fluid container-banner">
             <div class="row">
                 <div class="radius col-lg-3 col-md-3 col-sm-5 col-ms-7 col-xs-12 form-cont login-form">
+                     <asp:Panel CssClass="hide" ID="AlertPanel" runat="server">
+                        <asp:Label ID="AlertLabel" runat="server" Text="Label" CssClass="sr-only"></asp:Label>
+                    </asp:Panel>
                         <h4>Registrate!</h4>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1"
+                        ControlToValidate="txtMail" CssClass="validation-error"
+                        Display="Static"
+                        ValidationGroup="LoginGroup"
+                        ErrorMessage="Ingrese email"
+                        runat="Server">
+                    </asp:RequiredFieldValidator>
+                    <asp:RegularExpressionValidator ValidationGroup="LoginGroup" CssClass="validation-error" ID="RegularExpressionValidator3" runat="server" ErrorMessage="Email invalido" ControlToValidate="txtMail"
+                        ValidationExpression="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?"></asp:RegularExpressionValidator>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2"
+                        ControlToValidate="txtPass" CssClass="validation-error"
+                        Display="Static"
+                        ValidationGroup="LoginGroup"
+                        ErrorMessage="Ingrese contraseña"
+                        runat="Server">
+                    </asp:RequiredFieldValidator>
+                     <asp:RegularExpressionValidator ValidationGroup="LoginGroup" CssClass="validation-error" ID="RegularExpressionValidator4" runat="server" ErrorMessage="El password debe tener mínimo 8 caracteres" ControlToValidate="txtPass"
+                        ValidationExpression="^[\s\S]{8,}$"></asp:RegularExpressionValidator>
                         <div class="form-group">
                             <asp:TextBox ID="txtMail" CssClass="form-control login-field" placeholder="Correo" runat="server"></asp:TextBox>
                             <label class="login-field-icon fui-mail" for="textMail"></label>

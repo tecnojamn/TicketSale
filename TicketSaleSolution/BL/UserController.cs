@@ -85,7 +85,7 @@ namespace BL
             }
             catch (Exception)
             {
-                throw;
+                return false;
             }
             return true;
         }
