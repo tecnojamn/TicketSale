@@ -22,7 +22,12 @@ namespace AppWeb.Views
                 AlertLabel.Text = "Posible falta de parámetros";
                 return;
             }
-
+            if (txtPass.Text.Length < 8)
+            {
+                AlertPanel.CssClass = "alert alert-danger";
+                AlertLabel.Text = "La contraseña debe ser mayor a 8 caracteres";
+                return;
+            }
             UserDTO userDTO = ProxyManager.getUserService().authorize(txtMail.Text, txtPass.Text);
             if (userDTO != null)
             {
