@@ -37,7 +37,13 @@ namespace AppWeb.Views
 
                         if (ProxyManager.getUserService().newUser(userDTO))
                         {
-                            Response.Redirect("Login.aspx");
+                            AlertPanel.CssClass = "alert alert-success";
+                            AlertLabel.Text = "Creado correctamente";
+                            Response.Redirect("Login.aspx"); return;
+                        }else{
+                            AlertPanel.CssClass = "alert alert-danger";
+                            AlertLabel.Text = "Error al agregar el nuevo usuario";
+                            return;
                         }
 
                         
@@ -45,7 +51,8 @@ namespace AppWeb.Views
                 }
             }
             AlertPanel.CssClass = "alert alert-danger";
-            AlertLabel.Text = "Usuario/contraseña no existentes en el sistema";
+            AlertLabel.Text = "Error al procesar la acción requerida";
+            
 
         }
     }

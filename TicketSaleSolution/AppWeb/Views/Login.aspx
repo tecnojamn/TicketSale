@@ -30,7 +30,7 @@
                         runat="Server">
                     </asp:RequiredFieldValidator>
                      <asp:RegularExpressionValidator ValidationGroup="LoginGroup"  ID="RegularExpressionValidator4" runat="server" ErrorMessage="El password debe tener mínimo 8 caracteres" ControlToValidate="txtPass"
-                        ValidationExpression="^[\s\S]{8,}$"></asp:RegularExpressionValidator>
+                        ValidationExpression="^[\s\S]{6,}$"></asp:RegularExpressionValidator>
                     
                     
                     <div class="form-group">

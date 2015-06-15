@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using BO;
 using COM;
-
+using System.Net.Mail;
 namespace BL
 {
     public class UserController
@@ -67,6 +67,39 @@ namespace BL
             }
             return user;
         }
+        //returns true if email is already in use
+        private bool isEmailTaken(String email) {
+            User user = null;
+            try
+            {
+                using (DAL.TicketSaleEntities context = new DAL.TicketSaleEntities())
+                {
+                    user = context.User.First(u => u.mail == email);
+                }
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            return (user!=null);
+        }
+        //sends confirmation mail (SIN PROBAR)
+        private void sendCofirmationMail(String email) {
+            
+            MailMessage objeto_mail = new MailMessage();
+            SmtpClient client = new SmtpClient();
+            client.Host = "smtp.googlemail.com";
+            client.Port = 587;
+            client.UseDefaultCredentials = false;
+            client.DeliveryMethod = SmtpDeliveryMethod.Network;
+            client.EnableSsl = true;
+            client.Credentials = new System.Net.NetworkCredential("myemail@gmail.com", "password");
+            objeto_mail.From = new MailAddress("from@server.com");
+            objeto_mail.To.Add(new MailAddress(email));
+            objeto_mail.Subject = "Password Confirmation";
+            objeto_mail.Body = "<div></div>";
+            client.Send(objeto_mail);
+        }
         //Nuevo Usuario
         public bool newUser(User user)
         {
@@ -74,6 +107,10 @@ namespace BL
             {
                 using (DAL.TicketSaleEntities context = new DAL.TicketSaleEntities())
                 {
+                   
+                    if(isEmailTaken(user.mail)){
+                        return false;
+                    }
                     user.registrationLink = ""; //Falta crear random esto antes, traerlo desde el servicio
 
                     if (context.User.Add(user) != null)
