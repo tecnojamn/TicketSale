@@ -29,22 +29,45 @@
                     </asp:Panel>
                         <h4>Registrate!</h4>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1"
-                        ControlToValidate="txtMail" CssClass="validation-error"
+                        ControlToValidate="txtMail"
                         Display="Static"
                         ValidationGroup="LoginGroup"
                         ErrorMessage="Ingrese email"
                         runat="Server">
                     </asp:RequiredFieldValidator>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator3"
+                        ControlToValidate="txtName" 
+                        Display="Static"
+                        ValidationGroup="LoginGroup"
+                        ErrorMessage="Ingrese nombre"
+                        runat="Server">
+                    </asp:RequiredFieldValidator>
+                     <asp:RequiredFieldValidator ID="RequiredFieldValidator5"
+                        ControlToValidate="dateBirth"
+                        Display="Static"
+                        ValidationGroup="LoginGroup"
+                        ErrorMessage="Ingrese fecha"
+                        runat="Server">
+                    </asp:RequiredFieldValidator>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator4"
+                        ControlToValidate="txtLastName" 
+                        Display="Static"
+                        ValidationGroup="LoginGroup"
+                        ErrorMessage="Ingrese apellido"
+                        runat="Server">
+                    </asp:RequiredFieldValidator>
                     <asp:RegularExpressionValidator ValidationGroup="LoginGroup" CssClass="validation-error" ID="RegularExpressionValidator3" runat="server" ErrorMessage="Email invalido" ControlToValidate="txtMail"
                         ValidationExpression="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?"></asp:RegularExpressionValidator>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator2"
-                        ControlToValidate="txtPass" CssClass="validation-error"
+                        ControlToValidate="txtPass1" 
                         Display="Static"
                         ValidationGroup="LoginGroup"
                         ErrorMessage="Ingrese contraseña"
                         runat="Server">
                     </asp:RequiredFieldValidator>
-                     <asp:RegularExpressionValidator ValidationGroup="LoginGroup" CssClass="validation-error" ID="RegularExpressionValidator4" runat="server" ErrorMessage="El password debe tener mínimo 8 caracteres" ControlToValidate="txtPass"
+                     <asp:RegularExpressionValidator ValidationGroup="LoginGroup"  ID="RegularExpressionValidator4" runat="server" ErrorMessage="El password debe tener mínimo 8 caracteres" ControlToValidate="txtPass1"
+                        ValidationExpression="^[\s\S]{8,}$"></asp:RegularExpressionValidator>
+                    <asp:RegularExpressionValidator ValidationGroup="LoginGroup" ID="RegularExpressionValidator1" runat="server" ErrorMessage="La confirmación debe tener mínimo 8 caracteres" ControlToValidate="txtPass1"
                         ValidationExpression="^[\s\S]{8,}$"></asp:RegularExpressionValidator>
                         <div class="form-group">
                             <asp:TextBox ID="txtMail" CssClass="form-control login-field" placeholder="Correo" runat="server"></asp:TextBox>
@@ -66,13 +89,20 @@
                             <div style="height:5px"></div>
                             <asp:TextBox TextMode="Password" ID="txtPass2" CssClass="form-control login-field" placeholder="Repetir Contraseña" runat="server"></asp:TextBox>
                         </div>
-                        <asp:Button CssClass="form-group btn btn-primary btn-block" ID="signupSubmit" runat="server" OnClick="signupSubmit_Click" Text="Registrarme" />
-                </div>
+                        <asp:Button CausesValidation="true" ValidationGroup="LoginGroup" CssClass="form-group btn btn-primary btn-block" ID="signupSubmit" runat="server" OnClick="signupSubmit_Click" Text="Registrarme" />
+                <asp:ValidationSummary 
+                              id="valSum" 
+                              DisplayMode="BulletList" 
+                              runat="server"
+                              ValidationGroup="LoginGroup"
+                              HeaderText="Errores :"
+                              Font-Names="verdana" 
+                              Font-Size="12"/>
+                     </div>
+               
                 <div class="col-lg-9 col-md-9 col-sm-7 col-xs-12">
-                    <h3>PROBANDOOOO ASHDGBKAJSBHDVKAHSBDKJASD
-                            ASIDBAKSJDAS
-                            DASDBALKSD
-                            ASDKASBDASD
+                    <h3>
+                         Registraté, reservá, pagá rápido y divertite
                     </h3>
                 </div>
             </div>

@@ -14,22 +14,22 @@
 
                     <h4>Iniciar Sesión</h4>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1"
-                        ControlToValidate="txtMail" CssClass="validation-error"
+                        ControlToValidate="txtMail"
                         Display="Static"
                         ValidationGroup="LoginGroup"
                         ErrorMessage="Ingrese email"
                         runat="Server">
                     </asp:RequiredFieldValidator>
-                    <asp:RegularExpressionValidator ValidationGroup="LoginGroup" CssClass="validation-error" ID="RegularExpressionValidator3" runat="server" ErrorMessage="Email invalido" ControlToValidate="txtMail"
+                    <asp:RegularExpressionValidator ValidationGroup="LoginGroup"  ID="RegularExpressionValidator3" runat="server" ErrorMessage="Email invalido" ControlToValidate="txtMail"
                         ValidationExpression="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?"></asp:RegularExpressionValidator>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator2"
-                        ControlToValidate="txtPass" CssClass="validation-error"
+                        ControlToValidate="txtPass" 
                         Display="Static"
                         ValidationGroup="LoginGroup"
                         ErrorMessage="Ingrese contraseña"
                         runat="Server">
                     </asp:RequiredFieldValidator>
-                     <asp:RegularExpressionValidator ValidationGroup="LoginGroup" CssClass="validation-error" ID="RegularExpressionValidator4" runat="server" ErrorMessage="El password debe tener mínimo 8 caracteres" ControlToValidate="txtPass"
+                     <asp:RegularExpressionValidator ValidationGroup="LoginGroup"  ID="RegularExpressionValidator4" runat="server" ErrorMessage="El password debe tener mínimo 8 caracteres" ControlToValidate="txtPass"
                         ValidationExpression="^[\s\S]{8,}$"></asp:RegularExpressionValidator>
                     
                     
@@ -50,12 +50,20 @@
 
                     <label id="lblForm" runat="server" for="signup">Aun no tengo cuenta:</label>
                     <asp:Button CssClass="form-group btn btn-info btn-block" ID="btnSignup" runat="server" OnClick="btnSignup_Click" Text="Registrarme" />
-
+<asp:ValidationSummary 
+                              id="valSum" 
+                              DisplayMode="BulletList" 
+                              runat="server"
+                              ValidationGroup="LoginGroup"
+                              HeaderText="Errores :"
+                              Font-Names="verdana" 
+                              Font-Size="12"/>
                 </div>
-                <div class="col-lg-9 col-md-9 col-sm-7 col-xs-12">
-                    <h3>Encuentra tu próxima experienca papa!</h3>
-                </div>
+                
             </div>
+                <div class="col-lg-9 col-md-9 col-sm-7 col-xs-12">
+                    <h3>Encuentra tu evento ahora</h3>
+                </div>
         </div>
     </div>
 </asp:Content>
