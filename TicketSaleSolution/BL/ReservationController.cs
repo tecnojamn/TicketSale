@@ -101,5 +101,25 @@ namespace BL
             }
             return true;
         }
+        //obtener reserva (aplicación del vendedor)
+        public Reservation getReservation(int idReserva)
+        {
+            Reservation res = null;
+            try
+            {
+                using (DAL.TicketSaleEntities context = new DAL.TicketSaleEntities())
+                {
+                    res = context.Reservation.FirstOrDefault(r => r.id == idReserva);
+                }
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            return res;
+
+        }
     }
 }

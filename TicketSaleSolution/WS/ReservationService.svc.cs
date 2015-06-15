@@ -47,5 +47,18 @@ namespace WS
 
             return Mapper.Map<List<ReservationDTO>>(rc.getReservations(page, pageSize));;
         }
+
+        public ReservationDTO getReservation(int idReservation)
+        {
+            ReservationController rc = new ReservationController();
+
+            Mapper.CreateMap<Reservation, ReservationDTO>()
+                .ForMember(r => r.User, opt => opt.Ignore())
+                .ForMember(r => r.Payment, opt => opt.Ignore())
+                .ForMember(r => r.SubOrder, opt => opt.Ignore());
+
+            return Mapper.Map<ReservationDTO>(rc.getReservation(idReservation));
+
+        }
     }
 }

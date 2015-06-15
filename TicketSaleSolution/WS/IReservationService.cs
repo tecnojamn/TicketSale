@@ -23,5 +23,8 @@ namespace WS
 
         [OperationContract]
         List<ReservationDTO> getReservations(int page, int pageSize);
+
+        [OperationContract]
+        ReservationDTO getReservation(int idReservation);
     }
 }
