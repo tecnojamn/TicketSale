@@ -112,7 +112,6 @@
     <EmbeddedResource Include="ReservationPay.resx">
       <DependentUpon>ReservationPay.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="Properties\DataSources\DTO.ReservationDTO.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -144,6 +143,9 @@
     </None>
     <None Include="Service References\ReservationService\ReservationService2.xsd">
       <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ReservationService\SalesApp.ReservationService.ReservationDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\UserService\SalesApp.UserService.UserDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -233,12 +235,6 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\DTO\DTO.csproj">
-      <Project>{c9ccbd3b-5823-4abb-a970-823461872858}</Project>
-      <Name>DTO</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

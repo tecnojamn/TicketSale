@@ -31,12 +31,6 @@
   <wsdl:message name="IReservationService_getReservations_OutputMessage">
     <wsdl:part name="parameters" element="tns:getReservationsResponse" />
   </wsdl:message>
-  <wsdl:message name="IReservationService_getReservation_InputMessage">
-    <wsdl:part name="parameters" element="tns:getReservation" />
-  </wsdl:message>
-  <wsdl:message name="IReservationService_getReservation_OutputMessage">
-    <wsdl:part name="parameters" element="tns:getReservationResponse" />
-  </wsdl:message>
   <wsdl:portType name="IReservationService">
     <wsdl:operation name="newReservation">
       <wsdl:input wsaw:Action="http://tempuri.org/IReservationService/newReservation" message="tns:IReservationService_newReservation_InputMessage" />
@@ -53,10 +47,6 @@
     <wsdl:operation name="getReservations">
       <wsdl:input wsaw:Action="http://tempuri.org/IReservationService/getReservations" message="tns:IReservationService_getReservations_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IReservationService/getReservationsResponse" message="tns:IReservationService_getReservations_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="getReservation">
-      <wsdl:input wsaw:Action="http://tempuri.org/IReservationService/getReservation" message="tns:IReservationService_getReservation_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IReservationService/getReservationResponse" message="tns:IReservationService_getReservation_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IReservationService" type="tns:IReservationService">
@@ -90,15 +80,6 @@
     </wsdl:operation>
     <wsdl:operation name="getReservations">
       <soap:operation soapAction="http://tempuri.org/IReservationService/getReservations" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="getReservation">
-      <soap:operation soapAction="http://tempuri.org/IReservationService/getReservation" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
