@@ -74,7 +74,7 @@ namespace BL
             {
                 using (DAL.TicketSaleEntities context = new DAL.TicketSaleEntities())
                 {
-                    user.registrationLink = ""; //Falta crear random esto antes, traerlo desde el servicio
+                    user.token = ""; //Falta crear random esto antes, traerlo desde el servicio
 
                     if (context.User.Add(user) != null)
                     {

@@ -9,10 +9,10 @@
 
 namespace DAL
 {
-    using BO;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using BO;
     
     public partial class TicketSaleEntities : DbContext
     {
@@ -29,13 +29,14 @@ namespace DAL
         public virtual DbSet<CashPayment> CashPayment { get; set; }
         public virtual DbSet<Event> Event { get; set; }
         public virtual DbSet<EventLocation> EventLocation { get; set; }
+        public virtual DbSet<Payment> Payment { get; set; }
         public virtual DbSet<PaymentLocation> PaymentLocation { get; set; }
         public virtual DbSet<PaypalPayment> PaypalPayment { get; set; }
         public virtual DbSet<Reservation> Reservation { get; set; }
         public virtual DbSet<SubOrder> SubOrder { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Ticket> Ticket { get; set; }
         public virtual DbSet<TicketType> TicketType { get; set; }
-        public virtual DbSet<Payment> Payment { get; set; }
         public virtual DbSet<User> User { get; set; }
     }
 }

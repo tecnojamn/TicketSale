@@ -27,8 +27,7 @@ namespace BO
         public System.DateTime dateBirth { get; set; }
         public byte userType { get; set; }
         public byte active { get; set; }
-        public string registrationLink { get; set; }
-        public string img { get; set; }
+        public string token { get; set; }
     
         public virtual ICollection<Reservation> Reservation { get; set; }
     }

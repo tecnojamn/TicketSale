@@ -17,15 +17,14 @@ namespace BO
         public Reservation()
         {
             this.SubOrder = new HashSet<SubOrder>();
-            this.Payment = new HashSet<Payment>();
         }
     
         public int id { get; set; }
         public int idUser { get; set; }
         public System.DateTime date { get; set; }
     
-        public virtual ICollection<SubOrder> SubOrder { get; set; }
-        public virtual ICollection<Payment> Payment { get; set; }
+        public virtual Payment Payment { get; set; }
         public virtual User User { get; set; }
+        public virtual ICollection<SubOrder> SubOrder { get; set; }
     }
 }

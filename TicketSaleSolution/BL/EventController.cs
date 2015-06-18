@@ -65,7 +65,7 @@ namespace BL
                     Event e = context.Event.FirstOrDefault(ev => ev.id == id);
                     if (e != null)
                     {
-                        e.enable = EVENT.STATE.UNABLE;
+                        e.enabled = EVENT.STATE.UNABLE;
                         context.SaveChanges();
                     }
                     else { return false; }
@@ -89,7 +89,7 @@ namespace BL
                     {
                         e.date = ev.date;
                         e.description = ev.description;
-                        e.enable = ev.enable;
+                        e.enabled = ev.enabled;
                         e.EventLocation = ev.EventLocation;
                         e.idEventLocation = ev.idEventLocation;
                         e.name = ev.name;

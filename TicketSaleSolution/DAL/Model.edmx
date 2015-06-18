@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="TicketSaleModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="TicketSaleModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="CashPayment">
           <Key>
             <PropertyRef Name="idPayment" />
@@ -19,7 +19,7 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="date" Type="datetime" Nullable="false" />
-          <Property Name="enable" Type="tinyint" Nullable="false" />
+          <Property Name="enabled" Type="tinyint" Nullable="false" />
           <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="description" Type="varchar" MaxLength="150" Nullable="false" />
           <Property Name="idEventLocation" Type="int" Nullable="false" />
@@ -37,9 +37,8 @@
         </EntityType>
         <EntityType Name="Payment">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="idReservation" />
           </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="date" Type="date" Nullable="false" />
           <Property Name="amount" Type="float" Nullable="false" />
           <Property Name="idReservation" Type="int" Nullable="false" />
@@ -55,9 +54,9 @@
         </EntityType>
         <EntityType Name="PaypalPayment">
           <Key>
-            <PropertyRef Name="idPayment" />
+            <PropertyRef Name="idReservation" />
           </Key>
-          <Property Name="idPayment" Type="int" Nullable="false" />
+          <Property Name="idReservation" Type="int" Nullable="false" />
           <Property Name="transactionCod" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Reservation">
@@ -76,6 +75,16 @@
           <Property Name="active" Type="tinyint" Nullable="false" />
           <Property Name="idReservation" Type="int" Nullable="false" />
           <Property Name="idTicket" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="Ticket">
           <Key>
@@ -108,15 +117,14 @@
           <Property Name="dateBirth" Type="date" Nullable="false" />
           <Property Name="userType" Type="tinyint" Nullable="false" />
           <Property Name="active" Type="tinyint" Nullable="false" />
-          <Property Name="registrationLink" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="img" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="token" Type="varchar" MaxLength="100" Nullable="false" />
         </EntityType>
         <Association Name="FK_CashPayment_Payment">
           <End Role="Payment" Type="Self.Payment" Multiplicity="1" />
           <End Role="CashPayment" Type="Self.CashPayment" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="Payment">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="idReservation" />
             </Principal>
             <Dependent Role="CashPayment">
               <PropertyRef Name="idPayment" />
@@ -149,7 +157,7 @@
         </Association>
         <Association Name="FK_Payment_Reservation">
           <End Role="Reservation" Type="Self.Reservation" Multiplicity="1" />
-          <End Role="Payment" Type="Self.Payment" Multiplicity="*" />
+          <End Role="Payment" Type="Self.Payment" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="Reservation">
               <PropertyRef Name="id" />
@@ -159,15 +167,27 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_PaymentLocation_PaymentLocation">
+          <End Role="PaymentLocation" Type="Self.PaymentLocation" Multiplicity="1" />
+          <End Role="PaymentLocation1" Type="Self.PaymentLocation" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="PaymentLocation">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="PaymentLocation1">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_PaypalPayment_Payment">
           <End Role="Payment" Type="Self.Payment" Multiplicity="1" />
           <End Role="PaypalPayment" Type="Self.PaypalPayment" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="Payment">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="idReservation" />
             </Principal>
             <Dependent Role="PaypalPayment">
-              <PropertyRef Name="idPayment" />
+              <PropertyRef Name="idReservation" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -240,6 +260,7 @@
           <EntitySet Name="PaypalPayment" EntityType="Self.PaypalPayment" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Reservation" EntityType="Self.Reservation" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SubOrder" EntityType="Self.SubOrder" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Ticket" EntityType="Self.Ticket" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TicketType" EntityType="Self.TicketType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
@@ -258,6 +279,10 @@
           <AssociationSet Name="FK_Payment_Reservation" Association="Self.FK_Payment_Reservation">
             <End Role="Reservation" EntitySet="Reservation" />
             <End Role="Payment" EntitySet="Payment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PaymentLocation_PaymentLocation" Association="Self.FK_PaymentLocation_PaymentLocation">
+            <End Role="PaymentLocation" EntitySet="PaymentLocation" />
+            <End Role="PaymentLocation1" EntitySet="PaymentLocation" />
           </AssociationSet>
           <AssociationSet Name="FK_PaypalPayment_Payment" Association="Self.FK_PaypalPayment_Payment">
             <End Role="Payment" EntitySet="Payment" />
@@ -284,7 +309,8 @@
             <End Role="TicketType" EntitySet="TicketType" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="TicketSaleModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -295,8 +321,8 @@
           <Property Name="idPayment" Type="Int32" Nullable="false" />
           <Property Name="cod" Type="Int32" Nullable="false" />
           <Property Name="idPaymentLocation" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Payment" Relationship="Self.FK_CashPayment_Payment" FromRole="CashPayment" ToRole="Payment" />
           <NavigationProperty Name="PaymentLocation" Relationship="Self.FK_CashPayment_PaymentLocation" FromRole="CashPayment" ToRole="PaymentLocation" />
-          <NavigationProperty Name="Payment" Relationship="TicketSaleModel.FK_CashPayment_Payment" FromRole="CashPayment" ToRole="Payment" />
         </EntityType>
         <EntityType Name="Event">
           <Key>
@@ -304,14 +330,14 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="date" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="enable" Type="Byte" Nullable="false" />
+          <Property Name="enabled" Type="Byte" Nullable="false" />
           <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="description" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="idEventLocation" Type="Int32" Nullable="false" />
           <Property Name="type" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="img" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="EventLocation" Relationship="Self.FK_Event_EventLocation" FromRole="Event" ToRole="EventLocation" />
           <NavigationProperty Name="TicketType" Relationship="Self.FK_TicketType_Event" FromRole="Event" ToRole="TicketType" />
-          <Property Name="img" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="EventLocation">
           <Key>
@@ -323,6 +349,17 @@
           <Property Name="address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Event" Relationship="Self.FK_Event_EventLocation" FromRole="EventLocation" ToRole="Event" />
         </EntityType>
+        <EntityType Name="Payment">
+          <Key>
+            <PropertyRef Name="idReservation" />
+          </Key>
+          <Property Name="date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="amount" Type="Double" Nullable="false" />
+          <Property Name="idReservation" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CashPayment" Relationship="Self.FK_CashPayment_Payment" FromRole="Payment" ToRole="CashPayment" />
+          <NavigationProperty Name="Reservation" Relationship="Self.FK_Payment_Reservation" FromRole="Payment" ToRole="Reservation" />
+          <NavigationProperty Name="PaypalPayment" Relationship="Self.FK_PaypalPayment_Payment" FromRole="Payment" ToRole="PaypalPayment" />
+        </EntityType>
         <EntityType Name="PaymentLocation">
           <Key>
             <PropertyRef Name="id" />
@@ -332,14 +369,16 @@
           <Property Name="address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="CashPayment" Relationship="Self.FK_CashPayment_PaymentLocation" FromRole="PaymentLocation" ToRole="CashPayment" />
+          <NavigationProperty Name="PaymentLocation1" Relationship="Self.FK_PaymentLocation_PaymentLocation" FromRole="PaymentLocation" ToRole="PaymentLocation1" />
+          <NavigationProperty Name="PaymentLocation2" Relationship="Self.FK_PaymentLocation_PaymentLocation" FromRole="PaymentLocation1" ToRole="PaymentLocation" />
         </EntityType>
         <EntityType Name="PaypalPayment">
           <Key>
-            <PropertyRef Name="idPayment" />
+            <PropertyRef Name="idReservation" />
           </Key>
-          <Property Name="idPayment" Type="Int32" Nullable="false" />
+          <Property Name="idReservation" Type="Int32" Nullable="false" />
           <Property Name="transactionCod" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Payment" Relationship="TicketSaleModel.FK_PaypalPayment_Payment" FromRole="PaypalPayment" ToRole="Payment" />
+          <NavigationProperty Name="Payment" Relationship="Self.FK_PaypalPayment_Payment" FromRole="PaypalPayment" ToRole="Payment" />
         </EntityType>
         <EntityType Name="Reservation">
           <Key>
@@ -348,9 +387,9 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="idUser" Type="Int32" Nullable="false" />
           <Property Name="date" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Payment" Relationship="Self.FK_Payment_Reservation" FromRole="Reservation" ToRole="Payment" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Reservation_User" FromRole="Reservation" ToRole="User" />
           <NavigationProperty Name="SubOrder" Relationship="Self.FK_SubOrder_Reservation" FromRole="Reservation" ToRole="SubOrder" />
-          <NavigationProperty Name="Payment" Relationship="TicketSaleModel.FK_Payment_Reservation" FromRole="Reservation" ToRole="Payment" />
-          <NavigationProperty Name="User" Relationship="TicketSaleModel.FK_Reservation_User" FromRole="Reservation" ToRole="User" />
         </EntityType>
         <EntityType Name="SubOrder">
           <Key>
@@ -362,6 +401,16 @@
           <Property Name="idTicket" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Reservation" Relationship="Self.FK_SubOrder_Reservation" FromRole="SubOrder" ToRole="Reservation" />
           <NavigationProperty Name="Ticket" Relationship="Self.FK_SubOrder_Ticket" FromRole="SubOrder" ToRole="Ticket" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="Ticket">
           <Key>
@@ -386,6 +435,33 @@
           <NavigationProperty Name="Event" Relationship="Self.FK_TicketType_Event" FromRole="TicketType" ToRole="Event" />
           <NavigationProperty Name="Ticket" Relationship="Self.FK_Ticket_TicketType" FromRole="TicketType" ToRole="Ticket" />
         </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="mail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="lastName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="dateBirth" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="userType" Type="Byte" Nullable="false" />
+          <Property Name="active" Type="Byte" Nullable="false" />
+          <Property Name="token" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Reservation" Relationship="Self.FK_Reservation_User" FromRole="User" ToRole="Reservation" />
+        </EntityType>
+        <Association Name="FK_CashPayment_Payment">
+          <End Role="Payment" Type="Self.Payment" Multiplicity="1" />
+          <End Role="CashPayment" Type="Self.CashPayment" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Payment">
+              <PropertyRef Name="idReservation" />
+            </Principal>
+            <Dependent Role="CashPayment">
+              <PropertyRef Name="idPayment" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_CashPayment_PaymentLocation">
           <End Role="PaymentLocation" Type="Self.PaymentLocation" Multiplicity="1" />
           <End Role="CashPayment" Type="Self.CashPayment" Multiplicity="*" />
@@ -419,6 +495,54 @@
             </Principal>
             <Dependent Role="TicketType">
               <PropertyRef Name="idEvent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Payment_Reservation">
+          <End Role="Reservation" Type="Self.Reservation" Multiplicity="1" />
+          <End Role="Payment" Type="Self.Payment" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Reservation">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Payment">
+              <PropertyRef Name="idReservation" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PaypalPayment_Payment">
+          <End Role="Payment" Type="Self.Payment" Multiplicity="1" />
+          <End Role="PaypalPayment" Type="Self.PaypalPayment" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Payment">
+              <PropertyRef Name="idReservation" />
+            </Principal>
+            <Dependent Role="PaypalPayment">
+              <PropertyRef Name="idReservation" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PaymentLocation_PaymentLocation">
+          <End Role="PaymentLocation" Type="Self.PaymentLocation" Multiplicity="1" />
+          <End Role="PaymentLocation1" Type="Self.PaymentLocation" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="PaymentLocation">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="PaymentLocation1">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reservation_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Reservation" Type="Self.Reservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Reservation">
+              <PropertyRef Name="idUser" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -462,12 +586,19 @@
           <EntitySet Name="CashPayment" EntityType="Self.CashPayment" />
           <EntitySet Name="Event" EntityType="Self.Event" />
           <EntitySet Name="EventLocation" EntityType="Self.EventLocation" />
+          <EntitySet Name="Payment" EntityType="Self.Payment" />
           <EntitySet Name="PaymentLocation" EntityType="Self.PaymentLocation" />
           <EntitySet Name="PaypalPayment" EntityType="Self.PaypalPayment" />
           <EntitySet Name="Reservation" EntityType="Self.Reservation" />
           <EntitySet Name="SubOrder" EntityType="Self.SubOrder" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="Ticket" EntityType="Self.Ticket" />
           <EntitySet Name="TicketType" EntityType="Self.TicketType" />
+          <EntitySet Name="User" EntityType="Self.User" />
+          <AssociationSet Name="FK_CashPayment_Payment" Association="Self.FK_CashPayment_Payment">
+            <End Role="Payment" EntitySet="Payment" />
+            <End Role="CashPayment" EntitySet="CashPayment" />
+          </AssociationSet>
           <AssociationSet Name="FK_CashPayment_PaymentLocation" Association="Self.FK_CashPayment_PaymentLocation">
             <End Role="PaymentLocation" EntitySet="PaymentLocation" />
             <End Role="CashPayment" EntitySet="CashPayment" />
@@ -479,6 +610,22 @@
           <AssociationSet Name="FK_TicketType_Event" Association="Self.FK_TicketType_Event">
             <End Role="Event" EntitySet="Event" />
             <End Role="TicketType" EntitySet="TicketType" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Payment_Reservation" Association="Self.FK_Payment_Reservation">
+            <End Role="Reservation" EntitySet="Reservation" />
+            <End Role="Payment" EntitySet="Payment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PaypalPayment_Payment" Association="Self.FK_PaypalPayment_Payment">
+            <End Role="Payment" EntitySet="Payment" />
+            <End Role="PaypalPayment" EntitySet="PaypalPayment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PaymentLocation_PaymentLocation" Association="Self.FK_PaymentLocation_PaymentLocation">
+            <End Role="PaymentLocation" EntitySet="PaymentLocation" />
+            <End Role="PaymentLocation1" EntitySet="PaymentLocation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reservation_User" Association="Self.FK_Reservation_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Reservation" EntitySet="Reservation" />
           </AssociationSet>
           <AssociationSet Name="FK_SubOrder_Reservation" Association="Self.FK_SubOrder_Reservation">
             <End Role="Reservation" EntitySet="Reservation" />
@@ -492,101 +639,7 @@
             <End Role="TicketType" EntitySet="TicketType" />
             <End Role="Ticket" EntitySet="Ticket" />
           </AssociationSet>
-          <EntitySet Name="Payment" EntityType="TicketSaleModel.Payment" />
-          <AssociationSet Name="FK_CashPayment_Payment" Association="TicketSaleModel.FK_CashPayment_Payment">
-            <End Role="Payment" EntitySet="Payment" />
-            <End Role="CashPayment" EntitySet="CashPayment" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Payment_Reservation" Association="TicketSaleModel.FK_Payment_Reservation">
-            <End Role="Reservation" EntitySet="Reservation" />
-            <End Role="Payment" EntitySet="Payment" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PaypalPayment_Payment" Association="TicketSaleModel.FK_PaypalPayment_Payment">
-            <End Role="Payment" EntitySet="Payment" />
-            <End Role="PaypalPayment" EntitySet="PaypalPayment" />
-          </AssociationSet>
-          <EntitySet Name="User" EntityType="TicketSaleModel.User" />
-          <AssociationSet Name="FK_Reservation_User" Association="TicketSaleModel.FK_Reservation_User">
-            <End Role="User" EntitySet="User" />
-            <End Role="Reservation" EntitySet="Reservation" />
-          </AssociationSet>
         </EntityContainer>
-        <EntityType Name="Payment">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="date" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="amount" Type="Double" Nullable="false" />
-          <Property Name="idReservation" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="CashPayment" Relationship="TicketSaleModel.FK_CashPayment_Payment" FromRole="Payment" ToRole="CashPayment" />
-          <NavigationProperty Name="Reservation" Relationship="TicketSaleModel.FK_Payment_Reservation" FromRole="Payment" ToRole="Reservation" />
-          <NavigationProperty Name="PaypalPayment" Relationship="TicketSaleModel.FK_PaypalPayment_Payment" FromRole="Payment" ToRole="PaypalPayment" />
-        </EntityType>
-        <Association Name="FK_CashPayment_Payment">
-          <End Type="TicketSaleModel.Payment" Role="Payment" Multiplicity="1" />
-          <End Type="TicketSaleModel.CashPayment" Role="CashPayment" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="Payment">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="CashPayment">
-              <PropertyRef Name="idPayment" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Payment_Reservation">
-          <End Type="TicketSaleModel.Reservation" Role="Reservation" Multiplicity="1" />
-          <End Type="TicketSaleModel.Payment" Role="Payment" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Reservation">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Payment">
-              <PropertyRef Name="idReservation" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_PaypalPayment_Payment">
-          <End Type="TicketSaleModel.Payment" Role="Payment" Multiplicity="1" />
-          <End Type="TicketSaleModel.PaypalPayment" Role="PaypalPayment" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="Payment">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="PaypalPayment">
-              <PropertyRef Name="idPayment" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="User">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="mail" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="name" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="lastName" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="dateBirth" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="userType" Type="Byte" Nullable="false" />
-          <Property Name="active" Type="Byte" Nullable="false" />
-          <Property Name="registrationLink" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Reservation" Relationship="TicketSaleModel.FK_Reservation_User" FromRole="User" ToRole="Reservation" />
-          <Property Name="img" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <Association Name="FK_Reservation_User">
-          <End Type="TicketSaleModel.User" Role="User" Multiplicity="1" />
-          <End Type="TicketSaleModel.Reservation" Role="Reservation" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Reservation">
-              <PropertyRef Name="idUser" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -605,14 +658,14 @@
           <EntitySetMapping Name="Event">
             <EntityTypeMapping TypeName="TicketSaleModel.Event">
               <MappingFragment StoreEntitySet="Event">
-                <ScalarProperty Name="img" ColumnName="img" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="date" ColumnName="date" />
-                <ScalarProperty Name="enable" ColumnName="enable" />
+                <ScalarProperty Name="enabled" ColumnName="enabled" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="description" ColumnName="description" />
                 <ScalarProperty Name="idEventLocation" ColumnName="idEventLocation" />
                 <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="img" ColumnName="img" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -623,6 +676,15 @@
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="phoneNumber" ColumnName="phoneNumber" />
                 <ScalarProperty Name="address" ColumnName="address" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Payment">
+            <EntityTypeMapping TypeName="TicketSaleModel.Payment">
+              <MappingFragment StoreEntitySet="Payment">
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="idReservation" ColumnName="idReservation" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -639,7 +701,7 @@
           <EntitySetMapping Name="PaypalPayment">
             <EntityTypeMapping TypeName="TicketSaleModel.PaypalPayment">
               <MappingFragment StoreEntitySet="PaypalPayment">
-                <ScalarProperty Name="idPayment" ColumnName="idPayment" />
+                <ScalarProperty Name="idReservation" ColumnName="idReservation" />
                 <ScalarProperty Name="transactionCod" ColumnName="transactionCod" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -660,6 +722,17 @@
                 <ScalarProperty Name="active" ColumnName="active" />
                 <ScalarProperty Name="idReservation" ColumnName="idReservation" />
                 <ScalarProperty Name="idTicket" ColumnName="idTicket" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="TicketSaleModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -684,29 +757,18 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Payment">
-            <EntityTypeMapping TypeName="TicketSaleModel.Payment">
-              <MappingFragment StoreEntitySet="Payment">
-                <ScalarProperty Name="idReservation" ColumnName="idReservation" />
-                <ScalarProperty Name="amount" ColumnName="amount" />
-                <ScalarProperty Name="date" ColumnName="date" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="User">
             <EntityTypeMapping TypeName="TicketSaleModel.User">
               <MappingFragment StoreEntitySet="User">
-                <ScalarProperty Name="img" ColumnName="img" />
-                <ScalarProperty Name="registrationLink" ColumnName="registrationLink" />
-                <ScalarProperty Name="active" ColumnName="active" />
-                <ScalarProperty Name="userType" ColumnName="userType" />
-                <ScalarProperty Name="dateBirth" ColumnName="dateBirth" />
-                <ScalarProperty Name="lastName" ColumnName="lastName" />
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="password" ColumnName="password" />
-                <ScalarProperty Name="mail" ColumnName="mail" />
                 <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="mail" ColumnName="mail" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="lastName" ColumnName="lastName" />
+                <ScalarProperty Name="dateBirth" ColumnName="dateBirth" />
+                <ScalarProperty Name="userType" ColumnName="userType" />
+                <ScalarProperty Name="active" ColumnName="active" />
+                <ScalarProperty Name="token" ColumnName="token" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

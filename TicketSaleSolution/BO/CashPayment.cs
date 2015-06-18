@@ -18,7 +18,7 @@ namespace BO
         public int cod { get; set; }
         public int idPaymentLocation { get; set; }
     
-        public virtual PaymentLocation PaymentLocation { get; set; }
         public virtual Payment Payment { get; set; }
+        public virtual PaymentLocation PaymentLocation { get; set; }
     }
 }

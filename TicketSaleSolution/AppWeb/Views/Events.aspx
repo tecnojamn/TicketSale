@@ -20,17 +20,16 @@
     <label>Entradas Disponibles: </label>
     <asp:Label ID="lblTickets" runat="server" Text=""></asp:Label><br />
     <label>Sectores Disponibles: </label>
-    <asp:GridView ID="grdTickets" runat="server">
+    <asp:GridView ID="gvTickets" runat="server">
         <Columns>
-            <asp:TemplateField>
-                <ItemTemplate>
-                    <asp:Button ID="btnAddTicket" OnCommand="btnAddTicket_Click" CommandArgument='<%# Container.DataItemIndex %>' CssClass="btn-primary" Text="+" runat="server" />
-                    <asp:Button ID="btnRemoveTicket" OnCommand="btnRemoveTicket_Click" CommandArgument='<%# Container.DataItemIndex %>' CssClass="btn-danger" Text="-" runat="server" />
-                </ItemTemplate>
-            </asp:TemplateField>
             <asp:TemplateField HeaderText="Sector"></asp:TemplateField>
             <asp:TemplateField HeaderText="Costo"></asp:TemplateField>
             <asp:TemplateField HeaderText="Disponibles/Totales"></asp:TemplateField>
+            <asp:TemplateField HeaderText="Reservar">
+                <ItemTemplate>
+                    <input id="ticketsQuantity" type="number" />
+                </ItemTemplate>
+            </asp:TemplateField>
         </Columns>
     </asp:GridView>
 
