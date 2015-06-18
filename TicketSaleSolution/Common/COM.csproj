@@ -40,6 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="SECURITY.cs" />
+    <Compile Include="MAILER.cs" />
     <Compile Include="EVENT.cs" />
     <Compile Include="PATH.cs" />
     <Compile Include="RESERVATION.cs" />
