@@ -83,23 +83,7 @@ namespace BL
             }
             return (user!=null);
         }
-        //sends confirmation mail (SIN PROBAR)
-        private void sendCofirmationMail(String email) {
-            
-            MailMessage objeto_mail = new MailMessage();
-            SmtpClient client = new SmtpClient();
-            client.Host = "smtp.googlemail.com";
-            client.Port = 587;
-            client.UseDefaultCredentials = false;
-            client.DeliveryMethod = SmtpDeliveryMethod.Network;
-            client.EnableSsl = true;
-            client.Credentials = new System.Net.NetworkCredential("myemail@gmail.com", "password");
-            objeto_mail.From = new MailAddress("from@server.com");
-            objeto_mail.To.Add(new MailAddress(email));
-            objeto_mail.Subject = "Password Confirmation";
-            objeto_mail.Body = "<div></div>";
-            client.Send(objeto_mail);
-        }
+        
         //Nuevo Usuario
         public bool newUser(User user)
         {
@@ -115,6 +99,8 @@ namespace BL
 
                     if (context.User.Add(user) != null)
                     {
+                        string code=SECURITY.STRING_TO_MD5(user.mail+"12345");
+                        MAILER.sendCofirmationMail(user.mail,code);
                         context.SaveChanges();
                     }
                     else { return false; }
