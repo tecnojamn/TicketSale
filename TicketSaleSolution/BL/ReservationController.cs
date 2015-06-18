@@ -109,7 +109,10 @@ namespace BL
             {
                 using (DAL.TicketSaleEntities context = new DAL.TicketSaleEntities())
                 {
-                    res = context.Reservation.FirstOrDefault(r => r.id == idReserva);
+                    res = context.Reservation
+                        .Include("SubOrder.Ticket.TicketType.Event.EventLocation")
+                        .Include("User")
+                        .FirstOrDefault(r => r.id == idReserva);
                 }
 
             }

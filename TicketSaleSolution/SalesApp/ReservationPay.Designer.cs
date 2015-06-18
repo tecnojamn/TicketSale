@@ -29,34 +29,33 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.btnBuscar = new System.Windows.Forms.Button();
+            this.txtIdReserva = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtUsuario = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.txtFechaReserva = new System.Windows.Forms.TextBox();
+            this.txtFechaEvento = new System.Windows.Forms.TextBox();
+            this.txtTipoEvento = new System.Windows.Forms.TextBox();
+            this.txtNombreEvento = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.txtLugarEvento = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.txtNroTelefono = new System.Windows.Forms.TextBox();
+            this.txtDireccionEvento = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gvTickets = new System.Windows.Forms.DataGridView();
+            this.nroTicket = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.costoUnid = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Descripción = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnPagar = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvTickets)).BeginInit();
             this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -71,22 +70,22 @@
             this.label1.Text = "Id Reserva";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
-            // button1
+            // btnBuscar
             // 
-            this.button1.Location = new System.Drawing.Point(194, 6);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(79, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Buscar";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnBuscar.Location = new System.Drawing.Point(199, 6);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(79, 23);
+            this.btnBuscar.TabIndex = 1;
+            this.btnBuscar.Text = "Buscar";
+            this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.button1_Click);
             // 
-            // textBox1
+            // txtIdReserva
             // 
-            this.textBox1.Location = new System.Drawing.Point(83, 6);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(105, 20);
-            this.textBox1.TabIndex = 2;
+            this.txtIdReserva.Location = new System.Drawing.Point(83, 6);
+            this.txtIdReserva.Name = "txtIdReserva";
+            this.txtIdReserva.Size = new System.Drawing.Size(105, 20);
+            this.txtIdReserva.TabIndex = 2;
             // 
             // label2
             // 
@@ -98,13 +97,13 @@
             this.label2.Text = "A nombre de: ";
             this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
-            // textBox2
+            // txtUsuario
             // 
-            this.textBox2.Location = new System.Drawing.Point(370, 6);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(159, 20);
-            this.textBox2.TabIndex = 4;
+            this.txtUsuario.Location = new System.Drawing.Point(370, 6);
+            this.txtUsuario.Name = "txtUsuario";
+            this.txtUsuario.ReadOnly = true;
+            this.txtUsuario.Size = new System.Drawing.Size(159, 20);
+            this.txtUsuario.TabIndex = 4;
             // 
             // label3
             // 
@@ -116,33 +115,37 @@
             this.label3.TabIndex = 5;
             this.label3.Text = "Fecha";
             // 
-            // textBox3
+            // txtFechaReserva
             // 
-            this.textBox3.Location = new System.Drawing.Point(370, 31);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(159, 20);
-            this.textBox3.TabIndex = 6;
+            this.txtFechaReserva.Location = new System.Drawing.Point(370, 31);
+            this.txtFechaReserva.Name = "txtFechaReserva";
+            this.txtFechaReserva.ReadOnly = true;
+            this.txtFechaReserva.Size = new System.Drawing.Size(159, 20);
+            this.txtFechaReserva.TabIndex = 6;
             // 
-            // textBox4
+            // txtFechaEvento
             // 
-            this.textBox4.Location = new System.Drawing.Point(116, 45);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(159, 22);
-            this.textBox4.TabIndex = 7;
+            this.txtFechaEvento.Location = new System.Drawing.Point(116, 45);
+            this.txtFechaEvento.Name = "txtFechaEvento";
+            this.txtFechaEvento.ReadOnly = true;
+            this.txtFechaEvento.Size = new System.Drawing.Size(159, 22);
+            this.txtFechaEvento.TabIndex = 7;
             // 
-            // textBox5
+            // txtTipoEvento
             // 
-            this.textBox5.Location = new System.Drawing.Point(116, 74);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(159, 22);
-            this.textBox5.TabIndex = 8;
+            this.txtTipoEvento.Location = new System.Drawing.Point(116, 74);
+            this.txtTipoEvento.Name = "txtTipoEvento";
+            this.txtTipoEvento.ReadOnly = true;
+            this.txtTipoEvento.Size = new System.Drawing.Size(159, 22);
+            this.txtTipoEvento.TabIndex = 8;
             // 
-            // textBox6
+            // txtNombreEvento
             // 
-            this.textBox6.Location = new System.Drawing.Point(116, 17);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(159, 22);
-            this.textBox6.TabIndex = 9;
+            this.txtNombreEvento.Location = new System.Drawing.Point(116, 17);
+            this.txtNombreEvento.Name = "txtNombreEvento";
+            this.txtNombreEvento.ReadOnly = true;
+            this.txtNombreEvento.Size = new System.Drawing.Size(159, 22);
+            this.txtNombreEvento.TabIndex = 9;
             // 
             // label4
             // 
@@ -175,20 +178,20 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.textBox7);
+            this.groupBox1.Controls.Add(this.txtLugarEvento);
             this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Controls.Add(this.textBox8);
-            this.groupBox1.Controls.Add(this.textBox9);
-            this.groupBox1.Controls.Add(this.textBox6);
+            this.groupBox1.Controls.Add(this.txtNroTelefono);
+            this.groupBox1.Controls.Add(this.txtDireccionEvento);
+            this.groupBox1.Controls.Add(this.txtNombreEvento);
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.textBox5);
+            this.groupBox1.Controls.Add(this.txtTipoEvento);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.textBox4);
+            this.groupBox1.Controls.Add(this.txtFechaEvento);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(416, 66);
+            this.groupBox1.Location = new System.Drawing.Point(370, 66);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(281, 188);
             this.groupBox1.TabIndex = 13;
@@ -196,12 +199,13 @@
             this.groupBox1.Text = "Información del evento";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
-            // textBox7
+            // txtLugarEvento
             // 
-            this.textBox7.Location = new System.Drawing.Point(116, 102);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(159, 22);
-            this.textBox7.TabIndex = 21;
+            this.txtLugarEvento.Location = new System.Drawing.Point(116, 102);
+            this.txtLugarEvento.Name = "txtLugarEvento";
+            this.txtLugarEvento.ReadOnly = true;
+            this.txtLugarEvento.Size = new System.Drawing.Size(159, 22);
+            this.txtLugarEvento.TabIndex = 21;
             // 
             // label7
             // 
@@ -213,19 +217,21 @@
             this.label7.TabIndex = 20;
             this.label7.Text = "Lugar del Evento";
             // 
-            // textBox8
+            // txtNroTelefono
             // 
-            this.textBox8.Location = new System.Drawing.Point(116, 160);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(159, 22);
-            this.textBox8.TabIndex = 18;
+            this.txtNroTelefono.Location = new System.Drawing.Point(116, 160);
+            this.txtNroTelefono.Name = "txtNroTelefono";
+            this.txtNroTelefono.ReadOnly = true;
+            this.txtNroTelefono.Size = new System.Drawing.Size(159, 22);
+            this.txtNroTelefono.TabIndex = 18;
             // 
-            // textBox9
+            // txtDireccionEvento
             // 
-            this.textBox9.Location = new System.Drawing.Point(116, 130);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(159, 22);
-            this.textBox9.TabIndex = 19;
+            this.txtDireccionEvento.Location = new System.Drawing.Point(116, 130);
+            this.txtDireccionEvento.Name = "txtDireccionEvento";
+            this.txtDireccionEvento.ReadOnly = true;
+            this.txtDireccionEvento.Size = new System.Drawing.Size(159, 22);
+            this.txtDireccionEvento.TabIndex = 19;
             // 
             // label8
             // 
@@ -247,24 +253,24 @@
             this.label9.TabIndex = 16;
             this.label9.Text = "Dirección";
             // 
-            // dataGridView1
+            // gvTickets
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Cantidad,
+            this.gvTickets.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gvTickets.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.nroTicket,
             this.costoUnid,
-            this.Descripción,
-            this.Total});
-            this.dataGridView1.Location = new System.Drawing.Point(6, 23);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(379, 159);
-            this.dataGridView1.TabIndex = 16;
+            this.Descripcion});
+            this.gvTickets.Location = new System.Drawing.Point(6, 23);
+            this.gvTickets.Name = "gvTickets";
+            this.gvTickets.Size = new System.Drawing.Size(336, 159);
+            this.gvTickets.TabIndex = 16;
+            this.gvTickets.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gvTickets_CellContentClick);
             // 
-            // Cantidad
+            // nroTicket
             // 
-            this.Cantidad.HeaderText = "Cantidad";
-            this.Cantidad.Name = "Cantidad";
-            this.Cantidad.Width = 70;
+            this.nroTicket.HeaderText = "Nro";
+            this.nroTicket.Name = "nroTicket";
+            this.nroTicket.Width = 70;
             // 
             // costoUnid
             // 
@@ -272,60 +278,54 @@
             this.costoUnid.Name = "costoUnid";
             this.costoUnid.Width = 70;
             // 
-            // Descripción
+            // Descripcion
             // 
-            this.Descripción.HeaderText = "Descripción";
-            this.Descripción.Name = "Descripción";
-            this.Descripción.Width = 150;
-            // 
-            // Total
-            // 
-            this.Total.HeaderText = "Total";
-            this.Total.Name = "Total";
-            this.Total.Width = 60;
+            this.Descripcion.HeaderText = "Descripción";
+            this.Descripcion.Name = "Descripcion";
+            this.Descripcion.Width = 150;
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.dataGridView1);
+            this.groupBox3.Controls.Add(this.gvTickets);
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.Location = new System.Drawing.Point(15, 66);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(385, 188);
+            this.groupBox3.Size = new System.Drawing.Size(349, 188);
             this.groupBox3.TabIndex = 17;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Información de las entradas";
             // 
-            // button2
+            // btnPagar
             // 
-            this.button2.Location = new System.Drawing.Point(586, 16);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 35);
-            this.button2.TabIndex = 18;
-            this.button2.Text = "Pagar";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btnPagar.Location = new System.Drawing.Point(535, 6);
+            this.btnPagar.Name = "btnPagar";
+            this.btnPagar.Size = new System.Drawing.Size(110, 45);
+            this.btnPagar.TabIndex = 18;
+            this.btnPagar.Text = "Pagar";
+            this.btnPagar.UseVisualStyleBackColor = true;
+            this.btnPagar.Click += new System.EventHandler(this.button2_Click);
             // 
             // frmReservationPay
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(709, 269);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btnPagar);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.txtFechaReserva);
+            this.Controls.Add(this.txtUsuario);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.txtIdReserva);
+            this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.label1);
             this.Name = "frmReservationPay";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Pago Reserva";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvTickets)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -335,31 +335,30 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button btnBuscar;
+        private System.Windows.Forms.TextBox txtIdReserva;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtUsuario;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox txtFechaReserva;
+        private System.Windows.Forms.TextBox txtFechaEvento;
+        private System.Windows.Forms.TextBox txtTipoEvento;
+        private System.Windows.Forms.TextBox txtNombreEvento;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.TextBox txtNroTelefono;
+        private System.Windows.Forms.TextBox txtDireccionEvento;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad;
-        private System.Windows.Forms.DataGridViewTextBoxColumn costoUnid;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Descripción;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Total;
+        private System.Windows.Forms.DataGridView gvTickets;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox txtLugarEvento;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnPagar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nroTicket;
+        private System.Windows.Forms.DataGridViewTextBoxColumn costoUnid;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Descripcion;
     }
 }
