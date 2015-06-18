@@ -7,6 +7,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-6">
+
                 <asp:ListView ID="listViewEvents" ItemType="DTO.EventDTO" GroupItemCount="3" SelectMethod="listViewEvents_GetData" runat="server">
                     <EmptyDataTemplate>No hay eventos</EmptyDataTemplate>
                     <GroupTemplate>

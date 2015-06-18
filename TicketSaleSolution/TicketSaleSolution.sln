@@ -20,6 +20,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BO", "BO\BO.csproj", "{13A6
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "COM", "Common\COM.csproj", "{52B30D4A-2B37-4F00-834C-51CD621E3EAE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdministrationApp", "AdministrationApp\AdministrationApp.csproj", "{25330C4C-EB70-4F11-9B6D-20E7A477AB3D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +71,12 @@ Global
 		{52B30D4A-2B37-4F00-834C-51CD621E3EAE}.Release|Any CPU.Build.0 = Release|Any CPU
 		{52B30D4A-2B37-4F00-834C-51CD621E3EAE}.ReleaseBinaries|Any CPU.ActiveCfg = Release|Any CPU
 		{52B30D4A-2B37-4F00-834C-51CD621E3EAE}.ReleaseBinaries|Any CPU.Build.0 = Release|Any CPU
+		{25330C4C-EB70-4F11-9B6D-20E7A477AB3D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{25330C4C-EB70-4F11-9B6D-20E7A477AB3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{25330C4C-EB70-4F11-9B6D-20E7A477AB3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{25330C4C-EB70-4F11-9B6D-20E7A477AB3D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{25330C4C-EB70-4F11-9B6D-20E7A477AB3D}.ReleaseBinaries|Any CPU.ActiveCfg = Release|Any CPU
+		{25330C4C-EB70-4F11-9B6D-20E7A477AB3D}.ReleaseBinaries|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
