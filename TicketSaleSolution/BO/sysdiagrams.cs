@@ -12,14 +12,12 @@ namespace BO
     using System;
     using System.Collections.Generic;
     
-    public partial class Payment
+    public partial class sysdiagrams
     {
-        public System.DateTime date { get; set; }
-        public double amount { get; set; }
-        public int idReservation { get; set; }
-    
-        public virtual CashPayment CashPayment { get; set; }
-        public virtual Reservation Reservation { get; set; }
-        public virtual PaypalPayment PaypalPayment { get; set; }
+        public string name { get; set; }
+        public int principal_id { get; set; }
+        public int diagram_id { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

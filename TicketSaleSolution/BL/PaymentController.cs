@@ -10,13 +10,13 @@ namespace BL
     public class PaymentController
     {
         //Obtener Pago
-        public Payment getPayment(int id){
+        public Payment getPayment(int idRes){
             Payment p = null;
             try
             {
                 using (DAL.TicketSaleEntities context = new DAL.TicketSaleEntities())
                 {
-                    p = context.Payment.FirstOrDefault(pay => pay.id == id);
+                    p = context.Payment.FirstOrDefault(pay => pay.idReservation == idRes);
                 }
 
             }
@@ -70,7 +70,7 @@ namespace BL
             {
                 using (DAL.TicketSaleEntities context = new DAL.TicketSaleEntities())
                 {
-                    Payment pay = context.Payment.FirstOrDefault(paym => paym.id == p.id);
+                    Payment pay = context.Payment.FirstOrDefault(paym => paym.idReservation == p.idReservation);
                     if (pay != null)
                     {
                         pay.amount = p.amount;

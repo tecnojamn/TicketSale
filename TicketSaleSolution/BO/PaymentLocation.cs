@@ -25,5 +25,7 @@ namespace BO
         public string name { get; set; }
     
         public virtual ICollection<CashPayment> CashPayment { get; set; }
+        public virtual PaymentLocation PaymentLocation1 { get; set; }
+        public virtual PaymentLocation PaymentLocation2 { get; set; }
     }
 }

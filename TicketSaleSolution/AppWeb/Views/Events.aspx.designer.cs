@@ -58,12 +58,12 @@ namespace AppWeb.Views {
         protected global::System.Web.UI.WebControls.Label lblTickets;
         
         /// <summary>
-        /// Control grdTickets.
+        /// Control gvTickets.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView grdTickets;
+        protected global::System.Web.UI.WebControls.GridView gvTickets;
     }
 }

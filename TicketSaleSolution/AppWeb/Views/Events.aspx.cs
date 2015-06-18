@@ -12,14 +12,7 @@ namespace AppWeb.Views
 {
     public partial class Events : System.Web.UI.Page
     {
-        [System.Web.Services.WebMethod]
-        public string GetPageMethod()
-        {
-            int _tickets = int.Parse(grdTickets.Rows[1].Cells[4].Text);
-            _tickets++;
-            grdTickets.Rows[1].Cells[4].Text = _tickets.ToString();
-            return "";
-        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             bool log = false;
@@ -38,7 +31,6 @@ namespace AppWeb.Views
             {
                 if (Int32.TryParse(Request.QueryString["id"], out idEvent))
                 {
-                    //Le falta mucho style baby
                     EventDTO eventDTO = ProxyManager.getEventService().getEvent(idEvent);
 
                     name.InnerText = eventDTO.name;
@@ -46,6 +38,13 @@ namespace AppWeb.Views
                     lblTime.Text = eventDTO.date.ToString("HH:mm");
                     lblLoc.Text = eventDTO.EventLocation.name;
                     lblTickets.Text = eventDTO.getAvailableTicketCount().ToString() + " / " + eventDTO.getTotalTicketCount().ToString();
+
+                    int i = 1;
+                    foreach (var tt in eventDTO.TicketType)
+                    {
+                        //gvTickets.Rows[0];
+                        i++;
+                    }
 
                     /*
                     //Creo datatable para meter en el gridview
@@ -73,7 +72,7 @@ namespace AppWeb.Views
                     }
                     */
                     //grdTickets.DataSource = dtTicketType;
-                    grdTickets.DataBind();
+                    gvTickets.DataBind();
 
                 }
                 else
@@ -87,9 +86,9 @@ namespace AppWeb.Views
         protected void btnAddTicket_Click(object sender, CommandEventArgs e)
         {
             int row = int.Parse(e.CommandArgument.ToString());
-            int _tickets = int.Parse(grdTickets.Rows[row].Cells[4].Text);
+            int _tickets = int.Parse(gvTickets.Rows[row].Cells[4].Text);
             _tickets++;
-            grdTickets.Rows[row].Cells[4].Text = _tickets.ToString();
+            gvTickets.Rows[row].Cells[4].Text = _tickets.ToString();
         }
 
         protected void btnRemoveTicket_Click(object sender, CommandEventArgs e)

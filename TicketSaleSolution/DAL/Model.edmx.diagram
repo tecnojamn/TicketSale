@@ -4,28 +4,30 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="f2e6855a4aab42cd9e08667777a54324" Name="Diagram1">
+      <Diagram DiagramId="cefa33a2704e4c99909a14c9150fdb81" Name="Diagram1">
         <EntityTypeShape EntityType="TicketSaleModel.CashPayment" Width="1.5" PointX="7.5" PointY="3.875" IsExpanded="true" />
         <EntityTypeShape EntityType="TicketSaleModel.Event" Width="1.5" PointX="1.5" PointY="11.625" IsExpanded="true" />
         <EntityTypeShape EntityType="TicketSaleModel.EventLocation" Width="1.5" PointX="1.5" PointY="16" IsExpanded="true" />
-        <EntityTypeShape EntityType="TicketSaleModel.PaymentLocation" Width="1.5" PointX="5.25" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TicketSaleModel.Payment" Width="1.5" PointX="5.25" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TicketSaleModel.PaymentLocation" Width="1.5" PointX="5.25" PointY="7.625" IsExpanded="true" />
         <EntityTypeShape EntityType="TicketSaleModel.PaypalPayment" Width="1.5" PointX="7.5" PointY="6.75" IsExpanded="true" />
         <EntityTypeShape EntityType="TicketSaleModel.Reservation" Width="1.5" PointX="3" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="TicketSaleModel.SubOrder" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TicketSaleModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="TicketSaleModel.Ticket" Width="1.5" PointX="3" PointY="8" IsExpanded="true" />
-        <EntityTypeShape EntityType="TicketSaleModel.TicketType" Width="1.5" PointX="0.75" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TicketSaleModel.TicketType" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TicketSaleModel.User" Width="1.5" PointX="0.75" PointY="3.375" IsExpanded="true" />
+        <AssociationConnector Association="TicketSaleModel.FK_CashPayment_Payment" ManuallyRouted="false" />
         <AssociationConnector Association="TicketSaleModel.FK_CashPayment_PaymentLocation" ManuallyRouted="false" />
         <AssociationConnector Association="TicketSaleModel.FK_Event_EventLocation" ManuallyRouted="false" />
         <AssociationConnector Association="TicketSaleModel.FK_TicketType_Event" ManuallyRouted="false" />
+        <AssociationConnector Association="TicketSaleModel.FK_Payment_Reservation" ManuallyRouted="false" />
+        <AssociationConnector Association="TicketSaleModel.FK_PaypalPayment_Payment" ManuallyRouted="false" />
+        <AssociationConnector Association="TicketSaleModel.FK_PaymentLocation_PaymentLocation" ManuallyRouted="false" />
+        <AssociationConnector Association="TicketSaleModel.FK_Reservation_User" ManuallyRouted="false" />
         <AssociationConnector Association="TicketSaleModel.FK_SubOrder_Reservation" ManuallyRouted="false" />
         <AssociationConnector Association="TicketSaleModel.FK_SubOrder_Ticket" ManuallyRouted="false" />
         <AssociationConnector Association="TicketSaleModel.FK_Ticket_TicketType" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="TicketSaleModel.Payment" Width="1.5" PointX="5.25" PointY="9.625" />
-        <AssociationConnector Association="TicketSaleModel.FK_CashPayment_Payment" />
-        <AssociationConnector Association="TicketSaleModel.FK_Payment_Reservation" />
-        <AssociationConnector Association="TicketSaleModel.FK_PaypalPayment_Payment" />
-        <EntityTypeShape EntityType="TicketSaleModel.User" Width="1.5" PointX="0.75" PointY="3.375" />
-        <AssociationConnector Association="TicketSaleModel.FK_Reservation_User" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

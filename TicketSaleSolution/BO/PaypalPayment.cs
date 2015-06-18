@@ -14,7 +14,7 @@ namespace BO
     
     public partial class PaypalPayment
     {
-        public int idPayment { get; set; }
+        public int idReservation { get; set; }
         public string transactionCod { get; set; }
     
         public virtual Payment Payment { get; set; }

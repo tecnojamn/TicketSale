@@ -51,7 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BO\BO.csproj">
-      <Project>{13a67de1-74b3-4244-ad0c-bfc539efe5bf}</Project>
+      <Project>{2a57ce9a-80df-4a89-9219-9cf4125d92d3}</Project>
       <Name>BO</Name>
     </ProjectReference>
     <ProjectReference Include="..\Common\COM.csproj">
@@ -59,7 +59,7 @@
       <Name>COM</Name>
     </ProjectReference>
     <ProjectReference Include="..\DAL\DAL.csproj">
-      <Project>{3b606870-54ed-4b05-9d57-cd208f8f7861}</Project>
+      <Project>{2c29bb90-8ec5-4a54-b98e-9f42eda47720}</Project>
       <Name>DAL</Name>
     </ProjectReference>
   </ItemGroup>

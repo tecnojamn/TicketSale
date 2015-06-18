@@ -21,7 +21,7 @@ namespace BO
     
         public int id { get; set; }
         public System.DateTime date { get; set; }
-        public byte enable { get; set; }
+        public byte enabled { get; set; }
         public string name { get; set; }
         public string description { get; set; }
         public int idEventLocation { get; set; }

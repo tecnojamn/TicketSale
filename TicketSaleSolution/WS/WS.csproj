@@ -117,11 +117,11 @@
       <Name>BL</Name>
     </ProjectReference>
     <ProjectReference Include="..\BO\BO.csproj">
-      <Project>{071f6130-a375-4715-9ef5-0d3dec440046}</Project>
+      <Project>{13a67de1-74b3-4244-ad0c-bfc539efe5bf}</Project>
       <Name>BO</Name>
     </ProjectReference>
     <ProjectReference Include="..\BO\BO.csproj">
-      <Project>{13a67de1-74b3-4244-ad0c-bfc539efe5bf}</Project>
+      <Project>{2a57ce9a-80df-4a89-9219-9cf4125d92d3}</Project>
       <Name>BO</Name>
     </ProjectReference>
     <ProjectReference Include="..\DTO\DTO.csproj">
