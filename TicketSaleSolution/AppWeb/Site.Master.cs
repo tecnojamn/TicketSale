@@ -17,6 +17,7 @@ namespace AppWeb
             {
                 Session.Add("log", SESSION.STATE.OFF);
                 Session.Add("mail", "");
+                Session.Add("id", 0);
                 Session.Add("name", USER.GUESTNAME);
                 Session.Add("userType", "");
             }

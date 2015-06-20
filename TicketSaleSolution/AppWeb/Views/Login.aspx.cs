@@ -34,6 +34,7 @@ namespace AppWeb.Views
                 Session.Add("log", SESSION.STATE.ON);
                 Session.Add("mail", userDTO.mail);
                 Session.Add("name", userDTO.name);
+                Session.Add("id", userDTO.id);
 
                 Response.Redirect("Default.aspx");
             }else {

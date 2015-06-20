@@ -346,6 +346,7 @@
       <SubType>Designer</SubType>
     </None>
     <Content Include="Views\Confirm.aspx" />
+    <Content Include="Views\Profile.aspx" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <None Include="Web.Debug.config">
@@ -424,6 +425,13 @@
     </Compile>
     <Compile Include="Views\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Profile.aspx.cs">
+      <DependentUpon>Profile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Profile.aspx.designer.cs">
+      <DependentUpon>Profile.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Signup.aspx.cs">
       <DependentUpon>Signup.aspx</DependentUpon>
