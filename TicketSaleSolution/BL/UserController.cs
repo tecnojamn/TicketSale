@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using BO;
 using COM;
 using System.Net.Mail;
+using System.Web;
+
 namespace BL
 {
     public class UserController
@@ -67,22 +69,7 @@ namespace BL
             }
             return user;
         }
-        //returns true if email is already in use
-        private bool isEmailTaken(String email) {
-            User user = null;
-            try
-            {
-                using (DAL.TicketSaleEntities context = new DAL.TicketSaleEntities())
-                {
-                    user = context.User.First(u => u.mail == email);
-                }
-            }
-            catch (Exception)
-            {
-                return false;
-            }
-            return (user!=null);
-        }
+        
         
         //Nuevo Usuario
         public bool newUser(User user)
@@ -95,12 +82,17 @@ namespace BL
                     if(isEmailTaken(user.mail)){
                         return false;
                     }
-                    user.registrationLink = ""; //Falta crear random esto antes, traerlo desde el servicio
+                    user.token = SECURITY.STRING_TO_MD5(user.mail+"12345");
+                    user.active = USER.STATE.INACTIVE;
+                    
+                    //HttpRequest request = HttpContext.Current.Request;
+                    //string url = request.Url.Authority.ToString();
+                    
+                    String url = PATH.BASE_URL+"Views/Confirm.aspx?auth_token=" + user.token + "";
 
                     if (context.User.Add(user) != null)
                     {
-                        string code=SECURITY.STRING_TO_MD5(user.mail+"12345");
-                        MAILER.sendCofirmationMail(user.mail,code);
+                        MAILER.sendCofirmationMail(user.mail,url);
                         context.SaveChanges();
                     }
                     else { return false; }
@@ -111,6 +103,30 @@ namespace BL
                 return false;
             }
             return true;
+        }
+        //Confirmar usuario
+        public bool confirmUser(String token)
+        {
+            User user;
+            try
+            {
+                using (DAL.TicketSaleEntities context = new DAL.TicketSaleEntities())
+                {
+
+                    user = context.User.First(u => u.token == token && u.active==USER.STATE.INACTIVE);
+                    if (user!=null) {
+
+                        user.token="";
+                        user.active = USER.STATE.ACTIVE;
+                        context.SaveChanges();
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            return (user!=null);
         }
         //Remover usuario
         public bool removeUser(int id)
@@ -218,6 +234,23 @@ namespace BL
                 throw;
             }
             return false;
+        }
+        //returns true if email is already in use
+        private bool isEmailTaken(String email)
+        {
+            User user = null;
+            try
+            {
+                using (DAL.TicketSaleEntities context = new DAL.TicketSaleEntities())
+                {
+                    user = context.User.First(u => u.mail == email);
+                }
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            return (user != null);
         }
     }
 }

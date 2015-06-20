@@ -19,6 +19,12 @@
   <wsdl:message name="IUserService_newUser_OutputMessage">
     <wsdl:part name="parameters" element="tns:newUserResponse" />
   </wsdl:message>
+  <wsdl:message name="IUserService_confirmUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:confirmUser" />
+  </wsdl:message>
+  <wsdl:message name="IUserService_confirmUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:confirmUserResponse" />
+  </wsdl:message>
   <wsdl:message name="IUserService_getUser_InputMessage">
     <wsdl:part name="parameters" element="tns:getUser" />
   </wsdl:message>
@@ -46,6 +52,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IUserService/newUser" message="tns:IUserService_newUser_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUserService/newUserResponse" message="tns:IUserService_newUser_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="confirmUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserService/confirmUser" message="tns:IUserService_confirmUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserService/confirmUserResponse" message="tns:IUserService_confirmUser_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="getUser">
       <wsdl:input wsaw:Action="http://tempuri.org/IUserService/getUser" message="tns:IUserService_getUser_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUserService/getUserResponse" message="tns:IUserService_getUser_OutputMessage" />
@@ -72,6 +82,15 @@
     </wsdl:operation>
     <wsdl:operation name="newUser">
       <soap:operation soapAction="http://tempuri.org/IUserService/newUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="confirmUser">
+      <soap:operation soapAction="http://tempuri.org/IUserService/confirmUser" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
