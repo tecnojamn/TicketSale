@@ -65,6 +65,10 @@ namespace WS
 
             return uc.updateUser(Mapper.Map<User>(userDTO));
         }
+        public bool removeUser(int id) {
+            UserController uc = new UserController();
+            return uc.removeUser(id);
+        }
 
     }
 }

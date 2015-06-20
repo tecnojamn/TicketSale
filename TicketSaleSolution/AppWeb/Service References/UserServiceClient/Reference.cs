@@ -50,6 +50,12 @@ namespace AppWeb.UserServiceClient {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/updateUser", ReplyAction="http://tempuri.org/IUserService/updateUserResponse")]
         System.Threading.Tasks.Task<bool> updateUserAsync(DTO.UserDTO userDTO);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/removeUser", ReplyAction="http://tempuri.org/IUserService/removeUserResponse")]
+        bool removeUser(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/removeUser", ReplyAction="http://tempuri.org/IUserService/removeUserResponse")]
+        System.Threading.Tasks.Task<bool> removeUserAsync(int id);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -125,6 +131,14 @@ namespace AppWeb.UserServiceClient {
         
         public System.Threading.Tasks.Task<bool> updateUserAsync(DTO.UserDTO userDTO) {
             return base.Channel.updateUserAsync(userDTO);
+        }
+        
+        public bool removeUser(int id) {
+            return base.Channel.removeUser(id);
+        }
+        
+        public System.Threading.Tasks.Task<bool> removeUserAsync(int id) {
+            return base.Channel.removeUserAsync(id);
         }
     }
 }

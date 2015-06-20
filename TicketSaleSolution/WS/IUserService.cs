@@ -29,5 +29,8 @@ namespace WS
 
         [OperationContract]
         bool updateUser(UserDTO userDTO);
+
+        [OperationContract]
+        bool removeUser(int id);
     }
 }
