@@ -11,7 +11,7 @@
       <xs:element minOccurs="0" name="mail" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="registrationLink" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="token" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="userType" type="xs:unsignedByte" />
     </xs:sequence>
   </xs:complexType>

@@ -346,6 +346,7 @@
       <SubType>Designer</SubType>
     </None>
     <Content Include="Views\Confirm.aspx" />
+    <Content Include="Views\Edit.aspx" />
     <Content Include="Views\Profile.aspx" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
@@ -411,6 +412,13 @@
     </Compile>
     <Compile Include="Site.Master.designer.cs">
       <DependentUpon>Site.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Edit.aspx.cs">
+      <DependentUpon>Edit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Edit.aspx.designer.cs">
+      <DependentUpon>Edit.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Events.aspx.cs">
       <DependentUpon>Events.aspx</DependentUpon>

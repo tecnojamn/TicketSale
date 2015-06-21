@@ -30,8 +30,8 @@ namespace AppWeb.Views
                             lastName = txtLastName.Text,
                             dateBirth = Convert.ToDateTime(dateBirth.Text),
                             password = txtPass1.Text,
-                            active = USER.STATE.ACTIVE, //CAMBIAR POR INACTIVE CUANDO SE HAGA LA CONFIRMACION POR MAIL
-                            userType = USER.TYPE.USER ,
+                            active = USER.STATE.INACTIVE,
+                            userType = USER.TYPE.USER,
                             img = "", //Pendiente de hacer                            
                         };
 

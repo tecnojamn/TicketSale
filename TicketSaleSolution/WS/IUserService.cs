@@ -22,6 +22,9 @@ namespace WS
         bool confirmUser(String token);
 
         [OperationContract]
+        bool changePassword(String oldPassword, String password, int userId);
+
+        [OperationContract]
         UserDTO getUser(int id);
 
         [OperationContract]
