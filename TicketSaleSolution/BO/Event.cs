@@ -26,7 +26,6 @@ namespace BO
         public string description { get; set; }
         public int idEventLocation { get; set; }
         public string type { get; set; }
-        public string img { get; set; }
     
         public virtual EventLocation EventLocation { get; set; }
         public virtual ICollection<TicketType> TicketType { get; set; }

@@ -95,7 +95,7 @@ namespace BL
                     if(isEmailTaken(user.mail)){
                         return false;
                     }
-                    user.registrationLink = ""; //Falta crear random esto antes, traerlo desde el servicio
+                    user.token = ""; //Falta crear random esto antes, traerlo desde el servicio
 
                     if (context.User.Add(user) != null)
                     {

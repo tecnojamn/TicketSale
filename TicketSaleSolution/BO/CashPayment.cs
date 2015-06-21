@@ -14,7 +14,7 @@ namespace BO
     
     public partial class CashPayment
     {
-        public int idPayment { get; set; }
+        public int idReservation { get; set; }
         public int cod { get; set; }
         public int idPaymentLocation { get; set; }
     

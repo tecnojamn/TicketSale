@@ -18,8 +18,8 @@ namespace BO
         public double amount { get; set; }
         public int idReservation { get; set; }
     
-        public virtual CashPayment CashPayment { get; set; }
         public virtual Reservation Reservation { get; set; }
         public virtual PaypalPayment PaypalPayment { get; set; }
+        public virtual CashPayment CashPayment { get; set; }
     }
 }

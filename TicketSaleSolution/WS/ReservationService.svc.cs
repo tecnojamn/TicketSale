@@ -75,7 +75,7 @@ namespace WS
 
 
 
-            return Mapper.Map<ReservationDTO>(rc.getReservation(idReservation));
+            return null;// Mapper.Map<ReservationDTO>(rc.getReservation(idReservation));
 
         }
     }

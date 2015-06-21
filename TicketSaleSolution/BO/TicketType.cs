@@ -26,7 +26,7 @@ namespace BO
         public int finalNum { get; set; }
         public int idEvent { get; set; }
     
-        public virtual Event Event { get; set; }
         public virtual ICollection<Ticket> Ticket { get; set; }
+        public virtual Event Event { get; set; }
     }
 }
