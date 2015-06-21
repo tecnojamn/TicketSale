@@ -19,6 +19,9 @@ namespace WS
         bool newUser(UserDTO userDTO);
 
         [OperationContract]
+        bool confirmUser(String token);
+
+        [OperationContract]
         UserDTO getUser(int id);
 
         [OperationContract]
@@ -26,5 +29,8 @@ namespace WS
 
         [OperationContract]
         bool updateUser(UserDTO userDTO);
+
+        [OperationContract]
+        bool removeUser(int id);
     }
 }

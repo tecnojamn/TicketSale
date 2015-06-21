@@ -19,6 +19,12 @@
   <wsdl:message name="IUserService_newUser_OutputMessage">
     <wsdl:part name="parameters" element="tns:newUserResponse" />
   </wsdl:message>
+  <wsdl:message name="IUserService_confirmUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:confirmUser" />
+  </wsdl:message>
+  <wsdl:message name="IUserService_confirmUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:confirmUserResponse" />
+  </wsdl:message>
   <wsdl:message name="IUserService_getUser_InputMessage">
     <wsdl:part name="parameters" element="tns:getUser" />
   </wsdl:message>
@@ -37,6 +43,12 @@
   <wsdl:message name="IUserService_updateUser_OutputMessage">
     <wsdl:part name="parameters" element="tns:updateUserResponse" />
   </wsdl:message>
+  <wsdl:message name="IUserService_removeUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:removeUser" />
+  </wsdl:message>
+  <wsdl:message name="IUserService_removeUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:removeUserResponse" />
+  </wsdl:message>
   <wsdl:portType name="IUserService">
     <wsdl:operation name="authorize">
       <wsdl:input wsaw:Action="http://tempuri.org/IUserService/authorize" message="tns:IUserService_authorize_InputMessage" />
@@ -45,6 +57,10 @@
     <wsdl:operation name="newUser">
       <wsdl:input wsaw:Action="http://tempuri.org/IUserService/newUser" message="tns:IUserService_newUser_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUserService/newUserResponse" message="tns:IUserService_newUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="confirmUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserService/confirmUser" message="tns:IUserService_confirmUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserService/confirmUserResponse" message="tns:IUserService_confirmUser_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="getUser">
       <wsdl:input wsaw:Action="http://tempuri.org/IUserService/getUser" message="tns:IUserService_getUser_InputMessage" />
@@ -57,6 +73,10 @@
     <wsdl:operation name="updateUser">
       <wsdl:input wsaw:Action="http://tempuri.org/IUserService/updateUser" message="tns:IUserService_updateUser_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUserService/updateUserResponse" message="tns:IUserService_updateUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="removeUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserService/removeUser" message="tns:IUserService_removeUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserService/removeUserResponse" message="tns:IUserService_removeUser_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IUserService" type="tns:IUserService">
@@ -72,6 +92,15 @@
     </wsdl:operation>
     <wsdl:operation name="newUser">
       <soap:operation soapAction="http://tempuri.org/IUserService/newUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="confirmUser">
+      <soap:operation soapAction="http://tempuri.org/IUserService/confirmUser" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -99,6 +128,15 @@
     </wsdl:operation>
     <wsdl:operation name="updateUser">
       <soap:operation soapAction="http://tempuri.org/IUserService/updateUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="removeUser">
+      <soap:operation soapAction="http://tempuri.org/IUserService/removeUser" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

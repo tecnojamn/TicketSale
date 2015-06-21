@@ -32,6 +32,12 @@ namespace WS
 
             return uc.newUser(Mapper.Map<User>(userDTO));
         }
+        public bool confirmUser(String token)
+        {
+            UserController uc = new UserController();
+            return uc.confirmUser(token);
+        }
+
         public UserDTO getUser(int id)
         {
             UserController uc = new UserController();
@@ -58,6 +64,10 @@ namespace WS
                 .ForMember(u => u.Reservation, opt => opt.Ignore()); 
 
             return uc.updateUser(Mapper.Map<User>(userDTO));
+        }
+        public bool removeUser(int id) {
+            UserController uc = new UserController();
+            return uc.removeUser(id);
         }
 
     }
