@@ -13,6 +13,13 @@ namespace AppWeb.Views
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack) { 
+            int userId;
+            if (Int32.TryParse("" + Session["id"] + "", out userId))
+            {
+                Response.Redirect("Default.aspx");
+            }
+            }
         }
 
         protected void signupSubmit_Click(object sender, EventArgs e)
