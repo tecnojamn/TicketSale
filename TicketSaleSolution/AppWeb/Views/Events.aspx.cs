@@ -134,24 +134,36 @@ namespace AppWeb.Views
             else
             {
                 int ttCount = gvTickets.Rows.Count;
-                int[,] tickets = new int[ttCount,2];
-
-                for (int i = 0; i < gvTickets.Rows.Count; i++)
+                int[,] tickets = new int[ttCount, 2];
+                int i;
+                for (i = 0; i < gvTickets.Rows.Count; i++)
                 {
                     tickets[i, 0] = int.Parse(((TextBox)gvTickets.Rows[i].Cells[3].FindControl("txtTickets")).Text);
-                    tickets[i, 1] = i+1;
+                    tickets[i, 1] = i + 1;
                 }
 
                 List<SubOrderDTO> listSubOrderDTO = new List<SubOrderDTO>();
-               // listSubOrderDTO.Add()
 
-                ReservationDTO resDTO = new ReservationDTO(){
+                for (i = 0; i < ttCount; i++)
+                {
+                    listSubOrderDTO.Add(
+                        new SubOrderDTO()
+                        {
+                            active = (byte)RESERVATION.SUBORDER.ACTIVE,
+                            //idTicket = 
+                        }
+                    );
+                }
+
+
+                ReservationDTO resDTO = new ReservationDTO()
+                {
                     date = DateTime.Today,
                     idUser = int.Parse(Session["id"].ToString()),
-                    
-                    
+
+
                 };
-                
+
             }
         }
     }
