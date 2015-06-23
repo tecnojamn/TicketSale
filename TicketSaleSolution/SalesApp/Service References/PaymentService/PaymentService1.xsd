@@ -40,7 +40,7 @@
   <xs:element name="newPaymentResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="newPaymentResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="newPaymentResult" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -55,6 +55,18 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="updatePaymentResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getPaymentLocations">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getPaymentLocationsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/DTO" minOccurs="0" name="getPaymentLocationsResult" nillable="true" type="q5:ArrayOfPaymentLocationDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

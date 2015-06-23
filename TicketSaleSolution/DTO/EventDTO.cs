@@ -34,7 +34,7 @@ namespace DTO
         [DataMember]
         public System.DateTime date { get; set; }
         [DataMember]
-        public byte enable { get; set; }
+        public byte enabled { get; set; }
         [DataMember]
         public string name { get; set; }
         [DataMember]
@@ -43,8 +43,6 @@ namespace DTO
         public int idEventLocation { get; set; }
         [DataMember]
         public string type { get; set; }
-        [DataMember]
-        public string img { get; set; }
         [DataMember]
         public virtual EventLocationDTO EventLocation { get; set; }
         [DataMember]

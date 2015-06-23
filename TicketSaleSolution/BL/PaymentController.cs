@@ -45,7 +45,7 @@ namespace BL
             }
             return payments;
         }
-        public bool newPayment(Payment p)
+        public int newPayment(Payment p)
         {
             try
             {
@@ -54,15 +54,16 @@ namespace BL
                     if (context.Payment.Add(p) != null)
                     {
                         context.SaveChanges();
+                        return p.idReservation;
+                        //return context.Payment.Last().idReservation;
                     }
-                    else { return false; }
+                    else { return 0; }
                 }
             }
             catch (Exception)
             {
                 throw;
             }
-            return true;
         }
         public bool updatePayment(Payment p)
         {
@@ -86,6 +87,24 @@ namespace BL
                 throw;
             }
             return true;
+        }
+
+        public List<PaymentLocation> getPaymentLocations()
+        {
+            List<PaymentLocation> paymentLocations = new List<PaymentLocation>();
+            try
+            {
+                using (DAL.TicketSaleEntities context = new DAL.TicketSaleEntities())
+                {
+                    paymentLocations = context.PaymentLocation.Select(p => p).ToList();
+                }
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            return paymentLocations;
         }
     }
 }

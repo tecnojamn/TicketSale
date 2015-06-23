@@ -74,6 +74,9 @@ namespace SalesApp
 
         private void button2_Click(object sender, EventArgs e)
         {
+            frmPayment payment = new frmPayment();
+            payment.MdiParent = this.ParentForm;
+            payment.Show();
         }
 
         private void gvTickets_CellContentClick(object sender, DataGridViewCellEventArgs e)

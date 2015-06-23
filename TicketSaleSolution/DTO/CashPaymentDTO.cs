@@ -7,7 +7,7 @@
     public class CashPaymentDTO
     {
         [DataMember]
-        public int idPayment { get; set; }
+        public int idReservation { get; set; }
         [DataMember]
         public int cod { get; set; }
         [DataMember]

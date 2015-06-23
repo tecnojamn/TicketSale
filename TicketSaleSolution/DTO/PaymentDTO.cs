@@ -7,8 +7,6 @@
     public class PaymentDTO
     {
         [DataMember]
-        public int id { get; set; }
-        [DataMember]
         public System.DateTime date { get; set; }
         [DataMember]
         public double amount { get; set; }

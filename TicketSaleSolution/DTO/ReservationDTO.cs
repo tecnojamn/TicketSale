@@ -10,7 +10,6 @@ namespace DTO
         public ReservationDTO()
         {
             this.SubOrder = new HashSet<SubOrderDTO>();
-            this.Payment = new HashSet<PaymentDTO>();
         }
 
         [DataMember]
@@ -24,6 +23,6 @@ namespace DTO
         [DataMember]
         public virtual ICollection<SubOrderDTO> SubOrder { get; set; }
         [DataMember]
-        public virtual ICollection<PaymentDTO> Payment { get; set; }
+        public virtual PaymentDTO Payment { get; set; }
     }
 }
