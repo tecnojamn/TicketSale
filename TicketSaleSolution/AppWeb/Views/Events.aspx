@@ -25,11 +25,11 @@
         <Columns>
             <asp:BoundField DataField="Sector" HeaderText="Sector" />
             <asp:BoundField DataField="Costo" HeaderText="Costo" />
-            <asp:BoundField DataField="EntradasDisponibles" HeaderText="Entradas Disponbiles" />
+            <asp:BoundField DataField="EntradasDisponibles" HeaderText="Entradas Disponibles" />
 
             <asp:TemplateField HeaderText="Reservar">
                 <ItemTemplate>
-                    <input id="ticketsQuantity" type="number" />
+                    <asp:TextBox ID="txtTickets" runat="server" TextMode="Number"></asp:TextBox>
                 </ItemTemplate>
             </asp:TemplateField>
 
