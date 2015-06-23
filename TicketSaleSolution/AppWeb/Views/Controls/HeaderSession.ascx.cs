@@ -28,6 +28,7 @@ namespace AppWeb.Views.Controls
             Session["name"] = USER.GUESTNAME;
             Session["mail"] = "";
             Session["userType"] = "";
+            Session["id"] = "";
 
             Response.Redirect("Default.aspx");
         }

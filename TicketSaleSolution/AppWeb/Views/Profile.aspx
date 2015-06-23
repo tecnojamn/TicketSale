@@ -3,12 +3,15 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder" runat="server">
+                    <asp:Panel CssClass="hide" ID="AlertPanel" runat="server">
+                        <asp:Label ID="AlertLabel" runat="server" Text="Label" CssClass="sr-only"></asp:Label>
+                    </asp:Panel>
 
 
-
-
-    <div class="well" style="overflow:hidden;">
+    
+     <asp:Panel ID="PanelUser" runat="server" CssClass="well" style="overflow:hidden;">
         <div id="personalInfo">
+           
             <span class="col-lg-12">Mis datos</span>
             <label  class="col-lg-12">Nombre:</label>
             <div  class="col-lg-12"><asp:Label CssClass="col-lg-6" ID="LblName" runat="server" Text="Label"></asp:Label></div>
@@ -19,8 +22,9 @@
             <label  class="col-lg-12">Fecha Nacimiento:</label>
             <div  class="col-lg-12"><asp:Label CssClass="col-lg-6" ID="LblDOB" runat="server" Text="Label"></asp:Label></div>
         </div>
-        <div css="col-log12" id="editPersonalInfo">
-            <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="Dar de baja" />        
+        <div class="col-log12" id="editPersonalInfo">
+            <asp:Button ID="Button2" runat="server" OnClick="Unsuscribe_Click" CssClass="btn btn-default" Text="Dar de baja" /> 
+            <asp:Button ID="Button1" runat="server" OnClick="GotoEdit_Click"  CssClass="btn btn-default" Text="Editar datos" />
         </div>
-    </div>
+   </asp:Panel>
 </asp:Content>

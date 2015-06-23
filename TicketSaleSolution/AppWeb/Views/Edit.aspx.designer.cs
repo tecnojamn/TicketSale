@@ -10,7 +10,7 @@
 namespace AppWeb.Views {
     
     
-    public partial class Profile {
+    public partial class Edit {
         
         /// <summary>
         /// Control AlertPanel.
@@ -40,40 +40,22 @@ namespace AppWeb.Views {
         protected global::System.Web.UI.WebControls.Panel PanelUser;
         
         /// <summary>
-        /// Control LblName.
+        /// Control TextName.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblName;
+        protected global::System.Web.UI.WebControls.TextBox TextName;
         
         /// <summary>
-        /// Control LblLastName.
+        /// Control TextLastName.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblLastName;
-        
-        /// <summary>
-        /// Control LblMail.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblMail;
-        
-        /// <summary>
-        /// Control LblDOB.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblDOB;
+        protected global::System.Web.UI.WebControls.TextBox TextLastName;
         
         /// <summary>
         /// Control Button2.
@@ -83,6 +65,33 @@ namespace AppWeb.Views {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Button2;
+        
+        /// <summary>
+        /// Control TextCurrentPassword.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextCurrentPassword;
+        
+        /// <summary>
+        /// Control TextNewPassword.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextNewPassword;
+        
+        /// <summary>
+        /// Control TextConfirmationPassword.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextConfirmationPassword;
         
         /// <summary>
         /// Control Button1.

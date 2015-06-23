@@ -37,7 +37,10 @@ namespace WS
             UserController uc = new UserController();
             return uc.confirmUser(token);
         }
-
+        public bool changePassword(String oldPassword, String password, int userId) {
+            UserController uc = new UserController();
+            return uc.updatePassword(oldPassword,password,userId);
+        }
         public UserDTO getUser(int id)
         {
             UserController uc = new UserController();
@@ -60,10 +63,10 @@ namespace WS
         {
             UserController uc = new UserController();
 
-            Mapper.CreateMap<User, UserDTO>()
-                .ForMember(u => u.Reservation, opt => opt.Ignore()); 
-
+            Mapper.CreateMap<UserDTO, User>()
+               .ForMember(u => u.Reservation, opt => opt.Ignore()); 
             return uc.updateUser(Mapper.Map<User>(userDTO));
+          
         }
         public bool removeUser(int id) {
             UserController uc = new UserController();

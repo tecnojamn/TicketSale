@@ -138,10 +138,11 @@ namespace BL
                     User u = context.User.FirstOrDefault(us => us.id == id);
                     if (u != null)
                     {
-                        if (context.User.Remove(u) != null)
-                        {
+                        //if (context.User.Remove(u) != null)
+                        //{
+                            u.active = USER.STATE.INACTIVE;
                             context.SaveChanges();
-                        }
+                        //}
 
                     }
                     else { return false; }
@@ -151,7 +152,7 @@ namespace BL
             {
                 return false;
             }
-            return false;
+            return true;
         }
         /* //Editar datos usuario (NO SIRVE)
          public bool updateUser(int id, string mail, string password, string name, string lastName, System.DateTime dateBirth, byte userType)
@@ -192,13 +193,13 @@ namespace BL
                     User u = context.User.FirstOrDefault(user => user.id == us.id);
                     if (u != null)
                     {
-                        u.mail = us.mail;
-                        u.password = us.password;
-                        u.name = us.name;
-                        u.lastName = us.lastName;
-                        u.dateBirth = us.dateBirth;
-                        u.userType = us.userType;
-                        u.active = us.active;
+                       // u.mail = (us.mail!=null && !us.mail.Equals(""))?us.mail:u.mail;
+                       // u.password = (us.password != null && !us.password.Equals("")) ? us.password : u.password;
+                        u.name = (us.name != null && !us.name.Equals("")) ? us.name : u.name; ;
+                        u.lastName = (us.lastName != null && !us.lastName.Equals("")) ? us.lastName : u.lastName; ;
+                       // u.dateBirth = (us.dateBirth != null) ? us.dateBirth : u.dateBirth;
+                       // u.userType = (us.userType!=null)?us.userType:u.userType;
+                       // u.active = (us.active != null) ? us.active : u.active;
                         context.SaveChanges();
                     }
                     else { return false; }
@@ -206,12 +207,33 @@ namespace BL
             }
             catch (Exception)
             {
-                throw;
+                return false;
             }
             return true;
 
         }
+        public bool updatePassword(String oldPassword,String password,int userId)
+        {
+            try
+            {
+                using (DAL.TicketSaleEntities context = new DAL.TicketSaleEntities())
+                {
+                    User u = context.User.FirstOrDefault(user => user.id == userId && user.password==oldPassword);
+                    if (u != null)
+                    {
+                        u.password = password;   
+                        context.SaveChanges();
+                    }
+                    else { return false; }
+                }
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            return true;
 
+        }
         //Usuario inactivo 
         public bool desactivateUser(int id)
         {

@@ -33,6 +33,12 @@ namespace AppWeb.UserServiceClient {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/confirmUser", ReplyAction="http://tempuri.org/IUserService/confirmUserResponse")]
         System.Threading.Tasks.Task<bool> confirmUserAsync(string token);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/changePassword", ReplyAction="http://tempuri.org/IUserService/changePasswordResponse")]
+        bool changePassword(string oldPassword, string password, int userId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/changePassword", ReplyAction="http://tempuri.org/IUserService/changePasswordResponse")]
+        System.Threading.Tasks.Task<bool> changePasswordAsync(string oldPassword, string password, int userId);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/getUser", ReplyAction="http://tempuri.org/IUserService/getUserResponse")]
         DTO.UserDTO getUser(int id);
         
@@ -107,6 +113,14 @@ namespace AppWeb.UserServiceClient {
         
         public System.Threading.Tasks.Task<bool> confirmUserAsync(string token) {
             return base.Channel.confirmUserAsync(token);
+        }
+        
+        public bool changePassword(string oldPassword, string password, int userId) {
+            return base.Channel.changePassword(oldPassword, password, userId);
+        }
+        
+        public System.Threading.Tasks.Task<bool> changePasswordAsync(string oldPassword, string password, int userId) {
+            return base.Channel.changePasswordAsync(oldPassword, password, userId);
         }
         
         public DTO.UserDTO getUser(int id) {

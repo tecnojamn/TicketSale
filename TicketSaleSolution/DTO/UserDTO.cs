@@ -29,7 +29,7 @@ namespace DTO
         [DataMember]
         public byte active { get; set; }
         [DataMember]
-        public string registrationLink { get; set; }
+        public string token { get; set; }
         [DataMember]
         public string img { get; set; }
         [DataMember]

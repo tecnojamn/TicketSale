@@ -27,6 +27,7 @@ namespace AppWeb
                 panelLogin.Controls.Add(Page.LoadControl("/Views/Controls/HeaderSession.ascx"));
             }
 
+
         }
         protected void btnLogin_Click(object sender, EventArgs e)
         {
@@ -35,6 +36,11 @@ namespace AppWeb
         protected void btnSignup_Click(object sender, EventArgs e)
         {
             Response.Redirect("Signup.aspx");
+        }
+
+        protected void imgbtnLogo_Click(object sender, ImageClickEventArgs e)
+        {
+            Response.Redirect("Default.aspx");
         }
     }
 }
