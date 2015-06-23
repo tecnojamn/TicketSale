@@ -20,17 +20,21 @@
     <label>Entradas Disponibles: </label>
     <asp:Label ID="lblTickets" runat="server" Text=""></asp:Label><br />
     <label>Sectores Disponibles: </label>
-    <asp:GridView ID="gvTickets" runat="server">
+
+    <asp:GridView ID="gvTickets" runat="server" AutoGenerateColumns="false">
         <Columns>
-            <asp:TemplateField HeaderText="Sector"></asp:TemplateField>
-            <asp:TemplateField HeaderText="Costo"></asp:TemplateField>
-            <asp:TemplateField HeaderText="Disponibles/Totales"></asp:TemplateField>
+            <asp:BoundField DataField="Sector" HeaderText="Sector" />
+            <asp:BoundField DataField="Costo" HeaderText="Costo" />
+            <asp:BoundField DataField="EntradasDisponibles" HeaderText="Entradas Disponbiles" />
+
             <asp:TemplateField HeaderText="Reservar">
                 <ItemTemplate>
                     <input id="ticketsQuantity" type="number" />
                 </ItemTemplate>
             </asp:TemplateField>
+
         </Columns>
     </asp:GridView>
 
+    <asp:Button ID="btnDoReserve" runat="server" Text="Realizar Reserva" OnClick="btnDoReserve_Click"/>
 </asp:Content>
