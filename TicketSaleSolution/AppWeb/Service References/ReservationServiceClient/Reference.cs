@@ -15,11 +15,35 @@ namespace AppWeb.ReservationServiceClient {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ReservationServiceClient.IReservationService")]
     public interface IReservationService {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReservationService/DoWork", ReplyAction="http://tempuri.org/IReservationService/DoWorkResponse")]
-        void DoWork();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReservationService/newReservation", ReplyAction="http://tempuri.org/IReservationService/newReservationResponse")]
+        bool newReservation(DTO.ReservationDTO resDTO);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReservationService/DoWork", ReplyAction="http://tempuri.org/IReservationService/DoWorkResponse")]
-        System.Threading.Tasks.Task DoWorkAsync();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReservationService/newReservation", ReplyAction="http://tempuri.org/IReservationService/newReservationResponse")]
+        System.Threading.Tasks.Task<bool> newReservationAsync(DTO.ReservationDTO resDTO);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReservationService/autoCancelation", ReplyAction="http://tempuri.org/IReservationService/autoCancelationResponse")]
+        bool autoCancelation();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReservationService/autoCancelation", ReplyAction="http://tempuri.org/IReservationService/autoCancelationResponse")]
+        System.Threading.Tasks.Task<bool> autoCancelationAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReservationService/getReservationsByUser", ReplyAction="http://tempuri.org/IReservationService/getReservationsByUserResponse")]
+        DTO.ReservationDTO[] getReservationsByUser(int idUser, int page, int pageSize);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReservationService/getReservationsByUser", ReplyAction="http://tempuri.org/IReservationService/getReservationsByUserResponse")]
+        System.Threading.Tasks.Task<DTO.ReservationDTO[]> getReservationsByUserAsync(int idUser, int page, int pageSize);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReservationService/getReservations", ReplyAction="http://tempuri.org/IReservationService/getReservationsResponse")]
+        DTO.ReservationDTO[] getReservations(int page, int pageSize);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReservationService/getReservations", ReplyAction="http://tempuri.org/IReservationService/getReservationsResponse")]
+        System.Threading.Tasks.Task<DTO.ReservationDTO[]> getReservationsAsync(int page, int pageSize);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReservationService/getReservation", ReplyAction="http://tempuri.org/IReservationService/getReservationResponse")]
+        DTO.ReservationDTO getReservation(int idReservation);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReservationService/getReservation", ReplyAction="http://tempuri.org/IReservationService/getReservationResponse")]
+        System.Threading.Tasks.Task<DTO.ReservationDTO> getReservationAsync(int idReservation);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -49,12 +73,44 @@ namespace AppWeb.ReservationServiceClient {
                 base(binding, remoteAddress) {
         }
         
-        public void DoWork() {
-            base.Channel.DoWork();
+        public bool newReservation(DTO.ReservationDTO resDTO) {
+            return base.Channel.newReservation(resDTO);
         }
         
-        public System.Threading.Tasks.Task DoWorkAsync() {
-            return base.Channel.DoWorkAsync();
+        public System.Threading.Tasks.Task<bool> newReservationAsync(DTO.ReservationDTO resDTO) {
+            return base.Channel.newReservationAsync(resDTO);
+        }
+        
+        public bool autoCancelation() {
+            return base.Channel.autoCancelation();
+        }
+        
+        public System.Threading.Tasks.Task<bool> autoCancelationAsync() {
+            return base.Channel.autoCancelationAsync();
+        }
+        
+        public DTO.ReservationDTO[] getReservationsByUser(int idUser, int page, int pageSize) {
+            return base.Channel.getReservationsByUser(idUser, page, pageSize);
+        }
+        
+        public System.Threading.Tasks.Task<DTO.ReservationDTO[]> getReservationsByUserAsync(int idUser, int page, int pageSize) {
+            return base.Channel.getReservationsByUserAsync(idUser, page, pageSize);
+        }
+        
+        public DTO.ReservationDTO[] getReservations(int page, int pageSize) {
+            return base.Channel.getReservations(page, pageSize);
+        }
+        
+        public System.Threading.Tasks.Task<DTO.ReservationDTO[]> getReservationsAsync(int page, int pageSize) {
+            return base.Channel.getReservationsAsync(page, pageSize);
+        }
+        
+        public DTO.ReservationDTO getReservation(int idReservation) {
+            return base.Channel.getReservation(idReservation);
+        }
+        
+        public System.Threading.Tasks.Task<DTO.ReservationDTO> getReservationAsync(int idReservation) {
+            return base.Channel.getReservationAsync(idReservation);
         }
     }
 }

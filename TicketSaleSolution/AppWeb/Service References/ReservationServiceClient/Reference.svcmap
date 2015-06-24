@@ -22,6 +22,8 @@
     <MetadataSource Address="http://localhost:3643/ReservationService.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
+    <MetadataFile FileName="ReservationService1.xsd" MetadataType="Schema" ID="d3874b82-8393-42c9-ab6a-df603a29c6aa" SourceId="1" SourceUrl="http://localhost:3643/ReservationService.svc?xsd=xsd1" />
+    <MetadataFile FileName="ReservationService11.xsd" MetadataType="Schema" ID="d6129b5f-f23e-4862-aadc-72933d8c99cc" SourceId="1" SourceUrl="http://localhost:3643/ReservationService.svc?xsd=xsd2" />
     <MetadataFile FileName="ReservationService.xsd" MetadataType="Schema" ID="3833055d-b45d-40eb-9d81-bdb617b47a91" SourceId="1" SourceUrl="http://localhost:3643/ReservationService.svc?xsd=xsd0" />
     <MetadataFile FileName="ReservationService.disco" MetadataType="Disco" ID="e9c6907f-54fd-4911-96ab-810cd5e3ea80" SourceId="1" SourceUrl="http://localhost:3643/ReservationService.svc?disco" />
     <MetadataFile FileName="ReservationService.wsdl" MetadataType="Wsdl" ID="52b27b4e-7388-4776-8f8b-a720d96065bd" SourceId="1" SourceUrl="http://localhost:3643/ReservationService.svc?wsdl" />

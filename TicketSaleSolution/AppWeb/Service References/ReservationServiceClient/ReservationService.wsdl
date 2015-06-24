@@ -3,24 +3,102 @@
   <wsdl:types>
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost:3643/ReservationService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:3643/ReservationService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:3643/ReservationService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/DTO" />
     </xsd:schema>
   </wsdl:types>
-  <wsdl:message name="IReservationService_DoWork_InputMessage">
-    <wsdl:part name="parameters" element="tns:DoWork" />
+  <wsdl:message name="IReservationService_newReservation_InputMessage">
+    <wsdl:part name="parameters" element="tns:newReservation" />
   </wsdl:message>
-  <wsdl:message name="IReservationService_DoWork_OutputMessage">
-    <wsdl:part name="parameters" element="tns:DoWorkResponse" />
+  <wsdl:message name="IReservationService_newReservation_OutputMessage">
+    <wsdl:part name="parameters" element="tns:newReservationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReservationService_autoCancelation_InputMessage">
+    <wsdl:part name="parameters" element="tns:autoCancelation" />
+  </wsdl:message>
+  <wsdl:message name="IReservationService_autoCancelation_OutputMessage">
+    <wsdl:part name="parameters" element="tns:autoCancelationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReservationService_getReservationsByUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:getReservationsByUser" />
+  </wsdl:message>
+  <wsdl:message name="IReservationService_getReservationsByUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getReservationsByUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReservationService_getReservations_InputMessage">
+    <wsdl:part name="parameters" element="tns:getReservations" />
+  </wsdl:message>
+  <wsdl:message name="IReservationService_getReservations_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getReservationsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReservationService_getReservation_InputMessage">
+    <wsdl:part name="parameters" element="tns:getReservation" />
+  </wsdl:message>
+  <wsdl:message name="IReservationService_getReservation_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getReservationResponse" />
   </wsdl:message>
   <wsdl:portType name="IReservationService">
-    <wsdl:operation name="DoWork">
-      <wsdl:input wsaw:Action="http://tempuri.org/IReservationService/DoWork" message="tns:IReservationService_DoWork_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IReservationService/DoWorkResponse" message="tns:IReservationService_DoWork_OutputMessage" />
+    <wsdl:operation name="newReservation">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReservationService/newReservation" message="tns:IReservationService_newReservation_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReservationService/newReservationResponse" message="tns:IReservationService_newReservation_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="autoCancelation">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReservationService/autoCancelation" message="tns:IReservationService_autoCancelation_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReservationService/autoCancelationResponse" message="tns:IReservationService_autoCancelation_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getReservationsByUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReservationService/getReservationsByUser" message="tns:IReservationService_getReservationsByUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReservationService/getReservationsByUserResponse" message="tns:IReservationService_getReservationsByUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getReservations">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReservationService/getReservations" message="tns:IReservationService_getReservations_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReservationService/getReservationsResponse" message="tns:IReservationService_getReservations_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getReservation">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReservationService/getReservation" message="tns:IReservationService_getReservation_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReservationService/getReservationResponse" message="tns:IReservationService_getReservation_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IReservationService" type="tns:IReservationService">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="DoWork">
-      <soap:operation soapAction="http://tempuri.org/IReservationService/DoWork" style="document" />
+    <wsdl:operation name="newReservation">
+      <soap:operation soapAction="http://tempuri.org/IReservationService/newReservation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="autoCancelation">
+      <soap:operation soapAction="http://tempuri.org/IReservationService/autoCancelation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getReservationsByUser">
+      <soap:operation soapAction="http://tempuri.org/IReservationService/getReservationsByUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getReservations">
+      <soap:operation soapAction="http://tempuri.org/IReservationService/getReservations" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getReservation">
+      <soap:operation soapAction="http://tempuri.org/IReservationService/getReservation" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

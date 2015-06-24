@@ -274,6 +274,7 @@
     <Content Include="Properties\DataSources\DTO.UserDTO.datasource" />
     <Content Include="Properties\DataSources\DTO.PaymentDTO.datasource" />
     <Content Include="Properties\DataSources\DTO.EventDTO.datasource" />
+    <Content Include="Properties\DataSources\DTO.ReservationDTO.datasource" />
     <None Include="Service References\EventServiceClient\EventService.wsdl" />
     <None Include="Service References\EventServiceClient\EventService.xsd">
       <SubType>Designer</SubType>
@@ -296,6 +297,12 @@
     </None>
     <None Include="Service References\ReservationServiceClient\ReservationService.wsdl" />
     <None Include="Service References\ReservationServiceClient\ReservationService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ReservationServiceClient\ReservationService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ReservationServiceClient\ReservationService11.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\UserServiceClient\UserService.disco" />

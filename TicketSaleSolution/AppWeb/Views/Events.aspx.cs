@@ -12,7 +12,6 @@ namespace AppWeb.Views
 {
     public partial class Events : System.Web.UI.Page
     {
-
         protected void Page_Load(object sender, EventArgs e)
         {
             bool log = false;
@@ -56,7 +55,10 @@ namespace AppWeb.Views
                         _row["EntradasDisponibles"] = tt.getAvailableTicketCount();
                         // _row["Reservar"] = (new Button() { Text="+"});
 
-                        //if (log) { _row["Reserva"] = 0; }
+                        if (log)
+                        {
+                            //_row["ttid"] = tt.id;
+                        }
                         dt.Rows.Add(_row);
                     }
 
@@ -133,36 +135,64 @@ namespace AppWeb.Views
             }
             else
             {
+                EventDTO eventDTO = ProxyManager.getEventService().getEvent(int.Parse(Request.QueryString["id"]));
                 int ttCount = gvTickets.Rows.Count;
                 int[,] tickets = new int[ttCount, 2];
                 int i;
+                int j;
+                int ticketQuantity;
+                bool parsingError = false;
+
+
                 for (i = 0; i < gvTickets.Rows.Count; i++)
                 {
-                    tickets[i, 0] = int.Parse(((TextBox)gvTickets.Rows[i].Cells[3].FindControl("txtTickets")).Text);
-                    tickets[i, 1] = i + 1;
+                    string auxTicketQuantity = ((TextBox)gvTickets.Rows[i].Cells[3].FindControl("txtTickets")).Text;
+                    if (auxTicketQuantity.Equals("")) { auxTicketQuantity = "0"; }
+                    if (int.TryParse(auxTicketQuantity, out ticketQuantity))
+                    {
+                        tickets[i, 0] = ticketQuantity;
+                        tickets[i, 1] = i;
+                    }
+                    else { parsingError = true; break; } //ERROR de PARSEO en CANTIDAD DE ENTRADAS
+
                 }
 
-                List<SubOrderDTO> listSubOrderDTO = new List<SubOrderDTO>();
-
-                for (i = 0; i < ttCount; i++)
+                if (!parsingError)
                 {
-                    listSubOrderDTO.Add(
-                        new SubOrderDTO()
+
+                    List<SubOrderDTO> listSubOrderDTO = new List<SubOrderDTO>();
+                    //int idTicket = eventDTO.TicketType.Skip(tickets[0, 1]).FirstOrDefault().Ticket.Where(t => t.SubOrder.Count == 0 || t.SubOrder.Where(so => so.active == RESERVATION.SUBORDER.ACTIVE).Count() == 0).Skip(1).FirstOrDefault().id;
+
+                    for (i = 0; i < ttCount; i++)
+                    {
+                        for (j = 0; j < tickets[i, 0]; j++)
                         {
-                            active = (byte)RESERVATION.SUBORDER.ACTIVE,
-                            //idTicket = 
+                            listSubOrderDTO.Add(
+                                new SubOrderDTO()
+                                {
+                                    active = (byte)RESERVATION.SUBORDER.ACTIVE,
+                                    idTicket = eventDTO.TicketType
+                                        .Skip(tickets[i, 1])
+                                        .FirstOrDefault()
+                                        .Ticket
+                                            .Where(t => t.SubOrder.Count == 0 || t.SubOrder.Where(so => so.active == RESERVATION.SUBORDER.ACTIVE).Count() == 0)
+                                            .Skip(j)
+                                            .FirstOrDefault().id,
+                                }
+                            );
                         }
-                    );
+                    }
+
+                    ReservationDTO resDTO = new ReservationDTO()
+                    {
+                        date = DateTime.Today,
+                        idUser = int.Parse(Session["id"].ToString()),
+                        SubOrder = listSubOrderDTO
+                    };
+
+                    ProxyManager.getReservationService().newReservation(resDTO);
                 }
-
-
-                ReservationDTO resDTO = new ReservationDTO()
-                {
-                    date = DateTime.Today,
-                    idUser = int.Parse(Session["id"].ToString()),
-
-
-                };
+                else { }//ERROR DE PARSEO, METIO STRING EN CANTIDAD DE ENTRADAS
 
             }
         }

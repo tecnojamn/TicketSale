@@ -44,8 +44,6 @@ namespace DTO
         [DataMember]
         public string type { get; set; }
         [DataMember]
-        public string img { get; set; }
-        [DataMember]
         public virtual EventLocationDTO EventLocation { get; set; }
         [DataMember]
         public virtual ICollection<TicketTypeDTO> TicketType { get; set; }
