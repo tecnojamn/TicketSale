@@ -104,54 +104,39 @@ namespace AppWeb.Views
 
         }
 
-        protected void btnAddTicket_Click(object sender, CommandEventArgs e)
-        {
-            int row = int.Parse(e.CommandArgument.ToString());
-            int _tickets = int.Parse(gvTickets.Rows[row].Cells[4].Text);
-            _tickets++;
-            gvTickets.Rows[row].Cells[4].Text = _tickets.ToString();
-        }
-
-        protected void btnRemoveTicket_Click(object sender, CommandEventArgs e)
-        {
-            int row = int.Parse(e.CommandArgument.ToString());
-        }
-
         protected void btnDoReserve_Click(object sender, EventArgs e)
         {
             bool log = false;
             if (Session["log"] == null)
             {
                 Session["log"] = SESSION.STATE.OFF;
+                Response.Redirect("Login.aspx");
             }
             if (Session["log"] == SESSION.STATE.ON)
             {
                 log = true;
             }
-
-            if (!log)
+            else
             {
                 Response.Redirect("Login.aspx");
             }
-            else
+
+            if (log)
             {
                 EventDTO eventDTO = ProxyManager.getEventService().getEvent(int.Parse(Request.QueryString["id"]));
                 int ttCount = gvTickets.Rows.Count;
-                int[,] tickets = new int[ttCount, 2];
-                int i;
-                int j;
-                int ticketQuantity;
+                int[] tickets = new int[ttCount];
+                int i, j,ticketQuantity;
                 bool parsingError = false;
 
 
                 for (i = 0; i < gvTickets.Rows.Count; i++)
                 {
-                    string auxTicketQuantity = ((TextBox)gvTickets.Rows[i].Cells[3].FindControl("txtTickets")).Text;
-                    if (auxTicketQuantity.Equals("")) { auxTicketQuantity = "0"; }
-                    if (int.TryParse(auxTicketQuantity, out ticketQuantity))
+                    string _ticketQuantity = ((TextBox)gvTickets.Rows[i].Cells[3].FindControl("txtTickets")).Text;
+                    if (_ticketQuantity.Equals("")) { _ticketQuantity = "0"; }
+                    if (int.TryParse(_ticketQuantity, out ticketQuantity))
                     {
-                        tickets[i, 0] = ticketQuantity;
-                        tickets[i, 1] = i;
+                        tickets[i] = ticketQuantity;
                     }
                     else { parsingError = true; break; } //ERROR de PARSEO en CANTIDAD DE ENTRADAS
 
@@ -165,14 +150,14 @@ namespace AppWeb.Views
 
                     for (i = 0; i < ttCount; i++)
                     {
-                        for (j = 0; j < tickets[i, 0]; j++)
+                        for (j = 0; j < tickets[i]; j++)
                         {
                             listSubOrderDTO.Add(
                                 new SubOrderDTO()
                                 {
                                     active = (byte)RESERVATION.SUBORDER.ACTIVE,
                                     idTicket = eventDTO.TicketType
-                                        .Skip(tickets[i, 1])
+                                        .Skip(i)
                                         .FirstOrDefault()
                                         .Ticket
                                             .Where(t => t.SubOrder.Count == 0 || t.SubOrder.Where(so => so.active == RESERVATION.SUBORDER.ACTIVE).Count() == 0)
@@ -192,7 +177,7 @@ namespace AppWeb.Views
 
                     ProxyManager.getReservationService().newReservation(resDTO);
                 }
-                else { }//ERROR DE PARSEO, METIO STRING EN CANTIDAD DE ENTRADAS
+                else { }//ERROR DE PARSEO, METIO UNA LETRA EN CANTIDAD DE ENTRADAS
 
             }
         }

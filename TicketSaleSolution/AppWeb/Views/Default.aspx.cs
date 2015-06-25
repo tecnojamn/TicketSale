@@ -21,9 +21,8 @@ namespace AppWeb.Views
                 Session.Add("log", SESSION.STATE.OFF);
                 Session.Add("mail", "");
                 Session.Add("name", USER.GUESTNAME);
+                Session.Add("id", "");
             }
-
-
         }
         public List<EventDTO> listViewEvents_GetData(int startRowIndex, int maximumRows, out int totalRowCount)
         {
