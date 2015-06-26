@@ -5,7 +5,21 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder" runat="server">
 
 
-
+    <script>
+        function validate(rowIndex) {
+            var availableTickets = $("#ContentPlaceHolder_gvTickets tbody tr:eq(" + (rowIndex + 1) + ") td:eq(2)").text();
+            var inputQuantity = $("#ContentPlaceHolder_gvTickets_txtTickets_" + rowIndex).val();
+            if($.isEmptyObject(inputQuantity)){inputQuantity=0}
+            if (inputQuantity > availableTickets) {
+                //No hay entradas suficientes
+                alert("ah pero pero tu sos bobo");
+            }
+            if (inputQuantity < 0 || !$.isNumeric(inputQuantity)) {
+                //Valor incorrecto
+                alert("sos un pelotudo barbaro");
+            }
+        }
+    </script>
 
 
     <h3 id="name" runat="server"></h3>
@@ -29,12 +43,15 @@
 
             <asp:TemplateField HeaderText="Reservar">
                 <ItemTemplate>
-                    <asp:TextBox ID="txtTickets" runat="server" TextMode="Number"></asp:TextBox>
+                    <asp:TextBox ID="txtTickets" runat="server" TextMode="Number" onblur='<%#"validate(" + Container.DataItemIndex +")"%>'></asp:TextBox>
+                    <asp:Label ID="alert" runat="server" Text=""></asp:Label>
                 </ItemTemplate>
+
             </asp:TemplateField>
+
 
         </Columns>
     </asp:GridView>
 
-    <asp:Button ID="btnDoReserve" runat="server" Text="Realizar Reserva" OnClick="btnDoReserve_Click"/>
+    <asp:Button ID="btnDoReserve" runat="server" Text="Realizar Reserva" OnClick="btnDoReserve_Click" />
 </asp:Content>

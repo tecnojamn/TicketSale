@@ -126,7 +126,7 @@ namespace AppWeb.Views
                 EventDTO eventDTO = ProxyManager.getEventService().getEvent(int.Parse(Request.QueryString["id"]));
                 int ttCount = gvTickets.Rows.Count;
                 int[] tickets = new int[ttCount];
-                int i, j,ticketQuantity;
+                int i, j, ticketQuantity;
                 bool parsingError = false;
 
 
@@ -180,6 +180,11 @@ namespace AppWeb.Views
                 else { }//ERROR DE PARSEO, METIO UNA LETRA EN CANTIDAD DE ENTRADAS
 
             }
+        }
+
+        protected void txtTickets_TextChanged(object sender, EventArgs e)
+        {
+            ((Label)gvTickets.Rows[0].Cells[3].FindControl("alert")).Text = "holi";
         }
     }
 }

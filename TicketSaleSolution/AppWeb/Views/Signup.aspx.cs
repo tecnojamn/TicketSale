@@ -38,8 +38,7 @@ namespace AppWeb.Views
                             dateBirth = Convert.ToDateTime(dateBirth.Text),
                             password = txtPass1.Text,
                             active = USER.STATE.INACTIVE,
-                            userType = USER.TYPE.USER,
-                            img = "", //Pendiente de hacer                            
+                            userType = USER.TYPE.USER                          
                         };
 
                         if (ProxyManager.getUserService().newUser(userDTO))
