@@ -85,15 +85,12 @@ namespace AppWeb.Views
                     }*/
                     if (!log)
                     {
+                        gvTickets.Columns.RemoveAt(4);
                         gvTickets.Columns.RemoveAt(3);
                     }
 
-
                     gvTickets.DataSource = dt;
-
-
                     gvTickets.DataBind();
-
 
                 }
                 else

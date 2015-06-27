@@ -7,18 +7,34 @@
 
     <script>
         function validate(rowIndex) {
+
             var availableTickets = $("#ContentPlaceHolder_gvTickets tbody tr:eq(" + (rowIndex + 1) + ") td:eq(2)").text();
             var inputQuantity = $("#ContentPlaceHolder_gvTickets_txtTickets_" + rowIndex).val();
-            if($.isEmptyObject(inputQuantity)){inputQuantity=0}
+            var cost = $("#ContentPlaceHolder_gvTickets tbody tr:eq(" + (rowIndex + 1) + ") td:eq(1)").text();
+
+            if (inputQuantity.length === 0) {
+                $("#ContentPlaceHolder_gvTickets_txtTickets_" + rowIndex).val(0);
+                inputQuantity = 0;
+            } else if (inputQuantity < 0) {
+                $("#ContentPlaceHolder_gvTickets_txtTickets_" + rowIndex).val(0);
+                inputQuantity = 0;
+            }
             if (inputQuantity > availableTickets) {
-                //No hay entradas suficientes
-                alert("ah pero pero tu sos bobo");
+                $("#ContentPlaceHolder_gvTickets_txtTickets_" + rowIndex).val(availableTickets);
+                inputQuantity = availableTickets;
             }
-            if (inputQuantity < 0 || !$.isNumeric(inputQuantity)) {
-                //Valor incorrecto
-                alert("sos un pelotudo barbaro");
-            }
+            //set Subtotal
+            $("#ContentPlaceHolder_gvTickets tbody tr:eq(" + (rowIndex + 1) + ") td:eq(4)").text(cost * inputQuantity);
+            setTotal();
         }
+        function setTotal() {
+            var total = 0;
+            var rowsCount = ($("#ContentPlaceHolder_gvTickets tbody tr").length) - 1;
+            for (i = 1; i <= rowsCount; i++) {
+                total += parseInt($("#ContentPlaceHolder_gvTickets tbody tr:eq(" + i + ") td:eq(4)").text() ,10);
+            }
+            $("#ContentPlaceHolder_lblTotal").text(total);
+         }
     </script>
 
 
@@ -43,15 +59,17 @@
 
             <asp:TemplateField HeaderText="Reservar">
                 <ItemTemplate>
-                    <asp:TextBox ID="txtTickets" runat="server" TextMode="Number" onblur='<%#"validate(" + Container.DataItemIndex +")"%>'></asp:TextBox>
+                    <asp:TextBox ID="txtTickets" runat="server" TextMode="Number" Text="0" onblur='<%#"validate(" + Container.DataItemIndex +")"%>'></asp:TextBox>
                     <asp:Label ID="alert" runat="server" Text=""></asp:Label>
                 </ItemTemplate>
 
             </asp:TemplateField>
+            <asp:BoundField  HeaderText="SubTotal"  />
 
 
         </Columns>
     </asp:GridView>
-
+    <label>Total a pagar:</label>
+    <asp:Label ID="lblTotal" runat="server" Text="0"></asp:Label>
     <asp:Button ID="btnDoReserve" runat="server" Text="Realizar Reserva" OnClick="btnDoReserve_Click" />
 </asp:Content>
