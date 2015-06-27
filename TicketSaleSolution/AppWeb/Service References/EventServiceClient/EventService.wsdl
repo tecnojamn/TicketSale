@@ -37,6 +37,12 @@
   <wsdl:message name="IEventService_getEvent_OutputMessage">
     <wsdl:part name="parameters" element="tns:getEventResponse" />
   </wsdl:message>
+  <wsdl:message name="IEventService_searchEvents_InputMessage">
+    <wsdl:part name="parameters" element="tns:searchEvents" />
+  </wsdl:message>
+  <wsdl:message name="IEventService_searchEvents_OutputMessage">
+    <wsdl:part name="parameters" element="tns:searchEventsResponse" />
+  </wsdl:message>
   <wsdl:portType name="IEventService">
     <wsdl:operation name="newEvent">
       <wsdl:input wsaw:Action="http://tempuri.org/IEventService/newEvent" message="tns:IEventService_newEvent_InputMessage" />
@@ -57,6 +63,10 @@
     <wsdl:operation name="getEvent">
       <wsdl:input wsaw:Action="http://tempuri.org/IEventService/getEvent" message="tns:IEventService_getEvent_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IEventService/getEventResponse" message="tns:IEventService_getEvent_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="searchEvents">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEventService/searchEvents" message="tns:IEventService_searchEvents_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEventService/searchEventsResponse" message="tns:IEventService_searchEvents_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IEventService" type="tns:IEventService">
@@ -99,6 +109,15 @@
     </wsdl:operation>
     <wsdl:operation name="getEvent">
       <soap:operation soapAction="http://tempuri.org/IEventService/getEvent" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="searchEvents">
+      <soap:operation soapAction="http://tempuri.org/IEventService/searchEvents" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

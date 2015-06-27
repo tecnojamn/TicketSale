@@ -9,7 +9,6 @@
       <xs:element minOccurs="0" name="enable" type="xs:unsignedByte" />
       <xs:element minOccurs="0" name="id" type="xs:int" />
       <xs:element minOccurs="0" name="idEventLocation" type="xs:int" />
-      <xs:element minOccurs="0" name="img" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="type" nillable="true" type="xs:string" />
     </xs:sequence>
@@ -157,7 +156,7 @@
       <xs:element minOccurs="0" name="mail" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="registrationLink" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="token" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="userType" type="xs:unsignedByte" />
     </xs:sequence>
   </xs:complexType>

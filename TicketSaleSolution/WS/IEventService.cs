@@ -27,5 +27,8 @@ namespace WS
 
         [OperationContract]
         EventDTO getEvent(int id);
+
+        [OperationContract]
+        List<EventDTO> searchEvents(string text);
     }
 }

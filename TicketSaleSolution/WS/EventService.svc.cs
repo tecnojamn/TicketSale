@@ -67,5 +67,13 @@ namespace WS
 
             return Mapper.Map<EventDTO>(ec.getEvent(id));
         }
+        public List<EventDTO> searchEvents(string text)
+        {
+            EventController ec = new EventController();
+            Mapper.CreateMap<Event, EventDTO>()
+                .ForMember(e => e.TicketType, opt => opt.Ignore())
+                .ForMember(e => e.EventLocation, opt => opt.Ignore());
+            return Mapper.Map<List<EventDTO>>(ec.searchEvents(text));
+        }
     }
 }

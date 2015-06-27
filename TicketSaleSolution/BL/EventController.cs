@@ -175,5 +175,24 @@ namespace BL
             }
             return count;
         }*/
+        public List<Event> searchEvents(string text)
+        {
+            List<Event> events = null;
+            try
+            {
+                using (DAL.TicketSaleEntities context = new DAL.TicketSaleEntities())
+                {
+                    events = context.Event.Select(e => e)
+                        .OrderByDescending(e => e.date)
+                        .Where(e => e.name.Contains(text))
+                        .ToList();
+                }
+                return events;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
     }
 }
