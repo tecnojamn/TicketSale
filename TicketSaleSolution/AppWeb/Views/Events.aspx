@@ -2,9 +2,9 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder" runat="server">
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder"  runat="server">
 
-
+    
     <script>
         function validate(rowIndex) {
 
@@ -41,11 +41,13 @@
             $("#ContentPlaceHolder_lblTotal").text(total);
         }
     </script>
-
-
-    <h3 id="name" runat="server"></h3>
-    <br />
-
+    <div class="palette  palette-turquoise" style="overflow:hidden;">
+    <span style="float:left;  line-height: 20px;" class="fui-video"></span>
+    <h3 id="name" runat="server" style="font-size: 22px;  float: left;  margin: 0px 7px 0px 10px;  line-height: 20px;" ></h3>
+        </div>
+    <div class="well " style="padding: 15px 40px;
+  font-size: 15px;" >
+       
     <label>Fecha: </label>
     <asp:Label ID="lblDate" runat="server" Text=""></asp:Label><br />
     <label>Hora: </label>
@@ -56,9 +58,10 @@
     <asp:Label ID="lblTotalTickets" runat="server" Text=""></asp:Label><br />
     <label>Entradas Disponibles: </label>
     <asp:Label ID="lblAvailableTickets" runat="server" Text=""></asp:Label><br />
+           
     <label>Sectores Disponibles: </label>
-
-    <asp:GridView ID="gvTickets" runat="server" AutoGenerateColumns="false">
+        <div class="table-responsive">
+    <asp:GridView ID="gvTickets" runat="server" AutoGenerateColumns="false" CssClass="table table-striped">
         <Columns>
             <asp:BoundField DataField="Sector" HeaderText="Sector" />
             <asp:BoundField DataField="Costo" HeaderText="Costo" />
@@ -66,7 +69,7 @@
 
             <asp:TemplateField HeaderText="Reservar">
                 <ItemTemplate>
-                    <asp:TextBox ID="txtTickets" runat="server" TextMode="Number" MaxLength="2" Text="0" onblur='<%#"validate(" + Container.DataItemIndex +")"%>'></asp:TextBox>
+                    <asp:TextBox CssClass="form-control" ID="txtTickets" runat="server" TextMode="Number" MaxLength="2" Text="0" onblur='<%#"validate(" + Container.DataItemIndex +")"%>'></asp:TextBox>
                     <asp:Label ID="alert" runat="server" Text=""></asp:Label>
                 </ItemTemplate>
 
@@ -75,8 +78,10 @@
 
 
         </Columns>
-    </asp:GridView>
+    </asp:GridView></div>
     <label>Total a pagar:</label>
     <asp:Label ID="lblTotal" runat="server" Text="0"></asp:Label>
-    <asp:Button ID="btnDoReserve" runat="server" Text="Realizar Reserva" OnClick="btnDoReserve_Click" />
+        <br />
+    <asp:Button ID="btnDoReserve" runat="server" Text="Realizar Reserva" CssClass="btn btn-lg btn-primary" OnClick="btnDoReserve_Click" />
+        </div>
 </asp:Content>
