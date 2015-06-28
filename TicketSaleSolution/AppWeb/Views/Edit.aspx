@@ -7,32 +7,36 @@
         <asp:Label ID="AlertLabel" runat="server" Text="Label" CssClass="sr-only"></asp:Label>
     </asp:Panel>
 
-    <asp:Panel ID="PanelUser" runat="server" CssClass="well" Style="overflow: hidden;">
-        <div class="col-lg-6" id="personalInfo">
-
+    <asp:Panel ID="PanelUser" runat="server" CssClass="login-screen" Style="overflow: hidden;">
+        <div class="col-lg-5 login-form" id="personalInfo">
+           
             <span class="col-lg-12">Editar datos básicos</span>
-            <label class="col-lg-12">Nombre:</label>
-            <div class="col-lg-12">
-                <asp:TextBox ID="TextName" runat="server"></asp:TextBox></div>
-            <label class="col-lg-12">Apellido:</label>
-            <div class="col-lg-12">
-                <asp:TextBox ID="TextLastName" runat="server"></asp:TextBox></div>
-            <asp:Button CssClass="btn btn-default" OnClick="EditUser_Click" ID="Button2" runat="server" Text="Editar" />
-        </div>
-        <div class="col-lg-6" id="editPass">
-            <span class="col-lg-12">Editar contraseña</span>
-            <label class="col-lg-12">Contraseña actual:</label>
-            <div class="col-lg-12">
-                <asp:TextBox ID="TextCurrentPassword" runat="server"></asp:TextBox></div>
-            <label class="col-lg-12">Nueva Contraseña:</label>
-            <div class="col-lg-12">
-                <asp:TextBox ID="TextNewPassword" runat="server"></asp:TextBox>
+             <div class="form-group">
 
-            </div>
-            <label class="col-lg-12">Repita nueva Contraseña:</label>
-            <div class="col-lg-12">
-                <asp:TextBox ID="TextConfirmationPassword" runat="server"></asp:TextBox></div>
-            <asp:Button CssClass="btn btn-default" OnClick="Button1_Click" ID="Button1" runat="server" Text="Cambiar" />
+                <asp:TextBox placeholder="Nombre" CssClass="form-control login-field" ID="TextName" runat="server"></asp:TextBox></div>
+
+            <div class="form-group">
+
+
+                <asp:TextBox placeholder="Apellido" ID="TextLastName" runat="server" CssClass="form-control login-field"></asp:TextBox></div>
+
+            <asp:Button CssClass="btn btn-primary btn-lg btn-block" OnClick="EditUser_Click" ID="Button2" runat="server" Text="Editar" />
+        </div>
+        <div class="col-lg-5 col-lg-offset-1 login-form" id="editPass">
+            <span class="col-lg-12">Editar contraseña</span>
+
+
+            <div class="form-group">
+                <asp:TextBox placeholder="Editar contraseña" ID="TextCurrentPassword" runat="server" CssClass="form-control login-field"></asp:TextBox></div>
+
+                <div class="form-group">
+                <asp:TextBox placeholder="Nueva Contraseña" ID="TextNewPassword" runat="server" CssClass="form-control login-field"></asp:TextBox></div>
+
+
+<div class="form-group">
+                <asp:TextBox placeholder="Repita nueva Contraseña" ID="TextConfirmationPassword" runat="server" CssClass="form-control login-field"></asp:TextBox></div>
+
+            <asp:Button CssClass="btn btn-primary btn-lg btn-block" OnClick="Button1_Click" ID="Button1" runat="server" Text="Cambiar" />
         </div>
     </asp:Panel>
 
