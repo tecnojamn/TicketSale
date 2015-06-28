@@ -49,13 +49,22 @@ namespace AppWeb.Views {
         protected global::System.Web.UI.WebControls.Label lblLoc;
         
         /// <summary>
-        /// Control lblTickets.
+        /// Control lblTotalTickets.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblTickets;
+        protected global::System.Web.UI.WebControls.Label lblTotalTickets;
+        
+        /// <summary>
+        /// Control lblAvailableTickets.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblAvailableTickets;
         
         /// <summary>
         /// Control gvTickets.

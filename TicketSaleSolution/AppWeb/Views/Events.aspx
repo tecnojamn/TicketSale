@@ -15,14 +15,17 @@
             if (inputQuantity.length === 0) {
                 $("#ContentPlaceHolder_gvTickets_txtTickets_" + rowIndex).val(0);
                 inputQuantity = 0;
-            } else if (inputQuantity < 0) {
-                $("#ContentPlaceHolder_gvTickets_txtTickets_" + rowIndex).val(0);
-                inputQuantity = 0;
+            } else {
+                inputQuantity = parseInt(inputQuantity);
+                if (inputQuantity < 0) {
+                    $("#ContentPlaceHolder_gvTickets_txtTickets_" + rowIndex).val(0);
+                    inputQuantity = 0;
+                } else if(inputQuantity > availableTickets) {
+                    $("#ContentPlaceHolder_gvTickets_txtTickets_" + rowIndex).val(availableTickets);
+                    inputQuantity = availableTickets;
+                }
             }
-            if (inputQuantity > availableTickets) {
-                $("#ContentPlaceHolder_gvTickets_txtTickets_" + rowIndex).val(availableTickets);
-                inputQuantity = availableTickets;
-            }
+
             //set Subtotal
             $("#ContentPlaceHolder_gvTickets tbody tr:eq(" + (rowIndex + 1) + ") td:eq(4)").text(cost * inputQuantity);
             setTotal();
@@ -31,10 +34,12 @@
             var total = 0;
             var rowsCount = ($("#ContentPlaceHolder_gvTickets tbody tr").length) - 1;
             for (i = 1; i <= rowsCount; i++) {
-                total += parseInt($("#ContentPlaceHolder_gvTickets tbody tr:eq(" + i + ") td:eq(4)").text() ,10);
+                var subTotal = $("#ContentPlaceHolder_gvTickets tbody tr:eq(" + i + ") td:eq(4)").text();
+                if (subTotal.length === 0) { subTotal = 0 }
+                total += parseInt(subTotal);
             }
             $("#ContentPlaceHolder_lblTotal").text(total);
-         }
+        }
     </script>
 
 
@@ -47,8 +52,10 @@
     <asp:Label ID="lblTime" runat="server" Text=""></asp:Label><br />
     <label>Lugar: </label>
     <asp:Label ID="lblLoc" runat="server" Text=""></asp:Label><br />
+    <label>Entradas Habilitadas: </label>
+    <asp:Label ID="lblTotalTickets" runat="server" Text=""></asp:Label><br />
     <label>Entradas Disponibles: </label>
-    <asp:Label ID="lblTickets" runat="server" Text=""></asp:Label><br />
+    <asp:Label ID="lblAvailableTickets" runat="server" Text=""></asp:Label><br />
     <label>Sectores Disponibles: </label>
 
     <asp:GridView ID="gvTickets" runat="server" AutoGenerateColumns="false">
@@ -59,12 +66,12 @@
 
             <asp:TemplateField HeaderText="Reservar">
                 <ItemTemplate>
-                    <asp:TextBox ID="txtTickets" runat="server" TextMode="Number" Text="0" onblur='<%#"validate(" + Container.DataItemIndex +")"%>'></asp:TextBox>
+                    <asp:TextBox ID="txtTickets" runat="server" TextMode="Number" MaxLength="2" Text="0" onblur='<%#"validate(" + Container.DataItemIndex +")"%>'></asp:TextBox>
                     <asp:Label ID="alert" runat="server" Text=""></asp:Label>
                 </ItemTemplate>
 
             </asp:TemplateField>
-            <asp:BoundField  HeaderText="SubTotal"  />
+            <asp:BoundField HeaderText="SubTotal" />
 
 
         </Columns>

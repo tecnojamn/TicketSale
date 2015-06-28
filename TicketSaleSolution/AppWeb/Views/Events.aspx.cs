@@ -36,7 +36,8 @@ namespace AppWeb.Views
                     lblDate.Text = eventDTO.date.ToString("dd/MM/yyyy");
                     lblTime.Text = eventDTO.date.ToString("HH:mm");
                     lblLoc.Text = eventDTO.EventLocation.name;
-                    lblTickets.Text = eventDTO.getAvailableTicketCount().ToString() + " / " + eventDTO.getTotalTicketCount().ToString();
+                    lblTotalTickets.Text = eventDTO.getTotalTicketCount().ToString();
+                    lblAvailableTickets.Text = eventDTO.getAvailableTicketCount().ToString();
 
                     DataTable dt = new DataTable();
 
@@ -173,15 +174,13 @@ namespace AppWeb.Views
                     };
 
                     ProxyManager.getReservationService().newReservation(resDTO);
+
+                   
+                    Response.Redirect("Event?id=" + eventDTO.id);
                 }
                 else { }//ERROR DE PARSEO, METIO UNA LETRA EN CANTIDAD DE ENTRADAS
 
             }
-        }
-
-        protected void txtTickets_TextChanged(object sender, EventArgs e)
-        {
-            ((Label)gvTickets.Rows[0].Cells[3].FindControl("alert")).Text = "holi";
         }
     }
 }
