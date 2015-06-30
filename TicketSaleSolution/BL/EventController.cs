@@ -182,24 +182,25 @@ namespace BL
             {
                 using (DAL.TicketSaleEntities context = new DAL.TicketSaleEntities())
                 {
-                    var query = from e in context.Event
-                                select e;
-                    //if (!maxDate.Equals("01/01/0001 0:00:00"))
-                    //{
-                    //    query = query.Where(e => e.date <= maxDate);
-                    //}
-                    //if (!minDate.Equals("01/01/0001 0:00:00"))
-                    //{
-                    //    query = query.Where(e => e.date >= minDate);
-                    //}
-                    //if(local != "none")
-                    //{
-                    //    query = query.Where(e => e.EventLocation.name==local);
-                    //}
+                    //var query = from e in context.Event select e;
+                    var query = context.Event
+                        .Include("EventLocation")
+                        .Include("TicketType")
+                        .OrderByDescending(e => e.date)
+                        .Where(e => e.name.Contains(text));
+                    if (!maxDate.Equals("01/01/0001 0:00:00"))
+                    {
+                        query = query.Where(e => e.date <= maxDate);
+                    }
+                    if (!minDate.Equals("01/01/0001 0:00:00"))
+                    {
+                        query = query.Where(e => e.date >= minDate);
+                    }
+                    if(local != "none")
+                    {
+                        query = query.Where(e => e.EventLocation.name == local);
+                    }
                     events = query
-                        //.OrderByDescending(e => e.date)
-                        //.Where(e => e.name.Contains(text))
-                        .Join(context.EventLocation, e => e.idEventLocation, el => el.id, (e, el) => new {Event = e, EventLocation = el})
                         .ToList();
                 }
             }
