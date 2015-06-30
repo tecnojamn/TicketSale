@@ -9,6 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WS", "WS\WS.csproj", "{2A33
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppWeb", "AppWeb\AppWeb.csproj", "{5796E547-D045-4FDE-9AD3-D61586FE9722}"
 	ProjectSection(ProjectDependencies) = postProject
+		{98A7B828-20A2-46FA-A8ED-1B414C85F179} = {98A7B828-20A2-46FA-A8ED-1B414C85F179}
 		{2A3394E0-2664-49E5-8209-4A4F8E2FA6C1} = {2A3394E0-2664-49E5-8209-4A4F8E2FA6C1}
 	EndProjectSection
 EndProject
@@ -19,6 +20,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{2C29BB90-8EC5-4A54-B98E-9F42EDA47720}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BO", "BO\BO.csproj", "{2A57CE9A-80DF-4A89-9219-9CF4125D92D3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Paypal", "Paypal\Paypal.csproj", "{98A7B828-20A2-46FA-A8ED-1B414C85F179}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,6 +72,12 @@ Global
 		{2A57CE9A-80DF-4A89-9219-9CF4125D92D3}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2A57CE9A-80DF-4A89-9219-9CF4125D92D3}.ReleaseBinaries|Any CPU.ActiveCfg = Release|Any CPU
 		{2A57CE9A-80DF-4A89-9219-9CF4125D92D3}.ReleaseBinaries|Any CPU.Build.0 = Release|Any CPU
+		{98A7B828-20A2-46FA-A8ED-1B414C85F179}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98A7B828-20A2-46FA-A8ED-1B414C85F179}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98A7B828-20A2-46FA-A8ED-1B414C85F179}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98A7B828-20A2-46FA-A8ED-1B414C85F179}.Release|Any CPU.Build.0 = Release|Any CPU
+		{98A7B828-20A2-46FA-A8ED-1B414C85F179}.ReleaseBinaries|Any CPU.ActiveCfg = Release|Any CPU
+		{98A7B828-20A2-46FA-A8ED-1B414C85F179}.ReleaseBinaries|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

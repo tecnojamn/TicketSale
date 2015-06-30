@@ -7,36 +7,27 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace AppWeb.Views {
+namespace AppWeb.Views.Paypal {
     
     
-    public partial class Default {
+    public partial class Paypal {
         
         /// <summary>
-        /// Control linkPaypal.
+        /// Control form.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton linkPaypal;
+        protected global::System.Web.UI.HtmlControls.HtmlForm form;
         
         /// <summary>
-        /// Control listViewEvents.
+        /// Control panelContent.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListView listViewEvents;
-        
-        /// <summary>
-        /// Control lvDataPager1.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DataPager lvDataPager1;
+        protected global::System.Web.UI.WebControls.Panel panelContent;
     }
 }

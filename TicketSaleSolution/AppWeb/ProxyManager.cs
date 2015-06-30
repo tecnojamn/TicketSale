@@ -12,6 +12,7 @@ namespace AppWeb
         public static EventServiceClient.EventServiceClient _EventService;
         public static ReservationServiceClient.ReservationServiceClient _ReservationService;
         public static PaymentServiceClient.PaymentServiceClient _PaymentService;
+        public static PaypalServiceClient.PaypalServiceClient _PaypalService;
 
         public static UserServiceClient.UserServiceClient getUserService()
         {
@@ -37,6 +38,11 @@ namespace AppWeb
                 _PaymentService = new PaymentServiceClient.PaymentServiceClient();
             return _PaymentService;
         }
-
+        public static PaypalServiceClient.PaypalServiceClient getPaypalClient()
+        {
+            if (_PaypalService == null)
+                _PaypalService = new PaypalServiceClient.PaypalServiceClient();
+            return _PaypalService;
+        }
     }
 }

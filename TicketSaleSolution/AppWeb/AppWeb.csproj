@@ -295,6 +295,13 @@
     <None Include="Service References\PaymentServiceClient\PaymentService2.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\PaypalServiceClient\PaypalService.wsdl" />
+    <None Include="Service References\PaypalServiceClient\PaypalService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PaypalServiceClient\PaypalService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\ReservationServiceClient\ReservationService.wsdl" />
     <None Include="Service References\ReservationServiceClient\ReservationService.xsd">
       <SubType>Designer</SubType>
@@ -339,6 +346,13 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <None Include="Service References\PaypalServiceClient\PaypalService.disco" />
+    <None Include="Service References\PaypalServiceClient\configuration91.svcinfo" />
+    <None Include="Service References\PaypalServiceClient\configuration.svcinfo" />
+    <None Include="Service References\PaypalServiceClient\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="Site.Master" />
     <Content Include="packages.config" />
     <Content Include="Content\dist\js\jquery-1.9.1.min.map" />
@@ -354,6 +368,9 @@
     </None>
     <Content Include="Views\Confirm.aspx" />
     <Content Include="Views\Edit.aspx" />
+    <Content Include="Views\Paypal\Confirm.ascx" />
+    <Content Include="Views\Paypal\Login.ascx" />
+    <Content Include="Views\Paypal\Paypal.aspx" />
     <Content Include="Views\Profile.aspx" />
     <Content Include="Views\Reservations.aspx" />
     <Content Include="Views\_ViewStart.cshtml" />
@@ -381,6 +398,11 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="Service References\PaymentServiceClient\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\PaypalServiceClient\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -442,6 +464,27 @@
     <Compile Include="Views\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Views\Paypal\Confirm.ascx.cs">
+      <DependentUpon>Confirm.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Paypal\Confirm.ascx.designer.cs">
+      <DependentUpon>Confirm.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Paypal\Login.ascx.cs">
+      <DependentUpon>Login.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Paypal\Login.ascx.designer.cs">
+      <DependentUpon>Login.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Paypal\Paypal.aspx.cs">
+      <DependentUpon>Paypal.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Paypal\Paypal.aspx.designer.cs">
+      <DependentUpon>Paypal.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Views\Profile.aspx.cs">
       <DependentUpon>Profile.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -474,6 +517,7 @@
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\EventServiceClient\" />
     <WCFMetadataStorage Include="Service References\PaymentServiceClient\" />
+    <WCFMetadataStorage Include="Service References\PaypalServiceClient\" />
     <WCFMetadataStorage Include="Service References\ReservationServiceClient\" />
     <WCFMetadataStorage Include="Service References\UserServiceClient\" />
   </ItemGroup>
