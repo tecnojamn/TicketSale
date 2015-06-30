@@ -76,6 +76,9 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="text" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="maxDate" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="minDate" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="local" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -83,6 +86,18 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/DTO" minOccurs="0" name="searchEventsResult" nillable="true" type="q5:ArrayOfEventDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getLocals">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getLocalsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/DTO" minOccurs="0" name="getLocalsResult" nillable="true" type="q6:ArrayOfEventLocationDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

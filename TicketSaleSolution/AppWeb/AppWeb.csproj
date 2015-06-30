@@ -275,6 +275,7 @@
     <Content Include="Properties\DataSources\DTO.PaymentDTO.datasource" />
     <Content Include="Properties\DataSources\DTO.EventDTO.datasource" />
     <Content Include="Properties\DataSources\DTO.ReservationDTO.datasource" />
+    <Content Include="Properties\DataSources\DTO.EventLocationDTO.datasource" />
     <None Include="Service References\EventServiceClient\EventService.wsdl" />
     <None Include="Service References\EventServiceClient\EventService.xsd">
       <SubType>Designer</SubType>

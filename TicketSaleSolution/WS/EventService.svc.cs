@@ -67,13 +67,29 @@ namespace WS
 
             return Mapper.Map<EventDTO>(ec.getEvent(id));
         }
-        public List<EventDTO> searchEvents(string text)
+        public List<EventDTO> searchEvents(string text, DateTime maxDate, DateTime minDate, String local)
         {
             EventController ec = new EventController();
+
             Mapper.CreateMap<Event, EventDTO>()
                 .ForMember(e => e.TicketType, opt => opt.Ignore())
-                .ForMember(e => e.EventLocation, opt => opt.Ignore());
-            return Mapper.Map<List<EventDTO>>(ec.searchEvents(text));
+                .ForMember(e => e.EventLocation, opt => opt.MapFrom(x => x.EventLocation));
+            Mapper.CreateMap<EventLocation, EventLocationDTO>()
+                .ForMember(eLoc => eLoc.Event, opt => opt.Ignore());
+            Mapper.CreateMap<TicketType, TicketTypeDTO>()
+                .ForMember(tt => tt.Ticket, opt => opt.Ignore())
+                .ForMember(tt => tt.Event, opt => opt.Ignore());
+            
+            return Mapper.Map<List<EventDTO>>(ec.searchEvents(text, maxDate, minDate, local));
+        }
+        public List<EventLocationDTO> getLocals()
+        {
+            EventController ec = new EventController();
+            
+            Mapper.CreateMap<EventLocation, EventLocationDTO>()
+                .ForMember(l => l.Event, opt => opt.Ignore());
+
+            return Mapper.Map<List<EventLocationDTO>>(ec.getLocals());
         }
     }
 }

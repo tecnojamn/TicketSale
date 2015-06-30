@@ -46,10 +46,16 @@ namespace AppWeb.EventServiceClient {
         System.Threading.Tasks.Task<DTO.EventDTO> getEventAsync(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEventService/searchEvents", ReplyAction="http://tempuri.org/IEventService/searchEventsResponse")]
-        DTO.EventDTO[] searchEvents(string text);
+        DTO.EventDTO[] searchEvents(string text, System.DateTime maxDate, System.DateTime minDate, string local);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEventService/searchEvents", ReplyAction="http://tempuri.org/IEventService/searchEventsResponse")]
-        System.Threading.Tasks.Task<DTO.EventDTO[]> searchEventsAsync(string text);
+        System.Threading.Tasks.Task<DTO.EventDTO[]> searchEventsAsync(string text, System.DateTime maxDate, System.DateTime minDate, string local);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEventService/getLocals", ReplyAction="http://tempuri.org/IEventService/getLocalsResponse")]
+        DTO.EventLocationDTO[] getLocals();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEventService/getLocals", ReplyAction="http://tempuri.org/IEventService/getLocalsResponse")]
+        System.Threading.Tasks.Task<DTO.EventLocationDTO[]> getLocalsAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -119,12 +125,20 @@ namespace AppWeb.EventServiceClient {
             return base.Channel.getEventAsync(id);
         }
         
-        public DTO.EventDTO[] searchEvents(string text) {
-            return base.Channel.searchEvents(text);
+        public DTO.EventDTO[] searchEvents(string text, System.DateTime maxDate, System.DateTime minDate, string local) {
+            return base.Channel.searchEvents(text, maxDate, minDate, local);
         }
         
-        public System.Threading.Tasks.Task<DTO.EventDTO[]> searchEventsAsync(string text) {
-            return base.Channel.searchEventsAsync(text);
+        public System.Threading.Tasks.Task<DTO.EventDTO[]> searchEventsAsync(string text, System.DateTime maxDate, System.DateTime minDate, string local) {
+            return base.Channel.searchEventsAsync(text, maxDate, minDate, local);
+        }
+        
+        public DTO.EventLocationDTO[] getLocals() {
+            return base.Channel.getLocals();
+        }
+        
+        public System.Threading.Tasks.Task<DTO.EventLocationDTO[]> getLocalsAsync() {
+            return base.Channel.getLocalsAsync();
         }
     }
 }
