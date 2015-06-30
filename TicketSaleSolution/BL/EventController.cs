@@ -62,6 +62,9 @@ namespace BL
             {
                 using (DAL.TicketSaleEntities context = new DAL.TicketSaleEntities())
                 {
+                    
+
+
                     Event e = context.Event.FirstOrDefault(ev => ev.id == id);
                     if (e != null)
                     {
@@ -114,6 +117,13 @@ namespace BL
             {
                 using (DAL.TicketSaleEntities context = new DAL.TicketSaleEntities())
                 {
+                    DateTime aYearAgo =DateTime.Today.AddYears(-1); 
+
+                    var query = context.Payment
+                            .Include("Reservation.User")
+                            .Where(p => p.date >= aYearAgo)
+                            .GroupBy(r => r.Reservation.idUser).Select(x => x.Count()).ToList();
+
                     events = context.Event.Select(e => e)
                         .OrderByDescending(e => e.date)
                         .Skip((page - 1) * pageSize)

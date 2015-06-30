@@ -9,9 +9,14 @@
     </div>
     <div class="collapse navbar-collapse" id="navbar-collapse-01">
         <ul class="nav navbar-nav navbar-left">
-            <li></li>
-            <li></li>
-            <li></li>
+            <li>
+                <asp:LinkButton id="linkPayments" OnClick="linkPayments_Click" runat="server">Mis pagos</asp:LinkButton>
+            </li>
+            <li>
+                <asp:LinkButton id="linkReservations" OnClick="linkReservations_Click" runat="server">Mis Reservas</asp:LinkButton>
+            </li>
+            <li>
+            </li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
             <li>

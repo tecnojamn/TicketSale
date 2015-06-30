@@ -22,6 +22,24 @@ namespace AppWeb.Views.Controls {
         protected global::System.Web.UI.WebControls.HyperLink navName;
         
         /// <summary>
+        /// Control linkPayments.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton linkPayments;
+        
+        /// <summary>
+        /// Control linkReservations.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton linkReservations;
+        
+        /// <summary>
         /// Control linkExit.
         /// </summary>
         /// <remarks>

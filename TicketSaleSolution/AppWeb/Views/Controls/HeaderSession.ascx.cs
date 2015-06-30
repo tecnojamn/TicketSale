@@ -32,5 +32,15 @@ namespace AppWeb.Views.Controls
 
             Response.Redirect("Default.aspx");
         }
+
+        protected void linkPayments_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Reservations.aspx");
+        }
+
+        protected void linkReservations_Click(object sender, EventArgs e)
+        {
+            //Redirigir a Reservations page
+        }
     }
 }
