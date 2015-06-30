@@ -46,5 +46,10 @@ namespace AppWeb.Views
             Response.Redirect("Events.aspx?id="+idEvent);
 
         }
+
+        protected void linkPaypal_Command(object sender, CommandEventArgs e)
+        {
+            Response.Redirect("Paypal/Paypal.aspx");
+        }
     }
 }
