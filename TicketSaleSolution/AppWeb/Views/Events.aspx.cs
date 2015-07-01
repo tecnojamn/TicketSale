@@ -186,5 +186,10 @@ namespace AppWeb.Views
         {
             ((Label)gvTickets.Rows[0].Cells[3].FindControl("alert")).Text = "holi";
         }
+        protected void btnShare_Click(object sender, EventArgs e)
+        {
+            string id = Request.QueryString["id"];
+            Response.Redirect("https://www.facebook.com/dialog/share?app_id=145634995501895&display=popup&href=http%3A%2F%2Flocalhost%3A1341%2FViews%2FEvents.aspx%3Fid%3D"+id+"&redirect_uri=https%3A%2F%2Fdevelopers.facebook.com%2Ftools%2Fexplorer");
+        }
     }
 }

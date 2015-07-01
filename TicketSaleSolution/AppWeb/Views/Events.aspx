@@ -54,4 +54,5 @@
     </asp:GridView>
 
     <asp:Button ID="btnDoReserve" runat="server" Text="Realizar Reserva" OnClick="btnDoReserve_Click" />
+    <asp:Button ID="btnShare" runat="server" Text="Share" OnClick="btnShare_Click"/>
 </asp:Content>
