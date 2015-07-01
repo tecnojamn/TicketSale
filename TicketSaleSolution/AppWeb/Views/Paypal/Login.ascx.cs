@@ -11,16 +11,19 @@ namespace AppWeb.Views.Paypal
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            panelAlert.Visible = false;
         }
-        protected void btnSubmit_Click(object sender, EventArgs e)
+        protected void btnLogin_Click(object sender, EventArgs e)
         {
-            if (ProxyManager.getPaypalClient().login(txtUser.ToString(), txtPass.ToString()))
+            if (ProxyManager.getPaypalClient().login(txtUser.Text, txtPassword.Text))
             {
                 Panel p = (Panel)(this.Parent.FindControl("panelContent"));
                 p.Controls.Clear();
                 p.Controls.Add(this.LoadControl("Confirm.ascx"));
-              //  String hola = tb.Text;
+            }
+            else
+            {
+                panelAlert.Visible = true;
             }
         }
     }

@@ -371,6 +371,8 @@
     <Content Include="Views\Paypal\Confirm.ascx" />
     <Content Include="Views\Paypal\Login.ascx" />
     <Content Include="Views\Paypal\Paypal.aspx" />
+    <Content Include="Views\Paypal\paypal.css" />
+    <Content Include="Views\Paypal\ppcom.svg" />
     <Content Include="Views\Profile.aspx" />
     <Content Include="Views\Reservations.aspx" />
     <Content Include="Views\_ViewStart.cshtml" />

@@ -119,10 +119,6 @@ namespace BL
                 {
                     DateTime aYearAgo =DateTime.Today.AddYears(-1); 
 
-                    var query = context.Payment
-                            .Include("Reservation.User")
-                            .Where(p => p.date >= aYearAgo)
-                            .GroupBy(r => r.Reservation.idUser).Select(x => x.Count()).ToList();
 
                     events = context.Event.Select(e => e)
                         .OrderByDescending(e => e.date)

