@@ -175,7 +175,9 @@ namespace BL
             }
             return count;
         }*/
-        public List<Event> searchEvents(string text, DateTime maxDate, DateTime minDate, String local)
+        //Si la fecha es 01/01/0001 0:00:00, no la va a tomar en cuenta
+        //Si el local es none, no lo va a tomar en cuenta
+        public List<Event> searchEvents(string text, DateTime maxDate, DateTime minDate , String local , double price, string type)
         {
             List<Event> events = null;
             try
@@ -188,17 +190,26 @@ namespace BL
                         .Include("TicketType")
                         .OrderByDescending(e => e.date)
                         .Where(e => e.name.Contains(text));
-                    if (!maxDate.Equals("01/01/0001 0:00:00"))
+                    //verifica que la fecha no sea 01/01/0001 0:00:00
+                    if (DateTime.Compare(minDate, new DateTime(0001, 01, 01, 0, 0, 0)) != 0 )
                     {
                         query = query.Where(e => e.date <= maxDate);
                     }
-                    if (!minDate.Equals("01/01/0001 0:00:00"))
+                    if ( DateTime.Compare(minDate, new DateTime(0001, 01, 01, 0, 0, 0)) != 0 )
                     {
                         query = query.Where(e => e.date >= minDate);
                     }
                     if(local != "none")
                     {
                         query = query.Where(e => e.EventLocation.name == local);
+                    }
+                    if (price > 0)
+                    {
+                        query = query.Where(e => e.TicketType.Min(tt => tt.cost) <= price);
+                    }
+                    if (type != "none")
+                    {
+                        query = query.Where(e => e.type == type);
                     }
                     events = query
                         .ToList();
@@ -230,6 +241,26 @@ namespace BL
             }
 
             return locals;
+        }
+        public List<string> getEventType()
+        {
+            List<string> eventsType = null;
+            try
+            {
+                using (DAL.TicketSaleEntities context = new DAL.TicketSaleEntities())
+                {
+                    eventsType = context.Event
+                        .Select(e => e.type)
+                        .Distinct()
+                        .ToList();
+                }
+            }
+            catch (Exception)
+            {
+                
+                throw;
+            }
+            return eventsType;
         }
     }
 }

@@ -286,6 +286,9 @@
     <None Include="Service References\EventServiceClient\EventService11.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\EventServiceClient\EventService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\PaymentServiceClient\PaymentService.wsdl" />
     <None Include="Service References\PaymentServiceClient\PaymentService.xsd">
       <SubType>Designer</SubType>

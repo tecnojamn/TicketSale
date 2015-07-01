@@ -5,6 +5,7 @@
       <xsd:import schemaLocation="http://localhost:3643/EventService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:3643/EventService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://localhost:3643/EventService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/DTO" />
+      <xsd:import schemaLocation="http://localhost:3643/EventService.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IEventService_newEvent_InputMessage">
@@ -49,6 +50,12 @@
   <wsdl:message name="IEventService_getLocals_OutputMessage">
     <wsdl:part name="parameters" element="tns:getLocalsResponse" />
   </wsdl:message>
+  <wsdl:message name="IEventService_getEventType_InputMessage">
+    <wsdl:part name="parameters" element="tns:getEventType" />
+  </wsdl:message>
+  <wsdl:message name="IEventService_getEventType_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getEventTypeResponse" />
+  </wsdl:message>
   <wsdl:portType name="IEventService">
     <wsdl:operation name="newEvent">
       <wsdl:input wsaw:Action="http://tempuri.org/IEventService/newEvent" message="tns:IEventService_newEvent_InputMessage" />
@@ -77,6 +84,10 @@
     <wsdl:operation name="getLocals">
       <wsdl:input wsaw:Action="http://tempuri.org/IEventService/getLocals" message="tns:IEventService_getLocals_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IEventService/getLocalsResponse" message="tns:IEventService_getLocals_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getEventType">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEventService/getEventType" message="tns:IEventService_getEventType_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEventService/getEventTypeResponse" message="tns:IEventService_getEventType_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IEventService" type="tns:IEventService">
@@ -137,6 +148,15 @@
     </wsdl:operation>
     <wsdl:operation name="getLocals">
       <soap:operation soapAction="http://tempuri.org/IEventService/getLocals" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEventType">
+      <soap:operation soapAction="http://tempuri.org/IEventService/getEventType" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

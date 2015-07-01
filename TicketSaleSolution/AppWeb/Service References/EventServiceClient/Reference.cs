@@ -46,16 +46,22 @@ namespace AppWeb.EventServiceClient {
         System.Threading.Tasks.Task<DTO.EventDTO> getEventAsync(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEventService/searchEvents", ReplyAction="http://tempuri.org/IEventService/searchEventsResponse")]
-        DTO.EventDTO[] searchEvents(string text, System.DateTime maxDate, System.DateTime minDate, string local);
+        DTO.EventDTO[] searchEvents(string text, System.DateTime maxDate, System.DateTime minDate, string local, double price, string type);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEventService/searchEvents", ReplyAction="http://tempuri.org/IEventService/searchEventsResponse")]
-        System.Threading.Tasks.Task<DTO.EventDTO[]> searchEventsAsync(string text, System.DateTime maxDate, System.DateTime minDate, string local);
+        System.Threading.Tasks.Task<DTO.EventDTO[]> searchEventsAsync(string text, System.DateTime maxDate, System.DateTime minDate, string local, double price, string type);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEventService/getLocals", ReplyAction="http://tempuri.org/IEventService/getLocalsResponse")]
         DTO.EventLocationDTO[] getLocals();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEventService/getLocals", ReplyAction="http://tempuri.org/IEventService/getLocalsResponse")]
         System.Threading.Tasks.Task<DTO.EventLocationDTO[]> getLocalsAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEventService/getEventType", ReplyAction="http://tempuri.org/IEventService/getEventTypeResponse")]
+        string[] getEventType();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEventService/getEventType", ReplyAction="http://tempuri.org/IEventService/getEventTypeResponse")]
+        System.Threading.Tasks.Task<string[]> getEventTypeAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -125,12 +131,12 @@ namespace AppWeb.EventServiceClient {
             return base.Channel.getEventAsync(id);
         }
         
-        public DTO.EventDTO[] searchEvents(string text, System.DateTime maxDate, System.DateTime minDate, string local) {
-            return base.Channel.searchEvents(text, maxDate, minDate, local);
+        public DTO.EventDTO[] searchEvents(string text, System.DateTime maxDate, System.DateTime minDate, string local, double price, string type) {
+            return base.Channel.searchEvents(text, maxDate, minDate, local, price, type);
         }
         
-        public System.Threading.Tasks.Task<DTO.EventDTO[]> searchEventsAsync(string text, System.DateTime maxDate, System.DateTime minDate, string local) {
-            return base.Channel.searchEventsAsync(text, maxDate, minDate, local);
+        public System.Threading.Tasks.Task<DTO.EventDTO[]> searchEventsAsync(string text, System.DateTime maxDate, System.DateTime minDate, string local, double price, string type) {
+            return base.Channel.searchEventsAsync(text, maxDate, minDate, local, price, type);
         }
         
         public DTO.EventLocationDTO[] getLocals() {
@@ -139,6 +145,14 @@ namespace AppWeb.EventServiceClient {
         
         public System.Threading.Tasks.Task<DTO.EventLocationDTO[]> getLocalsAsync() {
             return base.Channel.getLocalsAsync();
+        }
+        
+        public string[] getEventType() {
+            return base.Channel.getEventType();
+        }
+        
+        public System.Threading.Tasks.Task<string[]> getEventTypeAsync() {
+            return base.Channel.getEventTypeAsync();
         }
     }
 }
