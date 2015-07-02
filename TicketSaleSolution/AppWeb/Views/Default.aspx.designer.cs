@@ -13,15 +13,6 @@ namespace AppWeb.Views {
     public partial class Default {
         
         /// <summary>
-        /// Control linkPaypal.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton linkPaypal;
-        
-        /// <summary>
         /// Control listViewEvents.
         /// </summary>
         /// <remarks>

@@ -192,7 +192,7 @@ namespace BL
                 {
                     User u = context.User.FirstOrDefault(user => user.id == us.id);
                     if (u != null)
-                    {
+                    { 
                        // u.mail = (us.mail!=null && !us.mail.Equals(""))?us.mail:u.mail;
                        // u.password = (us.password != null && !us.password.Equals("")) ? us.password : u.password;
                         u.name = (us.name != null && !us.name.Equals("")) ? us.name : u.name; ;

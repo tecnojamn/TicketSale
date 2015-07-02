@@ -4,7 +4,6 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder" runat="server">
-     <asp:LinkButton ID="linkPaypal"  OnCommand="linkPaypal_Command" runat="server">PAGAR CON PAYPAL</asp:LinkButton>
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-6">
