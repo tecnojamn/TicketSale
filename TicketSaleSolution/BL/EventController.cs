@@ -177,37 +177,41 @@ namespace BL
         }*/
         //Si la fecha es 01/01/0001 0:00:00, no la va a tomar en cuenta
         //Si el local es none, no lo va a tomar en cuenta
-        public List<Event> searchEvents(string text, DateTime maxDate, DateTime minDate , String local , double price, string type)
+        public List<Event> searchEvents(string text, DateTime maxDate = default(DateTime), DateTime minDate = default(DateTime), String local = "none", double price = 0, string type = "none")
         {
             List<Event> events = null;
             try
             {
                 using (DAL.TicketSaleEntities context = new DAL.TicketSaleEntities())
                 {
-                    //var query = from e in context.Event select e;
+                    //El select es porque necesito un IOrderedQueryable
                     var query = context.Event
                         .Include("EventLocation")
                         .Include("TicketType")
                         .OrderByDescending(e => e.date)
-                        .Where(e => e.name.Contains(text));
+                        .Select(e => e);
+                    if (text != "" && text != null)
+                    {
+                        query = query.Where(e => e.name.Contains(text));
+                    }
                     //verifica que la fecha no sea 01/01/0001 0:00:00
-                    if (DateTime.Compare(maxDate, new DateTime(0001, 01, 01, 0, 0, 0)) != 0 )
+                    if (maxDate != default(DateTime))
                     {
                         query = query.Where(e => e.date <= maxDate);
                     }
-                    if ( DateTime.Compare(minDate, new DateTime(0001, 01, 01, 0, 0, 0)) != 0 )
+                    if (minDate != default(DateTime))
                     {
                         query = query.Where(e => e.date >= minDate);
                     }
-                    if(local != "none")
+                    if (local != "none" && local != "" && local != null)
                     {
                         query = query.Where(e => e.EventLocation.name == local);
                     }
-                    //if (price > 0)
-                    //{
-                     //   query = query.Where(e => e.TicketType.Min(tt => tt.cost) <= price);
-                    //}
-                    if (type != "none")
+                    if (price > 0)
+                    {
+                        query = query.Where(e => e.TicketType.Min(tt => tt.cost) <= price);
+                    }
+                    if (type != "none" && type != "" && type != null)
                     {
                         query = query.Where(e => e.type == type);
                     }

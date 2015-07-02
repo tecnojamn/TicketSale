@@ -46,10 +46,5 @@ namespace AppWeb.Views
             Response.Redirect("Events.aspx?id="+idEvent);
 
         }
-
-        protected void BtnSearch_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("Search.aspx");
-        }
     }
 }

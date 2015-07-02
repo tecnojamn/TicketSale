@@ -18,11 +18,12 @@ namespace AppWeb.Views
             public string date { get; set; }
             public string type { get; set; }
             public string location { get; set; }
-            public string adress { get; set; }
+            public string address { get; set; }
             public string availability { get; set; }
         }
         protected void Page_Load(object sender, EventArgs e)
         {
+            //Llenar los datos del panel, solo la primera vez
             if (!IsPostBack)
             {
                 panelAdvanced.Visible = false;
@@ -56,56 +57,30 @@ namespace AppWeb.Views
                 ddListMinYear.Items.Add((DateTime.Now.Year + 1).ToString());
             }
 
-
-        }
-        protected void BtnSearch_Click(object sender, EventArgs e)
-        {
-            string searchText = txtSearch.Text;
-            //Si el texto es vacio no se realiza la busqueda
-            if (searchText != "")
+            //Pido los datos del request
+            string searchText = Request.QueryString["searchText"];
+            string eventLocation = Request.QueryString["local"];
+            string eventType = Request.QueryString["type"];
+            double price = 0;
+            double.TryParse(Request.QueryString["price"], out price);
+            DateTime minDate = default(DateTime);
+            DateTime.TryParse(Request.QueryString["minDate"], out minDate);
+            DateTime maxDate = default(DateTime);
+            DateTime.TryParse(Request.QueryString["maxDate"], out maxDate);
+            //Verifica que almenos un campo tenga algo
+            if ((searchText != "" && searchText != null) || 
+                (eventLocation != "none" && eventLocation != "" && eventLocation != null) || 
+                (eventType != "none" && eventType != "" && eventType != null) ||
+                minDate != default(DateTime) || maxDate != default(DateTime) || price != 0)
             {
-                DateTime minDate = new DateTime(0001, 01, 01, 0, 0, 0);
-                DateTime maxDate = new DateTime(0001, 01, 01, 0, 0, 0);
-                string local = "none";
-                double price = 0;
-                string type = "none";
-                //Si el panel esta oculto ignora los datos de los elementos de adentro
-                if (panelAdvanced.Visible)
-                {
-                    local = ddListLocal.SelectedItem.Text;
-                    double.TryParse(txtPrice.Text, out price);
-                    type = ddListType.SelectedItem.Text;
-                    //Verifica que no ingrese fecha invalida (falta arreglos)
-                    if (ddListMinDay.SelectedItem.Text != "0" && ddListMinMonth.SelectedItem.Text != "0")
-                    {
-                        minDate = new DateTime(
-                            int.Parse(ddListMinYear.SelectedItem.Text),
-                            int.Parse(ddListMinMonth.SelectedItem.Text),
-                            int.Parse(ddListMinDay.SelectedItem.Text));
-                    }
-
-                    if (ddListMaxDay.SelectedItem.Text != "0" && ddListMaxMonth.SelectedItem.Text != "0")
-                    {
-                        maxDate = new DateTime(
-                            int.Parse(ddListMaxYear.SelectedItem.Text),
-                            int.Parse(ddListMaxMonth.SelectedItem.Text),
-                            int.Parse(ddListMaxDay.SelectedItem.Text));
-                    }
-
-
-                }
-
                 //Datos traidos de BD
-                List<EventDTO> events = ProxyManager.getEventService().searchEvents(searchText, maxDate, minDate, local, price, type).ToList();
+                List<EventDTO> events = ProxyManager.getEventService().searchEvents(searchText, maxDate, minDate, eventLocation, price, eventType).ToList();
 
-                if (events.Count > 0)
-                {
-
-                }
                 //Datos para mostrar
                 List<gridRow> gridData = new List<gridRow>();
                 foreach (EventDTO item in events)
                 {
+                    //gridRow es una clase personalizada con los datos que quiero mostrar
                     gridRow row = new gridRow();
                     row.idEvent = item.id; // esta columna quedaa oculta vease eventsGrid_RowCreated
                     row.name = item.name;
@@ -113,7 +88,7 @@ namespace AppWeb.Views
                     row.date = item.date.ToString("dd/MM/yyyy");
                     row.type = item.type;
                     row.location = item.EventLocation.name;
-                    row.adress = item.EventLocation.address;
+                    row.address = item.EventLocation.address;
 
                     int available = 0;
                     foreach (TicketTypeDTO tt in item.TicketType)
@@ -125,11 +100,89 @@ namespace AppWeb.Views
 
                 }
                 //Asociacion de data con el gridView
-                //eventsGrid.Controls.Clear();
-                eventsGrid.DataSource = gridData;
-                eventsGrid.DataBind();
+                ListView1.DataSource = gridData;
+                ListView1.DataBind();
+            }
+        }
+        protected void BtnSearch_Click(object sender, EventArgs e)
+        {
+            string searchText = txtSearch.Text;
+            string local = ddListLocal.SelectedItem.Text;
+            string type = ddListType.SelectedItem.Text;
+            DateTime minDate = default(DateTime);
+            DateTime maxDate = default(DateTime);
+            double price = 0;
+            double.TryParse(txtPrice.Text, out price);
+
+            //Verifica que no ingrese fecha invalida (falta arreglos)
+            if (ddListMinDay.SelectedItem.Text != "0" && ddListMinMonth.SelectedItem.Text != "0")
+            {
+                minDate = new DateTime(
+                    int.Parse(ddListMinYear.SelectedItem.Text),
+                    int.Parse(ddListMinMonth.SelectedItem.Text),
+                    int.Parse(ddListMinDay.SelectedItem.Text));
             }
 
+            if (ddListMaxDay.SelectedItem.Text != "0" && ddListMaxMonth.SelectedItem.Text != "0")
+            {
+                maxDate = new DateTime(
+                    int.Parse(ddListMaxYear.SelectedItem.Text),
+                    int.Parse(ddListMaxMonth.SelectedItem.Text),
+                    int.Parse(ddListMaxDay.SelectedItem.Text));
+            }
+            string pageRedirect = "Search.aspx?";
+            bool preAttr = false;//Para verificar si debo agregar un "&" a la url o no
+            
+            if (searchText != "" && searchText != "none")
+            {
+                pageRedirect = pageRedirect + "searchText="+searchText;
+                preAttr = true;
+            }
+            if (local != "" && local != "none")
+            {
+                if (preAttr)
+                {
+                    pageRedirect = pageRedirect + "&";
+                }
+                pageRedirect = pageRedirect + "local=" + local;
+                preAttr = true;
+            }
+            if (type != "" && type != "none")
+            {
+                if (preAttr)
+                {
+                    pageRedirect = pageRedirect + "&";
+                }
+                pageRedirect = pageRedirect + "type=" + type;
+                preAttr = true;
+            }
+            if (price != 0)
+            {
+                if (preAttr)
+                {
+                    pageRedirect = pageRedirect + "&";
+                }
+                pageRedirect = pageRedirect + "price=" + price.ToString();
+                preAttr = true;
+            }
+            if (minDate != default(DateTime))
+            {
+                if (preAttr)
+                {
+                    pageRedirect = pageRedirect + "&";
+                }
+                pageRedirect = pageRedirect + "minDate=" + minDate.ToString("dd/MM/yyyy");
+                preAttr = true;
+            }
+            if (maxDate != default(DateTime))
+            {
+                if (preAttr)
+                {
+                    pageRedirect = pageRedirect + "&";
+                }
+                pageRedirect = pageRedirect + "maxDate=" + maxDate.ToString("dd/MM/yyyy");
+            }
+            Response.Redirect(pageRedirect);
         }
 
         protected void btnAdvanced_Click(object sender, EventArgs e)
@@ -143,25 +196,11 @@ namespace AppWeb.Views
                 panelAdvanced.Visible = true;
             }
         }
-
-        protected void eventsGrid_RowCommand(object sender, GridViewCommandEventArgs e)
+        protected void linkEvent_Click(object sender, CommandEventArgs e)
         {
+            string idEvent = e.CommandArgument.ToString();
+            Response.Redirect("Events.aspx?id=" + idEvent);
 
-            if (e.CommandName == "Select")
-            {
-                //Convierto el comandArgument en un dato usable (int)
-                //De esta forma consigo el index de la linea clickeada
-                int index = Convert.ToInt32(e.CommandArgument);
-
-                //Traigo el contenido de la columna 2 (correspondiente a idEvent) de la linea seleccionada
-                string id = eventsGrid.Rows[index].Cells[1].Text;
-                Response.Redirect("Events.aspx?id=" + id);
-            }
-        }
-
-        protected void eventsGrid_RowCreated(object sender, GridViewRowEventArgs e)
-        {
-            //e.Row.Cells[1].Visible = false; //Oculta la segunda columna
         }
     }
 }

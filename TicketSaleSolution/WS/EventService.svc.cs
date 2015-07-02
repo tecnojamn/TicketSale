@@ -67,7 +67,7 @@ namespace WS
 
             return Mapper.Map<EventDTO>(ec.getEvent(id));
         }
-        public List<EventDTO> searchEvents(string text, DateTime maxDate, DateTime minDate, String local, double price, string type)
+        public List<EventDTO> searchEvents(string text, DateTime maxDate = default(DateTime), DateTime minDate = default(DateTime), String local = "none", double price = 0, string type = "none")
         {
             EventController ec = new EventController();
 

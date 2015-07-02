@@ -34,7 +34,6 @@
                     </Fields>
                 </asp:DataPager>
             </div>
-            <asp:Button ID="BtnSearch" runat="server" Text="Search" OnClick="BtnSearch_Click" />
         </div>
     </div>
 </asp:Content>

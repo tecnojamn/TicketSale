@@ -37,11 +37,16 @@
         <asp:DropDownList ID="ddListType" runat="server">
         </asp:DropDownList>
     </asp:Panel>
-    <asp:GridView ID="eventsGrid" runat="server" OnRowCommand="eventsGrid_RowCommand" OnRowCreated="eventsGrid_RowCreated">
-        <Columns>
-            <asp:ButtonField ButtonType="Button" CommandName="Select" HeaderText="Details" ShowHeader="True" Text="&gt;" />
-        </Columns>
-        <EmptyDataTemplate> PENES</EmptyDataTemplate>
-    </asp:GridView>
+    <asp:ListView ID="ListView1" runat="server">
+        <ItemTemplate>
+            <asp:LinkButton ID="linkEvent"  OnCommand="linkEvent_Click" CommandArgument='<%#Eval("idEvent")%>' runat="server"><%#Eval("name") %></asp:LinkButton>
+            <asp:Label ID="labelDate" runat="server" style="margin-left:10px;"><%#Eval("date") %></asp:Label>
+            <asp:Label ID="labelType" runat="server" style="margin-left:10px;"><%#Eval("type") %></asp:Label>
+            <asp:Label ID="labelLocation" runat="server" style="margin-left:10px;"><%#Eval("location") %></asp:Label><
+            <asp:Label ID="labelAddress" runat="server" style="margin-left:10px;"><%#Eval("address") %></asp:Label>
+            <asp:Label ID="labelAvailability" runat="server" style="margin-left:10px;"><%#Eval("availability") %></asp:Label><br />
+        </ItemTemplate>
+    </asp:ListView>
+    <br />
     <br />
 </asp:Content>
