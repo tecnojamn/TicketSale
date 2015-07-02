@@ -22,5 +22,7 @@ namespace WS
         bool updatePayment(PaymentDTO p);
         [OperationContract]
         List<PaymentLocationDTO> getPaymentLocations();
+        [OperationContract]
+        bool newCashPayment(CashPaymentDTO cp);
     }
 }

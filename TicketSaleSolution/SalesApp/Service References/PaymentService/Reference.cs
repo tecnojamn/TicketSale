@@ -44,6 +44,12 @@ namespace SalesApp.PaymentService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPaymentService/getPaymentLocations", ReplyAction="http://tempuri.org/IPaymentService/getPaymentLocationsResponse")]
         System.Threading.Tasks.Task<DTO.PaymentLocationDTO[]> getPaymentLocationsAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPaymentService/newCashPayment", ReplyAction="http://tempuri.org/IPaymentService/newCashPaymentResponse")]
+        bool newCashPayment(DTO.CashPaymentDTO cp);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPaymentService/newCashPayment", ReplyAction="http://tempuri.org/IPaymentService/newCashPaymentResponse")]
+        System.Threading.Tasks.Task<bool> newCashPaymentAsync(DTO.CashPaymentDTO cp);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -111,6 +117,14 @@ namespace SalesApp.PaymentService {
         
         public System.Threading.Tasks.Task<DTO.PaymentLocationDTO[]> getPaymentLocationsAsync() {
             return base.Channel.getPaymentLocationsAsync();
+        }
+        
+        public bool newCashPayment(DTO.CashPaymentDTO cp) {
+            return base.Channel.newCashPayment(cp);
+        }
+        
+        public System.Threading.Tasks.Task<bool> newCashPaymentAsync(DTO.CashPaymentDTO cp) {
+            return base.Channel.newCashPaymentAsync(cp);
         }
     }
 }

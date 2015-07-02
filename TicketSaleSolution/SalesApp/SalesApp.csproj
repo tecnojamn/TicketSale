@@ -236,6 +236,10 @@
       <Project>{2a57ce9a-80df-4a89-9219-9cf4125d92d3}</Project>
       <Name>BO</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Common\COM.csproj">
+      <Project>{52b30d4a-2b37-4f00-834c-51cd621e3eae}</Project>
+      <Name>COM</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DTO\DTO.csproj">
       <Project>{c9ccbd3b-5823-4abb-a970-823461872858}</Project>
       <Name>DTO</Name>

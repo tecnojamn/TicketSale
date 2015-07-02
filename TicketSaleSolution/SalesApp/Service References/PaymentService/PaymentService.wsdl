@@ -37,6 +37,12 @@
   <wsdl:message name="IPaymentService_getPaymentLocations_OutputMessage">
     <wsdl:part name="parameters" element="tns:getPaymentLocationsResponse" />
   </wsdl:message>
+  <wsdl:message name="IPaymentService_newCashPayment_InputMessage">
+    <wsdl:part name="parameters" element="tns:newCashPayment" />
+  </wsdl:message>
+  <wsdl:message name="IPaymentService_newCashPayment_OutputMessage">
+    <wsdl:part name="parameters" element="tns:newCashPaymentResponse" />
+  </wsdl:message>
   <wsdl:portType name="IPaymentService">
     <wsdl:operation name="getPayment">
       <wsdl:input wsaw:Action="http://tempuri.org/IPaymentService/getPayment" message="tns:IPaymentService_getPayment_InputMessage" />
@@ -57,6 +63,10 @@
     <wsdl:operation name="getPaymentLocations">
       <wsdl:input wsaw:Action="http://tempuri.org/IPaymentService/getPaymentLocations" message="tns:IPaymentService_getPaymentLocations_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IPaymentService/getPaymentLocationsResponse" message="tns:IPaymentService_getPaymentLocations_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="newCashPayment">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPaymentService/newCashPayment" message="tns:IPaymentService_newCashPayment_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPaymentService/newCashPaymentResponse" message="tns:IPaymentService_newCashPayment_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IPaymentService" type="tns:IPaymentService">
@@ -99,6 +109,15 @@
     </wsdl:operation>
     <wsdl:operation name="getPaymentLocations">
       <soap:operation soapAction="http://tempuri.org/IPaymentService/getPaymentLocations" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="newCashPayment">
+      <soap:operation soapAction="http://tempuri.org/IPaymentService/newCashPayment" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

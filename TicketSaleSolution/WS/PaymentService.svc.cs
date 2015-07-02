@@ -69,5 +69,17 @@ namespace WS
 
             return Mapper.Map<List<PaymentLocationDTO>>(pc.getPaymentLocations().ToList());
         }
+
+        public bool newCashPayment(CashPaymentDTO cpDTO)
+        {
+            PaymentController pc = new PaymentController();
+
+            Mapper.CreateMap<CashPayment, CashPaymentDTO>()
+                .ForMember(p => p.Payment, opt => opt.Ignore())
+                .ForMember(p => p.PaymentLocation, opt => opt.Ignore());
+
+            return pc.newCashPayment(Mapper.Map<CashPayment>(cpDTO));
+  
+        }
     }
 }

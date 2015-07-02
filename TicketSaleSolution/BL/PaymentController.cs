@@ -106,5 +106,26 @@ namespace BL
             }
             return paymentLocations;
         }
+
+        public bool newCashPayment(CashPayment cp)
+        {
+            try
+            {
+                using (DAL.TicketSaleEntities context = new DAL.TicketSaleEntities())
+                {
+                    if (context.CashPayment.Add(cp) != null)
+                    {
+                        context.SaveChanges();
+                        //return context.Payment.Last().idReservation;
+                    }
+                    else { return false; }
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            return true;
+        }
     }
 }

@@ -56,6 +56,7 @@ namespace WS
 
             return Mapper.Map<List<UserDTO>>(uc.getUsers(page,pageSize));
         }
+
         public bool updateUser(UserDTO userDTO)
         {
             UserController uc = new UserController();
@@ -68,6 +69,15 @@ namespace WS
         public bool removeUser(int id) {
             UserController uc = new UserController();
             return uc.removeUser(id);
+        }
+
+        public List<UserDTO> getPreferredUsers()
+        {
+            UserController uc = new UserController();
+            Mapper.CreateMap<User, UserDTO>()
+            .ForMember(u => u.Reservation, opt => opt.Ignore());
+
+            return Mapper.Map<List<UserDTO>>(uc.getPreferredUsers());
         }
 
     }

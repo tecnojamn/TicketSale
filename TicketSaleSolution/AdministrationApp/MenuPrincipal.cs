@@ -96,12 +96,21 @@ namespace AdministrationApp
 
         private void clientsPreferencialesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            frmPreferredUsers child = new frmPreferredUsers();
+            child.MdiParent = this;
+            child.Show();
         }
 
         private void usuariosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmUsuarios child = new frmUsuarios();
+            child.MdiParent = this;
+            child.Show();
+        }
+
+        private void eventosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmEventos child = new frmEventos();
             child.MdiParent = this;
             child.Show();
         }

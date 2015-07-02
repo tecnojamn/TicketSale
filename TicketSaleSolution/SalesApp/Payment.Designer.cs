@@ -77,6 +77,7 @@
             this.btnConfirmar.TabIndex = 4;
             this.btnConfirmar.Text = "Confirm";
             this.btnConfirmar.UseVisualStyleBackColor = true;
+            this.btnConfirmar.Click += new System.EventHandler(this.btnConfirmar_Click);
             // 
             // frmPayment
             // 

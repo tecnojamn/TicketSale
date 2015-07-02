@@ -27,5 +27,11 @@ namespace WS
 
         [OperationContract]
         EventDTO getEvent(int id);
+        [OperationContract]
+        List<EventDTO> getEventsForGv();
+        [OperationContract]
+        EventDTO getBestEvent();
+        [OperationContract]
+        EventDTO getWorstEvent();
     }
 }

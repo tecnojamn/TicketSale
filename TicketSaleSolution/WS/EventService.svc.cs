@@ -45,6 +45,18 @@ namespace WS
             return Mapper.Map<List<EventDTO>>(ec.getEvents(page, pageSize));
         }
 
+        public List<EventDTO> getEventsForGv()
+        {
+            EventController ec = new EventController();
+            Mapper.CreateMap<Event, EventDTO>()
+                .ForMember(e => e.TicketType, opt => opt.Ignore())
+                .ForMember(e => e.EventLocation, opt => opt.MapFrom(x => x.EventLocation));
+            Mapper.CreateMap<EventLocation, EventLocationDTO>()
+                .ForMember(el => el.Event, opt => opt.Ignore());
+
+            return Mapper.Map<List<EventDTO>>(ec.getEventsForGv());
+                
+        }
         public EventDTO getEvent(int id)
         {
             EventController ec = new EventController();
@@ -66,6 +78,21 @@ namespace WS
                 .ForMember(so => so.Ticket, opt => opt.Ignore());
 
             return Mapper.Map<EventDTO>(ec.getEvent(id));
+        }
+
+        public EventDTO getBestEvent()
+        {
+            EventController ec = new EventController();
+
+            //Configuracion Automapper (Pasar a constructor asi queda mas prolijo?)
+            Mapper.CreateMap<Event, EventDTO>()
+                .ForMember(e => e.TicketType, opt => opt.Ignore())
+                .ForMember(e => e.EventLocation, opt => opt.MapFrom(x => x.EventLocation));
+            Mapper.CreateMap<EventLocation, EventLocationDTO>()
+                .ForMember(eLoc => eLoc.Event, opt => opt.Ignore());
+            
+
+            return Mapper.Map<EventDTO>(ec.getBestEvent());
         }
     }
 }

@@ -70,4 +70,18 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="newCashPayment">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/DTO" minOccurs="0" name="cp" nillable="true" type="q6:CashPaymentDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="newCashPaymentResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="newCashPaymentResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>
