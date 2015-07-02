@@ -8,12 +8,12 @@ using System.Web.UI.WebControls;
 
 namespace AppWeb.Views.Paypal
 {
-    public partial class Confirm : System.Web.UI.UserControl
+    public partial class PaymentConfirmation : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
             panelAlert.Visible = false;
-            int idReservation = int.Parse(((HiddenField)this.Parent.FindControl("hfReservationId")).Value);
+            int idReservation = int.Parse(Request.QueryString["res_id"]);
             ReservationDTO resDTO = ProxyManager.getReservationService().getReservation(idReservation);
             double amount = 0;
             foreach (SubOrderDTO so in resDTO.SubOrder)
@@ -23,12 +23,11 @@ namespace AppWeb.Views.Paypal
             lblMail.Text = resDTO.User.mail;
             lblEvent.Text = resDTO.SubOrder.First().Ticket.TicketType.Event.name;
             lblAmount.Text = "$" + amount.ToString();
-            ((HiddenField)this.Parent.FindControl("hfAccess")).Value = "1";
-
         }
-        protected void btnConfirm_Click(object sender, EventArgs e)
+
+        protected void Button1_Click(object sender, EventArgs e)
         {
-            int idReservation = int.Parse(((HiddenField)this.Parent.FindControl("hdReservationId")).Value);
+            int idReservation = int.Parse(Request.QueryString["res_id"]);
             ReservationDTO resDTO = ProxyManager.getReservationService().getReservation(idReservation);
             double amount = 0;
             foreach (SubOrderDTO so in resDTO.SubOrder)
@@ -37,13 +36,12 @@ namespace AppWeb.Views.Paypal
             }
             if (ProxyManager.getPaypalClient().doPayment(amount))
             {
-
+                ProxyManager.getPaymentService().newPayment(null);
             }
             else
             {
                 panelAlert.Visible = true;
             }
-
         }
     }
 }

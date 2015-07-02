@@ -368,9 +368,8 @@
     </None>
     <Content Include="Views\Confirm.aspx" />
     <Content Include="Views\Edit.aspx" />
-    <Content Include="Views\Paypal\Confirm.ascx" />
-    <Content Include="Views\Paypal\Login.ascx" />
-    <Content Include="Views\Paypal\Paypal.aspx" />
+    <Content Include="Views\Paypal\Auth.aspx" />
+    <Content Include="Views\Paypal\PaymentConfirmation.aspx" />
     <Content Include="Views\Paypal\paypal.css" />
     <Content Include="Views\Paypal\ppcom.svg" />
     <Content Include="Views\Profile.aspx" />
@@ -466,26 +465,19 @@
     <Compile Include="Views\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Views\Paypal\Confirm.ascx.cs">
-      <DependentUpon>Confirm.ascx</DependentUpon>
+    <Compile Include="Views\Paypal\Auth.aspx.cs">
+      <DependentUpon>Auth.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Views\Paypal\Confirm.ascx.designer.cs">
-      <DependentUpon>Confirm.ascx</DependentUpon>
+    <Compile Include="Views\Paypal\Auth.aspx.designer.cs">
+      <DependentUpon>Auth.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Views\Paypal\Login.ascx.cs">
-      <DependentUpon>Login.ascx</DependentUpon>
+    <Compile Include="Views\Paypal\PaymentConfirmation.aspx.cs">
+      <DependentUpon>PaymentConfirmation.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Views\Paypal\Login.ascx.designer.cs">
-      <DependentUpon>Login.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Paypal\Paypal.aspx.cs">
-      <DependentUpon>Paypal.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Paypal\Paypal.aspx.designer.cs">
-      <DependentUpon>Paypal.aspx</DependentUpon>
+    <Compile Include="Views\Paypal\PaymentConfirmation.aspx.designer.cs">
+      <DependentUpon>PaymentConfirmation.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Profile.aspx.cs">
       <DependentUpon>Profile.aspx</DependentUpon>

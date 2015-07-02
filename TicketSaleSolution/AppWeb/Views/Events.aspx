@@ -7,7 +7,6 @@
     
     <script>
         function validate(rowIndex) {
-
             var availableTickets = $("#ContentPlaceHolder_gvTickets tbody tr:eq(" + (rowIndex + 1) + ") td:eq(2)").text();
             var inputQuantity = $("#ContentPlaceHolder_gvTickets_txtTickets_" + rowIndex).val();
             var cost = $("#ContentPlaceHolder_gvTickets tbody tr:eq(" + (rowIndex + 1) + ") td:eq(1)").text();

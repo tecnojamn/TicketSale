@@ -30,8 +30,6 @@ namespace Paypal
         }
         public bool doPayment(double amount)
         {
-            if (_isLogged)
-            {
                 if (amount <= _countAmount)
                 {
                     _countAmount -= amount;
@@ -39,7 +37,6 @@ namespace Paypal
                     return true;
                 }
 
-            }
             return false;
         }
 
