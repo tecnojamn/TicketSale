@@ -15,7 +15,7 @@ namespace AppWeb.Views
             public int idEvent { get; set; }
             public string name { get; set; }
             public string description { get; set; }
-            public DateTime date { get; set; }
+            public string date { get; set; }
             public string type { get; set; }
             public string location { get; set; }
             public string adress { get; set; }
@@ -23,7 +23,7 @@ namespace AppWeb.Views
         }
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!Page.IsPostBack)
+            if (!IsPostBack)
             {
                 panelAdvanced.Visible = false;
                 for (int i = 0; i <= 31; i++)
@@ -98,6 +98,10 @@ namespace AppWeb.Views
                 //Datos traidos de BD
                 List<EventDTO> events = ProxyManager.getEventService().searchEvents(searchText, maxDate, minDate, local, price, type).ToList();
 
+                if (events.Count > 0)
+                {
+
+                }
                 //Datos para mostrar
                 List<gridRow> gridData = new List<gridRow>();
                 foreach (EventDTO item in events)
@@ -106,7 +110,7 @@ namespace AppWeb.Views
                     row.idEvent = item.id; // esta columna quedaa oculta vease eventsGrid_RowCreated
                     row.name = item.name;
                     row.description = item.description;
-                    row.date = item.date;
+                    row.date = item.date.ToString("dd/MM/yyyy");
                     row.type = item.type;
                     row.location = item.EventLocation.name;
                     row.adress = item.EventLocation.address;
@@ -118,11 +122,12 @@ namespace AppWeb.Views
                     }
                     row.availability = available.ToString() + " tickets";
                     gridData.Add(row);
-                    
-                    //Asociacion de data con el gridView
-                    eventsGrid.DataSource = gridData;
-                    eventsGrid.DataBind();
+
                 }
+                //Asociacion de data con el gridView
+                //eventsGrid.Controls.Clear();
+                eventsGrid.DataSource = gridData;
+                eventsGrid.DataBind();
             }
 
         }
@@ -141,7 +146,7 @@ namespace AppWeb.Views
 
         protected void eventsGrid_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            
+
             if (e.CommandName == "Select")
             {
                 //Convierto el comandArgument en un dato usable (int)
@@ -150,13 +155,13 @@ namespace AppWeb.Views
 
                 //Traigo el contenido de la columna 2 (correspondiente a idEvent) de la linea seleccionada
                 string id = eventsGrid.Rows[index].Cells[1].Text;
-                Response.Redirect("Events.aspx?id="+id);
+                Response.Redirect("Events.aspx?id=" + id);
             }
         }
 
         protected void eventsGrid_RowCreated(object sender, GridViewRowEventArgs e)
         {
-            e.Row.Cells[1].Visible = false; //Oculta la segunda columna
+            //e.Row.Cells[1].Visible = false; //Oculta la segunda columna
         }
     }
 }

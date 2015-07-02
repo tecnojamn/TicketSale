@@ -41,6 +41,7 @@
         <Columns>
             <asp:ButtonField ButtonType="Button" CommandName="Select" HeaderText="Details" ShowHeader="True" Text="&gt;" />
         </Columns>
+        <EmptyDataTemplate> PENES</EmptyDataTemplate>
     </asp:GridView>
     <br />
 </asp:Content>

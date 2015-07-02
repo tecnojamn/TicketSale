@@ -191,7 +191,7 @@ namespace BL
                         .OrderByDescending(e => e.date)
                         .Where(e => e.name.Contains(text));
                     //verifica que la fecha no sea 01/01/0001 0:00:00
-                    if (DateTime.Compare(minDate, new DateTime(0001, 01, 01, 0, 0, 0)) != 0 )
+                    if (DateTime.Compare(maxDate, new DateTime(0001, 01, 01, 0, 0, 0)) != 0 )
                     {
                         query = query.Where(e => e.date <= maxDate);
                     }
@@ -203,10 +203,10 @@ namespace BL
                     {
                         query = query.Where(e => e.EventLocation.name == local);
                     }
-                    if (price > 0)
-                    {
-                        query = query.Where(e => e.TicketType.Min(tt => tt.cost) <= price);
-                    }
+                    //if (price > 0)
+                    //{
+                     //   query = query.Where(e => e.TicketType.Min(tt => tt.cost) <= price);
+                    //}
                     if (type != "none")
                     {
                         query = query.Where(e => e.type == type);
