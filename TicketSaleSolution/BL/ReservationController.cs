@@ -112,6 +112,7 @@ namespace BL
                     res = context.Reservation
                         .Include("SubOrder.Ticket.TicketType.Event.EventLocation")
                         .Include("User")
+                        .Include("Payment")
                         .FirstOrDefault(r => r.id == idReserva);
                 }
 

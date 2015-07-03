@@ -57,9 +57,11 @@ namespace WS
             ReservationController rc = new ReservationController();
 
             Mapper.CreateMap<Reservation, ReservationDTO>()
-                .ForMember(r => r.Payment, opt => opt.Ignore())
+                .ForMember(r => r.Payment, opt => opt.MapFrom(x=>x.Payment))
                 .ForMember(r => r.User, opt => opt.MapFrom(x => x.User))
                 .ForMember(r => r.SubOrder, opt => opt.MapFrom(x => x.SubOrder));
+            Mapper.CreateMap<Payment, PaymentDTO>()
+                .ForAllMembers(opt => opt.Ignore());
             Mapper.CreateMap<User, UserDTO>()
                 .ForMember(u => u.Reservation, opt => opt.Ignore());
             Mapper.CreateMap<SubOrder, SubOrderDTO>()

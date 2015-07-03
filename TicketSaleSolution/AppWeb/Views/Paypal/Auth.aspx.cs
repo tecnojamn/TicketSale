@@ -1,4 +1,5 @@
 ﻿using COM;
+using DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,8 +19,10 @@ namespace AppWeb.Views.Paypal
                 int idReservation;
                 if (int.TryParse(Request.QueryString["res_id"], out idReservation))
                 {
-                    int idUser = ProxyManager.getReservationService().getReservation(idReservation).idUser; //Esta logueado el dueño de la reserva?
-                    if (idUser != int.Parse(Session["id"].ToString()))
+                    ReservationDTO resDTO =  ProxyManager.getReservationService().getReservation(idReservation);
+                    int idUser = resDTO.idUser;
+
+                    if (idUser != int.Parse(Session["id"].ToString()) || resDTO.Payment != null)
                     {
                         Response.Redirect(redirectTo);
                     }

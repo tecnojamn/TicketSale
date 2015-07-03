@@ -14,6 +14,6 @@ namespace Paypal
         [OperationContract]
         bool login(string user, string pass);
         [OperationContract]
-        bool doPayment(double amount);
+        string doPayment(double amount);
     }
 }

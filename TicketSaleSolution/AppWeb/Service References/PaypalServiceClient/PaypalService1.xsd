@@ -25,7 +25,7 @@
   <xs:element name="doPaymentResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="doPaymentResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="doPaymentResult" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

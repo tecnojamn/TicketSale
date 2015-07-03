@@ -29,14 +29,24 @@ namespace AppWeb.Views.Paypal
         {
             int idReservation = int.Parse(Request.QueryString["res_id"]);
             ReservationDTO resDTO = ProxyManager.getReservationService().getReservation(idReservation);
-            double amount = 0;
+            double _amount = 0;
             foreach (SubOrderDTO so in resDTO.SubOrder)
             {
-                amount += so.Ticket.TicketType.cost;
+                _amount += so.Ticket.TicketType.cost;
             }
-            if (ProxyManager.getPaypalClient().doPayment(amount))
+            string _transactionCod = ProxyManager.getPaypalClient().doPayment(_amount);
+            if (!_transactionCod.Equals(""))
             {
-                ProxyManager.getPaymentService().newPayment(null);
+                ProxyManager.getPaymentService().newPayment(new PaymentDTO() {
+                    amount = _amount,
+                    idReservation=resDTO.id,
+                    date=DateTime.Today,
+                    PaypalPayment = new PaypalPaymentDTO()
+                    {
+                        transactionCod = _transactionCod,
+                        idReservation=resDTO.id
+                    }
+                });
             }
             else
             {

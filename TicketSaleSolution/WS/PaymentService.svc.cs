@@ -41,12 +41,16 @@ namespace WS
         {
             PaymentController pc = new PaymentController();
 
-            Mapper.CreateMap<Payment, PaymentDTO>()
+            Mapper.CreateMap<PaymentDTO, Payment>()
                 .ForMember(p => p.CashPayment, opt => opt.Ignore())
-                .ForMember(p => p.PaypalPayment, opt => opt.Ignore())
+                .ForMember(p => p.PaypalPayment, opt => opt.MapFrom(x=>x.PaypalPayment))
                 .ForMember(p => p.Reservation, opt => opt.Ignore());
 
-            return pc.newPayment(Mapper.Map<Payment>(pDTO));
+            Mapper.CreateMap<PaypalPaymentDTO, PaypalPayment>()
+                .ForMember(pp => pp.Payment, opt => opt.Ignore());
+
+            BO.Payment  pa = Mapper.Map<Payment>(pDTO);
+            return pc.newPayment(pa);
         }
         public bool updatePayment(PaymentDTO pDTO)
         {

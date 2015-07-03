@@ -7,7 +7,7 @@
     public class PaypalPaymentDTO
     {
         [DataMember]
-        public int idPayment { get; set; }
+        public int idReservation { get; set; }
         [DataMember]
         public string transactionCod { get; set; }
         [DataMember]

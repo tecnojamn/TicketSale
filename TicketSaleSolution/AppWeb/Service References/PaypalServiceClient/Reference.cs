@@ -22,10 +22,10 @@ namespace AppWeb.PaypalServiceClient {
         System.Threading.Tasks.Task<bool> loginAsync(string user, string pass);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPaypalService/doPayment", ReplyAction="http://tempuri.org/IPaypalService/doPaymentResponse")]
-        bool doPayment(double amount);
+        string doPayment(double amount);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPaypalService/doPayment", ReplyAction="http://tempuri.org/IPaypalService/doPaymentResponse")]
-        System.Threading.Tasks.Task<bool> doPaymentAsync(double amount);
+        System.Threading.Tasks.Task<string> doPaymentAsync(double amount);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -63,11 +63,11 @@ namespace AppWeb.PaypalServiceClient {
             return base.Channel.loginAsync(user, pass);
         }
         
-        public bool doPayment(double amount) {
+        public string doPayment(double amount) {
             return base.Channel.doPayment(amount);
         }
         
-        public System.Threading.Tasks.Task<bool> doPaymentAsync(double amount) {
+        public System.Threading.Tasks.Task<string> doPaymentAsync(double amount) {
             return base.Channel.doPaymentAsync(amount);
         }
     }

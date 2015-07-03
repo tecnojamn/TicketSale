@@ -14,7 +14,11 @@ namespace Paypal
         string _user = "Pepe";
         string _pass = "123456";
         double _countAmount = 40133;
+        string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        int transactionLength = 10;
+        Random random = new Random();
         bool _isLogged = false;
+
 
         public bool login(string user, string pass)
         {
@@ -28,16 +32,15 @@ namespace Paypal
             }
             return false;
         }
-        public bool doPayment(double amount)
+        public string doPayment(double amount)
         {
-                if (amount <= _countAmount)
-                {
-                    _countAmount -= amount;
+            if (amount <= _countAmount)
+            {
+                _countAmount -= amount;
+                return new string(Enumerable.Repeat(chars, transactionLength).Select(s => s[random.Next(s.Length)]).ToArray());
+            }
 
-                    return true;
-                }
-
-            return false;
+            return "";
         }
 
     }
