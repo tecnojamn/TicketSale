@@ -67,7 +67,7 @@ namespace WS
 
             return Mapper.Map<EventDTO>(ec.getEvent(id));
         }
-        public List<EventDTO> searchEvents(string text, DateTime maxDate = default(DateTime), DateTime minDate = default(DateTime), String local = "none", double price = 0, string type = "none")
+        public List<EventDTO> searchEvents(string text, int page = 0, int pageSize = 0, DateTime maxDate = default(DateTime), DateTime minDate = default(DateTime), String local = "none", double price = 0, string type = "none")
         {
             EventController ec = new EventController();
 
@@ -80,7 +80,7 @@ namespace WS
                 .ForMember(tt => tt.Ticket, opt => opt.Ignore())
                 .ForMember(tt => tt.Event, opt => opt.Ignore());
             
-            return Mapper.Map<List<EventDTO>>(ec.searchEvents(text, maxDate, minDate, local, price, type));
+            return Mapper.Map<List<EventDTO>>(ec.searchEvents(text, page, pageSize, maxDate, minDate, local, price, type));
         }
         public List<EventLocationDTO> getLocals()
         {

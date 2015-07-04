@@ -29,7 +29,7 @@ namespace WS
         EventDTO getEvent(int id);
 
         [OperationContract]
-        List<EventDTO> searchEvents(string text, DateTime maxDate, DateTime minDate, String local, double price, string type);
+        List<EventDTO> searchEvents(string text, int page, int pageSize, DateTime maxDate, DateTime minDate, String local, double price, string type);
         
         [OperationContract]
         List<EventLocationDTO> getLocals();

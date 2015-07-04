@@ -175,13 +175,16 @@ namespace BL
             }
             return count;
         }*/
-        //Si la fecha es 01/01/0001 0:00:00, no la va a tomar en cuenta
-        //Si el local es none, no lo va a tomar en cuenta
-        public List<Event> searchEvents(string text, DateTime maxDate = default(DateTime), DateTime minDate = default(DateTime), String local = "none", double price = 0, string type = "none")
+
+        //Si la fecha es 01/01/0001 0:00:00, NO la va a tomar en cuenta
+        //Si el local es none, NO lo va a tomar en cuenta
+        //Si page o pageSize es menor a 1, NO lo tomara en cuenta y devolvera TODOS los que encuentre
+        public List<Event> searchEvents(string text, int page = 0, int pageSize = 0, DateTime maxDate = default(DateTime), DateTime minDate = default(DateTime), String local = "none", double price = 0, string type = "none")
         {
             List<Event> events = null;
             try
             {
+
                 using (DAL.TicketSaleEntities context = new DAL.TicketSaleEntities())
                 {
                     //El select es porque necesito un IOrderedQueryable
@@ -190,6 +193,10 @@ namespace BL
                         .Include("TicketType")
                         .OrderByDescending(e => e.date)
                         .Select(e => e);
+                    if (page > 0 && pageSize > 0)
+                    {
+                        query = query.Skip((page - 1) * pageSize).Take(pageSize);
+                    }
                     if (text != "" && text != null)
                     {
                         query = query.Where(e => e.name.Contains(text));
@@ -261,7 +268,7 @@ namespace BL
             }
             catch (Exception)
             {
-                
+
                 throw;
             }
             return eventsType;

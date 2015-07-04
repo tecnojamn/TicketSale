@@ -77,6 +77,8 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="text" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="page" type="xs:int" />
+        <xs:element minOccurs="0" name="pageSize" type="xs:int" />
         <xs:element minOccurs="0" name="maxDate" type="xs:dateTime" />
         <xs:element minOccurs="0" name="minDate" type="xs:dateTime" />
         <xs:element minOccurs="0" name="local" nillable="true" type="xs:string" />

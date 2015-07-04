@@ -12,6 +12,7 @@ namespace COM
         {
             public static byte ENABLE = 1;
             public static byte UNABLE = 0;
+            public static int pageSize = 10;
         }
     }
 }

@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using DTO;
+using COM;
 
 namespace AppWeb.Views
 {
@@ -61,6 +62,12 @@ namespace AppWeb.Views
             string searchText = Request.QueryString["searchText"];
             string eventLocation = Request.QueryString["local"];
             string eventType = Request.QueryString["type"];
+            int page = 1;
+            int.TryParse(Request.QueryString["page"], out page);
+            if (page < 1)
+            {
+                page = 1;
+            }
             double price = 0;
             double.TryParse(Request.QueryString["price"], out price);
             DateTime minDate = default(DateTime);
@@ -68,13 +75,13 @@ namespace AppWeb.Views
             DateTime maxDate = default(DateTime);
             DateTime.TryParse(Request.QueryString["maxDate"], out maxDate);
             //Verifica que almenos un campo tenga algo
-            if ((searchText != "" && searchText != null) || 
-                (eventLocation != "none" && eventLocation != "" && eventLocation != null) || 
+            if ((searchText != "" && searchText != null) ||
+                (eventLocation != "none" && eventLocation != "" && eventLocation != null) ||
                 (eventType != "none" && eventType != "" && eventType != null) ||
                 minDate != default(DateTime) || maxDate != default(DateTime) || price != 0)
             {
                 //Datos traidos de BD
-                List<EventDTO> events = ProxyManager.getEventService().searchEvents(searchText, maxDate, minDate, eventLocation, price, eventType).ToList();
+                List<EventDTO> events = ProxyManager.getEventService().searchEvents(searchText, page, EVENT.STATE.pageSize, maxDate, minDate, eventLocation, price, eventType).ToList();
 
                 //Datos para mostrar
                 List<gridRow> gridData = new List<gridRow>();
@@ -132,10 +139,10 @@ namespace AppWeb.Views
             }
             string pageRedirect = "Search.aspx?";
             bool preAttr = false;//Para verificar si debo agregar un "&" a la url o no
-            
+
             if (searchText != "" && searchText != "none")
             {
-                pageRedirect = pageRedirect + "searchText="+searchText;
+                pageRedirect = pageRedirect + "searchText=" + searchText;
                 preAttr = true;
             }
             if (local != "" && local != "none")
