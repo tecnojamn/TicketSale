@@ -5,8 +5,11 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder" runat="server">
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-6">
+        <div class="row" style="min-height:800px">
+            <div class="col-lg-6 col-lg-offset-2" style="
+    margin-top: 30px;
+">
+
 
                 <asp:ListView ID="listViewEvents" ItemType="DTO.EventDTO" GroupItemCount="3" SelectMethod="listViewEvents_GetData" runat="server">
                     <EmptyDataTemplate>No hay eventos</EmptyDataTemplate>

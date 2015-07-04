@@ -1,6 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="HeaderSession.ascx.cs" Inherits="AppWeb.Views.Controls.HeaderSession" %>
 
-<nav class="navbar navbar-inverse navbar-embossed">
+
     <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-01">
             <span class="sr-only">Toggle navigation</span>
@@ -27,5 +27,5 @@
 
         </ul>
     </div>
-</nav>
+
 

@@ -20,16 +20,28 @@
 
 
     <asp:ContentPlaceHolder ID="head" runat="server">
+        
     </asp:ContentPlaceHolder>
 </head>
 <body>
     <form runat="server">
+        <nav class="navbar navbar-inverse navbar-embossed" style="border-radius: 0;">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-lg-4">
-                    <asp:ImageButton OnClick="imgbtnLogo_Click" ID="imgbtnLogo" ImageUrl="Content/dist/img/logo.jpg" CssClass="logo" runat="server" />
+                <div class="col-lg-2">
+                    <asp:ImageButton OnClick="imgbtnLogo_Click" ID="imgbtnLogo" ImageUrl="Content/dist/img/logo.png" CssClass="logo" runat="server" />
                 </div>
-                <div class="container col-lg-3 col-lg-offset-5">
+                <div class="col-lg-2 navbar-form" style="  padding: 13px 10px 12px 10px;">
+                    <div class="form-group">
+                  <div class="input-group">
+                    <input class="form-control" id="navbarInput-01" type="search" placeholder="Buscar">
+                    <span class="input-group-btn">
+                      <button type="submit" class="btn"><span class="fui-search"></span></button>
+                    </span>
+                  </div>
+                </div>
+                </div>
+                <div class="container col-lg-5 col-lg-offset-3">
                     <asp:Panel ID="panelLogin" runat="server">
                         <asp:Button ID="btnLogin" CssClass="btn-primary btn" OnClick="btnLogin_Click" runat="server" Text="Iniciar Sesión" />
                         <asp:Button ID="btnSignup" CssClass="btn-info btn" OnClick="btnSignup_Click" runat="server" Text="Registrarme" />
@@ -37,8 +49,8 @@
                 </div>
             </div>
         </div>
-        <div>
-            <asp:ContentPlaceHolder ID="ContentPlaceHolder" runat="server">
+        <div></nav>
+            <asp:ContentPlaceHolder  ID="ContentPlaceHolder" runat="server">
             </asp:ContentPlaceHolder>
         </div>
     </form>

@@ -14,9 +14,21 @@ div {
 
 .logo {
     background-repeat: no-repeat;
-    height: 75px;
-    width: 215px;
+height: 50px;
+  width: 96px;
 }
+#ctl11_navName {
+font-size: 20px;
+  padding: 15px 21px;
+  color: rgb(21, 157, 130);
+}
+#panelLogin input {
+  float: right;
+  margin: 10px;}
+#ContentPlaceHolder {
+min-height:800px;
+}
+
 .hide {
     display: none;
 }
