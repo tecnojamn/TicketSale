@@ -62,7 +62,7 @@ namespace BL
             {
                 using (DAL.TicketSaleEntities context = new DAL.TicketSaleEntities())
                 {
-                    
+
 
 
                     Event e = context.Event.FirstOrDefault(ev => ev.id == id);
@@ -117,7 +117,7 @@ namespace BL
             {
                 using (DAL.TicketSaleEntities context = new DAL.TicketSaleEntities())
                 {
-                    DateTime aYearAgo =DateTime.Today.AddYears(-1); 
+                    DateTime aYearAgo = DateTime.Today.AddYears(-1);
 
 
                     events = context.Event.Select(e => e)
@@ -132,6 +132,60 @@ namespace BL
                 throw;
             }
             return events;
+
+        }
+        public List<Event> getFeatuerdEvents(int page, int pageSize)
+        {
+            List<Event> eventos = null;
+            var auxDicitonary = new Dictionary<int, decimal>();
+            try
+            {
+                using (DAL.TicketSaleEntities context = new DAL.TicketSaleEntities())
+                {
+                    int entradasTomadas = 0;
+                    int entradasDisp = 0;
+                    decimal res = 0M;
+                    eventos = context.Event.Select(e => e)
+                        .OrderByDescending(e => e.date)
+                        .Skip((page - 1) * pageSize)
+                        .Take(pageSize)
+                        .ToList();
+                     foreach (Event e in eventos)
+                     {
+                         entradasTomadas = 0;
+                         entradasDisp = 0;
+
+                         foreach (TicketType et in e.TicketType) {
+                             int entradas=et.finalNum - et.startNum;
+                             entradasDisp += entradas;
+                              foreach (var t in et.Ticket)
+                                 {
+                                    /* if (t.SubOrder.Count == 0)
+                                     {*/
+                                     entradasTomadas+=t.SubOrder.Count;
+                                     /*}*/
+                                 }
+                         }
+                         res = 0M;
+                         if(entradasDisp>0)
+                             res = ((decimal)entradasTomadas) / ((decimal)entradasDisp);
+                         auxDicitonary.Add(e.id, res);
+                     }
+                     //ordeno el diccionario
+                     auxDicitonary.OrderBy(key => key.Value);
+                     //lo paso a lista de ints, ya ordenada
+                     List<int> idList=new List<int>(auxDicitonary.Keys);
+                     //orden la lista de eventos en base a la lista de ints
+                     eventos = eventos.OrderBy(e => idList.IndexOf(e.id)).ToList();
+                     
+
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            return eventos;
 
         }
         //Obtener Evento

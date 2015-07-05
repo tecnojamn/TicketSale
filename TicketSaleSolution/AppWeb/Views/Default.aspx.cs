@@ -28,13 +28,10 @@ namespace AppWeb.Views
         {
             //testing paths
             string path = COM.PATH.UPLOADS;
-
-
-
             totalRowCount = 5; // falta funcion getEventsCount
             int page = startRowIndex/maximumRows+1;
             int pageSize = maximumRows;
-            List<EventDTO> events = ProxyManager.getEventService().getEvents(page, pageSize).ToList();
+            List<EventDTO> events = ProxyManager.getEventService().getFeaturedEvents(page, pageSize).ToList();
             return events;
         }
 
