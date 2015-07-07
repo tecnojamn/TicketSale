@@ -44,6 +44,18 @@ namespace AppWeb.ReservationServiceClient {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReservationService/getReservation", ReplyAction="http://tempuri.org/IReservationService/getReservationResponse")]
         System.Threading.Tasks.Task<DTO.ReservationDTO> getReservationAsync(int idReservation);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReservationService/getReservationCountByUser", ReplyAction="http://tempuri.org/IReservationService/getReservationCountByUserResponse")]
+        int getReservationCountByUser(int idUser, bool onlyPayments);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReservationService/getReservationCountByUser", ReplyAction="http://tempuri.org/IReservationService/getReservationCountByUserResponse")]
+        System.Threading.Tasks.Task<int> getReservationCountByUserAsync(int idUser, bool onlyPayments);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReservationService/cancelSubOrder", ReplyAction="http://tempuri.org/IReservationService/cancelSubOrderResponse")]
+        bool cancelSubOrder(int idSO);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReservationService/cancelSubOrder", ReplyAction="http://tempuri.org/IReservationService/cancelSubOrderResponse")]
+        System.Threading.Tasks.Task<bool> cancelSubOrderAsync(int idSO);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -111,6 +123,22 @@ namespace AppWeb.ReservationServiceClient {
         
         public System.Threading.Tasks.Task<DTO.ReservationDTO> getReservationAsync(int idReservation) {
             return base.Channel.getReservationAsync(idReservation);
+        }
+        
+        public int getReservationCountByUser(int idUser, bool onlyPayments) {
+            return base.Channel.getReservationCountByUser(idUser, onlyPayments);
+        }
+        
+        public System.Threading.Tasks.Task<int> getReservationCountByUserAsync(int idUser, bool onlyPayments) {
+            return base.Channel.getReservationCountByUserAsync(idUser, onlyPayments);
+        }
+        
+        public bool cancelSubOrder(int idSO) {
+            return base.Channel.cancelSubOrder(idSO);
+        }
+        
+        public System.Threading.Tasks.Task<bool> cancelSubOrderAsync(int idSO) {
+            return base.Channel.cancelSubOrderAsync(idSO);
         }
     }
 }

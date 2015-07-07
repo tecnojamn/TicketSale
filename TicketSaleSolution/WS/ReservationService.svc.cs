@@ -19,7 +19,7 @@ namespace WS
 
             Mapper.CreateMap<ReservationDTO, Reservation>()
                 .ForMember(r => r.SubOrder, opt => opt.MapFrom(x => x.SubOrder))
-                .ForMember(r => r.Payment, opt => opt.Ignore())                
+                .ForMember(r => r.Payment, opt => opt.Ignore())
                 .ForMember(r => r.User, opt => opt.Ignore());
 
             Mapper.CreateMap<SubOrderDTO, SubOrder>()
@@ -36,7 +36,20 @@ namespace WS
             Mapper.CreateMap<Reservation, ReservationDTO>()
                 .ForMember(r => r.User, opt => opt.Ignore())
                 .ForMember(r => r.Payment, opt => opt.Ignore())
-                .ForMember(r => r.SubOrder, opt => opt.Ignore());
+                .ForMember(r => r.SubOrder, opt => opt.MapFrom(x => x.SubOrder));
+            Mapper.CreateMap<SubOrder, SubOrderDTO>()
+                .ForMember(so => so.Reservation, opt => opt.Ignore())
+                .ForMember(so => so.Ticket, opt => opt.MapFrom(x => x.Ticket));
+            Mapper.CreateMap<Ticket, TicketDTO>()
+                .ForMember(t => t.SubOrder, opt => opt.Ignore())
+                .ForMember(t => t.TicketType, opt => opt.MapFrom(x => x.TicketType));
+            Mapper.CreateMap<TicketType, TicketTypeDTO>()
+                .ForMember(tt => tt.Ticket, opt => opt.Ignore())
+                .ForMember(tt => tt.Event, opt => opt.MapFrom(x => x.Event));
+            Mapper.CreateMap<Event, EventDTO>()
+                .ForMember(e => e.EventLocation, opt => opt.Ignore())
+                .ForMember(e => e.TicketType, opt => opt.Ignore());
+
 
             return Mapper.Map<List<ReservationDTO>>(rc.getReservationsByUser(idUser, page, pageSize));
         }
@@ -49,6 +62,7 @@ namespace WS
                 .ForMember(r => r.Payment, opt => opt.Ignore())
                 .ForMember(r => r.SubOrder, opt => opt.Ignore());
 
+
             return Mapper.Map<List<ReservationDTO>>(rc.getReservations(page, pageSize)); ;
         }
 
@@ -57,7 +71,7 @@ namespace WS
             ReservationController rc = new ReservationController();
 
             Mapper.CreateMap<Reservation, ReservationDTO>()
-                .ForMember(r => r.Payment, opt => opt.MapFrom(x=>x.Payment))
+                .ForMember(r => r.Payment, opt => opt.MapFrom(x => x.Payment))
                 .ForMember(r => r.User, opt => opt.MapFrom(x => x.User))
                 .ForMember(r => r.SubOrder, opt => opt.MapFrom(x => x.SubOrder));
             Mapper.CreateMap<Payment, PaymentDTO>()
@@ -83,6 +97,16 @@ namespace WS
 
             return Mapper.Map<ReservationDTO>(rc.getReservation(idReservation));
 
+        }
+        public int getReservationCountByUser(int idUser, bool onlyPayments = false)
+        {
+            ReservationController rc = new      ReservationController();
+            return rc.getReservationCountByUser(idUser, onlyPayments);
+        }
+        public bool cancelSubOrder(int idSO)
+        {
+            ReservationController rc = new ReservationController();
+            return rc.cancelSubOrder(idSO);
         }
     }
 }

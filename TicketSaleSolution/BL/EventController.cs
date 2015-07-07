@@ -117,7 +117,7 @@ namespace BL
             {
                 using (DAL.TicketSaleEntities context = new DAL.TicketSaleEntities())
                 {
-                    DateTime aYearAgo =DateTime.Today.AddYears(-1); 
+                    DateTime aYearAgo =DateTime.Today.AddYears(-1);
 
 
                     events = context.Event.Select(e => e)

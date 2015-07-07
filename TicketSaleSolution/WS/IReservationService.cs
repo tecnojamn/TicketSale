@@ -24,7 +24,12 @@ namespace WS
         [OperationContract]
         List<ReservationDTO> getReservations(int page, int pageSize);
 
-        [OperationContract]
+        [OperationContract] 
         ReservationDTO getReservation(int idReservation);
+
+        [OperationContract]
+        int getReservationCountByUser(int idUser, bool onlyPayments = false);
+        [OperationContract]
+        bool cancelSubOrder(int idSO);
     }
 }

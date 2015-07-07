@@ -47,8 +47,13 @@ namespace BL
             {
                 using (DAL.TicketSaleEntities context = new DAL.TicketSaleEntities())
                 {
-                    res = context.Reservation.Select(r => r)
-                        .Where(r => r.idUser == idUser)
+                    res = context.Reservation
+                        .Include("SubOrder.Ticket.TicketType.Event")
+                        .Select(r => r)
+                        .OrderByDescending(r => r.date)
+                        .Where(r => r.idUser == idUser)                        
+                        .Skip(page-1)
+                        .Take(pageSize)
                         .ToList();
                 }
             }
@@ -67,8 +72,8 @@ namespace BL
                 using (DAL.TicketSaleEntities context = new DAL.TicketSaleEntities())
                 {
                     res = context.Reservation.Select(r => r)
-                        .OrderBy(r => r.date)
-                        .Skip(page)
+                        .OrderByDescending(r => r.date)
+                        .Skip(page-1)
                         .Take(pageSize)
                         .ToList();
                 }
@@ -80,24 +85,25 @@ namespace BL
             return res;
         }
         //Cancelar suborden
-        public bool cancelSubOrder(int subOrderId)
+        public bool cancelSubOrder(int idSO)
         {
 
             try
             {
                 using (DAL.TicketSaleEntities context = new DAL.TicketSaleEntities())
                 {
-                    SubOrder so = context.SubOrder.FirstOrDefault(s => s.id == subOrderId);
+                    SubOrder so = context.SubOrder.FirstOrDefault(s => s.id == idSO);
                     if (so != null)
                     {
                         so.active = Convert.ToByte(RESERVATION.SUBORDER.INACTIVE);
+                        context.SaveChanges();
                     }
                     else { return false; }
                 }
             }
             catch (Exception)
             {
-                throw;
+                return false;
             }
             return true;
         }
@@ -123,6 +129,30 @@ namespace BL
                 throw;
             }
             return res;
+
+        }
+        public int getReservationCountByUser(int idUser, bool onlyPayments=false)
+        {
+            try
+            {
+                using (DAL.TicketSaleEntities context = new DAL.TicketSaleEntities())
+                {
+                    if (onlyPayments)
+                    {
+                        return context.Reservation.Select(r => r.idUser == idUser).Count();
+                    }
+                    else
+                    {
+                        return context.Reservation.Select(r => r.idUser == idUser && r.Payment!=null ).Count();
+                    }
+                }
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
 
         }
     }
