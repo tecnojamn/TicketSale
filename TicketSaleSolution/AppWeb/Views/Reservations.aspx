@@ -29,22 +29,31 @@
                 }
             });
         })
-        function cancelSubOrder(idSO) {
+        function cancelSubOrder(idSO, rowIndex,lvItemIndex) {
+            console.log("asd");
             $.ajax({
                 type: "POST",
                 url: "Reservations.aspx/cancelSubOrder",
                 data: '{idSO: "' + idSO + '" }',
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
-                success: OnSuccess,
+                success: onSuccess(response,rowIndex,lvItemIndex),
                 failure: function (response) {
                     alert(response);
                 }
             });
         }
-        function OnSuccess(response) {
-            alert(response);
+        function onSuccess(response,rowIndex,lvItemIndex) {
+            console.log(response.d);
+            if (response.d == "true") {
+                console.log("lo borre");
+                console.log($("#ContentPlaceHolder_lvReservations_gvSubOrders_" + lvItemIndex + "_btnCancelSubOrder_" + rowIndex).val);
+
+            } else {
+                console.log("no lo pude borrar");
+            }
         }
+
 
     </script>
 

@@ -14,9 +14,9 @@ namespace AppWeb.Views
     public partial class Reservations : System.Web.UI.Page
     {
         [WebMethod(BufferResponse = false)]
-        public static bool cancelSubOrder(string idSO)
+        public static string cancelSubOrder(string idSO)
         {
-            return ProxyManager.getReservationService().cancelSubOrder(int.Parse(idSO));
+            return ProxyManager.getReservationService().cancelSubOrder(int.Parse(idSO))? "true":"false";
         }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -149,17 +149,18 @@ namespace AppWeb.Views
 
             for (int i = 0; i < gridViewSOItems.Count(); i++)
             {
-                if (gridViewSOItems[i].stateOrCancel.Equals("Paga"))
+                if (gridViewSOItems[i].stateOrCancel.Equals("Pendiente"))
                 {
-                    Button btnDoPayment = new Button()
+                    Button btnCancelSubOrder = new Button()
                     {
+                        ID="btnCancelSubOrder",
                         Text = "CANCELAR",
                         CssClass = "btn-primary",
                         UseSubmitBehavior=false,
                         //PostBackUrl = "Reservations.aspx?action=cancel_suborder&res_id=" + resDTO.id + "&suborder_id=" + gridViewSOItems[i].id + "&page=" + (lvDataPager.StartRowIndex / lvDataPager.PageSize + 1).ToString() + "&item=" + itemIndex
-                        OnClientClick = "cancelSubOrder(" + gridViewSOItems[i].id + ");return false"
+                        OnClientClick = "cancelSubOrder(" + gridViewSOItems[i].id + ","+ i +","+ itemIndex+ ");return false"
                     };
-                    gvSubOrders.Rows[i].Cells[3].Controls.Add(btnDoPayment);
+                    gvSubOrders.Rows[i].Cells[3].Controls.Add(btnCancelSubOrder);
                 }
                 
             }
