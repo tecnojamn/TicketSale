@@ -3,6 +3,8 @@
     using System;
     using System.Collections.Generic;
     using System.Runtime.Serialization;
+    using System.Linq;
+    using COM;
    [DataContract]
     public class TicketTypeDTO
     {
@@ -17,15 +19,16 @@
         }
         public int getAvailableTicketCount()
         {
-            int count = 0;
+            int unavailable = 0;
+            int totalTickets = finalNum - startNum;
             foreach (var t in Ticket)
             {
-                if (t.SubOrder.Count == 0)
+                if (t.SubOrder.Where(so => so.active == RESERVATION.SUBORDER.ACTIVE).Count() >= 1)
                 {
-                    count++;
+                    unavailable++;
                 }
             }
-            return count;
+            return totalTickets - unavailable;
         }
 
        [DataMember]

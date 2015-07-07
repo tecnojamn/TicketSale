@@ -38,12 +38,12 @@
                 dataType: "json",
                 success: OnSuccess,
                 failure: function (response) {
-                    alert(response.d);
+                    alert(response);
                 }
             });
         }
         function OnSuccess(response) {
-            alert(response.d);
+            alert(response);
         }
 
     </script>

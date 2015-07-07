@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
+using System.Linq;
+using COM;
 
 namespace DTO
 {
@@ -14,7 +16,7 @@ namespace DTO
         public int getTotalTicketCount(){
             int count = 0;
             foreach(var tt in TicketType){
-                count += tt.getTotalTicketCount();
+                count += tt.finalNum - tt.startNum; ;
             }
             return count;
         }
@@ -23,7 +25,7 @@ namespace DTO
             int count = 0;
             foreach (var tt in TicketType)
             {
-                count += tt.getAvailableTicketCount();
+                count += tt.finalNum - tt.startNum - tt.Ticket.Where(t => t.SubOrder.Where(so => so.active == RESERVATION.SUBORDER.ACTIVE).Count() == 1).Count();
             }
             return count;
         }
