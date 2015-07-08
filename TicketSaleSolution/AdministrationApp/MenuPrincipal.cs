@@ -114,5 +114,24 @@ namespace AdministrationApp
             child.MdiParent = this;
             child.Show();
         }
+
+        private void mejorEspectáculoDelMesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ventaDeEntradasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmSoldTickets child = new frmSoldTickets();
+            child.MdiParent = this;
+            child.Show();
+        }
+
+        private void peorEspectáculoDelMesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmEventReport child = new frmEventReport();
+            child.MdiParent = this;
+            child.Show();
+        }
     }
 }

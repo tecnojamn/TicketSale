@@ -8,7 +8,7 @@ using BO;
 using DTO;
 using BL;
 using AutoMapper;
-
+using COM;
 namespace WS
 {
     public class EventService : IEventService
@@ -55,7 +55,7 @@ namespace WS
                 .ForMember(el => el.Event, opt => opt.Ignore());
 
             return Mapper.Map<List<EventDTO>>(ec.getEventsForGv());
-                
+
         }
         public EventDTO getEvent(int id)
         {
@@ -80,7 +80,7 @@ namespace WS
             return Mapper.Map<EventDTO>(ec.getEvent(id));
         }
 
-        public EventDTO getBestEvent()
+        public EventDTO getEventReport(int a)
         {
             EventController ec = new EventController();
 
@@ -90,9 +90,44 @@ namespace WS
                 .ForMember(e => e.EventLocation, opt => opt.MapFrom(x => x.EventLocation));
             Mapper.CreateMap<EventLocation, EventLocationDTO>()
                 .ForMember(eLoc => eLoc.Event, opt => opt.Ignore());
-            
 
-            return Mapper.Map<EventDTO>(ec.getBestEvent());
+            if (a == COM.EVENT.REPORT.BEST)
+            {
+                return Mapper.Map<EventDTO>(ec.getEventReport(COM.EVENT.REPORT.BEST));
+            }
+            else
+                return Mapper.Map<EventDTO>(ec.getEventReport(COM.EVENT.REPORT.WORST));
+
+        }
+
+        public List<EventDTO> getSoldTickets(DateTime start, DateTime end)
+        {
+            EventController ec = new EventController();
+
+            Mapper.CreateMap<Event, EventDTO>()
+                .ForMember(e => e.TicketType, opt => opt.MapFrom(x => x.TicketType))
+                .ForMember(e => e.EventLocation, opt => opt.MapFrom(x => x.EventLocation));
+            Mapper.CreateMap<EventLocation, EventLocationDTO>()
+                .ForMember(eLoc => eLoc.Event, opt => opt.Ignore());
+            Mapper.CreateMap<TicketType, TicketTypeDTO>()
+                .ForMember(tt => tt.Ticket, opt => opt.MapFrom(x => x.Ticket))
+                .ForMember(tt => tt.Event, opt => opt.Ignore());
+            Mapper.CreateMap<Ticket, TicketDTO>()
+                .ForMember(t => t.TicketType, opt => opt.Ignore())
+                .ForMember(t => t.SubOrder, opt => opt.MapFrom(x => x.SubOrder));
+            Mapper.CreateMap<SubOrder, SubOrderDTO>()
+                .ForMember(so => so.Ticket, opt => opt.Ignore())
+                .ForMember(so => so.Reservation, opt => opt.MapFrom(x => x.Reservation));
+            Mapper.CreateMap<Reservation, ReservationDTO>()
+                .ForMember(r => r.SubOrder, opt => opt.Ignore())
+                .ForMember(r => r.Payment, opt => opt.MapFrom(x => x.Payment))
+                .ForMember(r => r.User, opt => opt.Ignore());
+            Mapper.CreateMap<Payment, PaymentDTO>()
+                .ForMember(p => p.CashPayment, opt => opt.Ignore())
+                .ForMember(p => p.PaypalPayment, opt => opt.Ignore())
+                .ForMember(p => p.Reservation, opt => opt.Ignore());
+            //List<Event> ev = ec.getEventsForSTR(start,end).ToList();
+            return Mapper.Map<List<EventDTO>>(ec.getEventsForSTR(start, end));
         }
     }
 }

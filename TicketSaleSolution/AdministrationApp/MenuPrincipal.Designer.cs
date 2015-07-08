@@ -39,7 +39,6 @@
             this.pagosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clientsPreferencialesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.mejorEspectáculoDelMesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.peorEspectáculoDelMesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ventaDeEntradasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
@@ -117,7 +116,6 @@
             // 
             this.reportesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.clientsPreferencialesToolStripMenuItem,
-            this.mejorEspectáculoDelMesToolStripMenuItem,
             this.peorEspectáculoDelMesToolStripMenuItem,
             this.ventaDeEntradasToolStripMenuItem});
             this.reportesToolStripMenuItem.Name = "reportesToolStripMenuItem";
@@ -127,27 +125,23 @@
             // clientsPreferencialesToolStripMenuItem
             // 
             this.clientsPreferencialesToolStripMenuItem.Name = "clientsPreferencialesToolStripMenuItem";
-            this.clientsPreferencialesToolStripMenuItem.Size = new System.Drawing.Size(215, 22);
+            this.clientsPreferencialesToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
             this.clientsPreferencialesToolStripMenuItem.Text = "Clientes preferenciales";
             this.clientsPreferencialesToolStripMenuItem.Click += new System.EventHandler(this.clientsPreferencialesToolStripMenuItem_Click);
-            // 
-            // mejorEspectáculoDelMesToolStripMenuItem
-            // 
-            this.mejorEspectáculoDelMesToolStripMenuItem.Name = "mejorEspectáculoDelMesToolStripMenuItem";
-            this.mejorEspectáculoDelMesToolStripMenuItem.Size = new System.Drawing.Size(215, 22);
-            this.mejorEspectáculoDelMesToolStripMenuItem.Text = "Mejor espectáculo del mes";
             // 
             // peorEspectáculoDelMesToolStripMenuItem
             // 
             this.peorEspectáculoDelMesToolStripMenuItem.Name = "peorEspectáculoDelMesToolStripMenuItem";
-            this.peorEspectáculoDelMesToolStripMenuItem.Size = new System.Drawing.Size(215, 22);
-            this.peorEspectáculoDelMesToolStripMenuItem.Text = "Peor espectáculo del mes";
+            this.peorEspectáculoDelMesToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
+            this.peorEspectáculoDelMesToolStripMenuItem.Text = "Mejor y peor espectáculo";
+            this.peorEspectáculoDelMesToolStripMenuItem.Click += new System.EventHandler(this.peorEspectáculoDelMesToolStripMenuItem_Click);
             // 
             // ventaDeEntradasToolStripMenuItem
             // 
             this.ventaDeEntradasToolStripMenuItem.Name = "ventaDeEntradasToolStripMenuItem";
-            this.ventaDeEntradasToolStripMenuItem.Size = new System.Drawing.Size(215, 22);
+            this.ventaDeEntradasToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
             this.ventaDeEntradasToolStripMenuItem.Text = "Venta de entradas";
+            this.ventaDeEntradasToolStripMenuItem.Click += new System.EventHandler(this.ventaDeEntradasToolStripMenuItem_Click);
             // 
             // statusStrip
             // 
@@ -201,7 +195,6 @@
         private System.Windows.Forms.ToolStripMenuItem pagosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reportesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem clientsPreferencialesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem mejorEspectáculoDelMesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem peorEspectáculoDelMesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ventaDeEntradasToolStripMenuItem;
     }

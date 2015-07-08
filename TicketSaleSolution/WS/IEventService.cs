@@ -30,8 +30,11 @@ namespace WS
         [OperationContract]
         List<EventDTO> getEventsForGv();
         [OperationContract]
-        EventDTO getBestEvent();
+        EventDTO getEventReport(int r);
         [OperationContract]
-        EventDTO getWorstEvent();
+        List<EventDTO> getSoldTickets(DateTime start, DateTime end);
+        
+
+        //EventDTO getWorstEvent();
     }
 }
