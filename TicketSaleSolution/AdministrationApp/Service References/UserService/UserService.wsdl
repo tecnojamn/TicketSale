@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="UserService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:3643/UserService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:3643/UserService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:3643/UserService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/DTO" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IUserService_authorize_InputMessage">
+    <wsdl:part name="parameters" element="tns:authorize" />
+  </wsdl:message>
+  <wsdl:message name="IUserService_authorize_OutputMessage">
+    <wsdl:part name="parameters" element="tns:authorizeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserService_newUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:newUser" />
+  </wsdl:message>
+  <wsdl:message name="IUserService_newUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:newUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserService_confirmUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:confirmUser" />
+  </wsdl:message>
+  <wsdl:message name="IUserService_confirmUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:confirmUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserService_getUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:getUser" />
+  </wsdl:message>
+  <wsdl:message name="IUserService_getUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserService_getUsers_InputMessage">
+    <wsdl:part name="parameters" element="tns:getUsers" />
+  </wsdl:message>
+  <wsdl:message name="IUserService_getUsers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getUsersResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserService_updateUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:updateUser" />
+  </wsdl:message>
+  <wsdl:message name="IUserService_updateUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:updateUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserService_removeUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:removeUser" />
+  </wsdl:message>
+  <wsdl:message name="IUserService_removeUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:removeUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserService_getPreferredUsers_InputMessage">
+    <wsdl:part name="parameters" element="tns:getPreferredUsers" />
+  </wsdl:message>
+  <wsdl:message name="IUserService_getPreferredUsers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getPreferredUsersResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IUserService">
+    <wsdl:operation name="authorize">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserService/authorize" message="tns:IUserService_authorize_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserService/authorizeResponse" message="tns:IUserService_authorize_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="newUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserService/newUser" message="tns:IUserService_newUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserService/newUserResponse" message="tns:IUserService_newUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="confirmUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserService/confirmUser" message="tns:IUserService_confirmUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserService/confirmUserResponse" message="tns:IUserService_confirmUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserService/getUser" message="tns:IUserService_getUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserService/getUserResponse" message="tns:IUserService_getUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getUsers">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserService/getUsers" message="tns:IUserService_getUsers_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserService/getUsersResponse" message="tns:IUserService_getUsers_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="updateUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserService/updateUser" message="tns:IUserService_updateUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserService/updateUserResponse" message="tns:IUserService_updateUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="removeUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserService/removeUser" message="tns:IUserService_removeUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserService/removeUserResponse" message="tns:IUserService_removeUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getPreferredUsers">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserService/getPreferredUsers" message="tns:IUserService_getPreferredUsers_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserService/getPreferredUsersResponse" message="tns:IUserService_getPreferredUsers_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IUserService" type="tns:IUserService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="authorize">
+      <soap:operation soapAction="http://tempuri.org/IUserService/authorize" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="newUser">
+      <soap:operation soapAction="http://tempuri.org/IUserService/newUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="confirmUser">
+      <soap:operation soapAction="http://tempuri.org/IUserService/confirmUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUser">
+      <soap:operation soapAction="http://tempuri.org/IUserService/getUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUsers">
+      <soap:operation soapAction="http://tempuri.org/IUserService/getUsers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateUser">
+      <soap:operation soapAction="http://tempuri.org/IUserService/updateUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="removeUser">
+      <soap:operation soapAction="http://tempuri.org/IUserService/removeUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPreferredUsers">
+      <soap:operation soapAction="http://tempuri.org/IUserService/getPreferredUsers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="UserService">
+    <wsdl:port name="BasicHttpBinding_IUserService" binding="tns:BasicHttpBinding_IUserService">
+      <soap:address location="http://localhost:3643/UserService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
