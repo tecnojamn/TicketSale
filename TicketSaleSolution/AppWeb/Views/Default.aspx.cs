@@ -13,8 +13,11 @@ namespace AppWeb.Views
 {
     public partial class Default : System.Web.UI.Page
     {
+        String imgPath;
+        public string IMG_PATH { get { return imgPath; } }
         protected void Page_Load(object sender, EventArgs e)
         {
+            imgPath = COM.PATH.UPLOADS_VISTA;
             if (Session["log"] == null)
             {
                 //Instancia variables de sesión
@@ -27,7 +30,7 @@ namespace AppWeb.Views
         public List<EventDTO> listViewEvents_GetData(int startRowIndex, int maximumRows, out int totalRowCount)
         {
             //testing paths
-            string path = COM.PATH.UPLOADS;
+            string path = COM.PATH.UPLOADS_VISTA;
             totalRowCount = 5; // falta funcion getEventsCount
             int page = startRowIndex/maximumRows+1;
             int pageSize = maximumRows;
