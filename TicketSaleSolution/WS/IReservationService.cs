@@ -29,7 +29,11 @@ namespace WS
 
         [OperationContract]
         int getReservationCountByUser(int idUser, bool onlyPayments = false);
-        [OperationContract]
+
+        [OperationContract] 
         bool cancelSubOrder(int idSO);
+
+        [OperationContract]
+        bool cancelAllSubOrders(int idRes);
     }
 }

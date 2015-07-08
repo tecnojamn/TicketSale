@@ -56,6 +56,12 @@ namespace AppWeb.ReservationServiceClient {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReservationService/cancelSubOrder", ReplyAction="http://tempuri.org/IReservationService/cancelSubOrderResponse")]
         System.Threading.Tasks.Task<bool> cancelSubOrderAsync(int idSO);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReservationService/cancelAllSubOrders", ReplyAction="http://tempuri.org/IReservationService/cancelAllSubOrdersResponse")]
+        bool cancelAllSubOrders(int idRes);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReservationService/cancelAllSubOrders", ReplyAction="http://tempuri.org/IReservationService/cancelAllSubOrdersResponse")]
+        System.Threading.Tasks.Task<bool> cancelAllSubOrdersAsync(int idRes);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -139,6 +145,14 @@ namespace AppWeb.ReservationServiceClient {
         
         public System.Threading.Tasks.Task<bool> cancelSubOrderAsync(int idSO) {
             return base.Channel.cancelSubOrderAsync(idSO);
+        }
+        
+        public bool cancelAllSubOrders(int idRes) {
+            return base.Channel.cancelAllSubOrders(idRes);
+        }
+        
+        public System.Threading.Tasks.Task<bool> cancelAllSubOrdersAsync(int idRes) {
+            return base.Channel.cancelAllSubOrdersAsync(idRes);
         }
     }
 }

@@ -16,8 +16,15 @@ namespace AppWeb.Views
         [WebMethod(BufferResponse = false)]
         public static string cancelSubOrder(string idSO)
         {
-            return ProxyManager.getReservationService().cancelSubOrder(int.Parse(idSO))? "true":"false";
+            return ProxyManager.getReservationService().cancelSubOrder(int.Parse(idSO)) ? "true" : "false";
         }
+        [WebMethod(BufferResponse = false)]
+        public static string cancelAllSubOrders(string idRes)
+        {
+            return "true";
+            //return ProxyManager.getReservationService().cancelAllSubOrders(int.Parse(idRes))? "true":"false";
+        }
+
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -66,7 +73,39 @@ namespace AppWeb.Views
             }
             return _amount;
         }
+        public string isPaid(PaymentDTO p, int itemIndex)
+        {
+            if (p == null)
+            {
+                //Sin pagar
+                return "PAGAR";
+                ((LinkButton)lvReservations.Items[itemIndex].FindControl("btnCancelAllSubOrders")).Visible = true;
+            }
+            else
+            {
+                if (p.CashPayment != null)
+                {
 
+                    return "PAGA (EFECTIVO: " + p.date + ")";
+                }
+
+                else
+                {
+                    return "PAGA (PAYPAL: " + p.date.ToString("dd/MM/yyyy") + ")";
+                }
+            }
+        }
+        public string alreadyCanceled(ICollection<SubOrderDTO> subOrders)
+        {
+            if (subOrders.Where(so => so.active == RESERVATION.SUBORDER.ACTIVE).Count() == 0)
+            {
+                return "CANCELADA";
+            }
+            else
+            {
+                return "CANCELAR";
+            }
+        }
         public List<ReservationDTO> lvReservations_GetData(int startRowIndex, int maximumRows, out int totalRowCount)
         {
 
@@ -149,33 +188,40 @@ namespace AppWeb.Views
 
             for (int i = 0; i < gridViewSOItems.Count(); i++)
             {
-                if (gridViewSOItems[i].stateOrCancel.Equals("Pendiente"))
+                switch (gridViewSOItems[i].stateOrCancel)
                 {
-                    Button btnCancelSubOrder = new Button()
-                    {
-                        ID="btnCancelSubOrder",
-                        Text = "CANCELAR",
-                        CssClass = "btn-primary",
-                        UseSubmitBehavior=false,
-                        //PostBackUrl = "Reservations.aspx?action=cancel_suborder&res_id=" + resDTO.id + "&suborder_id=" + gridViewSOItems[i].id + "&page=" + (lvDataPager.StartRowIndex / lvDataPager.PageSize + 1).ToString() + "&item=" + itemIndex
-                        OnClientClick = "cancelSubOrder(" + gridViewSOItems[i].id + ","+ i +","+ itemIndex+ ");return false"
-                    };
-                    gvSubOrders.Rows[i].Cells[3].Controls.Add(btnCancelSubOrder);
-                }
-                
-            }
+                    case "Pendiente":
+                        Button btnCancelSubOrder = new Button()
+                        {
+                            ID = "btnCancelSubOrder",
+                            Text = "CANCELAR",
+                            CssClass = "btn-primary",
+                            UseSubmitBehavior = false,
+                            OnClientClick = "cancelSubOrder(" + gridViewSOItems[i].id + "," + i + "," + itemIndex + ");return false"
+                        };
+                        gvSubOrders.Rows[i].Cells[3].Controls.Add(btnCancelSubOrder);
+                        break;
+                    case "Cancelada":
+                        Literal lc = new Literal()
+                        {
+                            Text = "<div style='background-color:#e74c3c'>Cancelada</div>"
 
+                        };
+                        gvSubOrders.Rows[i].Cells[3].Controls.Add(lc);
+                        break;
+                    case "Paga":
+                        //Cuando está paga..
+                        break;
+                    default:
+                        break;
+                }
+            }
         }
 
         void btnDoPayment_Click(object sender, EventArgs e)
         {
             throw new NotImplementedException();
         }
-        public void btnDoPayment_Command(object sender, CommandEventArgs e)
-        {
-            string index = e.CommandArgument.ToString();
-        }
-
         protected void lvReservations_DataBinding(object sender, EventArgs e)
         {
             //int itemIndex;
@@ -187,6 +233,21 @@ namespace AppWeb.Views
             //    showSubOrders_Command(null, eSubOrder);
             //}
 
+        }
+
+        protected void btnCancelAllSubOrders_Command(object sender, CommandEventArgs e)
+        {
+            string[] args = new string[2];
+            args = e.CommandArgument.ToString().Split(';');
+            if (ProxyManager.getReservationService().cancelAllSubOrders(int.Parse(args[1])))
+            {
+                showSubOrders_Command(null, new CommandEventArgs("", args[0] + ";" + args[1]));
+            }
+        }
+
+        protected void btnDoPayment_Command(object sender, CommandEventArgs e)
+        {
+            Response.Redirect("Paypal/Auth.aspx/res_id=" + e.CommandArgument.ToString());
         }
 
     }

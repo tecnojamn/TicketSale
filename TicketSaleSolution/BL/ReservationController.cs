@@ -49,10 +49,12 @@ namespace BL
                 {
                     res = context.Reservation
                         .Include("SubOrder.Ticket.TicketType.Event")
+                        .Include("Payment.PaypalPayment")
+                        .Include("Payment.CashPayment")
                         .Select(r => r)
                         .OrderByDescending(r => r.date)
-                        .Where(r => r.idUser == idUser)                        
-                        .Skip(page-1)
+                        .Where(r => r.idUser == idUser)
+                        .Skip(page - 1)
                         .Take(pageSize)
                         .ToList();
                 }
@@ -73,7 +75,7 @@ namespace BL
                 {
                     res = context.Reservation.Select(r => r)
                         .OrderByDescending(r => r.date)
-                        .Skip(page-1)
+                        .Skip(page - 1)
                         .Take(pageSize)
                         .ToList();
                 }
@@ -96,6 +98,35 @@ namespace BL
                     if (so != null)
                     {
                         so.active = Convert.ToByte(RESERVATION.SUBORDER.INACTIVE);
+                        context.SaveChanges();
+                    }
+                    else { return false; }
+                }
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            return true;
+        }
+        //Cancelar todas las subordenes de una reserva
+        public bool cancelAllSubOrders(int idRes)
+        {
+
+            try
+            {
+                using (DAL.TicketSaleEntities context = new DAL.TicketSaleEntities())
+                {
+                    List<SubOrder> subOrders = context.Reservation.Include("Payment").Where(r => r.id == idRes).FirstOrDefault().SubOrder.ToList();
+                    if (subOrders != null)
+                    {
+                        foreach (var so in subOrders)
+                        {
+                            if (so.Reservation.Payment == null)
+                            {
+                                so.active = Convert.ToByte(RESERVATION.SUBORDER.INACTIVE);
+                            }
+                        }
                         context.SaveChanges();
                     }
                     else { return false; }
@@ -131,7 +162,7 @@ namespace BL
             return res;
 
         }
-        public int getReservationCountByUser(int idUser, bool onlyPayments=false)
+        public int getReservationCountByUser(int idUser, bool onlyPayments = false)
         {
             try
             {
@@ -143,7 +174,7 @@ namespace BL
                     }
                     else
                     {
-                        return context.Reservation.Select(r => r.idUser == idUser && r.Payment!=null ).Count();
+                        return context.Reservation.Select(r => r.idUser == idUser && r.Payment != null).Count();
                     }
                 }
 

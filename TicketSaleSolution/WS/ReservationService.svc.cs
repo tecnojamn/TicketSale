@@ -35,8 +35,17 @@ namespace WS
 
             Mapper.CreateMap<Reservation, ReservationDTO>()
                 .ForMember(r => r.User, opt => opt.Ignore())
-                .ForMember(r => r.Payment, opt => opt.Ignore())
+                .ForMember(r => r.Payment, opt => opt.MapFrom(x=>x.Payment))
                 .ForMember(r => r.SubOrder, opt => opt.MapFrom(x => x.SubOrder));
+            Mapper.CreateMap<Payment, PaymentDTO>()
+                .ForMember(p => p.CashPayment, opt => opt.MapFrom(x=>x.CashPayment))
+                .ForMember(p => p.PaypalPayment, opt => opt.MapFrom(x=>x.PaypalPayment))
+                .ForMember(p => p.Reservation, opt => opt.Ignore());
+            Mapper.CreateMap<CashPayment, CashPaymentDTO>()
+                .ForMember(cp => cp.PaymentLocation, opt => opt.Ignore())
+                .ForMember(cp => cp.Payment, opt => opt.Ignore());
+            Mapper.CreateMap<PaypalPayment, PaypalPaymentDTO>()
+                .ForMember(pp => pp.Payment, opt => opt.Ignore());
             Mapper.CreateMap<SubOrder, SubOrderDTO>()
                 .ForMember(so => so.Reservation, opt => opt.Ignore())
                 .ForMember(so => so.Ticket, opt => opt.MapFrom(x => x.Ticket));
@@ -107,6 +116,11 @@ namespace WS
         {
             ReservationController rc = new ReservationController();
             return rc.cancelSubOrder(idSO);
+        }
+        public bool cancelAllSubOrders(int idRes)
+        {
+            ReservationController rc = new ReservationController();
+            return rc.cancelAllSubOrders(idRes);
         }
     }
 }
