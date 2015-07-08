@@ -13,6 +13,7 @@ namespace AdministrationApp
     public partial class MenuPrincipal : Form
     {
         private int childFormNumber = 0;
+        private bool isChildOpen = false;//Control para no tener multi`ples ventanas abiertas
 
         public MenuPrincipal()
         {
