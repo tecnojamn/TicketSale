@@ -105,7 +105,7 @@
   <xs:element name="searchEventsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/DTO" minOccurs="0" name="searchEventsResult" nillable="true" type="q5:ArrayOfEventDTO" />
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/DTO" minOccurs="0" name="searchEventsResult" nillable="true" type="q6:ArrayOfEventDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -117,7 +117,7 @@
   <xs:element name="getLocalsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/DTO" minOccurs="0" name="getLocalsResult" nillable="true" type="q6:ArrayOfEventLocationDTO" />
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/DTO" minOccurs="0" name="getLocalsResult" nillable="true" type="q7:ArrayOfEventLocationDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -129,7 +129,7 @@
   <xs:element name="getEventTypeResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q7="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="getEventTypeResult" nillable="true" type="q7:ArrayOfstring" />
+        <xs:element xmlns:q8="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="getEventTypeResult" nillable="true" type="q8:ArrayOfstring" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

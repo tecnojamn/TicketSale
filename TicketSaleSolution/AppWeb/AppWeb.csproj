@@ -275,6 +275,7 @@
     <Content Include="Properties\DataSources\DTO.PaymentDTO.datasource" />
     <Content Include="Properties\DataSources\DTO.EventDTO.datasource" />
     <Content Include="Properties\DataSources\DTO.ReservationDTO.datasource" />
+    <Content Include="Properties\DataSources\DTO.EventLocationDTO1.datasource" />
     <None Include="Service References\EventServiceClient\EventService.wsdl" />
     <None Include="Service References\EventServiceClient\EventService.xsd">
       <SubType>Designer</SubType>
@@ -283,6 +284,9 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\EventServiceClient\EventService11.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EventServiceClient\EventService2.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\PaymentServiceClient\PaymentService.wsdl" />
@@ -374,6 +378,7 @@
     <Content Include="Views\Paypal\ppcom.svg" />
     <Content Include="Views\Profile.aspx" />
     <Content Include="Views\Reservations.aspx" />
+    <Content Include="Views\Search.aspx" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <None Include="Web.Debug.config">
@@ -492,6 +497,12 @@
     </Compile>
     <Compile Include="Views\Reservations.aspx.designer.cs">
       <DependentUpon>Reservations.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Search.aspx.cs">
+      <DependentUpon>Search.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Search.aspx.designer.cs">
+      <DependentUpon>Search.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Signup.aspx.cs">
       <DependentUpon>Signup.aspx</DependentUpon>
