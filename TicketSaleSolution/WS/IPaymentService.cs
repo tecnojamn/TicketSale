@@ -17,8 +17,12 @@ namespace WS
         [OperationContract]
         List<PaymentDTO> getPayments(int page, int pageSize);
         [OperationContract]
-        bool newPayment(PaymentDTO p);
+        int newPayment(PaymentDTO p);
         [OperationContract]
         bool updatePayment(PaymentDTO p);
+        [OperationContract]
+        List<PaymentLocationDTO> getPaymentLocations();
+        [OperationContract]
+        bool newCashPayment(CashPaymentDTO cp);
     }
 }

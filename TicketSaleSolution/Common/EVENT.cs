@@ -14,5 +14,12 @@ namespace COM
             public static byte UNABLE = 0;
             public static int pageSize = 10;
         }
+
+        public struct REPORT
+        {
+            public static byte BEST = 1;
+            public static byte WORST = 0;
+        }
+        public List<string> EVENT_TYPE = new List<string>() {"futbol", "cine", "circo", "teatro", "musical", "deporte"};
     }
 }

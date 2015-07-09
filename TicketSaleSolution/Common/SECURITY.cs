@@ -27,5 +27,13 @@ namespace COM
             }
             return oSb.ToString();
         }
+
+        public static string GENERATE_CODE()
+        {
+            Random r = new Random(DateTime.Now.Millisecond);
+            int aleatorio = r.Next(1000, 9999);
+            int aleatorio2 = r.Next(1000, 9999);
+            return aleatorio.ToString() + aleatorio2.ToString() ;
+        }
     }
 }

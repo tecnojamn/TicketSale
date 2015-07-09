@@ -323,6 +323,7 @@
             this.Name = "frmReservationPay";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Pago Reserva";
+            this.Load += new System.EventHandler(this.frmReservationPay_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gvTickets)).EndInit();

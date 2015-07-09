@@ -18,6 +18,14 @@ namespace SalesApp
             InitializeComponent();
         }
 
+        public TextBox txtIdreserva
+        {
+            get
+            {
+                return txtIdReserva;
+            }
+        }
+
         private void label1_Click(object sender, EventArgs e)
         {
 
@@ -74,9 +82,18 @@ namespace SalesApp
 
         private void button2_Click(object sender, EventArgs e)
         {
+            frmPayment payment = new frmPayment();
+            payment.MdiParent = this.ParentForm;
+            payment.Show();
+
         }
 
         private void gvTickets_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void frmReservationPay_Load(object sender, EventArgs e)
         {
 
         }

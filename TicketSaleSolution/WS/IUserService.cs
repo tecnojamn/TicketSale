@@ -35,5 +35,7 @@ namespace WS
 
         [OperationContract]
         bool removeUser(int id);
+        [OperationContract]
+        List<UserDTO> getPreferredUsers();
     }
 }

@@ -37,7 +37,7 @@ namespace WS
 
             return Mapper.Map<List<PaymentDTO>>(pc.getPayments(page, pageSize));
         }
-        public bool newPayment(PaymentDTO pDTO)
+        public int newPayment(PaymentDTO pDTO)
         {
             PaymentController pc = new PaymentController();
 
@@ -62,6 +62,28 @@ namespace WS
                 .ForMember(p => p.Reservation, opt => opt.Ignore());
 
             return pc.updatePayment(Mapper.Map<Payment>(pDTO));
+        }
+
+        public List<PaymentLocationDTO> getPaymentLocations()
+        {
+            PaymentController pc = new PaymentController();
+
+            Mapper.CreateMap<PaymentLocation, PaymentLocationDTO>()
+                .ForMember(p => p.CashPayment, opt => opt.Ignore());
+
+            return Mapper.Map<List<PaymentLocationDTO>>(pc.getPaymentLocations().ToList());
+        }
+
+        public bool newCashPayment(CashPaymentDTO cpDTO)
+        {
+            PaymentController pc = new PaymentController();
+
+            Mapper.CreateMap<CashPayment, CashPaymentDTO>()
+                .ForMember(p => p.Payment, opt => opt.Ignore())
+                .ForMember(p => p.PaymentLocation, opt => opt.Ignore());
+
+            return pc.newCashPayment(Mapper.Map<CashPayment>(cpDTO));
+  
         }
     }
 }
