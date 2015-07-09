@@ -44,7 +44,13 @@ namespace WS
                 .ForMember(e => e.EventLocation, opt => opt.Ignore());
             return Mapper.Map<List<EventDTO>>(ec.getEvents(page, pageSize));
         }
-
+        public List<EventDTO> getFeaturedEvents(int page, int pageSize){
+         EventController ec = new EventController();
+            Mapper.CreateMap<Event, EventDTO>()
+                .ForMember(e => e.TicketType, opt => opt.Ignore())
+                .ForMember(e => e.EventLocation, opt => opt.Ignore());
+            return Mapper.Map<List<EventDTO>>(ec.getFeatuerdEvents(page, pageSize));
+        }
         public EventDTO getEvent(int id)
         {
             EventController ec = new EventController();

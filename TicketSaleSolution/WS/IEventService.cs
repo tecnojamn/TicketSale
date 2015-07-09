@@ -26,6 +26,9 @@ namespace WS
         List<EventDTO> getEvents(int page, int pageSize);
 
         [OperationContract]
+        List<EventDTO> getFeaturedEvents(int page, int pageSize);
+
+        [OperationContract]
         EventDTO getEvent(int id);
     }
 }

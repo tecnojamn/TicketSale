@@ -62,7 +62,7 @@ namespace BL
             {
                 using (DAL.TicketSaleEntities context = new DAL.TicketSaleEntities())
                 {
-                    
+
 
 
                     Event e = context.Event.FirstOrDefault(ev => ev.id == id);
@@ -117,7 +117,7 @@ namespace BL
             {
                 using (DAL.TicketSaleEntities context = new DAL.TicketSaleEntities())
                 {
-                    DateTime aYearAgo =DateTime.Today.AddYears(-1);
+                    DateTime aYearAgo = DateTime.Today.AddYears(-1);
 
 
                     events = context.Event.Select(e => e)
@@ -132,6 +132,79 @@ namespace BL
                 throw;
             }
             return events;
+
+        }
+        public List<Event> getFeatuerdEvents(int page, int pageSize)
+        {
+            List<Event> eventos = null;
+            var auxDicitonary = new SortedDictionary<int, double>();
+            try
+            {
+                using (DAL.TicketSaleEntities context = new DAL.TicketSaleEntities())
+                {
+                    float entradasTomadas = 0f;
+                    float entradasDisp = 0f;
+                    
+                    eventos = context.Event.Select(e => e).Where(e => e.enabled == 1)
+                        .OrderByDescending(e => e.date)
+                        .Skip((page - 1) * pageSize)
+                        .Take(pageSize)
+                        .ToList();
+                    foreach (Event e in eventos)
+                    {
+                        
+                        entradasTomadas = 0.000000f;
+                        entradasDisp = 0.000000f;
+
+                        foreach (TicketType et in e.TicketType)
+                        {
+                            int entradas = et.finalNum - et.startNum;
+                            entradasDisp += (float)entradas;
+                            foreach (var t in et.Ticket)
+                            {
+                                foreach (var s in t.SubOrder)
+                                {
+                                    if (s.active == 1)
+                                        entradasTomadas+=1.0f;
+                                }
+                            }
+                        }
+                        //double res;
+                        if (entradasDisp > 0)
+                        {
+
+                            // res= ((entradasTomadas) / (entradasDisp));
+                            auxDicitonary.Add(e.id, ((entradasTomadas) / (entradasDisp)));
+                        }
+                        else
+                        {
+                            // res = 0.000000f;
+                            auxDicitonary.Add(e.id, -1);
+                        }
+                       // auxDicitonary.Add(e.id, res);
+                    }
+
+                    foreach(KeyValuePair<int, double> k in auxDicitonary){
+                        var p=k.Value;
+                    }
+
+                    //ordeno el diccionario
+                    //auxDicitonary = auxDicitonary.OrderBy(i => i.Value).ToDictionary(x => x.Key, x => x.Value);
+                   
+                   
+                    //lo paso a lista de ints, ya ordenada
+                    List<int> idList = new List<int>(auxDicitonary.Keys);
+                    //orden la lista de eventos en base a la lista de ints
+                    eventos = eventos.OrderBy(e => idList.IndexOf(e.id)).ToList();
+
+
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            return eventos;
 
         }
         //Obtener Evento
