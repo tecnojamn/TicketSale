@@ -258,6 +258,7 @@
             this.btnDeleteTicketType.TabIndex = 56;
             this.btnDeleteTicketType.Text = "Delete";
             this.btnDeleteTicketType.UseVisualStyleBackColor = true;
+            this.btnDeleteTicketType.Click += new System.EventHandler(this.btnDeleteTicketType_Click);
             // 
             // frmAddEvent
             // 

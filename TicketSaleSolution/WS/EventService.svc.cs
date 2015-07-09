@@ -17,10 +17,15 @@ namespace WS
         public bool newEvent(EventDTO evDTO)
         {
             EventController ec = new EventController();
-            Mapper.CreateMap<EventDTO, Event>()
-                .ForMember(e => e.TicketType, opt => opt.Ignore())
-                .ForMember(e => e.EventLocation, opt => opt.Ignore());
-            Event newEvent = Mapper.Map<Event>(evDTO);
+            Mapper.CreateMap<Event, EventDTO>()
+                .ForMember(e => e.TicketType, opt => opt.MapFrom(x => x.TicketType))
+                .ForMember(e => e.EventLocation, opt => opt.Ignore());            
+            Mapper.CreateMap<TicketType, TicketTypeDTO>()
+                .ForMember(tt => tt.Ticket, opt => opt.Ignore())
+                .ForMember(tt => tt.Event, opt => opt.Ignore());
+            //Mapper.CreateMap<EventDTO, Event>()
+            //    .ForMember(e => e.TicketType, opt => opt.Ignore())
+            //    .ForMember(e => e.EventLocation, opt => opt.Ignore());
             return ec.newEvent(Mapper.Map<Event>(evDTO));
         }
 

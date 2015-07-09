@@ -15,20 +15,20 @@ namespace AdministrationApp
 {
     public partial class frmAddEvent : Form
     {
-        private List<TicketTypeDTO> ticketTypes = new List<TicketTypeDTO>();
         public void addTicketType(TicketTypeDTO tt)
         {
             if (tt != null)
             {
-                ticketTypes.Add(tt);
-                
-
+                cbTicketType.Items.Add(tt);
+            }
+            if (cbTicketType.Items.Count == 1)
+            {
+                cbTicketType.SelectedIndex = 0;
             }
         }
         public frmAddEvent()
         {
             InitializeComponent();
-            cbTicketType.DataSource = ticketTypes;
             cbTicketType.DisplayMember = "description";
         }
 
@@ -98,9 +98,19 @@ namespace AdministrationApp
             newEvent.EventLocation = el;
             newEvent.idEventLocation = el.id;
             newEvent.TicketType = null;
+            foreach (Object tt in cbTicketType.Items)
+            {
+                TicketTypeDTO ticketType = (TicketTypeDTO)tt;
+                if (newEvent.TicketType == null)
+                {
+                    List<TicketTypeDTO> ttList = new List<TicketTypeDTO>();
+                    newEvent.TicketType = ttList;
+                }
+                newEvent.TicketType.Add(ticketType);
+            }
             if (ProxyManager.getEventService().newEvent(newEvent))
             {
-                MessageBox.Show("work");
+                MessageBox.Show("Event added successfully");
             }
 
         }
@@ -109,6 +119,11 @@ namespace AdministrationApp
         {
             frmAddTicketType formAdd = new frmAddTicketType(this);
             formAdd.ShowDialog();
+        }
+
+        private void btnDeleteTicketType_Click(object sender, EventArgs e)
+        {
+            cbTicketType.Items.Remove(cbTicketType.SelectedIndex);
         }
     }
 }
