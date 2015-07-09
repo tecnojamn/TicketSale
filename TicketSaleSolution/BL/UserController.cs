@@ -274,5 +274,53 @@ namespace BL
             }
             return (user != null);
         }
+        public List<User> getPreferredUsers()
+        {
+            List<User> users = null;
+            User user = null;
+
+            DateTime aYearAgo = DateTime.Today.AddYears(-1);
+            try
+            {
+                using (DAL.TicketSaleEntities context = new DAL.TicketSaleEntities())
+                {
+                    var query = context.Payment
+                            .Include("Reservation.User")
+                            .Where(p => p.date >= aYearAgo)
+                            .GroupBy(r => r.Reservation.idUser).ToList();
+                    users = new List<User>();
+                    foreach (var result in query)
+                    {
+
+                        int idUser = result.Key;
+                        int payments = result.Count();
+                        user = new User();
+                        if (payments >= 2)
+                        {
+                            user = context.User.FirstOrDefault(x => x.id == idUser);
+                            users.Add(user);
+                        }
+                    }
+
+                    //            var query = context.Payment
+                    //.Include("Reservation.User")
+                    //.Where(p => p.date >= aYearAgo)
+                    //.GroupBy(r => r.Reservation.idUser).Select(x => x.Count()).ToList();
+                    //            users = query.ToList();
+                }
+            }
+            //var query = from u in context.User join r in context.Reservation on u.id equals r.idUser 
+            //join p in context.Payment on r.id equals p.idReservation group by   select u;
+            //users = context.User.Join(, (u, r) => new { User = u, Reservation = r })
+
+
+            catch (Exception)
+            {
+
+                throw;
+            }
+            return users;
+        }
+
     }
 }

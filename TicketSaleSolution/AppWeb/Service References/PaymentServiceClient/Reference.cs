@@ -28,16 +28,28 @@ namespace AppWeb.PaymentServiceClient {
         System.Threading.Tasks.Task<DTO.PaymentDTO[]> getPaymentsAsync(int page, int pageSize);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPaymentService/newPayment", ReplyAction="http://tempuri.org/IPaymentService/newPaymentResponse")]
-        bool newPayment(DTO.PaymentDTO p);
+        int newPayment(DTO.PaymentDTO p);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPaymentService/newPayment", ReplyAction="http://tempuri.org/IPaymentService/newPaymentResponse")]
-        System.Threading.Tasks.Task<bool> newPaymentAsync(DTO.PaymentDTO p);
+        System.Threading.Tasks.Task<int> newPaymentAsync(DTO.PaymentDTO p);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPaymentService/updatePayment", ReplyAction="http://tempuri.org/IPaymentService/updatePaymentResponse")]
         bool updatePayment(DTO.PaymentDTO p);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPaymentService/updatePayment", ReplyAction="http://tempuri.org/IPaymentService/updatePaymentResponse")]
         System.Threading.Tasks.Task<bool> updatePaymentAsync(DTO.PaymentDTO p);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPaymentService/getPaymentLocations", ReplyAction="http://tempuri.org/IPaymentService/getPaymentLocationsResponse")]
+        DTO.PaymentLocationDTO[] getPaymentLocations();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPaymentService/getPaymentLocations", ReplyAction="http://tempuri.org/IPaymentService/getPaymentLocationsResponse")]
+        System.Threading.Tasks.Task<DTO.PaymentLocationDTO[]> getPaymentLocationsAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPaymentService/newCashPayment", ReplyAction="http://tempuri.org/IPaymentService/newCashPaymentResponse")]
+        bool newCashPayment(DTO.CashPaymentDTO cp);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPaymentService/newCashPayment", ReplyAction="http://tempuri.org/IPaymentService/newCashPaymentResponse")]
+        System.Threading.Tasks.Task<bool> newCashPaymentAsync(DTO.CashPaymentDTO cp);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -83,11 +95,11 @@ namespace AppWeb.PaymentServiceClient {
             return base.Channel.getPaymentsAsync(page, pageSize);
         }
         
-        public bool newPayment(DTO.PaymentDTO p) {
+        public int newPayment(DTO.PaymentDTO p) {
             return base.Channel.newPayment(p);
         }
         
-        public System.Threading.Tasks.Task<bool> newPaymentAsync(DTO.PaymentDTO p) {
+        public System.Threading.Tasks.Task<int> newPaymentAsync(DTO.PaymentDTO p) {
             return base.Channel.newPaymentAsync(p);
         }
         
@@ -97,6 +109,22 @@ namespace AppWeb.PaymentServiceClient {
         
         public System.Threading.Tasks.Task<bool> updatePaymentAsync(DTO.PaymentDTO p) {
             return base.Channel.updatePaymentAsync(p);
+        }
+        
+        public DTO.PaymentLocationDTO[] getPaymentLocations() {
+            return base.Channel.getPaymentLocations();
+        }
+        
+        public System.Threading.Tasks.Task<DTO.PaymentLocationDTO[]> getPaymentLocationsAsync() {
+            return base.Channel.getPaymentLocationsAsync();
+        }
+        
+        public bool newCashPayment(DTO.CashPaymentDTO cp) {
+            return base.Channel.newCashPayment(cp);
+        }
+        
+        public System.Threading.Tasks.Task<bool> newCashPaymentAsync(DTO.CashPaymentDTO cp) {
+            return base.Channel.newCashPaymentAsync(cp);
         }
     }
 }

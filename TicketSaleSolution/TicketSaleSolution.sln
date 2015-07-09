@@ -23,6 +23,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BO", "BO\BO.csproj", "{2A57
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Paypal", "Paypal\Paypal.csproj", "{98A7B828-20A2-46FA-A8ED-1B414C85F179}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdministrationApp", "AdministrationApp\AdministrationApp.csproj", "{25330C4C-EB70-4F11-9B6D-20E7A477AB3D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SalesApp", "SalesApp\SalesApp.csproj", "{C28E0D6E-A3CF-4BCA-A46C-98B832CAF7A6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -78,6 +82,18 @@ Global
 		{98A7B828-20A2-46FA-A8ED-1B414C85F179}.Release|Any CPU.Build.0 = Release|Any CPU
 		{98A7B828-20A2-46FA-A8ED-1B414C85F179}.ReleaseBinaries|Any CPU.ActiveCfg = Release|Any CPU
 		{98A7B828-20A2-46FA-A8ED-1B414C85F179}.ReleaseBinaries|Any CPU.Build.0 = Release|Any CPU
+		{25330C4C-EB70-4F11-9B6D-20E7A477AB3D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{25330C4C-EB70-4F11-9B6D-20E7A477AB3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{25330C4C-EB70-4F11-9B6D-20E7A477AB3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{25330C4C-EB70-4F11-9B6D-20E7A477AB3D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{25330C4C-EB70-4F11-9B6D-20E7A477AB3D}.ReleaseBinaries|Any CPU.ActiveCfg = Release|Any CPU
+		{25330C4C-EB70-4F11-9B6D-20E7A477AB3D}.ReleaseBinaries|Any CPU.Build.0 = Release|Any CPU
+		{C28E0D6E-A3CF-4BCA-A46C-98B832CAF7A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C28E0D6E-A3CF-4BCA-A46C-98B832CAF7A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C28E0D6E-A3CF-4BCA-A46C-98B832CAF7A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C28E0D6E-A3CF-4BCA-A46C-98B832CAF7A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C28E0D6E-A3CF-4BCA-A46C-98B832CAF7A6}.ReleaseBinaries|Any CPU.ActiveCfg = Release|Any CPU
+		{C28E0D6E-A3CF-4BCA-A46C-98B832CAF7A6}.ReleaseBinaries|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

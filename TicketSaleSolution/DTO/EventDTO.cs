@@ -36,7 +36,7 @@ namespace DTO
         [DataMember]
         public System.DateTime date { get; set; }
         [DataMember]
-        public byte enable { get; set; }
+        public byte enabled { get; set; }
         [DataMember]
         public string name { get; set; }
         [DataMember]

@@ -55,6 +55,12 @@
   <wsdl:message name="IUserService_removeUser_OutputMessage">
     <wsdl:part name="parameters" element="tns:removeUserResponse" />
   </wsdl:message>
+  <wsdl:message name="IUserService_getPreferredUsers_InputMessage">
+    <wsdl:part name="parameters" element="tns:getPreferredUsers" />
+  </wsdl:message>
+  <wsdl:message name="IUserService_getPreferredUsers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getPreferredUsersResponse" />
+  </wsdl:message>
   <wsdl:portType name="IUserService">
     <wsdl:operation name="authorize">
       <wsdl:input wsaw:Action="http://tempuri.org/IUserService/authorize" message="tns:IUserService_authorize_InputMessage" />
@@ -87,6 +93,10 @@
     <wsdl:operation name="removeUser">
       <wsdl:input wsaw:Action="http://tempuri.org/IUserService/removeUser" message="tns:IUserService_removeUser_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUserService/removeUserResponse" message="tns:IUserService_removeUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getPreferredUsers">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserService/getPreferredUsers" message="tns:IUserService_getPreferredUsers_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserService/getPreferredUsersResponse" message="tns:IUserService_getPreferredUsers_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IUserService" type="tns:IUserService">
@@ -156,6 +166,15 @@
     </wsdl:operation>
     <wsdl:operation name="removeUser">
       <soap:operation soapAction="http://tempuri.org/IUserService/removeUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPreferredUsers">
+      <soap:operation soapAction="http://tempuri.org/IUserService/getPreferredUsers" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

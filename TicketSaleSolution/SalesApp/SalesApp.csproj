@@ -124,6 +124,7 @@
     <None Include="Properties\DataSources\DTO.PaymentDTO.datasource" />
     <None Include="Properties\DataSources\DTO.PaymentLocationDTO.datasource" />
     <None Include="Properties\DataSources\DTO.ReservationDTO.datasource" />
+    <None Include="Properties\DataSources\DTO.UserDTO.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -152,9 +153,6 @@
     </None>
     <None Include="Service References\ReservationService\ReservationService2.xsd">
       <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\UserService\SalesApp.UserService.UserDTO.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\UserService\UserService.wsdl" />
     <None Include="Service References\UserService\UserService.xsd">

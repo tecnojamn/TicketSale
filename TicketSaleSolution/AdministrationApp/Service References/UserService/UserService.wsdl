@@ -25,6 +25,12 @@
   <wsdl:message name="IUserService_confirmUser_OutputMessage">
     <wsdl:part name="parameters" element="tns:confirmUserResponse" />
   </wsdl:message>
+  <wsdl:message name="IUserService_changePassword_InputMessage">
+    <wsdl:part name="parameters" element="tns:changePassword" />
+  </wsdl:message>
+  <wsdl:message name="IUserService_changePassword_OutputMessage">
+    <wsdl:part name="parameters" element="tns:changePasswordResponse" />
+  </wsdl:message>
   <wsdl:message name="IUserService_getUser_InputMessage">
     <wsdl:part name="parameters" element="tns:getUser" />
   </wsdl:message>
@@ -67,6 +73,10 @@
     <wsdl:operation name="confirmUser">
       <wsdl:input wsaw:Action="http://tempuri.org/IUserService/confirmUser" message="tns:IUserService_confirmUser_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUserService/confirmUserResponse" message="tns:IUserService_confirmUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="changePassword">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserService/changePassword" message="tns:IUserService_changePassword_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserService/changePasswordResponse" message="tns:IUserService_changePassword_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="getUser">
       <wsdl:input wsaw:Action="http://tempuri.org/IUserService/getUser" message="tns:IUserService_getUser_InputMessage" />
@@ -111,6 +121,15 @@
     </wsdl:operation>
     <wsdl:operation name="confirmUser">
       <soap:operation soapAction="http://tempuri.org/IUserService/confirmUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="changePassword">
+      <soap:operation soapAction="http://tempuri.org/IUserService/changePassword" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

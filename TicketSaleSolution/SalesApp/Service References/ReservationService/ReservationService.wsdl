@@ -37,6 +37,24 @@
   <wsdl:message name="IReservationService_getReservation_OutputMessage">
     <wsdl:part name="parameters" element="tns:getReservationResponse" />
   </wsdl:message>
+  <wsdl:message name="IReservationService_getReservationCountByUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:getReservationCountByUser" />
+  </wsdl:message>
+  <wsdl:message name="IReservationService_getReservationCountByUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getReservationCountByUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReservationService_cancelSubOrder_InputMessage">
+    <wsdl:part name="parameters" element="tns:cancelSubOrder" />
+  </wsdl:message>
+  <wsdl:message name="IReservationService_cancelSubOrder_OutputMessage">
+    <wsdl:part name="parameters" element="tns:cancelSubOrderResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReservationService_cancelAllSubOrders_InputMessage">
+    <wsdl:part name="parameters" element="tns:cancelAllSubOrders" />
+  </wsdl:message>
+  <wsdl:message name="IReservationService_cancelAllSubOrders_OutputMessage">
+    <wsdl:part name="parameters" element="tns:cancelAllSubOrdersResponse" />
+  </wsdl:message>
   <wsdl:portType name="IReservationService">
     <wsdl:operation name="newReservation">
       <wsdl:input wsaw:Action="http://tempuri.org/IReservationService/newReservation" message="tns:IReservationService_newReservation_InputMessage" />
@@ -57,6 +75,18 @@
     <wsdl:operation name="getReservation">
       <wsdl:input wsaw:Action="http://tempuri.org/IReservationService/getReservation" message="tns:IReservationService_getReservation_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IReservationService/getReservationResponse" message="tns:IReservationService_getReservation_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getReservationCountByUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReservationService/getReservationCountByUser" message="tns:IReservationService_getReservationCountByUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReservationService/getReservationCountByUserResponse" message="tns:IReservationService_getReservationCountByUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="cancelSubOrder">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReservationService/cancelSubOrder" message="tns:IReservationService_cancelSubOrder_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReservationService/cancelSubOrderResponse" message="tns:IReservationService_cancelSubOrder_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="cancelAllSubOrders">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReservationService/cancelAllSubOrders" message="tns:IReservationService_cancelAllSubOrders_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReservationService/cancelAllSubOrdersResponse" message="tns:IReservationService_cancelAllSubOrders_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IReservationService" type="tns:IReservationService">
@@ -99,6 +129,33 @@
     </wsdl:operation>
     <wsdl:operation name="getReservation">
       <soap:operation soapAction="http://tempuri.org/IReservationService/getReservation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getReservationCountByUser">
+      <soap:operation soapAction="http://tempuri.org/IReservationService/getReservationCountByUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cancelSubOrder">
+      <soap:operation soapAction="http://tempuri.org/IReservationService/cancelSubOrder" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cancelAllSubOrders">
+      <soap:operation soapAction="http://tempuri.org/IReservationService/cancelAllSubOrders" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

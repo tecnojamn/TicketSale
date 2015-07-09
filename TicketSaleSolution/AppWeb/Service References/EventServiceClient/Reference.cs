@@ -68,6 +68,24 @@ namespace AppWeb.EventServiceClient {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEventService/getEventType", ReplyAction="http://tempuri.org/IEventService/getEventTypeResponse")]
         System.Threading.Tasks.Task<string[]> getEventTypeAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEventService/getEventsForGv", ReplyAction="http://tempuri.org/IEventService/getEventsForGvResponse")]
+        DTO.EventDTO[] getEventsForGv();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEventService/getEventsForGv", ReplyAction="http://tempuri.org/IEventService/getEventsForGvResponse")]
+        System.Threading.Tasks.Task<DTO.EventDTO[]> getEventsForGvAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEventService/getEventReport", ReplyAction="http://tempuri.org/IEventService/getEventReportResponse")]
+        DTO.EventDTO getEventReport(int r);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEventService/getEventReport", ReplyAction="http://tempuri.org/IEventService/getEventReportResponse")]
+        System.Threading.Tasks.Task<DTO.EventDTO> getEventReportAsync(int r);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEventService/getSoldTickets", ReplyAction="http://tempuri.org/IEventService/getSoldTicketsResponse")]
+        DTO.EventDTO[] getSoldTickets(System.DateTime start, System.DateTime end);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEventService/getSoldTickets", ReplyAction="http://tempuri.org/IEventService/getSoldTicketsResponse")]
+        System.Threading.Tasks.Task<DTO.EventDTO[]> getSoldTicketsAsync(System.DateTime start, System.DateTime end);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -167,6 +185,30 @@ namespace AppWeb.EventServiceClient {
         
         public System.Threading.Tasks.Task<string[]> getEventTypeAsync() {
             return base.Channel.getEventTypeAsync();
+        }
+        
+        public DTO.EventDTO[] getEventsForGv() {
+            return base.Channel.getEventsForGv();
+        }
+        
+        public System.Threading.Tasks.Task<DTO.EventDTO[]> getEventsForGvAsync() {
+            return base.Channel.getEventsForGvAsync();
+        }
+        
+        public DTO.EventDTO getEventReport(int r) {
+            return base.Channel.getEventReport(r);
+        }
+        
+        public System.Threading.Tasks.Task<DTO.EventDTO> getEventReportAsync(int r) {
+            return base.Channel.getEventReportAsync(r);
+        }
+        
+        public DTO.EventDTO[] getSoldTickets(System.DateTime start, System.DateTime end) {
+            return base.Channel.getSoldTickets(start, end);
+        }
+        
+        public System.Threading.Tasks.Task<DTO.EventDTO[]> getSoldTicketsAsync(System.DateTime start, System.DateTime end) {
+            return base.Channel.getSoldTicketsAsync(start, end);
         }
     }
 }

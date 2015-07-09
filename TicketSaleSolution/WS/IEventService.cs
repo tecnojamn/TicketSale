@@ -12,7 +12,7 @@ namespace WS
     [ServiceContract]
     public interface IEventService
     {
-       
+
         [OperationContract]
         bool newEvent(EventDTO evDTO);
 
@@ -33,11 +33,18 @@ namespace WS
 
         [OperationContract]
         List<EventDTO> searchEvents(string text, int page, int pageSize, DateTime maxDate, DateTime minDate, String local, double price, string type);
-        
+
         [OperationContract]
         List<EventLocationDTO> getLocals();
 
         [OperationContract]
         List<string> getEventType();
+        [OperationContract]
+        List<EventDTO> getEventsForGv();
+        [OperationContract]
+        EventDTO getEventReport(int r);
+        [OperationContract]
+        List<EventDTO> getSoldTickets(DateTime start, DateTime end);
+
     }
 }

@@ -123,6 +123,7 @@
       <DependentUpon>Usuarios.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\DataSources\DTO.EventDTO.datasource" />
+    <None Include="Properties\DataSources\DTO.EventLocationDTO.datasource" />
     <None Include="Properties\DataSources\DTO.UserDTO.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -141,6 +142,9 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\EventService\EventService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EventService\EventService3.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\UserService\UserService.wsdl" />

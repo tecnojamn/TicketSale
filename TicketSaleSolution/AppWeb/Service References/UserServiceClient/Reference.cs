@@ -62,6 +62,12 @@ namespace AppWeb.UserServiceClient {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/removeUser", ReplyAction="http://tempuri.org/IUserService/removeUserResponse")]
         System.Threading.Tasks.Task<bool> removeUserAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/getPreferredUsers", ReplyAction="http://tempuri.org/IUserService/getPreferredUsersResponse")]
+        DTO.UserDTO[] getPreferredUsers();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/getPreferredUsers", ReplyAction="http://tempuri.org/IUserService/getPreferredUsersResponse")]
+        System.Threading.Tasks.Task<DTO.UserDTO[]> getPreferredUsersAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -153,6 +159,14 @@ namespace AppWeb.UserServiceClient {
         
         public System.Threading.Tasks.Task<bool> removeUserAsync(int id) {
             return base.Channel.removeUserAsync(id);
+        }
+        
+        public DTO.UserDTO[] getPreferredUsers() {
+            return base.Channel.getPreferredUsers();
+        }
+        
+        public System.Threading.Tasks.Task<DTO.UserDTO[]> getPreferredUsersAsync() {
+            return base.Channel.getPreferredUsersAsync();
         }
     }
 }

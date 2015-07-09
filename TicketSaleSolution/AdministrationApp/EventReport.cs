@@ -30,6 +30,10 @@ namespace AdministrationApp
             if (ev != null)
             {
                 txtIdEvento.Text = ev.id.ToString();
+                txtEventName.Text = ev.name;
+                txtEventLoc.Text = ev.EventLocation.name;
+                txtType.Text = ev.type;
+                txtDate.Text = ev.date.ToString("dd/MM/yyyy");
             }
             else
             {
@@ -43,6 +47,10 @@ namespace AdministrationApp
             if (ev != null)
             {
                 txtIdEvento.Text = ev.id.ToString();
+                txtEventName.Text = ev.name;
+                txtEventLoc.Text = ev.EventLocation.name;
+                txtType.Text = ev.type;
+                txtDate.Text = ev.date.ToString("dd/MM/yyyy");
             }
             else
             {

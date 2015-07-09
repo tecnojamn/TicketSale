@@ -11,7 +11,7 @@
       <xs:element minOccurs="0" name="mail" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="registrationLink" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="token" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="userType" type="xs:unsignedByte" />
     </xs:sequence>
   </xs:complexType>
@@ -24,7 +24,7 @@
   <xs:element name="ArrayOfReservationDTO" nillable="true" type="tns:ArrayOfReservationDTO" />
   <xs:complexType name="ReservationDTO">
     <xs:sequence>
-      <xs:element minOccurs="0" name="Payment" nillable="true" type="tns:ArrayOfPaymentDTO" />
+      <xs:element minOccurs="0" name="Payment" nillable="true" type="tns:PaymentDTO" />
       <xs:element minOccurs="0" name="SubOrder" nillable="true" type="tns:ArrayOfSubOrderDTO" />
       <xs:element minOccurs="0" name="User" nillable="true" type="tns:UserDTO" />
       <xs:element minOccurs="0" name="date" type="xs:dateTime" />
@@ -33,12 +33,6 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ReservationDTO" nillable="true" type="tns:ReservationDTO" />
-  <xs:complexType name="ArrayOfPaymentDTO">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="PaymentDTO" nillable="true" type="tns:PaymentDTO" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfPaymentDTO" nillable="true" type="tns:ArrayOfPaymentDTO" />
   <xs:complexType name="PaymentDTO">
     <xs:sequence>
       <xs:element minOccurs="0" name="CashPayment" nillable="true" type="tns:CashPaymentDTO" />
@@ -46,7 +40,6 @@
       <xs:element minOccurs="0" name="Reservation" nillable="true" type="tns:ReservationDTO" />
       <xs:element minOccurs="0" name="amount" type="xs:double" />
       <xs:element minOccurs="0" name="date" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="id" type="xs:int" />
       <xs:element minOccurs="0" name="idReservation" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
@@ -56,8 +49,8 @@
       <xs:element minOccurs="0" name="Payment" nillable="true" type="tns:PaymentDTO" />
       <xs:element minOccurs="0" name="PaymentLocation" nillable="true" type="tns:PaymentLocationDTO" />
       <xs:element minOccurs="0" name="cod" type="xs:int" />
-      <xs:element minOccurs="0" name="idPayment" type="xs:int" />
       <xs:element minOccurs="0" name="idPaymentLocation" type="xs:int" />
+      <xs:element minOccurs="0" name="idReservation" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="CashPaymentDTO" nillable="true" type="tns:CashPaymentDTO" />
@@ -80,7 +73,7 @@
   <xs:complexType name="PaypalPaymentDTO">
     <xs:sequence>
       <xs:element minOccurs="0" name="Payment" nillable="true" type="tns:PaymentDTO" />
-      <xs:element minOccurs="0" name="idPayment" type="xs:int" />
+      <xs:element minOccurs="0" name="idReservation" type="xs:int" />
       <xs:element minOccurs="0" name="transactionCod" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
@@ -134,7 +127,6 @@
       <xs:element minOccurs="0" name="enable" type="xs:unsignedByte" />
       <xs:element minOccurs="0" name="id" type="xs:int" />
       <xs:element minOccurs="0" name="idEventLocation" type="xs:int" />
-      <xs:element minOccurs="0" name="img" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="type" nillable="true" type="xs:string" />
     </xs:sequence>

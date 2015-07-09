@@ -166,4 +166,10 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfPaymentDTO" nillable="true" type="tns:ArrayOfPaymentDTO" />
+  <xs:complexType name="ArrayOfPaymentLocationDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PaymentLocationDTO" nillable="true" type="tns:PaymentLocationDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPaymentLocationDTO" nillable="true" type="tns:ArrayOfPaymentLocationDTO" />
 </xs:schema>
