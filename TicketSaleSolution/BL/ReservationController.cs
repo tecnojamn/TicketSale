@@ -40,23 +40,39 @@ namespace BL
         }
         // -- AL PEDO
         //Listar reservas de Usuario
-        public List<Reservation> getReservationsByUser(int idUser, int page, int pageSize)
+        public List<Reservation> getReservationsByUser(int idUser, int page, int pageSize, bool onlyPayments = false)
         {
             List<Reservation> res = null;
             try
             {
                 using (DAL.TicketSaleEntities context = new DAL.TicketSaleEntities())
                 {
-                    res = context.Reservation
-                        .Include("SubOrder.Ticket.TicketType.Event")
-                        .Include("Payment.PaypalPayment")
-                        .Include("Payment.CashPayment")
-                        .Select(r => r)
-                        .OrderByDescending(r => r.date)
-                        .Where(r => r.idUser == idUser)
-                        .Skip(page - 1)
-                        .Take(pageSize)
-                        .ToList();
+                    if (!onlyPayments)
+                    {
+                        res = context.Reservation
+                            .Include("SubOrder.Ticket.TicketType.Event")
+                            .Include("Payment.PaypalPayment")
+                            .Include("Payment.CashPayment")
+                            .Select(r => r)
+                            .OrderByDescending(r => r.date)
+                            .Where(r => r.idUser == idUser)
+                            .Skip((page-1)*pageSize)
+                            .Take(pageSize)
+                            .ToList();
+                    }
+                    else
+                    {
+                        res = context.Reservation
+                            .Include("SubOrder.Ticket.TicketType.Event")
+                            .Include("Payment.PaypalPayment")
+                            .Include("Payment.CashPayment")
+                            .Select(r => r)
+                            .OrderByDescending(r => r.date)
+                            .Where(r => r.idUser == idUser && r.Payment != null)
+                            .Skip((page - 1) * pageSize)
+                            .Take(pageSize)
+                            .ToList();
+                    }
                 }
             }
             catch (Exception)
@@ -168,7 +184,7 @@ namespace BL
             {
                 using (DAL.TicketSaleEntities context = new DAL.TicketSaleEntities())
                 {
-                    if (onlyPayments)
+                    if (!onlyPayments)
                     {
                         return context.Reservation.Select(r => r.idUser == idUser).Count();
                     }

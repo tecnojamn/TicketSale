@@ -29,7 +29,7 @@ namespace WS
             return rc.newReservation(Mapper.Map<Reservation>(resDTO));
         }
         public bool autoCancelation() { return false; } //Despues se ve
-        public List<ReservationDTO> getReservationsByUser(int idUser, int page, int pageSize)
+        public List<ReservationDTO> getReservationsByUser(int idUser, int page, int pageSize, bool onlyPayments=false)
         {
             ReservationController rc = new ReservationController();
 
@@ -59,7 +59,7 @@ namespace WS
                 .ForMember(e => e.EventLocation, opt => opt.Ignore())
                 .ForMember(e => e.TicketType, opt => opt.Ignore());
 
-            return Mapper.Map<List<ReservationDTO>>(rc.getReservationsByUser(idUser, page, pageSize));
+            return Mapper.Map<List<ReservationDTO>>(rc.getReservationsByUser(idUser, page, pageSize,onlyPayments));
         }
         public List<ReservationDTO> getReservations(int page, int pageSize)
         {

@@ -33,6 +33,7 @@
         <xs:element minOccurs="0" name="idUser" type="xs:int" />
         <xs:element minOccurs="0" name="page" type="xs:int" />
         <xs:element minOccurs="0" name="pageSize" type="xs:int" />
+        <xs:element minOccurs="0" name="onlyPayments" type="xs:boolean" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

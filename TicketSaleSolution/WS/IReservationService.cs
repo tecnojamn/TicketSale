@@ -19,7 +19,7 @@ namespace WS
         bool autoCancelation();
 
         [OperationContract]
-        List<ReservationDTO> getReservationsByUser(int idUser, int page, int pageSize);
+        List<ReservationDTO> getReservationsByUser(int idUser, int page, int pageSize, bool onlyPayments = false);
 
         [OperationContract]
         List<ReservationDTO> getReservations(int page, int pageSize);

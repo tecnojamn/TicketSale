@@ -47,6 +47,7 @@ namespace SalesApp
             CashPaymentDTO cashPayment = new CashPaymentDTO();
             //PaymentLocationDTO paymentLoc = new PaymentLocationDTO();
             DateTime thisDay = DateTime.Today;
+           
             payment.idReservation = Convert.ToInt32(otherForm.txtIdreserva.Text);
             payment.amount = Convert.ToInt32(txtAmount.Text);
             payment.date = thisDay;

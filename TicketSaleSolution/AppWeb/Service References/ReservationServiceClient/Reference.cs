@@ -28,10 +28,10 @@ namespace AppWeb.ReservationServiceClient {
         System.Threading.Tasks.Task<bool> autoCancelationAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReservationService/getReservationsByUser", ReplyAction="http://tempuri.org/IReservationService/getReservationsByUserResponse")]
-        DTO.ReservationDTO[] getReservationsByUser(int idUser, int page, int pageSize);
+        DTO.ReservationDTO[] getReservationsByUser(int idUser, int page, int pageSize, bool onlyPayments);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReservationService/getReservationsByUser", ReplyAction="http://tempuri.org/IReservationService/getReservationsByUserResponse")]
-        System.Threading.Tasks.Task<DTO.ReservationDTO[]> getReservationsByUserAsync(int idUser, int page, int pageSize);
+        System.Threading.Tasks.Task<DTO.ReservationDTO[]> getReservationsByUserAsync(int idUser, int page, int pageSize, bool onlyPayments);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReservationService/getReservations", ReplyAction="http://tempuri.org/IReservationService/getReservationsResponse")]
         DTO.ReservationDTO[] getReservations(int page, int pageSize);
@@ -107,12 +107,12 @@ namespace AppWeb.ReservationServiceClient {
             return base.Channel.autoCancelationAsync();
         }
         
-        public DTO.ReservationDTO[] getReservationsByUser(int idUser, int page, int pageSize) {
-            return base.Channel.getReservationsByUser(idUser, page, pageSize);
+        public DTO.ReservationDTO[] getReservationsByUser(int idUser, int page, int pageSize, bool onlyPayments) {
+            return base.Channel.getReservationsByUser(idUser, page, pageSize, onlyPayments);
         }
         
-        public System.Threading.Tasks.Task<DTO.ReservationDTO[]> getReservationsByUserAsync(int idUser, int page, int pageSize) {
-            return base.Channel.getReservationsByUserAsync(idUser, page, pageSize);
+        public System.Threading.Tasks.Task<DTO.ReservationDTO[]> getReservationsByUserAsync(int idUser, int page, int pageSize, bool onlyPayments) {
+            return base.Channel.getReservationsByUserAsync(idUser, page, pageSize, onlyPayments);
         }
         
         public DTO.ReservationDTO[] getReservations(int page, int pageSize) {

@@ -35,12 +35,12 @@ namespace AppWeb.Views.Controls
 
         protected void linkPayments_Click(object sender, EventArgs e)
         {
-            Response.Redirect("Reservations.aspx");
+            Response.Redirect("Reservations.aspx?payments=true");
         }
 
         protected void linkReservations_Click(object sender, EventArgs e)
         {
-            //Redirigir a Reservations page
+            Response.Redirect("Reservations.aspx");
         }
     }
 }
