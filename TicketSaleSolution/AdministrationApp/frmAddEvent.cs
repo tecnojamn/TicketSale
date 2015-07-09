@@ -110,7 +110,11 @@ namespace AdministrationApp
             }
             if (ProxyManager.getEventService().newEvent(newEvent))
             {
-                MessageBox.Show("Event added successfully");
+                DialogResult dResult = MessageBox.Show("Event added successfully");
+                if (dResult == DialogResult.OK)
+                {
+                    Close();
+                }
             }
 
         }

@@ -75,14 +75,12 @@ namespace AdministrationApp
                 {
                     cbMinutes.Items.Add(i);
                 }
-                //MessageBox.Show(gvEventos.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString());
                 txtName.Text = gvEventos.Rows[e.RowIndex].Cells["EventName"].Value.ToString();
                 txtDescripcion.Text = gvEventos.Rows[e.RowIndex].Cells["Description"].Value.ToString();
                 cbType.Text = gvEventos.Rows[e.RowIndex].Cells["Type"].Value.ToString();
                 cbEventLocation.Text = gvEventos.Rows[e.RowIndex].Cells["LocationName"].Value.ToString();
                 txtId.Text = gvEventos.Rows[e.RowIndex].Cells["id"].Value.ToString();
                 string eventDate = gvEventos.Rows[e.RowIndex].Cells["Date"].Value.ToString();
-                MessageBox.Show(eventDate);
                 string date = eventDate.Substring(0, 2);
                 cbDay.Text = date;
                 date = eventDate.Substring(3, 2);
