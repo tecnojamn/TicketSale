@@ -82,7 +82,7 @@
                     <asp:LinkButton CssClass="jsBtnShowSubOrders" ID="showSubOrders" Text="Ver SubOrdenes" CommandArgument='<%# Container.DataItemIndex + ";" + Eval("id") %> ' OnCommand="showSubOrders_Command" runat="server"></asp:LinkButton>
                 </li>
                 <li>
-                    <asp:LinkButton CssClass="btn btn-primary" ID="btnDoPayment" runat="server" CommandArgument='<%#Eval("id") %>' OnCommand="btnDoPayment_Command" > <%#isPaid((PaymentDTO)Eval("Payment"),Container.DataItemIndex)%> </asp:LinkButton>
+                    <asp:LinkButton CssClass="btn btn-primary" ID="btnDoPayment" runat="server" CommandArgument='<%#Eval("id") %>' OnCommand="btnDoPayment_Command" > <%#isPaid((PaymentDTO)Eval("Payment"),Container.DataItemIndex) %> </asp:LinkButton>
                     <asp:LinkButton CssClass="btn btn-danger" ID="btnCancelAllSubOrders" runat="server"  CommandArgument='<%# Container.DataItemIndex + ";" + Eval("id") %>' OnCommand="btnCancelAllSubOrders_Command" > <%#alreadyCanceled((ICollection<SubOrderDTO>)Eval("SubOrder"))%> </asp:LinkButton>
                 </li>
             </ul>

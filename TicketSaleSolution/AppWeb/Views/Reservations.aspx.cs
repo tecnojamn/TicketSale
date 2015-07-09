@@ -86,7 +86,7 @@ namespace AppWeb.Views
                 if (p.CashPayment != null)
                 {
 
-                    return "PAGA (EFECTIVO: " + p.date + ")";
+                    return "PAGA (EFECTIVO: " + p.date.ToString("dd/MM/yyyy") + ")";
                 }
 
                 else
@@ -247,7 +247,7 @@ namespace AppWeb.Views
 
         protected void btnDoPayment_Command(object sender, CommandEventArgs e)
         {
-            Response.Redirect("Paypal/Auth.aspx/res_id=" + e.CommandArgument.ToString());
+            Response.Redirect("Paypal/Auth.aspx?res_id=" + e.CommandArgument.ToString());
         }
 
     }

@@ -59,7 +59,6 @@ namespace WS
                 .ForMember(e => e.EventLocation, opt => opt.Ignore())
                 .ForMember(e => e.TicketType, opt => opt.Ignore());
 
-
             return Mapper.Map<List<ReservationDTO>>(rc.getReservationsByUser(idUser, page, pageSize));
         }
         public List<ReservationDTO> getReservations(int page, int pageSize)
