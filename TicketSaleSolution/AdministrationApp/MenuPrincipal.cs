@@ -13,8 +13,7 @@ namespace AdministrationApp
     public partial class MenuPrincipal : Form
     {
         private int childFormNumber = 0;
-        private bool isChildOpen = false;//Control para no tener multi`ples ventanas abiertas
-
+       
         public MenuPrincipal()
         {
             InitializeComponent();
@@ -99,21 +98,20 @@ namespace AdministrationApp
         {
             frmPreferredUsers child = new frmPreferredUsers();
             child.MdiParent = this;
-            child.Show();
+            child.ShowDialog();
         }
 
         private void usuariosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmUsuarios child = new frmUsuarios();
             child.MdiParent = this;
-            child.Show();
+            child.ShowDialog();
         }
 
         private void eventosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmEventos child = new frmEventos();
-            child.MdiParent = this;
-            child.Show();
+            child.ShowDialog();
         }
 
         private void mejorEspectáculoDelMesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -125,14 +123,14 @@ namespace AdministrationApp
         {
             frmSoldTickets child = new frmSoldTickets();
             child.MdiParent = this;
-            child.Show();
+            child.ShowDialog();
         }
 
         private void peorEspectáculoDelMesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmEventReport child = new frmEventReport();
             child.MdiParent = this;
-            child.Show();
+            child.ShowDialog();
         }
     }
 }

@@ -111,6 +111,17 @@ namespace AdministrationApp
 
         }
 
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            frmAddEvent child = new frmAddEvent();
+            child.ShowDialog();
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
 
 
 

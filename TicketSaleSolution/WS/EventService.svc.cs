@@ -18,7 +18,9 @@ namespace WS
         {
             EventController ec = new EventController();
             Mapper.CreateMap<EventDTO, Event>()
-                .ForMember(e => e.TicketType, opt => opt.Ignore());
+                .ForMember(e => e.TicketType, opt => opt.Ignore())
+                .ForMember(e => e.EventLocation, opt => opt.Ignore());
+            Event newEvent = Mapper.Map<Event>(evDTO);
             return ec.newEvent(Mapper.Map<Event>(evDTO));
         }
 
@@ -128,6 +130,21 @@ namespace WS
                 .ForMember(p => p.Reservation, opt => opt.Ignore());
             //List<Event> ev = ec.getEventsForSTR(start,end).ToList();
             return Mapper.Map<List<EventDTO>>(ec.getEventsForSTR(start, end));
+        }
+        public List<EventLocationDTO> getLocals()
+        {
+            EventController ec = new EventController();
+
+            Mapper.CreateMap<EventLocation, EventLocationDTO>()
+                .ForMember(l => l.Event, opt => opt.Ignore());
+
+            return Mapper.Map<List<EventLocationDTO>>(ec.getLocals());
+        }
+        public List<string> getEventType()
+        {
+            EventController ec = new EventController();
+
+            return ec.getEventType();
         }
     }
 }

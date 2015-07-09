@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmAddTicketType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAddTicketType.Designer.cs">
+      <DependentUpon>frmAddTicketType.cs</DependentUpon>
+    </Compile>
     <Compile Include="EventReport.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -101,6 +107,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmAddTicketType.resx">
+      <DependentUpon>frmAddTicketType.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="EventReport.resx">
       <DependentUpon>EventReport.cs</DependentUpon>
     </EmbeddedResource>
@@ -132,6 +141,7 @@
       <DependentUpon>Usuarios.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\DataSources\DTO.EventDTO.datasource" />
+    <None Include="Properties\DataSources\DTO.EventLocationDTO.datasource" />
     <None Include="Properties\DataSources\DTO.UserDTO.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -152,6 +162,9 @@
     <None Include="Service References\EventService\EventService2.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\EventService\EventService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\UserService\UserService.wsdl" />
     <None Include="Service References\UserService\UserService.xsd">
       <SubType>Designer</SubType>
@@ -164,7 +177,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />

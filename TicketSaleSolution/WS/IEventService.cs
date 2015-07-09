@@ -34,7 +34,11 @@ namespace WS
         [OperationContract]
         List<EventDTO> getSoldTickets(DateTime start, DateTime end);
         
+        [OperationContract]
+        List<EventLocationDTO> getLocals();
 
+        [OperationContract]
+        List<string> getEventType();
         //EventDTO getWorstEvent();
     }
 }

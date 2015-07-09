@@ -285,6 +285,47 @@ namespace BL
                 throw;
             }
         }
+        public List<EventLocation> getLocals()
+        {
+            List<EventLocation> locals = null;
+            try
+            {
+                using (DAL.TicketSaleEntities context = new DAL.TicketSaleEntities())
+                {
+                    locals = context.EventLocation
+                               .Select(l => l)
+                               .OrderBy(l => l.name)
+                               .ToList();
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+            return locals;
+        }
+        public List<string> getEventType()
+        {
+            List<string> eventsType = null;
+            try
+            {
+                using (DAL.TicketSaleEntities context = new DAL.TicketSaleEntities())
+                {
+                    eventsType = context.Event
+                        .Select(e => e.type)
+                        .Distinct()
+                        .ToList();
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            return eventsType;
+        }
         /*
         public int getTotalTicketCount(int id)
         {

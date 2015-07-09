@@ -53,6 +53,7 @@
             this.cbType = new System.Windows.Forms.ComboBox();
             this.cbEventLocation = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnClose = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.txtId = new System.Windows.Forms.TextBox();
             this.btnAdd = new System.Windows.Forms.Button();
@@ -73,7 +74,7 @@
             this.LocationName,
             this.Date});
             this.gvEventos.Location = new System.Drawing.Point(0, 15);
-            this.gvEventos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gvEventos.Margin = new System.Windows.Forms.Padding(4);
             this.gvEventos.MultiSelect = false;
             this.gvEventos.Name = "gvEventos";
             this.gvEventos.Size = new System.Drawing.Size(859, 369);
@@ -119,8 +120,8 @@
             // 
             // btnModificar
             // 
-            this.btnModificar.Location = new System.Drawing.Point(253, 259);
-            this.btnModificar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnModificar.Location = new System.Drawing.Point(132, 259);
+            this.btnModificar.Margin = new System.Windows.Forms.Padding(4);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(120, 46);
             this.btnModificar.TabIndex = 2;
@@ -130,8 +131,8 @@
             // 
             // btnBorrar
             // 
-            this.btnBorrar.Location = new System.Drawing.Point(145, 259);
-            this.btnBorrar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnBorrar.Location = new System.Drawing.Point(988, 14);
+            this.btnBorrar.Margin = new System.Windows.Forms.Padding(4);
             this.btnBorrar.Name = "btnBorrar";
             this.btnBorrar.Size = new System.Drawing.Size(100, 47);
             this.btnBorrar.TabIndex = 3;
@@ -142,7 +143,7 @@
             // 
             this.cbHour.FormattingEnabled = true;
             this.cbHour.Location = new System.Drawing.Point(159, 223);
-            this.cbHour.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbHour.Margin = new System.Windows.Forms.Padding(4);
             this.cbHour.Name = "cbHour";
             this.cbHour.Size = new System.Drawing.Size(55, 24);
             this.cbHour.TabIndex = 31;
@@ -151,7 +152,7 @@
             // 
             this.cbMinutes.FormattingEnabled = true;
             this.cbMinutes.Location = new System.Drawing.Point(223, 223);
-            this.cbMinutes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbMinutes.Margin = new System.Windows.Forms.Padding(4);
             this.cbMinutes.Name = "cbMinutes";
             this.cbMinutes.Size = new System.Drawing.Size(55, 24);
             this.cbMinutes.TabIndex = 30;
@@ -170,7 +171,7 @@
             // 
             this.cbMonth.FormattingEnabled = true;
             this.cbMonth.Location = new System.Drawing.Point(223, 190);
-            this.cbMonth.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbMonth.Margin = new System.Windows.Forms.Padding(4);
             this.cbMonth.Name = "cbMonth";
             this.cbMonth.Size = new System.Drawing.Size(53, 24);
             this.cbMonth.TabIndex = 28;
@@ -179,7 +180,7 @@
             // 
             this.cbDay.FormattingEnabled = true;
             this.cbDay.Location = new System.Drawing.Point(159, 190);
-            this.cbDay.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbDay.Margin = new System.Windows.Forms.Padding(4);
             this.cbDay.Name = "cbDay";
             this.cbDay.Size = new System.Drawing.Size(55, 24);
             this.cbDay.TabIndex = 27;
@@ -188,7 +189,7 @@
             // 
             this.cbYear.FormattingEnabled = true;
             this.cbYear.Location = new System.Drawing.Point(285, 190);
-            this.cbYear.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbYear.Margin = new System.Windows.Forms.Padding(4);
             this.cbYear.Name = "cbYear";
             this.cbYear.Size = new System.Drawing.Size(73, 24);
             this.cbYear.TabIndex = 26;
@@ -246,7 +247,7 @@
             // txtDescripcion
             // 
             this.txtDescripcion.Location = new System.Drawing.Point(159, 91);
-            this.txtDescripcion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtDescripcion.Margin = new System.Windows.Forms.Padding(4);
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.Size = new System.Drawing.Size(200, 22);
             this.txtDescripcion.TabIndex = 20;
@@ -254,7 +255,7 @@
             // txtName
             // 
             this.txtName.Location = new System.Drawing.Point(159, 59);
-            this.txtName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtName.Margin = new System.Windows.Forms.Padding(4);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(200, 22);
             this.txtName.TabIndex = 19;
@@ -263,7 +264,7 @@
             // 
             this.cbType.FormattingEnabled = true;
             this.cbType.Location = new System.Drawing.Point(159, 123);
-            this.cbType.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbType.Margin = new System.Windows.Forms.Padding(4);
             this.cbType.Name = "cbType";
             this.cbType.Size = new System.Drawing.Size(200, 24);
             this.cbType.TabIndex = 18;
@@ -272,16 +273,16 @@
             // 
             this.cbEventLocation.FormattingEnabled = true;
             this.cbEventLocation.Location = new System.Drawing.Point(159, 156);
-            this.cbEventLocation.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbEventLocation.Margin = new System.Windows.Forms.Padding(4);
             this.cbEventLocation.Name = "cbEventLocation";
             this.cbEventLocation.Size = new System.Drawing.Size(200, 24);
             this.cbEventLocation.TabIndex = 17;
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnClose);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.txtId);
-            this.groupBox1.Controls.Add(this.btnBorrar);
             this.groupBox1.Controls.Add(this.txtName);
             this.groupBox1.Controls.Add(this.cbHour);
             this.groupBox1.Controls.Add(this.btnModificar);
@@ -299,13 +300,23 @@
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Location = new System.Drawing.Point(867, 69);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox1.Size = new System.Drawing.Size(381, 313);
             this.groupBox1.TabIndex = 32;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Información del evento";
+            // 
+            // btnClose
+            // 
+            this.btnClose.Location = new System.Drawing.Point(259, 259);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(100, 47);
+            this.btnClose.TabIndex = 35;
+            this.btnClose.Text = "Close";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // label7
             // 
@@ -320,7 +331,7 @@
             // txtId
             // 
             this.txtId.Location = new System.Drawing.Point(159, 27);
-            this.txtId.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtId.Margin = new System.Windows.Forms.Padding(4);
             this.txtId.Name = "txtId";
             this.txtId.ReadOnly = true;
             this.txtId.Size = new System.Drawing.Size(132, 22);
@@ -334,6 +345,7 @@
             this.btnAdd.TabIndex = 33;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // frmEventos
             // 
@@ -343,7 +355,8 @@
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.gvEventos);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Controls.Add(this.btnBorrar);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmEventos";
             this.Text = "Eventos";
             this.Load += new System.EventHandler(this.Eventos_Load);
@@ -384,6 +397,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtId;
         private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.Button btnClose;
 
     }
 }
