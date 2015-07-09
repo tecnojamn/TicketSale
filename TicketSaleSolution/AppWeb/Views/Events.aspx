@@ -2,9 +2,9 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder"  runat="server">
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder" runat="server">
 
-    
+
     <script>
         function validate(rowIndex) {
             var availableTickets = $("#ContentPlaceHolder_gvTickets tbody tr:eq(" + (rowIndex + 1) + ") td:eq(2)").text();
@@ -19,7 +19,7 @@
                 if (inputQuantity < 0) {
                     $("#ContentPlaceHolder_gvTickets_txtTickets_" + rowIndex).val(0);
                     inputQuantity = 0;
-                } else if(inputQuantity > availableTickets) {
+                } else if (inputQuantity > availableTickets) {
                     $("#ContentPlaceHolder_gvTickets_txtTickets_" + rowIndex).val(availableTickets);
                     inputQuantity = availableTickets;
                 }
@@ -40,47 +40,48 @@
             $("#ContentPlaceHolder_lblTotal").text(total);
         }
     </script>
-    <div class="palette  palette-turquoise" style="overflow:hidden;">
-    <span style="float:left;  line-height: 20px;" class="fui-video"></span>
-    <h3 id="name" runat="server" style="font-size: 22px;  float: left;  margin: 0px 7px 0px 10px;  line-height: 20px;" ></h3>
-        </div>
-    <div class="well " style="padding: 15px 40px;
-  font-size: 15px;" >
-       
-    <label>Fecha: </label>
-    <asp:Label ID="lblDate" runat="server" Text=""></asp:Label><br />
-    <label>Hora: </label>
-    <asp:Label ID="lblTime" runat="server" Text=""></asp:Label><br />
-    <label>Lugar: </label>
-    <asp:Label ID="lblLoc" runat="server" Text=""></asp:Label><br />
-    <label>Entradas Habilitadas: </label>
-    <asp:Label ID="lblTotalTickets" runat="server" Text=""></asp:Label><br />
-    <label>Entradas Disponibles: </label>
-    <asp:Label ID="lblAvailableTickets" runat="server" Text=""></asp:Label><br />
-           
-    <label>Sectores Disponibles: </label>
+    <div class="palette  palette-turquoise" style="overflow: hidden;">
+        <span style="float: left; line-height: 20px;" class="fui-video"></span>
+        <h3 id="name" runat="server" style="font-size: 22px; float: left; margin: 0px 7px 0px 10px; line-height: 20px;"></h3>
+    </div>
+    <div class="well " style="padding: 15px 40px; font-size: 15px;">
+
+        <label>Fecha: </label>
+        <asp:Label ID="lblDate" runat="server" Text=""></asp:Label><br />
+        <label>Hora: </label>
+        <asp:Label ID="lblTime" runat="server" Text=""></asp:Label><br />
+        <label>Lugar: </label>
+        <asp:Label ID="lblLoc" runat="server" Text=""></asp:Label><br />
+        <label>Entradas Habilitadas: </label>
+        <asp:Label ID="lblTotalTickets" runat="server" Text=""></asp:Label><br />
+        <label>Entradas Disponibles: </label>
+        <asp:Label ID="lblAvailableTickets" runat="server" Text=""></asp:Label><br />
+
+        <label>Sectores Disponibles: </label>
         <div class="table-responsive">
-    <asp:GridView ID="gvTickets" runat="server" AutoGenerateColumns="false" CssClass="table table-striped">
-        <Columns>
-            <asp:BoundField DataField="Sector" HeaderText="Sector" />
-            <asp:BoundField DataField="Costo" HeaderText="Costo" />
-            <asp:BoundField DataField="EntradasDisponibles" HeaderText="Entradas Disponibles" />
+            <asp:GridView ID="gvTickets" runat="server" AutoGenerateColumns="false" CssClass="table table-striped">
+                <Columns>
+                    <asp:BoundField DataField="Sector" HeaderText="Sector" />
+                    <asp:BoundField DataField="Costo" HeaderText="Costo" />
+                    <asp:BoundField DataField="EntradasDisponibles" HeaderText="Entradas Disponibles" />
 
-            <asp:TemplateField HeaderText="Reservar">
-                <ItemTemplate>
-                    <asp:TextBox CssClass="form-control" ID="txtTickets" runat="server" TextMode="Number" MaxLength="2" Text="0" onblur='<%#"validate(" + Container.DataItemIndex +")"%>'></asp:TextBox>
-                    <asp:Label ID="alert" runat="server" Text=""></asp:Label>
-                </ItemTemplate>
+                    <asp:TemplateField HeaderText="Reservar">
+                        <ItemTemplate>
+                            <asp:TextBox CssClass="form-control" ID="txtTickets" runat="server" TextMode="Number" MaxLength="2" Text="0" onblur='<%#"validate(" + Container.DataItemIndex +")"%>'></asp:TextBox>
+                            <asp:Label ID="alert" runat="server" Text=""></asp:Label>
+                        </ItemTemplate>
 
-            </asp:TemplateField>
-            <asp:BoundField HeaderText="SubTotal" />
+                    </asp:TemplateField>
+                    <asp:BoundField HeaderText="SubTotal" />
 
 
-        </Columns>
-    </asp:GridView></div>
-    <label>Total a pagar:</label>
-    <asp:Label ID="lblTotal" runat="server" Text="0"></asp:Label>
-        <br />
-    <asp:Button ID="btnDoReserve" runat="server" Text="Realizar Reserva" CssClass="btn btn-lg btn-primary" OnClick="btnDoReserve_Click" />
+                </Columns>
+            </asp:GridView>
         </div>
+        <label>Total a pagar:</label>
+        <asp:Label ID="lblTotal" runat="server" Text="0"></asp:Label>
+        <br />
+        <asp:Button ID="btnDoReserve" runat="server" Text="Realizar Reserva" CssClass="btn btn-lg btn-primary" OnClick="btnDoReserve_Click" />
+        <asp:Button ID="btnShare" runat="server" Text="Share" OnClick="btnShare_Click" />
+    </div>
 </asp:Content>

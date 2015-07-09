@@ -38,7 +38,7 @@ namespace BL
             {
                 using (DAL.TicketSaleEntities context = new DAL.TicketSaleEntities())
                 {
-                    var query = from u in context.User where u.active == USER.STATE.ACTIVE select u;
+                    var query = from u in context.User where u.active == USER.STATE.ACTIVE select u; 
                     users = query
                         .Skip((page - 1) * pageSize)
                         .Take(pageSize)
