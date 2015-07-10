@@ -18,7 +18,14 @@ namespace WS
         {
             EventController ec = new EventController();
             Mapper.CreateMap<EventDTO, Event>()
-                .ForMember(e => e.TicketType, opt => opt.Ignore());
+                .ForMember(e => e.TicketType, opt => opt.MapFrom(x => x.TicketType))
+                .ForMember(e => e.EventLocation, opt => opt.Ignore());            
+            Mapper.CreateMap<TicketTypeDTO, TicketType>()
+                .ForMember(tt => tt.Ticket, opt => opt.Ignore())
+                .ForMember(tt => tt.Event, opt => opt.Ignore());
+            //Mapper.CreateMap<EventDTO, Event>()
+            //    .ForMember(e => e.TicketType, opt => opt.Ignore())
+            //    .ForMember(e => e.EventLocation, opt => opt.Ignore());
             return ec.newEvent(Mapper.Map<Event>(evDTO));
         }
 
@@ -45,7 +52,7 @@ namespace WS
             return Mapper.Map<List<EventDTO>>(ec.getEvents(page, pageSize));
         }
         public List<EventDTO> getFeaturedEvents(int page, int pageSize){
-         EventController ec = new EventController();
+            EventController ec = new EventController();
             Mapper.CreateMap<Event, EventDTO>()
                 .ForMember(e => e.TicketType, opt => opt.Ignore())
                 .ForMember(e => e.EventLocation, opt => opt.Ignore());
@@ -85,7 +92,7 @@ namespace WS
             Mapper.CreateMap<TicketType, TicketTypeDTO>()
                 .ForMember(tt => tt.Ticket, opt => opt.Ignore())
                 .ForMember(tt => tt.Event, opt => opt.Ignore());
-            
+
             return Mapper.Map<List<EventDTO>>(ec.searchEvents(text, page, pageSize, maxDate, minDate, local, price, type));
         }
         public List<EventLocationDTO> getLocals()
@@ -163,6 +170,5 @@ namespace WS
             //List<Event> ev = ec.getEventsForSTR(start,end).ToList();
             return Mapper.Map<List<EventDTO>>(ec.getEventsForSTR(start, end));
         }
-
     }
 }
