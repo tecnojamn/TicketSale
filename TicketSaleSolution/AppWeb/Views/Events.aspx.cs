@@ -15,92 +15,99 @@ namespace AppWeb.Views
 
         protected void Page_Load(object sender, EventArgs e)
         {
+
+            if (!IsPostBack)
+            {
+                loadData();
+            }
+
+        }
+        private void loadData()
+        {
             bool log = false;
             if (Session["log"] == null)
             {
                 Session["log"] = SESSION.STATE.OFF;
             }
-            if (Session["log"] == SESSION.STATE.ON)
+            if (Session["log"].ToString() == SESSION.STATE.ON.ToString())
             {
                 log = true;
             }
 
             int idEvent;
 
-            if (!IsPostBack)
+            if (Int32.TryParse(Request.QueryString["id"], out idEvent))
             {
-                if (Int32.TryParse(Request.QueryString["id"], out idEvent))
+                EventDTO eventDTO = ProxyManager.getEventService().getEvent(idEvent);
+
+                name.InnerText = eventDTO.name;
+                lblDate.Text = eventDTO.date.ToString("dd/MM/yyyy");
+                lblTime.Text = eventDTO.date.ToString("HH:mm");
+                lblLoc.Text = eventDTO.EventLocation.name;
+                lblTotalTickets.Text = eventDTO.getTotalTicketCount().ToString();
+                lblAvailableTickets.Text = eventDTO.getAvailableTicketCount().ToString();
+
+                DataTable dt = new DataTable();
+
+                //Columnas
+                dt.Columns.Add("Sector");
+                dt.Columns.Add("Costo");
+                dt.Columns.Add("EntradasDisponibles");
+
+
+
+                foreach (var tt in eventDTO.TicketType)
                 {
-                    EventDTO eventDTO = ProxyManager.getEventService().getEvent(idEvent);
+                    DataRow _row = dt.NewRow();
+                    _row["Sector"] = tt.description;
+                    _row["Costo"] = tt.cost;
+                    _row["EntradasDisponibles"] = tt.getAvailableTicketCount();
+                    // _row["Reservar"] = (new Button() { Text="+"});
 
-                    name.InnerText = eventDTO.name;
-                    lblDate.Text = eventDTO.date.ToString("dd/MM/yyyy");
-                    lblTime.Text = eventDTO.date.ToString("HH:mm");
-                    lblLoc.Text = eventDTO.EventLocation.name;
-                    lblTotalTickets.Text = eventDTO.getTotalTicketCount().ToString();
-                    lblAvailableTickets.Text = eventDTO.getAvailableTicketCount().ToString();
-
-                    DataTable dt = new DataTable();
-
-                    //Columnas
-                    dt.Columns.Add("Sector");
-                    dt.Columns.Add("Costo");
-                    dt.Columns.Add("EntradasDisponibles");
-
-
-
-                    foreach (var tt in eventDTO.TicketType)
-                    {
-                        DataRow _row = dt.NewRow();
-                        _row["Sector"] = tt.description;
-                        _row["Costo"] = tt.cost;
-                        _row["EntradasDisponibles"] = tt.getAvailableTicketCount();
-                        // _row["Reservar"] = (new Button() { Text="+"});
-
-                        if (log)
-                        {
-                            //_row["ttid"] = tt.id;
-                        }
-                        dt.Rows.Add(_row);
-                    }
-
-                    /*
-                    //Creo datatable para meter en el gridview
-                    DataTable dtTicketType = new DataTable();
-
-                    //Columnas
-                    dtTicketType.Columns.Add("Sector");
-                    dtTicketType.Columns.Add("Costo");
-                    dtTicketType.Columns.Add("Disponibles/Totales");
-
-
-                    //Creo rows
-                    foreach (var tt in eventDTO.TicketType)
-                    {
-                        DataRow _row = dtTicketType.NewRow();
-                        _row["Sector"] = tt.description;
-                        _row["Costo"] = tt.cost;
-                        _row["Entradas"] = tt.getAvailableTicketCount() + " / " + tt.getTotalTicketCount();
-                        // _row["Reservar"] = (new Button() { Text="+"});
-                        //if (log) { _row["Reserva"] = 0; }
-                        dtTicketType.Rows.Add(_row);
-                    }*/
-                    if (!log)
-                    {
-                        gvTickets.Columns.RemoveAt(4);
-                        gvTickets.Columns.RemoveAt(3);
-                    }
-
-                    gvTickets.DataSource = dt;
-                    gvTickets.DataBind();
-
+                    dt.Rows.Add(_row);
                 }
-                else
+
+                /*
+                //Creo datatable para meter en el gridview
+                DataTable dtTicketType = new DataTable();
+
+                //Columnas
+                dtTicketType.Columns.Add("Sector");
+                dtTicketType.Columns.Add("Costo");
+                dtTicketType.Columns.Add("Disponibles/Totales");
+
+
+                //Creo rows
+                foreach (var tt in eventDTO.TicketType)
                 {
-                    Response.Redirect("Default.aspx");
+                    DataRow _row = dtTicketType.NewRow();
+                    _row["Sector"] = tt.description;
+                    _row["Costo"] = tt.cost;
+                    _row["Entradas"] = tt.getAvailableTicketCount() + " / " + tt.getTotalTicketCount();
+                    // _row["Reservar"] = (new Button() { Text="+"});
+                    //if (log) { _row["Reserva"] = 0; }
+                    dtTicketType.Rows.Add(_row);
+                }*/
+                if (!log)
+                {
+                    //Columnas para reservar (sacarlas si no esta logueado)
+                    gvTickets.Columns.RemoveAt(4);
+                    gvTickets.Columns.RemoveAt(3);
+
+                    lblTotal.Visible=false;
+                    lblTotalAmount.Visible = false;
+                    lblTotalAmount.CssClass = "hidden-field";
+                    btnDoReserve.Visible = false;
                 }
+
+                gvTickets.DataSource = dt;
+                gvTickets.DataBind();
+
             }
-
+            else
+            {
+                Response.Redirect("Default.aspx");
+            }
         }
 
         protected void btnDoReserve_Click(object sender, EventArgs e)
@@ -180,10 +187,15 @@ namespace AppWeb.Views
                         SubOrder = listSubOrderDTO
                     };
 
-                    ProxyManager.getReservationService().newReservation(resDTO);
+                    if (ProxyManager.getReservationService().newReservation(resDTO))
+                    {
+                        alertConfirmation.Visible = true;
+
+                        //recargar gridview
+                        loadData(); 
+                    }
 
 
-                    Response.Redirect("Events.aspx?id=" + eventDTO.id);
                 }
                 else { }//ERROR DE PARSEO, METIO UNA LETRA EN CANTIDAD DE ENTRADAS
 

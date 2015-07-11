@@ -66,3 +66,9 @@ min-height:800px;
       position: relative;
     font-size:16px;
         }
+.alert-success{
+    color: #129023
+}
+.hidden-field{
+    display: none;
+}

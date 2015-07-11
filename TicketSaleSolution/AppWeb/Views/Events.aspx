@@ -78,8 +78,9 @@
                 </Columns>
             </asp:GridView>
         </div>
-        <label>Total a pagar:</label>
-        <asp:Label ID="lblTotal" runat="server" Text="0"></asp:Label>
+        <asp:Label CssClass="alert-success" ID="alertConfirmation" runat="server" Text="Su Reserva se ha realizado con exito!" Visible="false"></asp:Label><br />
+        <asp:Label ID="lblTotal" Text="Total a pagar:" runat="server"></asp:Label>
+        <asp:Label ID="lblTotalAmount" runat="server" Text="0"></asp:Label>
         <br />
         <asp:Button ID="btnDoReserve" runat="server" Text="Realizar Reserva" CssClass="btn btn-lg btn-primary" OnClick="btnDoReserve_Click" />
         <asp:Button ID="btnShare" runat="server" Text="Share" OnClick="btnShare_Click" />
