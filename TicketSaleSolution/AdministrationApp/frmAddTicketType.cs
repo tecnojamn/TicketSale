@@ -58,22 +58,29 @@ namespace AdministrationApp
         {
             if (txtCost.Text != "" && txtDescription.Text != "" && txtMaxNumber.Text != "" && txtMinNumber.Text != "")
             {
+                
                 int cost = Convert.ToInt32(txtCost.Text);
                 int maxNum = Convert.ToInt32(txtMaxNumber.Text);
                 int minNum = Convert.ToInt32(txtMinNumber.Text);
                 String description = txtDescription.Text;
+                if (maxNum > minNum)
+                {
+                    TicketTypeDTO tt = new TicketTypeDTO();
+                    tt.cost = cost;
+                    tt.description = description;
+                    tt.startNum = minNum;
+                    tt.finalNum = maxNum;
 
-                TicketTypeDTO tt = new TicketTypeDTO();
-                tt.cost = cost;
-                tt.description = description;
-                tt.startNum = minNum;
-                tt.finalNum = maxNum;
-
-                tt.Ticket = null;
-                tt.Event = null;
-                tt.idEvent = 0;
-                frmParent.addTicketType(tt);
-                Close();
+                    tt.Ticket = null;
+                    tt.Event = null;
+                    tt.idEvent = 0;
+                    frmParent.addTicketType(tt);
+                    Close();
+                }
+                else
+                {
+                    MessageBox.Show("Min number should be smaller than Max number");
+                }
             }
             //frmParent.addTicketType();
         }

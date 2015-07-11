@@ -7,14 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 using COM;
 using DTO;
-
 
 namespace AdministrationApp
 {
     public partial class frmAddEvent : Form
     {
+        private string imgPath = "";
         public void addTicketType(TicketTypeDTO tt)
         {
             if (tt != null)
@@ -108,8 +109,17 @@ namespace AdministrationApp
                 }
                 newEvent.TicketType.Add(ticketType);
             }
-            if (ProxyManager.getEventService().newEvent(newEvent))
+            int eventId = ProxyManager.getEventService().newEvent(newEvent);
+            if (eventId != 0)
             {
+                if (imgPath != "")
+                {
+                    string[] fname;
+                    fname = imgPath.Split('.');
+                    //Obtiene la ruta en donde se guardan las imagenes
+                    string targetDir = Directory.GetParent(Directory.GetParent(Directory.GetParent(Path.GetDirectoryName(Application.ExecutablePath)).ToString()).ToString()).ToString() + "\\AppWeb\\uploads\\events\\";
+                    File.Copy(imgPath, targetDir + eventId + "." + fname[fname.Length - 1]);
+                }
                 DialogResult dResult = MessageBox.Show("Event added successfully");
                 if (dResult == DialogResult.OK)
                 {
@@ -128,6 +138,18 @@ namespace AdministrationApp
         private void btnDeleteTicketType_Click(object sender, EventArgs e)
         {
             cbTicketType.Items.Remove(cbTicketType.SelectedIndex);
+        }
+
+        private void btnBrowse_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog fileDialog = new OpenFileDialog();
+            fileDialog.ShowDialog();
+            fileDialog.Filter = "Image Files(*.jpeg;*.bmp;*.png;*.jpg)|*.jpeg;*.bmp;*.png;*.jpg";
+            if (fileDialog.FileName != "")
+            {
+                pbImage.Image = Image.FromFile(fileDialog.FileName);
+                imgPath = fileDialog.FileName;
+            }
         }
     }
 }

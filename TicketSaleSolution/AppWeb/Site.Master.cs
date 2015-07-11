@@ -42,5 +42,13 @@ namespace AppWeb
         {
             Response.Redirect("Default.aspx");
         }
+
+        protected void btnSearch_Click(object sender, EventArgs e)
+        {
+            if (txtSearch.Text != "" && txtSearch.Text != null)
+            {
+                Response.Redirect("Search.aspx?searchText="+txtSearch.Text);
+            }
+        }
     }
 }

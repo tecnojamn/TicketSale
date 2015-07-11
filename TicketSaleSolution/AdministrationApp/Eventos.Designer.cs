@@ -37,12 +37,7 @@
             this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnModificar = new System.Windows.Forms.Button();
             this.btnBorrar = new System.Windows.Forms.Button();
-            this.cbHour = new System.Windows.Forms.ComboBox();
-            this.cbMinutes = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.cbMonth = new System.Windows.Forms.ComboBox();
-            this.cbDay = new System.Windows.Forms.ComboBox();
-            this.cbYear = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -53,6 +48,11 @@
             this.cbType = new System.Windows.Forms.ComboBox();
             this.cbEventLocation = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtMinutes = new System.Windows.Forms.TextBox();
+            this.txtHour = new System.Windows.Forms.TextBox();
+            this.txtYear = new System.Windows.Forms.TextBox();
+            this.txtMonth = new System.Windows.Forms.TextBox();
+            this.txtDay = new System.Windows.Forms.TextBox();
             this.btnClose = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.txtId = new System.Windows.Forms.TextBox();
@@ -127,7 +127,7 @@
             this.btnModificar.TabIndex = 2;
             this.btnModificar.Text = "Modify";
             this.btnModificar.UseVisualStyleBackColor = true;
-            this.btnModificar.Click += new System.EventHandler(this.button1_Click);
+            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
             // btnBorrar
             // 
@@ -138,24 +138,7 @@
             this.btnBorrar.TabIndex = 3;
             this.btnBorrar.Text = "Delete";
             this.btnBorrar.UseVisualStyleBackColor = true;
-            // 
-            // cbHour
-            // 
-            this.cbHour.FormattingEnabled = true;
-            this.cbHour.Location = new System.Drawing.Point(159, 223);
-            this.cbHour.Margin = new System.Windows.Forms.Padding(4);
-            this.cbHour.Name = "cbHour";
-            this.cbHour.Size = new System.Drawing.Size(55, 24);
-            this.cbHour.TabIndex = 31;
-            // 
-            // cbMinutes
-            // 
-            this.cbMinutes.FormattingEnabled = true;
-            this.cbMinutes.Location = new System.Drawing.Point(223, 223);
-            this.cbMinutes.Margin = new System.Windows.Forms.Padding(4);
-            this.cbMinutes.Name = "cbMinutes";
-            this.cbMinutes.Size = new System.Drawing.Size(55, 24);
-            this.cbMinutes.TabIndex = 30;
+            this.btnBorrar.Click += new System.EventHandler(this.btnBorrar_Click);
             // 
             // label6
             // 
@@ -166,33 +149,6 @@
             this.label6.Size = new System.Drawing.Size(39, 17);
             this.label6.TabIndex = 29;
             this.label6.Text = "Time";
-            // 
-            // cbMonth
-            // 
-            this.cbMonth.FormattingEnabled = true;
-            this.cbMonth.Location = new System.Drawing.Point(223, 190);
-            this.cbMonth.Margin = new System.Windows.Forms.Padding(4);
-            this.cbMonth.Name = "cbMonth";
-            this.cbMonth.Size = new System.Drawing.Size(53, 24);
-            this.cbMonth.TabIndex = 28;
-            // 
-            // cbDay
-            // 
-            this.cbDay.FormattingEnabled = true;
-            this.cbDay.Location = new System.Drawing.Point(159, 190);
-            this.cbDay.Margin = new System.Windows.Forms.Padding(4);
-            this.cbDay.Name = "cbDay";
-            this.cbDay.Size = new System.Drawing.Size(55, 24);
-            this.cbDay.TabIndex = 27;
-            // 
-            // cbYear
-            // 
-            this.cbYear.FormattingEnabled = true;
-            this.cbYear.Location = new System.Drawing.Point(285, 190);
-            this.cbYear.Margin = new System.Windows.Forms.Padding(4);
-            this.cbYear.Name = "cbYear";
-            this.cbYear.Size = new System.Drawing.Size(73, 24);
-            this.cbYear.TabIndex = 26;
             // 
             // label5
             // 
@@ -262,6 +218,7 @@
             // 
             // cbType
             // 
+            this.cbType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbType.FormattingEnabled = true;
             this.cbType.Location = new System.Drawing.Point(159, 123);
             this.cbType.Margin = new System.Windows.Forms.Padding(4);
@@ -271,6 +228,7 @@
             // 
             // cbEventLocation
             // 
+            this.cbEventLocation.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbEventLocation.FormattingEnabled = true;
             this.cbEventLocation.Location = new System.Drawing.Point(159, 156);
             this.cbEventLocation.Margin = new System.Windows.Forms.Padding(4);
@@ -280,21 +238,21 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.txtMinutes);
+            this.groupBox1.Controls.Add(this.txtHour);
+            this.groupBox1.Controls.Add(this.txtYear);
+            this.groupBox1.Controls.Add(this.txtMonth);
+            this.groupBox1.Controls.Add(this.txtDay);
             this.groupBox1.Controls.Add(this.btnClose);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.txtId);
             this.groupBox1.Controls.Add(this.txtName);
-            this.groupBox1.Controls.Add(this.cbHour);
             this.groupBox1.Controls.Add(this.btnModificar);
-            this.groupBox1.Controls.Add(this.cbMinutes);
             this.groupBox1.Controls.Add(this.cbEventLocation);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.cbType);
-            this.groupBox1.Controls.Add(this.cbMonth);
             this.groupBox1.Controls.Add(this.txtDescripcion);
-            this.groupBox1.Controls.Add(this.cbDay);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.cbYear);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label3);
@@ -307,6 +265,46 @@
             this.groupBox1.TabIndex = 32;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Información del evento";
+            // 
+            // txtMinutes
+            // 
+            this.txtMinutes.Location = new System.Drawing.Point(207, 215);
+            this.txtMinutes.Name = "txtMinutes";
+            this.txtMinutes.Size = new System.Drawing.Size(42, 22);
+            this.txtMinutes.TabIndex = 40;
+            this.txtMinutes.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMinutes_KeyPress);
+            // 
+            // txtHour
+            // 
+            this.txtHour.Location = new System.Drawing.Point(159, 215);
+            this.txtHour.Name = "txtHour";
+            this.txtHour.Size = new System.Drawing.Size(42, 22);
+            this.txtHour.TabIndex = 39;
+            this.txtHour.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtHour_KeyPress);
+            // 
+            // txtYear
+            // 
+            this.txtYear.Location = new System.Drawing.Point(259, 187);
+            this.txtYear.Name = "txtYear";
+            this.txtYear.Size = new System.Drawing.Size(100, 22);
+            this.txtYear.TabIndex = 38;
+            this.txtYear.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtYear_KeyPress);
+            // 
+            // txtMonth
+            // 
+            this.txtMonth.Location = new System.Drawing.Point(208, 187);
+            this.txtMonth.Name = "txtMonth";
+            this.txtMonth.Size = new System.Drawing.Size(42, 22);
+            this.txtMonth.TabIndex = 37;
+            this.txtMonth.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMonth_KeyPress);
+            // 
+            // txtDay
+            // 
+            this.txtDay.Location = new System.Drawing.Point(159, 187);
+            this.txtDay.Name = "txtDay";
+            this.txtDay.Size = new System.Drawing.Size(42, 22);
+            this.txtDay.TabIndex = 36;
+            this.txtDay.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDay_KeyPress);
             // 
             // btnClose
             // 
@@ -358,7 +356,7 @@
             this.Controls.Add(this.btnBorrar);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmEventos";
-            this.Text = "Eventos";
+            this.Text = "Event";
             this.Load += new System.EventHandler(this.Eventos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gvEventos)).EndInit();
             this.groupBox1.ResumeLayout(false);
@@ -378,12 +376,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Description;
         private System.Windows.Forms.DataGridViewTextBoxColumn LocationName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Date;
-        private System.Windows.Forms.ComboBox cbHour;
-        private System.Windows.Forms.ComboBox cbMinutes;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ComboBox cbMonth;
-        private System.Windows.Forms.ComboBox cbDay;
-        private System.Windows.Forms.ComboBox cbYear;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
@@ -398,6 +391,11 @@
         private System.Windows.Forms.TextBox txtId;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.TextBox txtMinutes;
+        private System.Windows.Forms.TextBox txtHour;
+        private System.Windows.Forms.TextBox txtYear;
+        private System.Windows.Forms.TextBox txtMonth;
+        private System.Windows.Forms.TextBox txtDay;
 
     }
 }

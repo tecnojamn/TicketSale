@@ -88,6 +88,12 @@
     <Compile Include="frmSoldTickets.Designer.cs">
       <DependentUpon>frmSoldTickets.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmUserModify.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUserModify.Designer.cs">
+      <DependentUpon>frmUserModify.cs</DependentUpon>
+    </Compile>
     <Compile Include="ProxyManager.cs" />
     <Compile Include="Service References\EventService\Reference.cs">
       <AutoGen>True</AutoGen>
@@ -133,6 +139,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmSoldTickets.resx">
       <DependentUpon>frmSoldTickets.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUserModify.resx">
+      <DependentUpon>frmUserModify.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MenuPrincipal.resx">
       <DependentUpon>MenuPrincipal.cs</DependentUpon>

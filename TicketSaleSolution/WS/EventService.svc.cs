@@ -14,7 +14,7 @@ namespace WS
     public class EventService : IEventService
     {
 
-        public bool newEvent(EventDTO evDTO)
+        public int newEvent(EventDTO evDTO)
         {
             EventController ec = new EventController();
             Mapper.CreateMap<EventDTO, Event>()
@@ -101,7 +101,6 @@ namespace WS
             
             Mapper.CreateMap<EventLocation, EventLocationDTO>()
                 .ForMember(l => l.Event, opt => opt.Ignore());
-
             return Mapper.Map<List<EventLocationDTO>>(ec.getLocals());
         }
         public List<string> getEventType()

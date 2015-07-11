@@ -11,24 +11,28 @@ namespace BL
     public class EventController
     {
         //Nuevo evento
-        public bool newEvent(Event ev)
+        //Retorna el id del evento creado, devolvera 0 en caso de error
+        public int newEvent(Event ev)
         {
             try
             {
                 using (DAL.TicketSaleEntities context = new DAL.TicketSaleEntities())
                 {
-                    if (context.Event.Add(ev) != null)
+                    //para que no intente agregar un evento con el id de alguien
+                    if (ev.id == 0)
                     {
-                        context.SaveChanges();
+                        if (context.Event.Add(ev) != null)
+                        {
+                            context.SaveChanges();
+                        }
                     }
-                    else { return false; }
                 }
             }
             catch (Exception e)
             {
-                throw e;
+                return 0;
             }
-            return true;
+            return ev.id;
         }
         //Borrar Evento --- NO SIRVE
         /*public bool removeEvent(int idEv)
@@ -93,10 +97,10 @@ namespace BL
                         e.date = ev.date;
                         e.description = ev.description;
                         e.enabled = ev.enabled;
-                        e.EventLocation = ev.EventLocation;
+                        e.EventLocation = (ev.EventLocation != null)? ev.EventLocation : e.EventLocation;
                         e.idEventLocation = ev.idEventLocation;
                         e.name = ev.name;
-                        e.TicketType = ev.TicketType;
+                        e.TicketType = (ev.TicketType != null)? ev.TicketType : e.TicketType;
                         e.type = ev.type;
                         context.SaveChanges();
                     }
@@ -144,7 +148,7 @@ namespace BL
                 {
                     float entradasTomadas = 0f;
                     float entradasDisp = 0f;
-                    
+
                     eventos = context.Event.Select(e => e).Where(e => e.enabled == 1)
                         .OrderByDescending(e => e.date)
                         .Skip((page - 1) * pageSize)
@@ -152,7 +156,7 @@ namespace BL
                         .ToList();
                     foreach (Event e in eventos)
                     {
-                        
+
                         entradasTomadas = 0.000000f;
                         entradasDisp = 0.000000f;
 
@@ -165,7 +169,7 @@ namespace BL
                                 foreach (var s in t.SubOrder)
                                 {
                                     if (s.active == 1)
-                                        entradasTomadas+=1.0f;
+                                        entradasTomadas += 1.0f;
                                 }
                             }
                         }
@@ -181,17 +185,18 @@ namespace BL
                             // res = 0.000000f;
                             auxDicitonary.Add(e.id, -1);
                         }
-                       // auxDicitonary.Add(e.id, res);
+                        // auxDicitonary.Add(e.id, res);
                     }
 
-                    foreach(KeyValuePair<int, double> k in auxDicitonary){
-                        var p=k.Value;
+                    foreach (KeyValuePair<int, double> k in auxDicitonary)
+                    {
+                        var p = k.Value;
                     }
 
                     //ordeno el diccionario
                     //auxDicitonary = auxDicitonary.OrderBy(i => i.Value).ToDictionary(x => x.Key, x => x.Value);
-                   
-                   
+
+
                     //lo paso a lista de ints, ya ordenada
                     List<int> idList = new List<int>(auxDicitonary.Keys);
                     //orden la lista de eventos en base a la lista de ints
@@ -347,20 +352,20 @@ namespace BL
                     events = context.Event.Include("EventLocation").Include("TicketType.Ticket.SubOrder.Reservation.Payment")
                         .Where(e => e.TicketType
                             .Where(tt => tt.Ticket
-                                .Where(t => t.SubOrder.FirstOrDefault().Reservation.Payment.date >= start 
-                                    && t.SubOrder.FirstOrDefault().Reservation.Payment.date <= end 
-                                    && t.SubOrder.FirstOrDefault().active == COM.RESERVATION.SUBORDER.ACTIVE )
+                                .Where(t => t.SubOrder.FirstOrDefault().Reservation.Payment.date >= start
+                                    && t.SubOrder.FirstOrDefault().Reservation.Payment.date <= end
+                                    && t.SubOrder.FirstOrDefault().active == COM.RESERVATION.SUBORDER.ACTIVE)
                                     .Any()) //que alguna suborden del ticket cumpla con las condiciones
                                     .Any()) // que algun tickettype del evento contenga algun ticket que cumpla con las condiciones
                                     .ToList();
                     return events;
-                } 
-
                 }
+
+            }
 
             catch (Exception)
             {
-                
+
                 throw;
             }
         }
@@ -384,26 +389,6 @@ namespace BL
             }
 
             return locals;
-        }
-        public List<string> getEventType()
-        {
-            List<string> eventsType = null;
-            try
-            {
-                using (DAL.TicketSaleEntities context = new DAL.TicketSaleEntities())
-                {
-                    eventsType = context.Event
-                        .Select(e => e.type)
-                        .Distinct()
-                        .ToList();
-                }
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-            return eventsType;
         }
         /*
         public int getTotalTicketCount(int id)
@@ -485,27 +470,6 @@ namespace BL
                 throw;
             }
             return events;
-        }
-        public List<EventLocation> getLocals()
-        {
-            List<EventLocation> locals = null;
-            try
-            {
-                using (DAL.TicketSaleEntities context = new DAL.TicketSaleEntities())
-                {
-                    locals = context.EventLocation
-                               .Select(l => l)
-                               .OrderBy(l => l.name)
-                               .ToList();
-                }
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-
-            return locals;
         }
         public List<string> getEventType()
         {

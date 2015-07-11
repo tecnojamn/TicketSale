@@ -12,9 +12,9 @@ namespace WS
     [ServiceContract]
     public interface IEventService
     {
-
+       
         [OperationContract]
-        bool newEvent(EventDTO evDTO);
+        int newEvent(EventDTO evDTO);
 
         [OperationContract]
         bool cancelEvent(int id);
@@ -45,6 +45,6 @@ namespace WS
         EventDTO getEventReport(int r);
         [OperationContract]
         List<EventDTO> getSoldTickets(DateTime start, DateTime end);
-
+        
     }
 }
