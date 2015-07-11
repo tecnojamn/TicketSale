@@ -24,22 +24,26 @@ namespace WS
 
             Mapper.CreateMap<SubOrderDTO, SubOrder>()
                 .ForMember(so => so.Reservation, opt => opt.Ignore())
-                .ForMember(so => so.Ticket, opt => opt.Ignore());
+                .ForMember(so => so.Ticket, opt => opt.MapFrom(x=>x.Ticket));
+
+            Mapper.CreateMap<TicketDTO, Ticket>()
+                .ForMember(t => t.SubOrder, opt => opt.Ignore())
+                .ForMember(t => t.TicketType, opt => opt.Ignore());
 
             return rc.newReservation(Mapper.Map<Reservation>(resDTO));
         }
         public bool autoCancelation() { return false; } //Despues se ve
-        public List<ReservationDTO> getReservationsByUser(int idUser, int page, int pageSize, bool onlyPayments=false)
+        public List<ReservationDTO> getReservationsByUser(int idUser, int page, int pageSize, bool onlyPayments = false)
         {
             ReservationController rc = new ReservationController();
 
             Mapper.CreateMap<Reservation, ReservationDTO>()
                 .ForMember(r => r.User, opt => opt.Ignore())
-                .ForMember(r => r.Payment, opt => opt.MapFrom(x=>x.Payment))
+                .ForMember(r => r.Payment, opt => opt.MapFrom(x => x.Payment))
                 .ForMember(r => r.SubOrder, opt => opt.MapFrom(x => x.SubOrder));
             Mapper.CreateMap<Payment, PaymentDTO>()
-                .ForMember(p => p.CashPayment, opt => opt.MapFrom(x=>x.CashPayment))
-                .ForMember(p => p.PaypalPayment, opt => opt.MapFrom(x=>x.PaypalPayment))
+                .ForMember(p => p.CashPayment, opt => opt.MapFrom(x => x.CashPayment))
+                .ForMember(p => p.PaypalPayment, opt => opt.MapFrom(x => x.PaypalPayment))
                 .ForMember(p => p.Reservation, opt => opt.Ignore());
             Mapper.CreateMap<CashPayment, CashPaymentDTO>()
                 .ForMember(cp => cp.PaymentLocation, opt => opt.Ignore())
@@ -59,7 +63,7 @@ namespace WS
                 .ForMember(e => e.EventLocation, opt => opt.Ignore())
                 .ForMember(e => e.TicketType, opt => opt.Ignore());
 
-            return Mapper.Map<List<ReservationDTO>>(rc.getReservationsByUser(idUser, page, pageSize,onlyPayments));
+            return Mapper.Map<List<ReservationDTO>>(rc.getReservationsByUser(idUser, page, pageSize, onlyPayments));
         }
         public List<ReservationDTO> getReservations(int page, int pageSize)
         {
@@ -108,7 +112,7 @@ namespace WS
         }
         public int getReservationCountByUser(int idUser, bool onlyPayments = false)
         {
-            ReservationController rc = new      ReservationController();
+            ReservationController rc = new ReservationController();
             return rc.getReservationCountByUser(idUser, onlyPayments);
         }
         public bool cancelSubOrder(int idSO)
@@ -120,6 +124,16 @@ namespace WS
         {
             ReservationController rc = new ReservationController();
             return rc.cancelAllSubOrders(idRes);
+        }
+        public TicketDTO generateNewTicket(int idTicketType)
+        {
+            ReservationController rc = new ReservationController();
+
+            Mapper.CreateMap<Ticket, TicketDTO>()
+                .ForMember(t => t.SubOrder, opt => opt.Ignore())
+                .ForMember(t => t.TicketType, opt => opt.Ignore());
+
+            return Mapper.Map<TicketDTO>(rc.generateNewTicket(idTicketType));
         }
     }
 }

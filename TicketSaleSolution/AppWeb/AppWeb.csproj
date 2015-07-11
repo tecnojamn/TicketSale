@@ -277,6 +277,7 @@
     <Content Include="Properties\DataSources\DTO.ReservationDTO.datasource" />
     <Content Include="Properties\DataSources\DTO.EventLocationDTO1.datasource" />
     <Content Include="Properties\DataSources\DTO.PaymentLocationDTO.datasource" />
+    <Content Include="Properties\DataSources\DTO.TicketDTO.datasource" />
     <None Include="Service References\EventServiceClient\EventService.wsdl" />
     <None Include="Service References\EventServiceClient\EventService.xsd">
       <SubType>Designer</SubType>
@@ -501,6 +502,7 @@
     </Compile>
     <Compile Include="Views\Search.aspx.cs">
       <DependentUpon>Search.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Views\Search.aspx.designer.cs">
       <DependentUpon>Search.aspx</DependentUpon>

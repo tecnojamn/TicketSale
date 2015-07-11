@@ -12,6 +12,7 @@ namespace AppWeb.Views
 {
     public partial class Events : System.Web.UI.Page
     {
+
         protected void Page_Load(object sender, EventArgs e)
         {
             bool log = false;
@@ -146,21 +147,27 @@ namespace AppWeb.Views
                     List<SubOrderDTO> listSubOrderDTO = new List<SubOrderDTO>();
                     //int idTicket = eventDTO.TicketType.Skip(tickets[0, 1]).FirstOrDefault().Ticket.Where(t => t.SubOrder.Count == 0 || t.SubOrder.Where(so => so.active == RESERVATION.SUBORDER.ACTIVE).Count() == 0).Skip(1).FirstOrDefault().id;
 
+
+                    //Nuevas subordenes
                     for (i = 0; i < ttCount; i++)
                     {
+
                         for (j = 0; j < tickets[i]; j++)
                         {
+
                             listSubOrderDTO.Add(
                                 new SubOrderDTO()
                                 {
                                     active = (byte)RESERVATION.SUBORDER.ACTIVE,
-                                    idTicket = eventDTO.TicketType
+                                    idTicket = (eventDTO.TicketType
                                         .Skip(i)
                                         .FirstOrDefault()
                                         .Ticket
                                             .Where(t => t.SubOrder.Count == 0 || t.SubOrder.Where(so => so.active == RESERVATION.SUBORDER.ACTIVE).Count() == 0)
                                             .Skip(j)
-                                            .FirstOrDefault().id,
+                                            .FirstOrDefault() ?? ProxyManager.getReservationService().generateNewTicket(eventDTO.TicketType.Skip(i).FirstOrDefault().id)).id,
+                                            
+
                                 }
                             );
                         }
@@ -176,7 +183,7 @@ namespace AppWeb.Views
                     ProxyManager.getReservationService().newReservation(resDTO);
 
 
-                    Response.Redirect("Event?id=" + eventDTO.id);
+                    Response.Redirect("Events.aspx?id=" + eventDTO.id);
                 }
                 else { }//ERROR DE PARSEO, METIO UNA LETRA EN CANTIDAD DE ENTRADAS
 

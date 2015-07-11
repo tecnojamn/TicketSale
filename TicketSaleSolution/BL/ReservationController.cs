@@ -10,6 +10,8 @@ namespace BL
 {
     public class ReservationController
     {
+
+
         //Nueva Reserva
         public bool newReservation(Reservation r)
         {
@@ -56,7 +58,7 @@ namespace BL
                             .Select(r => r)
                             .OrderByDescending(r => r.date)
                             .Where(r => r.idUser == idUser)
-                            .Skip((page-1)*pageSize)
+                            .Skip((page - 1) * pageSize)
                             .Take(pageSize)
                             .ToList();
                     }
@@ -201,6 +203,41 @@ namespace BL
                 throw;
             }
 
+        }
+        public Ticket generateNewTicket(int idTicketType)
+        {
+            Ticket ticket = null;
+            int _randomCode;
+            try
+            {
+                using (DAL.TicketSaleEntities context = new DAL.TicketSaleEntities())
+                {
+                    do
+                    {
+                        _randomCode = getRandomForTicket();
+                    } while (context.TicketType.Where(tt => tt.id == idTicketType).First().Ticket.Any(t => t.number == _randomCode));
+
+                    ticket = context.Ticket.Add(new Ticket()
+                    {
+                        idTicketType = idTicketType,
+                        number = _randomCode,
+                    });
+                    context.SaveChanges();
+
+                }
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            return ticket;
+        }
+        private int getRandomForTicket()
+        {
+            Random random = new Random();
+            return int.Parse(new string(Enumerable.Repeat(RESERVATION.TICKET.CODE.CHARS, RESERVATION.TICKET.CODE.LENGTH).Select(s => s[random.Next(s.Length)]).ToArray()));
         }
     }
 }

@@ -55,6 +55,12 @@
   <wsdl:message name="IReservationService_cancelAllSubOrders_OutputMessage">
     <wsdl:part name="parameters" element="tns:cancelAllSubOrdersResponse" />
   </wsdl:message>
+  <wsdl:message name="IReservationService_generateNewTicket_InputMessage">
+    <wsdl:part name="parameters" element="tns:generateNewTicket" />
+  </wsdl:message>
+  <wsdl:message name="IReservationService_generateNewTicket_OutputMessage">
+    <wsdl:part name="parameters" element="tns:generateNewTicketResponse" />
+  </wsdl:message>
   <wsdl:portType name="IReservationService">
     <wsdl:operation name="newReservation">
       <wsdl:input wsaw:Action="http://tempuri.org/IReservationService/newReservation" message="tns:IReservationService_newReservation_InputMessage" />
@@ -87,6 +93,10 @@
     <wsdl:operation name="cancelAllSubOrders">
       <wsdl:input wsaw:Action="http://tempuri.org/IReservationService/cancelAllSubOrders" message="tns:IReservationService_cancelAllSubOrders_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IReservationService/cancelAllSubOrdersResponse" message="tns:IReservationService_cancelAllSubOrders_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="generateNewTicket">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReservationService/generateNewTicket" message="tns:IReservationService_generateNewTicket_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReservationService/generateNewTicketResponse" message="tns:IReservationService_generateNewTicket_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IReservationService" type="tns:IReservationService">
@@ -156,6 +166,15 @@
     </wsdl:operation>
     <wsdl:operation name="cancelAllSubOrders">
       <soap:operation soapAction="http://tempuri.org/IReservationService/cancelAllSubOrders" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="generateNewTicket">
+      <soap:operation soapAction="http://tempuri.org/IReservationService/generateNewTicket" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

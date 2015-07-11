@@ -62,6 +62,12 @@ namespace AppWeb.ReservationServiceClient {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReservationService/cancelAllSubOrders", ReplyAction="http://tempuri.org/IReservationService/cancelAllSubOrdersResponse")]
         System.Threading.Tasks.Task<bool> cancelAllSubOrdersAsync(int idRes);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReservationService/generateNewTicket", ReplyAction="http://tempuri.org/IReservationService/generateNewTicketResponse")]
+        DTO.TicketDTO generateNewTicket(int idTicketType);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReservationService/generateNewTicket", ReplyAction="http://tempuri.org/IReservationService/generateNewTicketResponse")]
+        System.Threading.Tasks.Task<DTO.TicketDTO> generateNewTicketAsync(int idTicketType);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -153,6 +159,14 @@ namespace AppWeb.ReservationServiceClient {
         
         public System.Threading.Tasks.Task<bool> cancelAllSubOrdersAsync(int idRes) {
             return base.Channel.cancelAllSubOrdersAsync(idRes);
+        }
+        
+        public DTO.TicketDTO generateNewTicket(int idTicketType) {
+            return base.Channel.generateNewTicket(idTicketType);
+        }
+        
+        public System.Threading.Tasks.Task<DTO.TicketDTO> generateNewTicketAsync(int idTicketType) {
+            return base.Channel.generateNewTicketAsync(idTicketType);
         }
     }
 }

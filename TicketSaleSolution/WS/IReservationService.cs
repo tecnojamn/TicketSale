@@ -35,5 +35,8 @@ namespace WS
 
         [OperationContract]
         bool cancelAllSubOrders(int idRes);
+
+        [OperationContract]
+        TicketDTO generateNewTicket(int idTicketType);
     }
 }
