@@ -145,7 +145,7 @@ namespace BL
                     float entradasTomadas = 0f;
                     float entradasDisp = 0f;
                     
-                    eventos = context.Event.Select(e => e).Where(e => e.enabled == 1)
+                    eventos = context.Event.Include("EventLocation").Select(e => e).Where(e => e.enabled == 1)
                         .OrderByDescending(e => e.date)
                         .Skip((page - 1) * pageSize)
                         .Take(pageSize)
