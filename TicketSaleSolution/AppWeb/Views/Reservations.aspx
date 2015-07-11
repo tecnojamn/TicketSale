@@ -71,7 +71,9 @@
     </script>
 
     <asp:ListView ID="lvReservations" runat="server" GroupItemCount="1" ItemType="DTO.ReservationDTO" SelectMethod="lvReservations_GetData" OnDataBinding="lvReservations_DataBinding">
-        <EmptyDataTemplate>Aun no has hecho ninguna reserva o pago!</EmptyDataTemplate>
+        <EmptyDataTemplate>
+            <h2>No hay datos para mostrar</h2>
+        </EmptyDataTemplate>
         <ItemTemplate>
             <ul>
                 <li><%#Eval("id")%></li>

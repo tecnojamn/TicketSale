@@ -37,7 +37,7 @@
                 if (subTotal.length === 0) { subTotal = 0 }
                 total += parseInt(subTotal);
             }
-            $("#ContentPlaceHolder_lblTotal").text(total);
+            $("#ContentPlaceHolder_lblTotalAmount").text(total);
         }
     </script>
     <div class="palette  palette-turquoise" style="overflow: hidden;">

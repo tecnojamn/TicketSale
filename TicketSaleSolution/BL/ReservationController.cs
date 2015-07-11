@@ -188,11 +188,11 @@ namespace BL
                 {
                     if (!onlyPayments)
                     {
-                        return context.Reservation.Select(r => r.idUser == idUser).Count();
+                        return context.Reservation.Where(r => r.idUser == idUser).Count();
                     }
                     else
                     {
-                        return context.Reservation.Select(r => r.idUser == idUser && r.Payment != null).Count();
+                        return context.Reservation.Where(r => r.idUser == idUser && r.Payment != null).Count();
                     }
                 }
 
