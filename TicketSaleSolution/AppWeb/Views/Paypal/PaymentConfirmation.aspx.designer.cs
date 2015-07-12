@@ -31,6 +31,24 @@ namespace AppWeb.Views.Paypal {
         protected global::System.Web.UI.WebControls.Panel panelAlert;
         
         /// <summary>
+        /// Control panelAlertSuccess.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel panelAlertSuccess;
+        
+        /// <summary>
+        /// Control lblCod.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblCod;
+        
+        /// <summary>
         /// Control lblMail.
         /// </summary>
         /// <remarks>
@@ -65,5 +83,14 @@ namespace AppWeb.Views.Paypal {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Button1;
+        
+        /// <summary>
+        /// Control btnBackToTicketSale.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnBackToTicketSale;
     }
 }

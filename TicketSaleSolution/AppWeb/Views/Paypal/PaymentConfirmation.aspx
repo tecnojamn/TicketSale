@@ -23,6 +23,10 @@
         <section id="login" class="login" data-role="page" data-title="Inicie sesión en su cuenta PayPal">
             <div id="notifications" class="notifications" tabindex="-1">
                 <asp:Panel ID="panelAlert" CssClass="notification notification-critical" runat="server">Algo salió mal, su saldo posiblemente no sea suficiente</asp:Panel>
+                <asp:Panel ID="panelAlertSuccess" CssClass="notification" runat="server" Visible="false">
+                    El pago se ha realizado con exito!<br/>
+                    Codigo de transacción: <b><asp:Label ID="lblCod" runat="server" Text=""></asp:Label></b>
+                </asp:Panel>
             </div>
             <div class="table-responsive">
                 <table class="table table-condensed">
@@ -50,7 +54,9 @@
             <form >
             <div class="actions">
                 <asp:Button CssClass="button actionContinue" Text="Confirmar Pago" ID="Button1" OnClick="Button1_Click" runat="server" />
+                <asp:Button CssClass="button actionContinue" Text="Volver a TicketSale" ID="btnBackToTicketSale" OnClick="btnBackToTicketSale_Click" Visible="false" runat="server" />
             </div></form>
+            
         </section>
     </div>
 </div>

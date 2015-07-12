@@ -34,24 +34,38 @@ namespace AppWeb.Views.Paypal
             {
                 _amount += so.Ticket.TicketType.cost;
             }
-            string _transactionCod = ProxyManager.getPaypalClient().doPayment(_amount);
-            if (!_transactionCod.Equals(""))
+            string transactionCod = ProxyManager.getPaypalClient().doPayment(_amount);
+            if (!transactionCod.Equals(""))
             {
-                ProxyManager.getPaymentService().newPayment(new PaymentDTO() {
+                if( ProxyManager.getPaymentService().newPayment(new PaymentDTO() {
                     amount = _amount,
                     idReservation=resDTO.id,
                     date=DateTime.Today,
                     PaypalPayment = new PaypalPaymentDTO()
                     {
-                        transactionCod = _transactionCod,
+                        transactionCod = transactionCod,
                         idReservation=resDTO.id
                     }
-                });
+                }) != 0)
+                {
+
+                    //Mostrar confirmación de pago y boton para volver a TicketSale
+                    Button1.Visible = false;
+                    btnBackToTicketSale.Visible = true;
+                    panelAlertSuccess.Visible = true;
+                    lblCod.Text = transactionCod;
+                }
             }
             else
             {
                 panelAlert.Visible = true;
             }
+        }
+
+        protected void btnBackToTicketSale_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("../Reservations.aspx");
+            
         }
     }
 }
