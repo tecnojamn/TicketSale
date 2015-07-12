@@ -39,12 +39,21 @@ namespace WS
 
         [OperationContract]
         List<string> getEventType();
+        
         [OperationContract]
         List<EventDTO> getEventsForGv();
+        
         [OperationContract]
         EventDTO getEventReport(int r);
+        
         [OperationContract]
         List<EventDTO> getSoldTickets(DateTime start, DateTime end);
+
+        [OperationContract]
+        int newEventLocation(EventLocationDTO el);
+        
+        [OperationContract]
+        bool updateEventLocation(EventLocationDTO eventLocation);
         
     }
 }

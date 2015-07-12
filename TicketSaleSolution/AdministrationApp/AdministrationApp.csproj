@@ -46,6 +46,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmAddEventLocation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAddEventLocation.Designer.cs">
+      <DependentUpon>frmAddEventLocation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmEventLocation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEventLocation.Designer.cs">
+      <DependentUpon>frmEventLocation.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmAddTicketType.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -81,6 +93,12 @@
     </Compile>
     <Compile Include="frmLogin.Designer.cs">
       <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmModifyEvenLocation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmModifyEvenLocation.Designer.cs">
+      <DependentUpon>frmModifyEvenLocation.cs</DependentUpon>
     </Compile>
     <Compile Include="frmSoldTickets.cs">
       <SubType>Form</SubType>
@@ -119,6 +137,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmAddEventLocation.resx">
+      <DependentUpon>frmAddEventLocation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEventLocation.resx">
+      <DependentUpon>frmEventLocation.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmAddTicketType.resx">
       <DependentUpon>frmAddTicketType.cs</DependentUpon>
     </EmbeddedResource>
@@ -136,6 +160,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmModifyEvenLocation.resx">
+      <DependentUpon>frmModifyEvenLocation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmSoldTickets.resx">
       <DependentUpon>frmSoldTickets.cs</DependentUpon>

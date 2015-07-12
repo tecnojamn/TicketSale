@@ -86,6 +86,18 @@ namespace AdministrationApp.EventService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEventService/getSoldTickets", ReplyAction="http://tempuri.org/IEventService/getSoldTicketsResponse")]
         System.Threading.Tasks.Task<DTO.EventDTO[]> getSoldTicketsAsync(System.DateTime start, System.DateTime end);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEventService/newEventLocation", ReplyAction="http://tempuri.org/IEventService/newEventLocationResponse")]
+        int newEventLocation(DTO.EventLocationDTO el);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEventService/newEventLocation", ReplyAction="http://tempuri.org/IEventService/newEventLocationResponse")]
+        System.Threading.Tasks.Task<int> newEventLocationAsync(DTO.EventLocationDTO el);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEventService/updateEventLocation", ReplyAction="http://tempuri.org/IEventService/updateEventLocationResponse")]
+        bool updateEventLocation(DTO.EventLocationDTO eventLocation);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEventService/updateEventLocation", ReplyAction="http://tempuri.org/IEventService/updateEventLocationResponse")]
+        System.Threading.Tasks.Task<bool> updateEventLocationAsync(DTO.EventLocationDTO eventLocation);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -209,6 +221,22 @@ namespace AdministrationApp.EventService {
         
         public System.Threading.Tasks.Task<DTO.EventDTO[]> getSoldTicketsAsync(System.DateTime start, System.DateTime end) {
             return base.Channel.getSoldTicketsAsync(start, end);
+        }
+        
+        public int newEventLocation(DTO.EventLocationDTO el) {
+            return base.Channel.newEventLocation(el);
+        }
+        
+        public System.Threading.Tasks.Task<int> newEventLocationAsync(DTO.EventLocationDTO el) {
+            return base.Channel.newEventLocationAsync(el);
+        }
+        
+        public bool updateEventLocation(DTO.EventLocationDTO eventLocation) {
+            return base.Channel.updateEventLocation(eventLocation);
+        }
+        
+        public System.Threading.Tasks.Task<bool> updateEventLocationAsync(DTO.EventLocationDTO eventLocation) {
+            return base.Channel.updateEventLocationAsync(eventLocation);
         }
     }
 }

@@ -139,5 +139,11 @@ namespace AdministrationApp
             frmLogin child = new frmLogin(this);
             child.ShowDialog();
         }
+
+        private void lugarDeEventoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmEventLocation child = new frmEventLocation();
+            child.ShowDialog();
+        }
     }
 }

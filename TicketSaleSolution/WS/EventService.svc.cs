@@ -166,5 +166,22 @@ namespace WS
             //List<Event> ev = ec.getEventsForSTR(start,end).ToList();
             return Mapper.Map<List<EventDTO>>(ec.getEventsForSTR(start, end));
         }
+
+        public int newEventLocation(EventLocationDTO el)
+        {
+            EventController ec = new EventController();
+            Mapper.CreateMap<EventLocationDTO, EventLocation>()
+                .ForMember(e => e.Event, opt => opt.Ignore());
+            return ec.newEventLocation( Mapper.Map<EventLocation>(el) );
+        }
+
+        public bool updateEventLocation(EventLocationDTO eventLocation)
+        {
+            EventController ec = new EventController();
+
+            Mapper.CreateMap<EventLocationDTO, EventLocation>()
+                .ForMember(e => e.Event, opt => opt.Ignore());
+            return ec.updateEventLocation(Mapper.Map<EventLocation>(eventLocation));
+        }
     }
 }

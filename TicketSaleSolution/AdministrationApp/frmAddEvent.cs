@@ -27,6 +27,16 @@ namespace AdministrationApp
                 cbTicketType.SelectedIndex = 0;
             }
         }
+        //"Setea" la cantidad de dias de cbDay y el dia seleccionado
+        private void setDay(int cant, int current = 1)
+        {
+            cbDay.Items.Clear();
+            for (int i = 1; i <= cant; i++)
+            {
+                cbDay.Items.Add(i);
+            }
+            cbDay.SelectedIndex = current - 1;
+        }
         public frmAddEvent()
         {
             InitializeComponent();
@@ -43,7 +53,7 @@ namespace AdministrationApp
             cbType.DataSource = types;
             cbEventLocation.DataSource = locals;
             cbEventLocation.DisplayMember = "name";
-            for (int i = 2000; i <= 2016; i++)
+            for (int i = DateTime.Now.Year; i <= DateTime.Now.Year + 5; i++)
             {
                 cbYear.Items.Add(i);
             }
@@ -87,46 +97,67 @@ namespace AdministrationApp
             int hour = Convert.ToInt32(cbHour.Text);
 
             DateTime date = new DateTime(year, month, day, hour, minute, 0);//0 es la cantidad de segundos
-            EventLocationDTO el = null;
-            el = (EventLocationDTO)cbEventLocation.SelectedValue;
 
-            EventDTO newEvent = new EventDTO();
-            newEvent.date = date;
-            newEvent.name = txtName.Text;
-            newEvent.description = txtDescripcion.Text;
-            newEvent.enabled = EVENT.STATE.ENABLE;
-            newEvent.type = cbType.Text;
-            newEvent.EventLocation = el;
-            newEvent.idEventLocation = el.id;
-            newEvent.TicketType = null;
-            foreach (Object tt in cbTicketType.Items)
+            //fecha menor a la de hoy
+            if (date > DateTime.Now)
             {
-                TicketTypeDTO ticketType = (TicketTypeDTO)tt;
-                if (newEvent.TicketType == null)
-                {
-                    List<TicketTypeDTO> ttList = new List<TicketTypeDTO>();
-                    newEvent.TicketType = ttList;
-                }
-                newEvent.TicketType.Add(ticketType);
-            }
-            int eventId = ProxyManager.getEventService().newEvent(newEvent);
-            if (eventId != 0)
-            {
-                if (imgPath != "")
-                {
-                    string[] fname;
-                    fname = imgPath.Split('.');
-                    //Obtiene la ruta en donde se guardan las imagenes
-                    string targetDir = Directory.GetParent(Directory.GetParent(Directory.GetParent(Path.GetDirectoryName(Application.ExecutablePath)).ToString()).ToString()).ToString() + "\\AppWeb\\uploads\\events\\";
-                    File.Copy(imgPath, targetDir + eventId + "." + fname[fname.Length - 1]);
-                }
-                DialogResult dResult = MessageBox.Show("Event added successfully");
-                if (dResult == DialogResult.OK)
-                {
-                    Close();
-                }
-            }
+                EventLocationDTO el = null;
+                el = (EventLocationDTO)cbEventLocation.SelectedValue;
 
+                EventDTO newEvent = new EventDTO();
+                newEvent.date = date;
+                newEvent.name = txtName.Text;
+                newEvent.description = txtDescripcion.Text;
+                newEvent.enabled = EVENT.STATE.ENABLE;
+                newEvent.type = cbType.Text;
+                newEvent.EventLocation = el;
+                newEvent.idEventLocation = el.id;
+                //Si tiene almenos 1 ticket type asociado
+                if (cbTicketType.Items.Count != 0)
+                {
+                    newEvent.TicketType = null;
+                    foreach (Object tt in cbTicketType.Items)
+                    {
+                        TicketTypeDTO ticketType = (TicketTypeDTO)tt;
+                        if (newEvent.TicketType == null)
+                        {
+                            List<TicketTypeDTO> ttList = new List<TicketTypeDTO>();
+                            newEvent.TicketType = ttList;
+                        }
+                        newEvent.TicketType.Add(ticketType);
+                    }
+                    int eventId = ProxyManager.getEventService().newEvent(newEvent);
+                    if (eventId != 0)
+                    {
+                        if (imgPath != "")
+                        {
+                            string[] fname;
+                            fname = imgPath.Split('.');
+                            //Obtiene la ruta en donde se guardan las imagenes
+                            string targetDir = Directory.GetParent(Directory.GetParent(Directory.GetParent(Path.GetDirectoryName(Application.ExecutablePath)).ToString()).ToString()).ToString() + "\\AppWeb\\uploads\\events\\";
+                            File.Copy(imgPath, targetDir + eventId + "." + fname[fname.Length - 1]);
+                        }
+                        DialogResult dResult = MessageBox.Show("Event added successfully");
+
+                        if (dResult == DialogResult.OK)
+                        {
+                            Close();
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("An error has ocurred");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Add at least 1 ticket type");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Incorrect date");
+            }
         }
 
         private void btnAddTicketType_Click(object sender, EventArgs e)
@@ -150,6 +181,35 @@ namespace AdministrationApp
                 pbImage.Image = Image.FromFile(fileDialog.FileName);
                 imgPath = fileDialog.FileName;
             }
+        }
+
+        private void cbMonth_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //Cambia la cantidad de dias de cbDay segun el mes seleccionado ej:enero-31 dias
+            int month = Convert.ToInt32(cbMonth.SelectedItem);
+            int day = Convert.ToInt32(cbDay.SelectedItem);
+            if (month == 2)
+            {
+                if (day > 28)
+                {
+                    day = 1;
+                }
+                setDay(28, day);
+            }
+            else if ( month == 4 || month == 6 || month == 9 || month == 11)
+            {
+                if (day > 30)
+                {
+                    day = 1;
+                }
+                setDay(30, day);
+            }
+            else
+            {
+                setDay(31, day);
+            }
+            
+            
         }
     }
 }

@@ -492,5 +492,51 @@ namespace BL
             }
             return eventsType;
         }
+
+        public int newEventLocation( EventLocation el)
+        {
+            try
+            {
+                using (DAL.TicketSaleEntities context = new DAL.TicketSaleEntities())
+                {
+                    if (el.id == 0)
+                    {
+                        if (context.EventLocation.Add(el) != null)
+                        {
+                            context.SaveChanges();
+                        }
+                    }
+                }
+                return el.id;
+            }
+            catch (Exception)
+            {
+                
+                return 0;
+            }
+        }
+
+        public bool updateEventLocation (EventLocation eventLocation)
+        {
+            try
+            {
+                using (DAL.TicketSaleEntities context = new DAL.TicketSaleEntities())
+                {
+                    EventLocation el = context.EventLocation.FirstOrDefault(e => e.id == eventLocation.id);
+                    if (el != null)
+                    {
+                        el.name = eventLocation.name;
+                        el.address = eventLocation.address;
+                        el.phoneNumber = eventLocation.phoneNumber;
+                        context.SaveChanges();
+                    }
+                }
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
     }
 }

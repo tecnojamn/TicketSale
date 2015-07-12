@@ -124,6 +124,7 @@
             this.cbMonth.Name = "cbMonth";
             this.cbMonth.Size = new System.Drawing.Size(53, 24);
             this.cbMonth.TabIndex = 6;
+            this.cbMonth.SelectedIndexChanged += new System.EventHandler(this.cbMonth_SelectedIndexChanged);
             // 
             // txtDescripcion
             // 

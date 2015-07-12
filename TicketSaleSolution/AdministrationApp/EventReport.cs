@@ -38,6 +38,10 @@ namespace AdministrationApp
             else
             {
                 txtIdEvento.Text = "No events";
+                txtEventName.Text = "";
+                txtEventLoc.Text = "";
+                txtType.Text = "";
+                txtDate.Text = "";
             }
         }
 
@@ -55,6 +59,11 @@ namespace AdministrationApp
             else
             {
                 txtIdEvento.Text = "No events";
+                txtEventName.Text = "";
+                txtEventLoc.Text = "";
+                txtType.Text = "";
+                txtDate.Text = "";
+
             }
         }
     }

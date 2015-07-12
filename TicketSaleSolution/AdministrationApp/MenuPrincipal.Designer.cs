@@ -75,7 +75,7 @@
             // inicioSesiónToolStripMenuItem
             // 
             this.inicioSesiónToolStripMenuItem.Name = "inicioSesiónToolStripMenuItem";
-            this.inicioSesiónToolStripMenuItem.Size = new System.Drawing.Size(175, 24);
+            this.inicioSesiónToolStripMenuItem.Size = new System.Drawing.Size(131, 24);
             this.inicioSesiónToolStripMenuItem.Text = "&Log Out";
             this.inicioSesiónToolStripMenuItem.Click += new System.EventHandler(this.inicioSesiónToolStripMenuItem_Click);
             // 
@@ -98,6 +98,7 @@
             this.lugarDeEventoToolStripMenuItem.Name = "lugarDeEventoToolStripMenuItem";
             this.lugarDeEventoToolStripMenuItem.Size = new System.Drawing.Size(115, 24);
             this.lugarDeEventoToolStripMenuItem.Text = "&Event location";
+            this.lugarDeEventoToolStripMenuItem.Click += new System.EventHandler(this.lugarDeEventoToolStripMenuItem_Click);
             // 
             // pagosToolStripMenuItem
             // 
@@ -162,7 +163,7 @@
             this.Controls.Add(this.menuStrip);
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MenuPrincipal";
             this.Text = "Main menu";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
