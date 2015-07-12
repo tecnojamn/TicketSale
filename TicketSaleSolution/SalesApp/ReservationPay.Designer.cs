@@ -54,6 +54,8 @@
             this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnPagar = new System.Windows.Forms.Button();
+            this.label10 = new System.Windows.Forms.Label();
+            this.txtTotal = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gvTickets)).BeginInit();
             this.groupBox3.SuspendLayout();
@@ -62,12 +64,12 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(18, 9);
+            this.label1.Location = new System.Drawing.Point(119, 263);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(59, 13);
+            this.label1.Size = new System.Drawing.Size(121, 13);
             this.label1.TabIndex = 0;
             this.label1.Tag = "";
-            this.label1.Text = "Id Reserva";
+            this.label1.Text = "Costo total de la reserva";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // btnBuscar
@@ -262,7 +264,7 @@
             this.Descripcion});
             this.gvTickets.Location = new System.Drawing.Point(6, 23);
             this.gvTickets.Name = "gvTickets";
-            this.gvTickets.Size = new System.Drawing.Size(336, 159);
+            this.gvTickets.Size = new System.Drawing.Size(326, 159);
             this.gvTickets.TabIndex = 16;
             this.gvTickets.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gvTickets_CellContentClick);
             // 
@@ -288,9 +290,9 @@
             // 
             this.groupBox3.Controls.Add(this.gvTickets);
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(15, 66);
+            this.groupBox3.Location = new System.Drawing.Point(12, 66);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(349, 188);
+            this.groupBox3.Size = new System.Drawing.Size(338, 188);
             this.groupBox3.TabIndex = 17;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Información de las entradas";
@@ -299,17 +301,36 @@
             // 
             this.btnPagar.Location = new System.Drawing.Point(535, 6);
             this.btnPagar.Name = "btnPagar";
-            this.btnPagar.Size = new System.Drawing.Size(110, 45);
+            this.btnPagar.Size = new System.Drawing.Size(116, 45);
             this.btnPagar.TabIndex = 18;
             this.btnPagar.Text = "Pagar";
             this.btnPagar.UseVisualStyleBackColor = true;
             this.btnPagar.Click += new System.EventHandler(this.button2_Click);
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(18, 11);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(59, 13);
+            this.label10.TabIndex = 19;
+            this.label10.Text = "Id Reserva";
+            // 
+            // txtTotal
+            // 
+            this.txtTotal.Location = new System.Drawing.Point(251, 260);
+            this.txtTotal.Name = "txtTotal";
+            this.txtTotal.ReadOnly = true;
+            this.txtTotal.Size = new System.Drawing.Size(99, 20);
+            this.txtTotal.TabIndex = 20;
+            // 
             // frmReservationPay
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(709, 269);
+            this.ClientSize = new System.Drawing.Size(664, 291);
+            this.Controls.Add(this.txtTotal);
+            this.Controls.Add(this.label10);
             this.Controls.Add(this.btnPagar);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox1);
@@ -361,5 +382,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn nroTicket;
         private System.Windows.Forms.DataGridViewTextBoxColumn costoUnid;
         private System.Windows.Forms.DataGridViewTextBoxColumn Descripcion;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox txtTotal;
     }
 }
