@@ -15,8 +15,8 @@
 
             var table = $(".soTable").css("border", "none");
             table.find("tr").css("background-color", "rgb(240, 240, 240)").css("border", "none");
-            table.find("th").css("background-color", "rgb(187, 235, 225)").css("border", "none");
-            table.find("td").css("background-color", "rgb(240, 240, 240)").css("border", "none");
+            table.find("th").css("background-color", "rgb(140, 203, 190)").css("border", "none");
+            table.find("td").css("background-color", "rgb(229, 229, 229)").css("border", "none");
             table.find("th").each(function (index, object) {
                 if (index == 0) {
                     $(object).html("ID");
@@ -87,7 +87,7 @@
             
     <asp:ListView ID="lvReservations" runat="server" GroupItemCount="1" ItemType="DTO.ReservationDTO" SelectMethod="lvReservations_GetData" OnDataBinding="lvReservations_DataBinding">
         <EmptyDataTemplate>
-            <h2>No hay datos para mostrar</h2>
+            <h4 style="font-size:16px">No hay datos para mostrar</h4>
         </EmptyDataTemplate>
         <ItemTemplate>
             <ul style="text-align:center;padding:0;">
@@ -105,8 +105,8 @@
     </asp:ListView>
                
    </div>
-        <div class="col-lg-10 col-lg-offset-1">
-    <asp:DataPager ID="lvDataPager" runat="server" PagedControlID="lvReservations" PageSize="2">
+        <div class="col-lg-10 col-lg-offset-1" style="margin-top:20px;">
+    <asp:DataPager class="paginator" ID="lvDataPager" runat="server" PagedControlID="lvReservations" PageSize="2">
         <Fields>
             <asp:NumericPagerField ButtonType="Link" />
         </Fields>

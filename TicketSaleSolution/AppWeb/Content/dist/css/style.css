@@ -5,7 +5,34 @@ div {
     margin: 0;
     padding: 0;
     }
+.paginator {
+    margin-top:20px;
+			display: inline-block;
+  padding: 0;
+  margin: 0;
+  color: #fff;
+  word-spacing: -.5px;
+  background: #d6dbdf;
+  border-radius: 6px; 
+		}
 
+
+			/* pager links */
+			.paginator a {
+							    color: #fff;
+              background-color: #1abc9c;
+              border-color: #dfe2e5; padding: 5px;
+			}
+
+
+			/* current page */
+			.paginator  span {
+                
+				padding: 5px;
+				display: inline-block;
+				text-decoration: none;
+                cursor: default;
+			}
 .form-cont {
     background: rgba(0,0,0,0.7);
     border-radius: 5px;
