@@ -106,7 +106,7 @@
                
    </div>
         <div class="col-lg-10 col-lg-offset-1" style="margin-top:20px;">
-    <asp:DataPager class="paginator" ID="lvDataPager" runat="server" PagedControlID="lvReservations" PageSize="2">
+    <asp:DataPager class="paginator" ID="lvDataPager" runat="server" PagedControlID="lvReservations" PageSize="20">
         <Fields>
             <asp:NumericPagerField ButtonType="Link" />
         </Fields>

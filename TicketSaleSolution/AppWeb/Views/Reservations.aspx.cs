@@ -25,34 +25,6 @@ namespace AppWeb.Views
             if (Session["log"] != null && Session["log"].Equals(SESSION.STATE.ON))
             {
 
-                ////Action Cancelar Suborden
-                //if (Request.QueryString["action"] != null && Request.QueryString["action"].Equals("cancel_suborder"))
-                //{
-                //    int idRes = 0;
-                //    int idSO = 0;
-                //    try
-                //    {
-                //        idRes = int.Parse(Request.QueryString["res_id"]);
-                //        idSO = int.Parse(Request.QueryString["suborder_id"]);
-                //    }
-                //    catch (Exception)
-                //    {
-                //        Response.Redirect("Reservation.aspx");
-                //    }
-                //    ReservationDTO resDTO = ProxyManager.getReservationService().getReservation(idRes);
-                //    if (Session["id"].ToString().Equals(resDTO.idUser.ToString()))
-                //    {
-                //        if (ProxyManager.getReservationService().cancelSubOrder(idSO))
-                //        {
-                //            Response.Redirect("Reservations.aspx?page=" + Request.QueryString["page"].ToString() + "&item=" + Request.QueryString["item"].ToString());
-                //        }
-                //    }
-                //    else
-                //    {
-                //        Response.Redirect("Reservations.aspx");
-                //    }
-
-                //}
 
             }
         }
@@ -132,7 +104,7 @@ namespace AppWeb.Views
                 totalRowCount = ProxyManager.getReservationService().getReservationCountByUser(_idUser, onlyPayments);
                 //Reservas de usuario para mostrar en el listView
                 List<ReservationDTO> listResDTO = ProxyManager.getReservationService().getReservationsByUser(_idUser, page, pageSize, onlyPayments).ToList();
-
+                listResDTO.OrderByDescending(r => r.id);
                 return listResDTO;
             }
             else
