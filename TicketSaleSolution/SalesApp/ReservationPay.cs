@@ -13,6 +13,7 @@ namespace SalesApp
 {
     public partial class frmReservationPay : Form
     {
+        public ReservationDTO res = null;
         public frmReservationPay()
         {
             InitializeComponent();
@@ -26,6 +27,13 @@ namespace SalesApp
             }
         }
 
+        public TextBox total
+        {
+            get
+            {
+                return txtTotal;
+            }
+        }
         private void label1_Click(object sender, EventArgs e)
         {
 
@@ -54,27 +62,32 @@ namespace SalesApp
         private void button1_Click(object sender, EventArgs e)
         {
             if (txtIdReserva.Text != "")
-            { 
-                ReservationDTO res = ProxyManager.getReservationService().getReservation(Convert.ToInt32(txtIdReserva.Text));
-                this.txtFechaReserva.Text = res.date.ToString("dd/MM/yyyy");
-                this.txtUsuario.Text = res.User.name + " " + res.User.lastName;
-                this.txtNombreEvento.Text = res.SubOrder.First().Ticket.TicketType.Event.name;
-                this.txtDireccionEvento.Text = res.SubOrder.First().Ticket.TicketType.Event.EventLocation.address;
-                this.txtFechaEvento.Text = res.SubOrder.First().Ticket.TicketType.Event.date.ToString("dd/MM/yyyy");
-                this.txtLugarEvento.Text = res.SubOrder.First().Ticket.TicketType.Event.EventLocation.name;
-                this.txtTipoEvento.Text = res.SubOrder.First().Ticket.TicketType.Event.type;
-                this.txtNroTelefono.Text = res.SubOrder.First().Ticket.TicketType.Event.EventLocation.phoneNumber.ToString();
-                
-                
-
-                
-                //res.SubOrder.GroupBy(x => x.Ticket.TicketType.id).Select(x => x.Count());
-                
-                foreach (var so in res.SubOrder)
+            {
+                if (res == null || res.id != Convert.ToInt32(txtIdReserva.Text))
                 {
-                  gvTickets.Rows.Add(so.Ticket.number,so.Ticket.TicketType.cost,so.Ticket.TicketType.description);
-                }     
-                //this.txtNombreEvento.Text = res.SubOrder;
+                    res = ProxyManager.getReservationService().getReservation(Convert.ToInt32(txtIdReserva.Text));
+                    this.txtFechaReserva.Text = res.date.ToString("dd/MM/yyyy");
+                    this.txtUsuario.Text = res.User.name + " " + res.User.lastName;
+                    this.txtNombreEvento.Text = res.SubOrder.Where(s => s.active == COM.RESERVATION.SUBORDER.ACTIVE).FirstOrDefault().Ticket.TicketType.Event.name;
+                    this.txtDireccionEvento.Text = res.SubOrder.First().Ticket.TicketType.Event.EventLocation.address;
+                    this.txtFechaEvento.Text = res.SubOrder.First().Ticket.TicketType.Event.date.ToString("dd/MM/yyyy");
+                    this.txtLugarEvento.Text = res.SubOrder.First().Ticket.TicketType.Event.EventLocation.name;
+                    this.txtTipoEvento.Text = res.SubOrder.First().Ticket.TicketType.Event.type;
+                    this.txtNroTelefono.Text = res.SubOrder.First().Ticket.TicketType.Event.EventLocation.phoneNumber.ToString();
+
+                    double total = 0;
+
+                    foreach (var so in res.SubOrder)
+                    {
+                        if (so.active == COM.RESERVATION.SUBORDER.ACTIVE)
+                        {
+                            gvTickets.Rows.Add(so.Ticket.number, so.Ticket.TicketType.cost, so.Ticket.TicketType.description);
+                            total += so.Ticket.TicketType.cost;
+                        }
+                    }
+                    txtTotal.Text = total.ToString();
+                }
+                
 
             }
 
@@ -82,9 +95,17 @@ namespace SalesApp
 
         private void button2_Click(object sender, EventArgs e)
         {
-            frmPayment payment = new frmPayment();
-            payment.MdiParent = this.ParentForm;
-            payment.Show();
+            if (res.Payment == null)
+            {
+                frmPayment payment = new frmPayment();
+                payment.otherForm = this;
+                payment.MdiParent = this.ParentForm;
+
+                payment.Show();
+            }
+            else
+                MessageBox.Show("The Reservation have been payed");
+
 
         }
 
