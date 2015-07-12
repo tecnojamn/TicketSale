@@ -269,7 +269,7 @@ namespace BL
                     events = context.Event.Include("EventLocation").Include("TicketType.Ticket.SubOrder.Reservation.Payment")
                         .Where(e => e.date.Month == today.Month).ToList();
                     //guardar del evento, su cantidad total de entradas y sus ventas de entradas
-                    List<int[]> TicketsInfo = new List<int[]>();
+                    List<float[]> TicketsInfo = new List<float[]>();
                     int totalCant = 0;
                     int totalCantSold = 0;
                     foreach (Event ev in events)
@@ -279,7 +279,7 @@ namespace BL
                         //segun los ticketstype del evento, calcular la cantidad total de tickets
                         foreach (TicketType tt in ev.TicketType)
                         {
-                            totalCant += tt.Ticket.Count();
+                            totalCant += tt.finalNum - tt.startNum;
                         }
                         List<Payment> payments;
                         //buscar todos los pagos relacionados al evento
@@ -297,18 +297,19 @@ namespace BL
                                 }
                             }
                         }
-                        TicketsInfo.Add(new int[] { ev.id, totalCant, totalCantSold });
+                        TicketsInfo.Add(new float[] { ev.id, totalCant, totalCantSold });
 
                     }
                     int idEvent = 0;
                     if (x == COM.EVENT.REPORT.BEST)
                     {
                         float max = 0;
-                        foreach (int[] ticketInfo in TicketsInfo)
+                        foreach (float[] ticketInfo in TicketsInfo)
                         {
+                            float porcent = (ticketInfo[2] * 100) / ticketInfo[1];
                             if (((ticketInfo[2] * 100) / ticketInfo[1]) > max)
                             {
-                                idEvent = ticketInfo[0];
+                                idEvent = Convert.ToInt32(ticketInfo[0]);
                                 max = (ticketInfo[2] * 100 / ticketInfo[1]);
                             }
                         }
@@ -316,16 +317,16 @@ namespace BL
                     else
                     {
                         float min = 0;
-                        foreach (int[] ticketInfo in TicketsInfo)
+                        foreach (float[] ticketInfo in TicketsInfo)
                         {
                             if (min == 0)
                             {
-                                idEvent = ticketInfo[0];
+                                idEvent = Convert.ToInt32(ticketInfo[0]);
                                 min = (ticketInfo[2] * 100 / ticketInfo[1]);
                             }
                             else if (((ticketInfo[2] * 100) / ticketInfo[1]) <= min)
                             {
-                                idEvent = ticketInfo[0];
+                                idEvent = Convert.ToInt32(ticketInfo[0]);
                                 min = (ticketInfo[2] * 100 / ticketInfo[1]);
                             }
                         }

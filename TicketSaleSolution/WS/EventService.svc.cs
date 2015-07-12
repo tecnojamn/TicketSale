@@ -23,9 +23,6 @@ namespace WS
             Mapper.CreateMap<TicketTypeDTO, TicketType>()
                 .ForMember(tt => tt.Ticket, opt => opt.Ignore())
                 .ForMember(tt => tt.Event, opt => opt.Ignore());
-            //Mapper.CreateMap<EventDTO, Event>()
-            //    .ForMember(e => e.TicketType, opt => opt.Ignore())
-            //    .ForMember(e => e.EventLocation, opt => opt.Ignore());
             return ec.newEvent(Mapper.Map<Event>(evDTO));
         }
 

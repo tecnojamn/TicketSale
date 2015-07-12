@@ -26,7 +26,7 @@ namespace AdministrationApp
             List<EventDTO> events = ProxyManager.getEventService().getEventsForGv().ToList();
             foreach (var ev in events)
             {
-                gvEventos.Rows.Add(ev.id, ev.name, ev.type, ev.description, ev.EventLocation.name, ev.date);
+                gvEventos.Rows.Add(ev.id, ev.name, ev.type, ev.description, ev.EventLocation.name, ev.date, ev.enabled);
             }
         }
         private void Eventos_Load(object sender, EventArgs e)
@@ -195,9 +195,17 @@ namespace AdministrationApp
 
         private void btnBorrar_Click(object sender, EventArgs e)
         {
-            int eventId = Convert.ToInt32(gvEventos.Rows[gvEventos.SelectedRows[0].Index].Cells["id"].Value);
-            ProxyManager.getEventService().cancelEvent(eventId);
-            gvEventLoad();
+            int index = gvEventos.SelectedCells[0].RowIndex; ;
+            int eventId = Convert.ToInt32(gvEventos.Rows[index].Cells["id"].Value);
+            if (ProxyManager.getEventService().cancelEvent(eventId))
+            {
+                MessageBox.Show("Event disabled successfully");
+                gvEventLoad();
+            }
+            else
+            {
+                MessageBox.Show("An error has ocurred");
+            }
         }
     }
 }

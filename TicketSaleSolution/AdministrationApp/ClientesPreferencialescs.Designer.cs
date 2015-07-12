@@ -45,8 +45,9 @@
             this.UserName,
             this.Birthday});
             this.gvUsers.Location = new System.Drawing.Point(0, 0);
+            this.gvUsers.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.gvUsers.Name = "gvUsers";
-            this.gvUsers.Size = new System.Drawing.Size(542, 413);
+            this.gvUsers.Size = new System.Drawing.Size(723, 508);
             this.gvUsers.TabIndex = 0;
             // 
             // Mail
@@ -73,14 +74,15 @@
             // 
             // frmPreferredUsers
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(543, 413);
+            this.ClientSize = new System.Drawing.Size(724, 508);
             this.Controls.Add(this.gvUsers);
-            this.MinimumSize = new System.Drawing.Size(559, 452);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.MinimumSize = new System.Drawing.Size(739, 545);
             this.Name = "frmPreferredUsers";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "ClientesPreferencialescs";
+            this.Text = "Preferential user";
             this.Load += new System.EventHandler(this.ClientesPreferencialescs_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gvUsers)).EndInit();
             this.ResumeLayout(false);
