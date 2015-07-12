@@ -76,6 +76,24 @@ namespace AppWeb.Views {
         protected global::System.Web.UI.WebControls.GridView gvTickets;
         
         /// <summary>
+        /// Control alertMaxOverflow.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label alertMaxOverflow;
+        
+        /// <summary>
+        /// Control alertNoneSelected.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label alertNoneSelected;
+        
+        /// <summary>
         /// Control alertConfirmation.
         /// </summary>
         /// <remarks>
@@ -110,14 +128,5 @@ namespace AppWeb.Views {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnDoReserve;
-        
-        /// <summary>
-        /// Control btnShare.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnShare;
     }
 }

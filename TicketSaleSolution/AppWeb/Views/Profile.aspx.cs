@@ -58,6 +58,7 @@ namespace AppWeb.Views
                 Session["name"] = USER.GUESTNAME;
                 Session["mail"] = "";
                 Session["userType"] = "";
+                Session["id"] = "";
                 if (res) {
                     Response.Redirect("Profile.aspx?deleted=true"); return;
                 }

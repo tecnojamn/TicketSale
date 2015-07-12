@@ -118,7 +118,7 @@ namespace AppWeb.Views
                 Session["log"] = SESSION.STATE.OFF;
                 Response.Redirect("Login.aspx");
             }
-            if (Session["log"] == SESSION.STATE.ON)
+            if (Session["log"].ToString() == SESSION.STATE.ON)
             {
                 log = true;
             }
@@ -142,26 +142,25 @@ namespace AppWeb.Views
                     if (_ticketQuantity.Equals("")) { _ticketQuantity = "0"; }
                     if (int.TryParse(_ticketQuantity, out ticketQuantity))
                     {
+                        if(ticketQuantity>10){
+                            alertNoneSelected.Visible = false; alertConfirmation.Visible = false; alertMaxOverflow.Visible = true;
+                            return;
+                        }
                         tickets[i] = ticketQuantity;
                     }
                     else { parsingError = true; break; } //ERROR de PARSEO en CANTIDAD DE ENTRADAS
 
                 }
-
+                
                 if (!parsingError)
                 {
-
-                    List<SubOrderDTO> listSubOrderDTO = new List<SubOrderDTO>();
+                     List<SubOrderDTO> listSubOrderDTO = new List<SubOrderDTO>();
                     //int idTicket = eventDTO.TicketType.Skip(tickets[0, 1]).FirstOrDefault().Ticket.Where(t => t.SubOrder.Count == 0 || t.SubOrder.Where(so => so.active == RESERVATION.SUBORDER.ACTIVE).Count() == 0).Skip(1).FirstOrDefault().id;
-
-
                     //Nuevas subordenes
                     for (i = 0; i < ttCount; i++)
                     {
-
                         for (j = 0; j < tickets[i]; j++)
                         {
-
                             listSubOrderDTO.Add(
                                 new SubOrderDTO()
                                 {
@@ -180,6 +179,10 @@ namespace AppWeb.Views
                         }
                     }
 
+                    if(listSubOrderDTO.Count()==0){
+                        alertNoneSelected.Visible = true; alertConfirmation.Visible = false; alertMaxOverflow.Visible = false;
+                        return;
+                    }
                     ReservationDTO resDTO = new ReservationDTO()
                     {
                         date = DateTime.Today,
@@ -189,10 +192,11 @@ namespace AppWeb.Views
 
                     if (ProxyManager.getReservationService().newReservation(resDTO))
                     {
-                        alertConfirmation.Visible = true;
-
+                        alertConfirmation.Visible = true; alertMaxOverflow.Visible = false;
+                        alertNoneSelected.Visible = false;
                         //recargar gridview
-                        loadData(); 
+                        loadData();
+                        Response.Redirect("Reservations.aspx");
                     }
 
 
