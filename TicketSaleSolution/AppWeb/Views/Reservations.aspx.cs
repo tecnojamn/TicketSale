@@ -72,11 +72,13 @@ namespace AppWeb.Views
             if (p == null)
             {
                 //Sin pagar
+               
                 return "PAGAR";
-                ((LinkButton)lvReservations.Items[itemIndex].FindControl("btnCancelAllSubOrders")).Visible = true;
+              
             }
             else
             {
+                
                 if (p.CashPayment != null)
                 {
 
@@ -148,15 +150,9 @@ namespace AppWeb.Views
             int itemIndex = int.Parse(args[0]) - lvDataPager.StartRowIndex;
             int idRes = int.Parse(args[1]);
             // Argumentos: index del elemento clickeado ; id de la reserva clickeada
-
-
             ReservationDTO resDTO = ProxyManager.getReservationService().getReservation(idRes);
-
             List<GridViewSubOrderItem> gridViewSOItems = new List<GridViewSubOrderItem>();
-
-
             bool isPaid = resDTO.Payment != null ? true : false;
-
             foreach (SubOrderDTO so in resDTO.SubOrder)
             {
                 //int _state = so.active == RESERVATION.SUBORDER.INACTIVE ? (int)SubOrderGridItemState.CANCELED : (isPaid ? (int)SubOrderGridItemState.PAID : (int)SubOrderGridItemState.UNPAID);
@@ -170,18 +166,13 @@ namespace AppWeb.Views
                 });
             }
 
-
-
             GridView gvSubOrders = new GridView();
+            gvSubOrders.CssClass = "soTable col-lg-12 table";
             gvSubOrders.DataSource = gridViewSOItems;
             gvSubOrders.ID = "gvSubOrders";
-
-
             //Mostrar gridview con detalle de SubOrdenes
             lvReservations.Items[itemIndex].Controls.Add(gvSubOrders);
-
             ((GridView)lvReservations.Items[itemIndex].FindControl("gvSubOrders")).DataBind();
-
             for (int i = 0; i < gridViewSOItems.Count(); i++)
             {
                 switch (gridViewSOItems[i].stateOrCancel)
@@ -195,6 +186,7 @@ namespace AppWeb.Views
                             UseSubmitBehavior = false,
                             OnClientClick = "cancelSubOrder(" + gridViewSOItems[i].id + "," + i + "," + itemIndex + ");return false"
                         };
+                        btnCancelSubOrder.CssClass = "btn btn-danger btn-xs";
                         gvSubOrders.Rows[i].Cells[3].Controls.Add(btnCancelSubOrder);
                         break;
                     case "Cancelada":
