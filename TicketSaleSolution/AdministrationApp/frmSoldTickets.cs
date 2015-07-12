@@ -61,6 +61,7 @@ namespace AdministrationApp
                         }
                     }
                 }
+                gvEvents.Rows.Clear();
                 gvEvents.Rows.Add(ev.id, ev.name, ev.date.Date, ev.EventLocation.name, ev.description, ev.type, cont);
 
             }
