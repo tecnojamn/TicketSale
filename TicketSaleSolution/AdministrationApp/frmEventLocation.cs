@@ -51,7 +51,7 @@ namespace AdministrationApp
             el.id = Convert.ToInt32(gvEventLocation.Rows[index].Cells["id"].Value.ToString());
             el.phoneNumber = Convert.ToInt32(gvEventLocation.Rows[index].Cells["phoneNumber"].Value.ToString());
 
-            frmModifyEvenLocation child = new frmModifyEvenLocation(el, this);
+            frmModifyEventLocation child = new frmModifyEventLocation(el, this);
             child.ShowDialog();
         }
     }
