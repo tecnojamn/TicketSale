@@ -11,24 +11,28 @@ namespace BL
     public class EventController
     {
         //Nuevo evento
-        public bool newEvent(Event ev)
+        //Retorna el id del evento creado, devolvera 0 en caso de error
+        public int newEvent(Event ev)
         {
             try
             {
                 using (DAL.TicketSaleEntities context = new DAL.TicketSaleEntities())
                 {
-                    if (context.Event.Add(ev) != null)
+                    //para que no intente agregar un evento con el id de alguien
+                    if (ev.id == 0)
                     {
-                        context.SaveChanges();
+                        if (context.Event.Add(ev) != null)
+                        {
+                            context.SaveChanges();
+                        }
                     }
-                    else { return false; }
                 }
             }
             catch (Exception e)
             {
-                throw e;
+                return 0;
             }
-            return true;
+            return ev.id;
         }
         //Borrar Evento --- NO SIRVE
         /*public bool removeEvent(int idEv)
@@ -93,10 +97,10 @@ namespace BL
                         e.date = ev.date;
                         e.description = ev.description;
                         e.enabled = ev.enabled;
-                        e.EventLocation = ev.EventLocation;
+                        e.EventLocation = (ev.EventLocation != null) ? ev.EventLocation : e.EventLocation;
                         e.idEventLocation = ev.idEventLocation;
                         e.name = ev.name;
-                        e.TicketType = ev.TicketType;
+                        e.TicketType = (ev.TicketType != null) ? ev.TicketType : e.TicketType;
                         e.type = ev.type;
                         context.SaveChanges();
                     }
@@ -144,6 +148,7 @@ namespace BL
                 {
                     float entradasTomadas = 0f;
                     float entradasDisp = 0f;
+
                     DateTime now = DateTime.Now;
 
                     eventos = context.Event.Include("EventLocation").Select(e => e).Where(e => e.enabled == 1 && e.date >= now)
@@ -151,9 +156,10 @@ namespace BL
                          .Skip((page - 1) * pageSize)
                          .Take(pageSize)
                          .ToList();
+
                     foreach (Event e in eventos)
                     {
-                        
+
                         entradasTomadas = 0.000000f;
                         entradasDisp = 0.000000f;
 
@@ -166,7 +172,7 @@ namespace BL
                                 foreach (var s in t.SubOrder)
                                 {
                                     if (s.active == 1)
-                                        entradasTomadas+=1.0f;
+                                        entradasTomadas += 1.0f;
                                 }
                             }
                         }
@@ -182,17 +188,18 @@ namespace BL
                             // res = 0.000000f;
                             auxDicitonary.Add(e.id, -1);
                         }
-                       // auxDicitonary.Add(e.id, res);
+                        // auxDicitonary.Add(e.id, res);
                     }
 
-                    foreach(KeyValuePair<int, double> k in auxDicitonary){
-                        var p=k.Value;
+                    foreach (KeyValuePair<int, double> k in auxDicitonary)
+                    {
+                        var p = k.Value;
                     }
 
                     //ordeno el diccionario
                     //auxDicitonary = auxDicitonary.OrderBy(i => i.Value).ToDictionary(x => x.Key, x => x.Value);
-                   
-                   
+
+
                     //lo paso a lista de ints, ya ordenada
                     List<int> idList = new List<int>(auxDicitonary.Keys);
                     //orden la lista de eventos en base a la lista de ints
@@ -265,7 +272,7 @@ namespace BL
                     events = context.Event.Include("EventLocation").Include("TicketType.Ticket.SubOrder.Reservation.Payment")
                         .Where(e => e.date.Month == today.Month).ToList();
                     //guardar del evento, su cantidad total de entradas y sus ventas de entradas
-                    List<int[]> TicketsInfo = new List<int[]>();
+                    List<float[]> TicketsInfo = new List<float[]>();
                     int totalCant = 0;
                     int totalCantSold = 0;
                     foreach (Event ev in events)
@@ -275,7 +282,7 @@ namespace BL
                         //segun los ticketstype del evento, calcular la cantidad total de tickets
                         foreach (TicketType tt in ev.TicketType)
                         {
-                            totalCant += tt.Ticket.Count();
+                            totalCant += tt.finalNum - tt.startNum;
                         }
                         List<Payment> payments;
                         //buscar todos los pagos relacionados al evento
@@ -293,18 +300,19 @@ namespace BL
                                 }
                             }
                         }
-                        TicketsInfo.Add(new int[] { ev.id, totalCant, totalCantSold });
+                        TicketsInfo.Add(new float[] { ev.id, totalCant, totalCantSold });
 
                     }
                     int idEvent = 0;
                     if (x == COM.EVENT.REPORT.BEST)
                     {
                         float max = 0;
-                        foreach (int[] ticketInfo in TicketsInfo)
+                        foreach (float[] ticketInfo in TicketsInfo)
                         {
+                            float porcent = (ticketInfo[2] * 100) / ticketInfo[1];
                             if (((ticketInfo[2] * 100) / ticketInfo[1]) > max)
                             {
-                                idEvent = ticketInfo[0];
+                                idEvent = Convert.ToInt32(ticketInfo[0]);
                                 max = (ticketInfo[2] * 100 / ticketInfo[1]);
                             }
                         }
@@ -312,16 +320,16 @@ namespace BL
                     else
                     {
                         float min = 0;
-                        foreach (int[] ticketInfo in TicketsInfo)
+                        foreach (float[] ticketInfo in TicketsInfo)
                         {
                             if (min == 0)
                             {
-                                idEvent = ticketInfo[0];
+                                idEvent = Convert.ToInt32(ticketInfo[0]);
                                 min = (ticketInfo[2] * 100 / ticketInfo[1]);
                             }
                             else if (((ticketInfo[2] * 100) / ticketInfo[1]) <= min)
                             {
-                                idEvent = ticketInfo[0];
+                                idEvent = Convert.ToInt32(ticketInfo[0]);
                                 min = (ticketInfo[2] * 100 / ticketInfo[1]);
                             }
                         }
@@ -348,22 +356,43 @@ namespace BL
                     events = context.Event.Include("EventLocation").Include("TicketType.Ticket.SubOrder.Reservation.Payment")
                         .Where(e => e.TicketType
                             .Where(tt => tt.Ticket
-                                .Where(t => t.SubOrder.FirstOrDefault().Reservation.Payment.date >= start 
-                                    && t.SubOrder.FirstOrDefault().Reservation.Payment.date <= end 
-                                    && t.SubOrder.FirstOrDefault().active == COM.RESERVATION.SUBORDER.ACTIVE )
+                                .Where(t => t.SubOrder.FirstOrDefault().Reservation.Payment.date >= start
+                                    && t.SubOrder.FirstOrDefault().Reservation.Payment.date <= end
+                                    && t.SubOrder.FirstOrDefault().active == COM.RESERVATION.SUBORDER.ACTIVE)
                                     .Any()) //que alguna suborden del ticket cumpla con las condiciones
                                     .Any()) // que algun tickettype del evento contenga algun ticket que cumpla con las condiciones
                                     .ToList();
                     return events;
-                } 
-
                 }
+
+            }
 
             catch (Exception)
             {
-                
+
                 throw;
             }
+        }
+        public List<EventLocation> getLocals()
+        {
+            List<EventLocation> locals = null;
+            try
+            {
+                using (DAL.TicketSaleEntities context = new DAL.TicketSaleEntities())
+                {
+                    locals = context.EventLocation
+                               .Select(l => l)
+                               .OrderBy(l => l.name)
+                               .ToList();
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+            return locals;
         }
         /*
         public int getTotalTicketCount(int id)
@@ -446,27 +475,6 @@ namespace BL
             }
             return events;
         }
-        public List<EventLocation> getLocals()
-        {
-            List<EventLocation> locals = null;
-            try
-            {
-                using (DAL.TicketSaleEntities context = new DAL.TicketSaleEntities())
-                {
-                    locals = context.EventLocation
-                               .Select(l => l)
-                               .OrderBy(l => l.name)
-                               .ToList();
-                }
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-
-            return locals;
-        }
         public List<string> getEventType()
         {
             List<string> eventsType = null;
@@ -486,6 +494,52 @@ namespace BL
                 throw;
             }
             return eventsType;
+        }
+
+        public int newEventLocation(EventLocation el)
+        {
+            try
+            {
+                using (DAL.TicketSaleEntities context = new DAL.TicketSaleEntities())
+                {
+                    if (el.id == 0)
+                    {
+                        if (context.EventLocation.Add(el) != null)
+                        {
+                            context.SaveChanges();
+                        }
+                    }
+                }
+                return el.id;
+            }
+            catch (Exception)
+            {
+
+                return 0;
+            }
+        }
+
+        public bool updateEventLocation(EventLocation eventLocation)
+        {
+            try
+            {
+                using (DAL.TicketSaleEntities context = new DAL.TicketSaleEntities())
+                {
+                    EventLocation el = context.EventLocation.FirstOrDefault(e => e.id == eventLocation.id);
+                    if (el != null)
+                    {
+                        el.name = eventLocation.name;
+                        el.address = eventLocation.address;
+                        el.phoneNumber = eventLocation.phoneNumber;
+                        context.SaveChanges();
+                    }
+                }
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
     }
 }
