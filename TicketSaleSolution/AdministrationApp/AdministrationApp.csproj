@@ -94,11 +94,11 @@
     <Compile Include="frmLogin.Designer.cs">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmModifyEvenLocation.cs">
+    <Compile Include="frmModifyEventLocation.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmModifyEvenLocation.Designer.cs">
-      <DependentUpon>frmModifyEvenLocation.cs</DependentUpon>
+    <Compile Include="frmModifyEventLocation.Designer.cs">
+      <DependentUpon>frmModifyEventLocation.cs</DependentUpon>
     </Compile>
     <Compile Include="frmSoldTickets.cs">
       <SubType>Form</SubType>
@@ -161,8 +161,8 @@
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmModifyEvenLocation.resx">
-      <DependentUpon>frmModifyEvenLocation.cs</DependentUpon>
+    <EmbeddedResource Include="frmModifyEventLocation.resx">
+      <DependentUpon>frmModifyEventLocation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmSoldTickets.resx">
       <DependentUpon>frmSoldTickets.cs</DependentUpon>

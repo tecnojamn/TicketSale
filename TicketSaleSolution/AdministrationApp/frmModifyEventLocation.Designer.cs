@@ -1,6 +1,6 @@
 ﻿namespace AdministrationApp
 {
-    partial class frmModifyEvenLocation
+    partial class frmModifyEventLocation
     {
         /// <summary>
         /// Required designer variable.
@@ -42,7 +42,7 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(249, 129);
+            this.btnClose.Location = new System.Drawing.Point(243, 132);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(100, 49);
             this.btnClose.TabIndex = 15;
@@ -52,7 +52,7 @@
             // 
             // btnModify
             // 
-            this.btnModify.Location = new System.Drawing.Point(143, 129);
+            this.btnModify.Location = new System.Drawing.Point(137, 132);
             this.btnModify.Name = "btnModify";
             this.btnModify.Size = new System.Drawing.Size(100, 49);
             this.btnModify.TabIndex = 14;
@@ -63,7 +63,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(9, 45);
+            this.label3.Location = new System.Drawing.Point(3, 45);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(45, 17);
             this.label3.TabIndex = 13;
@@ -72,7 +72,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(9, 101);
+            this.label2.Location = new System.Drawing.Point(3, 101);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(60, 17);
             this.label2.TabIndex = 12;
@@ -81,7 +81,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 73);
+            this.label1.Location = new System.Drawing.Point(3, 73);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(101, 17);
             this.label1.TabIndex = 11;
@@ -89,14 +89,14 @@
             // 
             // txtAddress
             // 
-            this.txtAddress.Location = new System.Drawing.Point(111, 96);
+            this.txtAddress.Location = new System.Drawing.Point(105, 96);
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.Size = new System.Drawing.Size(238, 22);
             this.txtAddress.TabIndex = 10;
             // 
             // txtPhoneNumber
             // 
-            this.txtPhoneNumber.Location = new System.Drawing.Point(111, 68);
+            this.txtPhoneNumber.Location = new System.Drawing.Point(105, 68);
             this.txtPhoneNumber.Name = "txtPhoneNumber";
             this.txtPhoneNumber.Size = new System.Drawing.Size(238, 22);
             this.txtPhoneNumber.TabIndex = 9;
@@ -104,7 +104,7 @@
             // 
             // txtName
             // 
-            this.txtName.Location = new System.Drawing.Point(111, 40);
+            this.txtName.Location = new System.Drawing.Point(105, 40);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(238, 22);
             this.txtName.TabIndex = 8;
@@ -112,7 +112,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(9, 17);
+            this.label4.Location = new System.Drawing.Point(3, 17);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(19, 17);
             this.label4.TabIndex = 17;
@@ -120,17 +120,17 @@
             // 
             // txtId
             // 
-            this.txtId.Location = new System.Drawing.Point(111, 12);
+            this.txtId.Location = new System.Drawing.Point(105, 12);
             this.txtId.Name = "txtId";
             this.txtId.ReadOnly = true;
             this.txtId.Size = new System.Drawing.Size(238, 22);
             this.txtId.TabIndex = 16;
             // 
-            // frmModifyEvenLocation
+            // frmModifyEventLocation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(363, 187);
+            this.ClientSize = new System.Drawing.Size(357, 191);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtId);
             this.Controls.Add(this.btnClose);
@@ -141,9 +141,9 @@
             this.Controls.Add(this.txtAddress);
             this.Controls.Add(this.txtPhoneNumber);
             this.Controls.Add(this.txtName);
-            this.Name = "frmModifyEvenLocation";
+            this.Name = "frmModifyEventLocation";
             this.Text = "Modify event location";
-            this.Load += new System.EventHandler(this.frmModifyEvenLocation_Load);
+            this.Load += new System.EventHandler(this.frmModifyEventLocation_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
