@@ -11,6 +11,7 @@ namespace AppWeb.Views
 {
     public partial class Search : System.Web.UI.Page
     {
+        public string IMG_PATH { get { return PATH.UPLOADS_VISTA; } }
         private class gridRow
         {
             public int idEvent { get; set; }

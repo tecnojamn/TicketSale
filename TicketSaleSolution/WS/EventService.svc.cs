@@ -14,11 +14,15 @@ namespace WS
     public class EventService : IEventService
     {
 
-        public bool newEvent(EventDTO evDTO)
+        public int newEvent(EventDTO evDTO)
         {
             EventController ec = new EventController();
             Mapper.CreateMap<EventDTO, Event>()
-                .ForMember(e => e.TicketType, opt => opt.Ignore());
+                .ForMember(e => e.TicketType, opt => opt.MapFrom(x => x.TicketType))
+                .ForMember(e => e.EventLocation, opt => opt.Ignore());            
+            Mapper.CreateMap<TicketTypeDTO, TicketType>()
+                .ForMember(tt => tt.Ticket, opt => opt.Ignore())
+                .ForMember(tt => tt.Event, opt => opt.Ignore());
             return ec.newEvent(Mapper.Map<Event>(evDTO));
         }
 
@@ -45,7 +49,7 @@ namespace WS
             return Mapper.Map<List<EventDTO>>(ec.getEvents(page, pageSize));
         }
         public List<EventDTO> getFeaturedEvents(int page, int pageSize){
-         EventController ec = new EventController();
+            EventController ec = new EventController();
             Mapper.CreateMap<Event, EventDTO>()
                 .ForMember(e => e.EventLocation, opt => opt.MapFrom(x => x.EventLocation))
                 .ForMember(e => e.TicketType, opt => opt.Ignore());
@@ -87,7 +91,7 @@ namespace WS
             Mapper.CreateMap<TicketType, TicketTypeDTO>()
                 .ForMember(tt => tt.Ticket, opt => opt.Ignore())
                 .ForMember(tt => tt.Event, opt => opt.Ignore());
-            
+
             return Mapper.Map<List<EventDTO>>(ec.searchEvents(text, page, pageSize, maxDate, minDate, local, price, type));
         }
         public List<EventLocationDTO> getLocals()
@@ -96,7 +100,6 @@ namespace WS
             
             Mapper.CreateMap<EventLocation, EventLocationDTO>()
                 .ForMember(l => l.Event, opt => opt.Ignore());
-
             return Mapper.Map<List<EventLocationDTO>>(ec.getLocals());
         }
         public List<string> getEventType()
@@ -166,5 +169,21 @@ namespace WS
             return Mapper.Map<List<EventDTO>>(ec.getEventsForSTR(start, end));
         }
 
+        public int newEventLocation(EventLocationDTO el)
+        {
+            EventController ec = new EventController();
+            Mapper.CreateMap<EventLocationDTO, EventLocation>()
+                .ForMember(e => e.Event, opt => opt.Ignore());
+            return ec.newEventLocation( Mapper.Map<EventLocation>(el) );
+        }
+
+        public bool updateEventLocation(EventLocationDTO eventLocation)
+        {
+            EventController ec = new EventController();
+
+            Mapper.CreateMap<EventLocationDTO, EventLocation>()
+                .ForMember(e => e.Event, opt => opt.Ignore());
+            return ec.updateEventLocation(Mapper.Map<EventLocation>(eventLocation));
+        }
     }
 }
