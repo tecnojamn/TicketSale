@@ -38,13 +38,13 @@ namespace BL
             {
                 using (DAL.TicketSaleEntities context = new DAL.TicketSaleEntities())
                 {
-                    var query = from u in context.User where u.active == USER.STATE.ACTIVE select u; 
+                    var query = from u in context.User where u.active == USER.STATE.ACTIVE select u;
                     users = query
+                        .OrderBy(u => u.id)
                         .Skip((page - 1) * pageSize)
                         .Take(pageSize)
                         .ToList();
                 }
-
             }
             catch (Exception)
             {
@@ -69,8 +69,8 @@ namespace BL
             }
             return user;
         }
-        
-        
+
+
         //Nuevo Usuario
         public bool newUser(User user)
         {
@@ -78,21 +78,22 @@ namespace BL
             {
                 using (DAL.TicketSaleEntities context = new DAL.TicketSaleEntities())
                 {
-                   
-                    if(isEmailTaken(user.mail)){
+
+                    if (isEmailTaken(user.mail))
+                    {
                         return false;
                     }
-                    user.token = SECURITY.STRING_TO_MD5(user.mail+"12345");
+                    user.token = SECURITY.STRING_TO_MD5(user.mail + "12345");
                     user.active = USER.STATE.INACTIVE;
-                    
+
                     //HttpRequest request = HttpContext.Current.Request;
                     //string url = request.Url.Authority.ToString();
-                    
-                    String url = PATH.BASE_URL+"Views/Confirm.aspx?auth_token=" + user.token + "";
+
+                    String url = PATH.BASE_URL + "Views/Confirm.aspx?auth_token=" + user.token + "";
 
                     if (context.User.Add(user) != null)
                     {
-                        MAILER.sendCofirmationMail(user.mail,url);
+                        MAILER.sendCofirmationMail(user.mail, url);
                         context.SaveChanges();
                     }
                     else { return false; }
@@ -113,10 +114,11 @@ namespace BL
                 using (DAL.TicketSaleEntities context = new DAL.TicketSaleEntities())
                 {
 
-                    user = context.User.First(u => u.token == token && u.active==USER.STATE.INACTIVE);
-                    if (user!=null) {
+                    user = context.User.First(u => u.token == token && u.active == USER.STATE.INACTIVE);
+                    if (user != null)
+                    {
 
-                        user.token="";
+                        user.token = "";
                         user.active = USER.STATE.ACTIVE;
                         context.SaveChanges();
                     }
@@ -126,7 +128,7 @@ namespace BL
             {
                 return false;
             }
-            return (user!=null);
+            return (user != null);
         }
         //Remover usuario
         public bool removeUser(int id)
@@ -140,8 +142,8 @@ namespace BL
                     {
                         //if (context.User.Remove(u) != null)
                         //{
-                            u.active = USER.STATE.INACTIVE;
-                            context.SaveChanges();
+                        u.active = USER.STATE.INACTIVE;
+                        context.SaveChanges();
                         //}
 
                     }
@@ -192,14 +194,14 @@ namespace BL
                 {
                     User u = context.User.FirstOrDefault(user => user.id == us.id);
                     if (u != null)
-                    { 
-                       // u.mail = (us.mail!=null && !us.mail.Equals(""))?us.mail:u.mail;
-                       // u.password = (us.password != null && !us.password.Equals("")) ? us.password : u.password;
+                    {
+                        u.mail = (us.mail != null && !us.mail.Equals("")) ? us.mail : u.mail;
+                        u.password = (us.password != null && !us.password.Equals("")) ? us.password : u.password;
                         u.name = (us.name != null && !us.name.Equals("")) ? us.name : u.name; ;
                         u.lastName = (us.lastName != null && !us.lastName.Equals("")) ? us.lastName : u.lastName; ;
-                       // u.dateBirth = (us.dateBirth != null) ? us.dateBirth : u.dateBirth;
-                       // u.userType = (us.userType!=null)?us.userType:u.userType;
-                       // u.active = (us.active != null) ? us.active : u.active;
+                        u.dateBirth = (us.dateBirth != null) ? us.dateBirth : u.dateBirth;
+                        u.userType = (us.userType != null) ? us.userType : u.userType;
+                        u.active = (us.active != null) ? us.active : u.active;
                         context.SaveChanges();
                     }
                     else { return false; }
@@ -212,16 +214,16 @@ namespace BL
             return true;
 
         }
-        public bool updatePassword(String oldPassword,String password,int userId)
+        public bool updatePassword(String oldPassword, String password, int userId)
         {
             try
             {
                 using (DAL.TicketSaleEntities context = new DAL.TicketSaleEntities())
                 {
-                    User u = context.User.FirstOrDefault(user => user.id == userId && user.password==oldPassword);
+                    User u = context.User.FirstOrDefault(user => user.id == userId && user.password == oldPassword);
                     if (u != null)
                     {
-                        u.password = password;   
+                        u.password = password;
                         context.SaveChanges();
                     }
                     else { return false; }

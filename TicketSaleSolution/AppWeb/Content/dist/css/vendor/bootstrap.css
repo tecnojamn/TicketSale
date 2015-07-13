@@ -3854,6 +3854,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   position: relative;
   font-size: 0;
   white-space: nowrap;
+    top: 10px;
+    left: -4px;
 }
 .input-group-btn > .btn {
   position: relative;

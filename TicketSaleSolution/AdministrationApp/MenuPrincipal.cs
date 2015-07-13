@@ -13,7 +13,7 @@ namespace AdministrationApp
     public partial class MenuPrincipal : Form
     {
         private int childFormNumber = 0;
-
+       
         public MenuPrincipal()
         {
             InitializeComponent();
@@ -22,9 +22,8 @@ namespace AdministrationApp
         private void ShowNewForm(object sender, EventArgs e)
         {
             Form childForm = new Form();
-            childForm.MdiParent = this;
             childForm.Text = "Ventana " + childFormNumber++;
-            childForm.Show();
+            childForm.ShowDialog();
         }
 
         private void OpenFile(object sender, EventArgs e)
@@ -97,22 +96,19 @@ namespace AdministrationApp
         private void clientsPreferencialesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmPreferredUsers child = new frmPreferredUsers();
-            child.MdiParent = this;
-            child.Show();
+            child.ShowDialog();
         }
 
         private void usuariosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmUsuarios child = new frmUsuarios();
-            child.MdiParent = this;
-            child.Show();
+            child.ShowDialog();
         }
 
         private void eventosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmEventos child = new frmEventos();
-            child.MdiParent = this;
-            child.Show();
+            child.ShowDialog();
         }
 
         private void mejorEspectáculoDelMesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -123,15 +119,31 @@ namespace AdministrationApp
         private void ventaDeEntradasToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmSoldTickets child = new frmSoldTickets();
-            child.MdiParent = this;
-            child.Show();
+            child.ShowDialog();
         }
 
         private void peorEspectáculoDelMesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmEventReport child = new frmEventReport();
-            child.MdiParent = this;
-            child.Show();
+            child.ShowDialog();
+        }
+
+        private void MenuPrincipal_Load(object sender, EventArgs e)
+        {
+            frmLogin child = new frmLogin(this);
+            child.ShowDialog();
+        }
+
+        private void inicioSesiónToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmLogin child = new frmLogin(this);
+            child.ShowDialog();
+        }
+
+        private void lugarDeEventoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmEventLocation child = new frmEventLocation();
+            child.ShowDialog();
         }
     }
 }
