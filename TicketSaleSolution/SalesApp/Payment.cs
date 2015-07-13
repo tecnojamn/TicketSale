@@ -29,7 +29,7 @@ namespace SalesApp
             cblocation.ValueMember = "Name";
         }
 
-        private frmReservationPay otherForm;
+        public frmReservationPay otherForm;
 
         private void cblocation_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -49,14 +49,13 @@ namespace SalesApp
             DateTime thisDay = DateTime.Today;
            
             payment.idReservation = Convert.ToInt32(otherForm.txtIdreserva.Text);
-            payment.amount = Convert.ToInt32(txtAmount.Text);
+            payment.amount = Convert.ToInt32(otherForm.total.Text);
             payment.date = thisDay;
             ProxyManager.getPaymentService().newPayment(payment);
             cashPayment.idReservation = Convert.ToInt32(otherForm.txtIdreserva.Text);
             foreach(PaymentLocationDTO pl in payLoc){
-                if(pl.name.Equals(cblocation.SelectedItem)){
+                if(pl.name.Equals(cblocation.SelectedValue)){
                     cashPayment.idPaymentLocation = pl.id;
-                    break;
                 }
             }
             cashPayment.cod = Convert.ToInt32(COM.SECURITY.GENERATE_CODE());

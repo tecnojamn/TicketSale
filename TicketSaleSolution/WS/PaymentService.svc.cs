@@ -78,12 +78,11 @@ namespace WS
         {
             PaymentController pc = new PaymentController();
 
-            Mapper.CreateMap<CashPayment, CashPaymentDTO>()
+            Mapper.CreateMap<CashPaymentDTO, CashPayment>()
                 .ForMember(p => p.Payment, opt => opt.Ignore())
                 .ForMember(p => p.PaymentLocation, opt => opt.Ignore());
-
-            return pc.newCashPayment(Mapper.Map<CashPayment>(cpDTO));
-  
+            BO.CashPayment ca = Mapper.Map<CashPayment>(cpDTO);
+            return pc.newCashPayment(ca);
         }
     }
 }
