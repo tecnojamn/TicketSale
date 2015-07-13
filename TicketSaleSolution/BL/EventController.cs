@@ -148,12 +148,13 @@ namespace BL
                 {
                     float entradasTomadas = 0f;
                     float entradasDisp = 0f;
+                    DateTime now = DateTime.Now;
 
-                    eventos = context.Event.Select(e => e).Where(e => e.enabled == 1)
-                        .OrderByDescending(e => e.date)
-                        .Skip((page - 1) * pageSize)
-                        .Take(pageSize)
-                        .ToList();
+                    eventos = context.Event.Include("EventLocation").Select(e => e).Where(e => e.enabled == 1 && e.date >= now)
+                         .OrderByDescending(e => e.date)
+                         .Skip((page - 1) * pageSize)
+                         .Take(pageSize)
+                         .ToList();
                     foreach (Event e in eventos)
                     {
 
