@@ -33,9 +33,9 @@
                     <div class="col-lg-2 navbar-form" style="padding: 13px 10px 12px 10px;">
                         <div class="form-group">
                             <div class="input-group">
-                                <asp:TextBox ID="txtSearch" runat="server" CssClass="form-control" type="search" placeholder="Buscar"></asp:TextBox>
-                                <span class="input-group-btn">
-                                    <asp:Button ID="btnSearch" runat="server" CssClass="btn" Text="Buscar" OnClick="btnSearch_Click" />
+                                <asp:TextBox  style=" color: #ABBAC8;width: 60%;" ID="txtSearch" runat="server" CssClass="form-control" type="search" placeholder=". . ."></asp:TextBox>
+                                <span class="">
+                                    <asp:Button ID="btnSearch" Style="background-color: #233241;  border-top-left-radius: 0;  border-bottom-left-radius: 0;" runat="server" CssClass="btn" Text="Buscar" OnClick="btnSearch_Click" />
                                 </span> 
                             </div>
                         </div>
