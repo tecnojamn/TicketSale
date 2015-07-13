@@ -79,7 +79,7 @@
                             <p style="  color: #ECF0F1;  line-height: 25px;  font-size: 16px;">
                                <%#Eval("description")%>
                             </p>
-                            <asp:Label ID="label3" runat="server" Style="margin-left: 10px;"><%#Eval("availability") %></asp:Label><br />
+                            <%--<asp:Label ID="label3" runat="server" Style="margin-left: 10px;"><%#Eval("availability") %></asp:Label>--%><br />
                              <p style="color: rgb(26, 188, 156);  line-height: 10px;  font-size: 14px;">
                                <span class="fui-calendar"> <%#Eval("date")%>  </span>
                             </p>

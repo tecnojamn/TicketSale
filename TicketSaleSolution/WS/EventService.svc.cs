@@ -61,7 +61,6 @@ namespace WS
         {
             EventController ec = new EventController();
 
-            //Configuracion Automapper (Pasar a constructor asi queda mas prolijo?)
             Mapper.CreateMap<Event, EventDTO>()
                 .ForMember(e => e.TicketType, opt => opt.MapFrom(x => x.TicketType))
                 .ForMember(e => e.EventLocation, opt => opt.MapFrom(x => x.EventLocation));

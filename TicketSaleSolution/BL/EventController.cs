@@ -97,10 +97,10 @@ namespace BL
                         e.date = ev.date;
                         e.description = ev.description;
                         e.enabled = ev.enabled;
-                        e.EventLocation = (ev.EventLocation != null)? ev.EventLocation : e.EventLocation;
+                        e.EventLocation = (ev.EventLocation != null) ? ev.EventLocation : e.EventLocation;
                         e.idEventLocation = ev.idEventLocation;
                         e.name = ev.name;
-                        e.TicketType = (ev.TicketType != null)? ev.TicketType : e.TicketType;
+                        e.TicketType = (ev.TicketType != null) ? ev.TicketType : e.TicketType;
                         e.type = ev.type;
                         context.SaveChanges();
                     }
@@ -141,7 +141,7 @@ namespace BL
         public List<Event> getFeatuerdEvents(int page, int pageSize)
         {
             List<Event> eventos = null;
-            var auxDicitonary = new SortedDictionary<int, double>();
+            var auxDictionary = new SortedDictionary<int, double>();
             try
             {
                 using (DAL.TicketSaleEntities context = new DAL.TicketSaleEntities())
@@ -179,27 +179,29 @@ namespace BL
                         {
 
                             // res= ((entradasTomadas) / (entradasDisp));
-                            auxDicitonary.Add(e.id, ((entradasTomadas) / (entradasDisp)));
+                            auxDictionary.Add(e.id, ((entradasTomadas) / (entradasDisp)));
                         }
                         else
                         {
                             // res = 0.000000f;
-                            auxDicitonary.Add(e.id, -1);
+                            auxDictionary.Add(e.id, -1);
                         }
                         // auxDicitonary.Add(e.id, res);
                     }
+                    Dictionary<int, double> _sorteDictionary = new Dictionary<int, double>();
 
-                    foreach (KeyValuePair<int, double> k in auxDicitonary)
+                    foreach (KeyValuePair<int, double> k in auxDictionary.OrderByDescending(x => x.Value))
                     {
-                        var p = k.Value;
+                        _sorteDictionary.Add(k.Key, k.Value);
                     }
 
                     //ordeno el diccionario
-                    //auxDicitonary = auxDicitonary.OrderBy(i => i.Value).ToDictionary(x => x.Key, x => x.Value);
+                    //string sortedDictionary = auxDicitonary.OrderBy(key => key.Value);
+
 
 
                     //lo paso a lista de ints, ya ordenada
-                    List<int> idList = new List<int>(auxDicitonary.Keys);
+                    List<int> idList = new List<int>(_sorteDictionary.Keys);
                     //orden la lista de eventos en base a la lista de ints
                     eventos = eventos.OrderBy(e => idList.IndexOf(e.id)).ToList();
 
@@ -494,7 +496,7 @@ namespace BL
             return eventsType;
         }
 
-        public int newEventLocation( EventLocation el)
+        public int newEventLocation(EventLocation el)
         {
             try
             {
@@ -512,12 +514,12 @@ namespace BL
             }
             catch (Exception)
             {
-                
+
                 return 0;
             }
         }
 
-        public bool updateEventLocation (EventLocation eventLocation)
+        public bool updateEventLocation(EventLocation eventLocation)
         {
             try
             {

@@ -21,7 +21,9 @@ namespace AppWeb.Views
             public string type { get; set; }
             public string location { get; set; }
             public string address { get; set; }
-            public string availability { get; set; }
+
+            //Se elimina porque no se estan trayendo tickettypes
+            //public string availability { get; set; }
         }
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -98,12 +100,12 @@ namespace AppWeb.Views
                     row.location = item.EventLocation.name;
                     row.address = item.EventLocation.address;
 
-                    int available = 0;
-                    foreach (TicketTypeDTO tt in item.TicketType)
-                    {
-                        available += tt.finalNum - tt.startNum;
-                    }
-                    row.availability = available.ToString() + " tickets";
+                    //int available = 0;
+                    //foreach (TicketTypeDTO tt in item.TicketType)
+                    //{
+                    //    available += tt.finalNum - tt.startNum;
+                    //}
+                    //row.availability = available.ToString() + " tickets";
                     gridData.Add(row);
 
                 }
