@@ -31,7 +31,7 @@ namespace AppWeb.Views
                     if (userDTO != null)
                     {
                         PanelUser.Visible = true;
-                        LblDOB.Text = userDTO.dateBirth.ToString();
+                        LblDOB.Text = userDTO.dateBirth.ToString("dd/MM/yyyy");
                         LblLastName.Text = userDTO.lastName;
                         LblMail.Text = userDTO.mail;
                         LblName.Text = userDTO.name;

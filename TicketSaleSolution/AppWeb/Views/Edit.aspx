@@ -27,14 +27,14 @@
 
 
             <div class="form-group">
-                <asp:TextBox placeholder="Editar contraseña" ID="TextCurrentPassword" runat="server" CssClass="form-control login-field"></asp:TextBox></div>
+                <asp:TextBox placeholder="Contraseña actual" TextMode="Password" ID="TextCurrentPassword" runat="server" CssClass="form-control login-field"></asp:TextBox></div>
 
                 <div class="form-group">
-                <asp:TextBox placeholder="Nueva Contraseña" ID="TextNewPassword" runat="server" CssClass="form-control login-field"></asp:TextBox></div>
+                <asp:TextBox placeholder="Nueva Contraseña" TextMode="Password" ID="TextNewPassword" runat="server" CssClass="form-control login-field"></asp:TextBox></div>
 
 
 <div class="form-group">
-                <asp:TextBox placeholder="Repita nueva Contraseña" ID="TextConfirmationPassword" runat="server" CssClass="form-control login-field"></asp:TextBox></div>
+                <asp:TextBox placeholder="Repita nueva Contraseña" TextMode="Password" ID="TextConfirmationPassword" runat="server" CssClass="form-control login-field"></asp:TextBox></div>
 
             <asp:Button CssClass="btn btn-primary btn-lg btn-block" OnClick="Button1_Click" ID="Button1" runat="server" Text="Cambiar" />
         </div>
