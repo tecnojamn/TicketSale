@@ -30,30 +30,42 @@ namespace AdministrationApp
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            Close();
+            var confirmResult = MessageBox.Show("Are you sure to close this window ??",
+"Confirmed",
+MessageBoxButtons.YesNo);
+            if (confirmResult == DialogResult.Yes)
+            {
+                Close();
+            }
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
             if (txtAddress.Text != "" && txtName.Text != "" && txtPhoneNumber.Text != "")
             {
-                EventLocationDTO el = new EventLocationDTO();
-
-                el.address = txtAddress.Text;
-                el.name = txtName.Text;
-                el.phoneNumber = Convert.ToInt32(txtPhoneNumber.Text);
-
-                el.id = 0;
-                el.Event = null;
-                if (ProxyManager.getEventService().newEventLocation(el) != 0)
+                var confirmResult = MessageBox.Show("Are you sure to add this event location ??",
+"Confirmed",
+MessageBoxButtons.YesNo);
+                if (confirmResult == DialogResult.Yes)
                 {
-                    MessageBox.Show("Event location added successfully");
-                    parent.gvEventLocatioLoad();
-                    Close();
-                }
-                else
-                {
-                    MessageBox.Show("An error has ocurred");
+                    EventLocationDTO el = new EventLocationDTO();
+
+                    el.address = txtAddress.Text;
+                    el.name = txtName.Text;
+                    el.phoneNumber = Convert.ToInt32(txtPhoneNumber.Text);
+
+                    el.id = 0;
+                    el.Event = null;
+                    if (ProxyManager.getEventService().newEventLocation(el) != 0)
+                    {
+                        MessageBox.Show("Event location added successfully");
+                        parent.gvEventLocatioLoad();
+                        Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("An error has ocurred");
+                    }
                 }
             }
             else

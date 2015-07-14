@@ -35,7 +35,6 @@
             this.usuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.eventosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lugarDeEventoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pagosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clientsPreferencialesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.peorEspectáculoDelMesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -54,12 +53,10 @@
             this.usuariosToolStripMenuItem,
             this.eventosToolStripMenuItem,
             this.lugarDeEventoToolStripMenuItem,
-            this.pagosToolStripMenuItem,
             this.reportesToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
-            this.menuStrip.Size = new System.Drawing.Size(843, 28);
+            this.menuStrip.Size = new System.Drawing.Size(632, 24);
             this.menuStrip.TabIndex = 0;
             this.menuStrip.Text = "MenuStrip";
             // 
@@ -69,42 +66,36 @@
             this.inicioSesiónToolStripMenuItem});
             this.fileMenu.ImageTransparentColor = System.Drawing.SystemColors.ActiveBorder;
             this.fileMenu.Name = "fileMenu";
-            this.fileMenu.Size = new System.Drawing.Size(70, 24);
+            this.fileMenu.Size = new System.Drawing.Size(58, 20);
             this.fileMenu.Text = "&Session";
             // 
             // inicioSesiónToolStripMenuItem
             // 
             this.inicioSesiónToolStripMenuItem.Name = "inicioSesiónToolStripMenuItem";
-            this.inicioSesiónToolStripMenuItem.Size = new System.Drawing.Size(131, 24);
+            this.inicioSesiónToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
             this.inicioSesiónToolStripMenuItem.Text = "&Log Out";
             this.inicioSesiónToolStripMenuItem.Click += new System.EventHandler(this.inicioSesiónToolStripMenuItem_Click);
             // 
             // usuariosToolStripMenuItem
             // 
             this.usuariosToolStripMenuItem.Name = "usuariosToolStripMenuItem";
-            this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(50, 24);
+            this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(42, 20);
             this.usuariosToolStripMenuItem.Text = "&User";
             this.usuariosToolStripMenuItem.Click += new System.EventHandler(this.usuariosToolStripMenuItem_Click);
             // 
             // eventosToolStripMenuItem
             // 
             this.eventosToolStripMenuItem.Name = "eventosToolStripMenuItem";
-            this.eventosToolStripMenuItem.Size = new System.Drawing.Size(57, 24);
+            this.eventosToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
             this.eventosToolStripMenuItem.Text = "&Event";
             this.eventosToolStripMenuItem.Click += new System.EventHandler(this.eventosToolStripMenuItem_Click);
             // 
             // lugarDeEventoToolStripMenuItem
             // 
             this.lugarDeEventoToolStripMenuItem.Name = "lugarDeEventoToolStripMenuItem";
-            this.lugarDeEventoToolStripMenuItem.Size = new System.Drawing.Size(115, 24);
+            this.lugarDeEventoToolStripMenuItem.Size = new System.Drawing.Size(94, 20);
             this.lugarDeEventoToolStripMenuItem.Text = "&Event location";
             this.lugarDeEventoToolStripMenuItem.Click += new System.EventHandler(this.lugarDeEventoToolStripMenuItem_Click);
-            // 
-            // pagosToolStripMenuItem
-            // 
-            this.pagosToolStripMenuItem.Name = "pagosToolStripMenuItem";
-            this.pagosToolStripMenuItem.Size = new System.Drawing.Size(78, 24);
-            this.pagosToolStripMenuItem.Text = "&Payment";
             // 
             // reportesToolStripMenuItem
             // 
@@ -113,27 +104,27 @@
             this.peorEspectáculoDelMesToolStripMenuItem,
             this.ventaDeEntradasToolStripMenuItem});
             this.reportesToolStripMenuItem.Name = "reportesToolStripMenuItem";
-            this.reportesToolStripMenuItem.Size = new System.Drawing.Size(72, 24);
+            this.reportesToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
             this.reportesToolStripMenuItem.Text = "&Reports";
             // 
             // clientsPreferencialesToolStripMenuItem
             // 
             this.clientsPreferencialesToolStripMenuItem.Name = "clientsPreferencialesToolStripMenuItem";
-            this.clientsPreferencialesToolStripMenuItem.Size = new System.Drawing.Size(215, 24);
+            this.clientsPreferencialesToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
             this.clientsPreferencialesToolStripMenuItem.Text = "&Preferential user";
             this.clientsPreferencialesToolStripMenuItem.Click += new System.EventHandler(this.clientsPreferencialesToolStripMenuItem_Click);
             // 
             // peorEspectáculoDelMesToolStripMenuItem
             // 
             this.peorEspectáculoDelMesToolStripMenuItem.Name = "peorEspectáculoDelMesToolStripMenuItem";
-            this.peorEspectáculoDelMesToolStripMenuItem.Size = new System.Drawing.Size(215, 24);
+            this.peorEspectáculoDelMesToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
             this.peorEspectáculoDelMesToolStripMenuItem.Text = "&Best and worst event";
             this.peorEspectáculoDelMesToolStripMenuItem.Click += new System.EventHandler(this.peorEspectáculoDelMesToolStripMenuItem_Click);
             // 
             // ventaDeEntradasToolStripMenuItem
             // 
             this.ventaDeEntradasToolStripMenuItem.Name = "ventaDeEntradasToolStripMenuItem";
-            this.ventaDeEntradasToolStripMenuItem.Size = new System.Drawing.Size(215, 24);
+            this.ventaDeEntradasToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
             this.ventaDeEntradasToolStripMenuItem.Text = "&Sold ticket";
             this.ventaDeEntradasToolStripMenuItem.Click += new System.EventHandler(this.ventaDeEntradasToolStripMenuItem_Click);
             // 
@@ -141,32 +132,32 @@
             // 
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel});
-            this.statusStrip.Location = new System.Drawing.Point(0, 533);
+            this.statusStrip.Location = new System.Drawing.Point(0, 431);
             this.statusStrip.Name = "statusStrip";
-            this.statusStrip.Padding = new System.Windows.Forms.Padding(1, 0, 19, 0);
-            this.statusStrip.Size = new System.Drawing.Size(843, 25);
+            this.statusStrip.Size = new System.Drawing.Size(632, 22);
             this.statusStrip.TabIndex = 2;
             this.statusStrip.Text = "StatusStrip";
             // 
             // toolStripStatusLabel
             // 
             this.toolStripStatusLabel.Name = "toolStripStatusLabel";
-            this.toolStripStatusLabel.Size = new System.Drawing.Size(54, 20);
+            this.toolStripStatusLabel.Size = new System.Drawing.Size(42, 17);
             this.toolStripStatusLabel.Text = "Estado";
             // 
             // MenuPrincipal
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(843, 558);
+            this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.ClientSize = new System.Drawing.Size(632, 453);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.menuStrip);
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip;
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MenuPrincipal";
             this.Text = "Main menu";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MenuPrincipal_FormClosing);
             this.Load += new System.EventHandler(this.MenuPrincipal_Load);
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
@@ -188,7 +179,6 @@
         private System.Windows.Forms.ToolStripMenuItem usuariosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem eventosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem lugarDeEventoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem pagosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reportesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem clientsPreferencialesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem peorEspectáculoDelMesToolStripMenuItem;

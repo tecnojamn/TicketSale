@@ -52,12 +52,11 @@
             this.LastName,
             this.Birthday,
             this.Active});
-            this.gvUsers.Location = new System.Drawing.Point(-3, 12);
-            this.gvUsers.Margin = new System.Windows.Forms.Padding(4);
+            this.gvUsers.Location = new System.Drawing.Point(-2, 10);
             this.gvUsers.MultiSelect = false;
             this.gvUsers.Name = "gvUsers";
             this.gvUsers.ReadOnly = true;
-            this.gvUsers.Size = new System.Drawing.Size(725, 321);
+            this.gvUsers.Size = new System.Drawing.Size(544, 261);
             this.gvUsers.TabIndex = 0;
             // 
             // Id
@@ -100,10 +99,9 @@
             // 
             // btnBorrar
             // 
-            this.btnBorrar.Location = new System.Drawing.Point(743, 12);
-            this.btnBorrar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnBorrar.Location = new System.Drawing.Point(557, 10);
             this.btnBorrar.Name = "btnBorrar";
-            this.btnBorrar.Size = new System.Drawing.Size(100, 28);
+            this.btnBorrar.Size = new System.Drawing.Size(75, 23);
             this.btnBorrar.TabIndex = 1;
             this.btnBorrar.Text = "Delete";
             this.btnBorrar.UseVisualStyleBackColor = true;
@@ -111,10 +109,9 @@
             // 
             // btnModificar
             // 
-            this.btnModificar.Location = new System.Drawing.Point(743, 48);
-            this.btnModificar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnModificar.Location = new System.Drawing.Point(557, 39);
             this.btnModificar.Name = "btnModificar";
-            this.btnModificar.Size = new System.Drawing.Size(100, 28);
+            this.btnModificar.Size = new System.Drawing.Size(75, 23);
             this.btnModificar.TabIndex = 2;
             this.btnModificar.Text = "Modify";
             this.btnModificar.UseVisualStyleBackColor = true;
@@ -122,13 +119,13 @@
             // 
             // frmUsuarios
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(859, 348);
+            this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.ClientSize = new System.Drawing.Size(644, 276);
             this.Controls.Add(this.btnModificar);
             this.Controls.Add(this.btnBorrar);
             this.Controls.Add(this.gvUsers);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmUsuarios";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "User";

@@ -95,47 +95,62 @@ namespace AdministrationApp
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            Close();
+            var confirmResult = MessageBox.Show("Are you sure to close the window ??",
+     "Confirmed",
+     MessageBoxButtons.YesNo);
+            if (confirmResult == DialogResult.Yes)
+            {
+                Close();
+            }
+
         }
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
+
             //Si hay hay una fila seleccionada
             if (isEventSelect)
             {
                 if (txtName.Text != "" && txtDescripcion.Text != "")
                 {
-                    EventDTO evento = new EventDTO();
-                    try
+                    var confirmResult = MessageBox.Show("Are you sure to update this event ??",
+                         "Confirmed",
+                         MessageBoxButtons.YesNo);
+                    if (confirmResult == DialogResult.Yes)
                     {
-                        DateTime dateEv = new DateTime(Convert.ToInt32(txtYear.Text), Convert.ToInt32(txtMonth.Text), Convert.ToInt32(txtDay.Text), Convert.ToInt32(txtHour.Text), Convert.ToInt32(txtMinutes.Text), 0);
-                        evento.date = dateEv;
-
-                        evento.description = txtDescripcion.Text;
-                        evento.name = txtName.Text;
-                        evento.id = Convert.ToInt32(txtId.Text);
-                        evento.type = cbType.SelectedItem.ToString();
-                        EventLocationDTO evLocal = (EventLocationDTO)cbEventLocation.SelectedItem;
-                        evento.idEventLocation = evLocal.id;
-
-                        evento.enabled = EVENT.STATE.ENABLE;
-                        evento.EventLocation = null;
-                        evento.TicketType = null;
-
-                        if (ProxyManager.getEventService().updateEvent(evento))
+                        EventDTO evento = new EventDTO();
+                        try
                         {
-                            MessageBox.Show("Event update successfully");
-                            gvEventLoad();
+                            DateTime dateEv = new DateTime(Convert.ToInt32(txtYear.Text), Convert.ToInt32(txtMonth.Text), Convert.ToInt32(txtDay.Text), Convert.ToInt32(txtHour.Text), Convert.ToInt32(txtMinutes.Text), 0);
+                            evento.date = dateEv;
+
+                            evento.description = txtDescripcion.Text;
+                            evento.name = txtName.Text;
+                            evento.id = Convert.ToInt32(txtId.Text);
+                            evento.type = cbType.SelectedItem.ToString();
+                            EventLocationDTO evLocal = (EventLocationDTO)cbEventLocation.SelectedItem;
+                            evento.idEventLocation = evLocal.id;
+
+                            evento.enabled = EVENT.STATE.ENABLE;
+                            evento.EventLocation = null;
+                            evento.TicketType = null;
+
+                            if (ProxyManager.getEventService().updateEvent(evento))
+                            {
+                                MessageBox.Show("Event update successfully");
+                                gvEventLoad();
+                            }
+                            else
+                            {
+                                MessageBox.Show("An error has ocurred");
+                            }
                         }
-                        else
+                        catch (Exception)
                         {
-                            MessageBox.Show("An error has ocurred");
+                            MessageBox.Show("Incorrect date or time");
                         }
                     }
-                    catch (Exception)
-                    {
-                        MessageBox.Show("Incorrect date or time");
-                    }
+
                 }
                 else
                 {
@@ -195,17 +210,24 @@ namespace AdministrationApp
 
         private void btnBorrar_Click(object sender, EventArgs e)
         {
-            int index = gvEventos.SelectedCells[0].RowIndex; ;
-            int eventId = Convert.ToInt32(gvEventos.Rows[index].Cells["id"].Value);
-            if (ProxyManager.getEventService().cancelEvent(eventId))
+            var confirmResult = MessageBox.Show("Are you sure to delete this event ??",
+                         "Confirm delete",
+                         MessageBoxButtons.YesNo);
+            if (confirmResult == DialogResult.Yes)
             {
-                MessageBox.Show("Event disabled successfully");
-                gvEventLoad();
+                int index = gvEventos.SelectedCells[0].RowIndex; ;
+                int eventId = Convert.ToInt32(gvEventos.Rows[index].Cells["id"].Value);
+                if (ProxyManager.getEventService().cancelEvent(eventId))
+                {
+                    MessageBox.Show("Event disabled successfully");
+                    gvEventLoad();
+                }
+                else
+                {
+                    MessageBox.Show("An error has ocurred");
+                }
             }
-            else
-            {
-                MessageBox.Show("An error has ocurred");
-            }
+
         }
     }
 }

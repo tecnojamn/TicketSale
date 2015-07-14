@@ -51,35 +51,46 @@ namespace AdministrationApp
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            Close();
+            var confirmResult = MessageBox.Show("Are you sure to cancel this window ??",
+"Confirmed",
+MessageBoxButtons.YesNo);
+            if (confirmResult == DialogResult.Yes)
+            {
+                Close();
+            }
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
             if (txtCost.Text != "" && txtDescription.Text != "" && txtMaxNumber.Text != "" && txtMinNumber.Text != "")
             {
-                
-                int cost = Convert.ToInt32(txtCost.Text);
-                int maxNum = Convert.ToInt32(txtMaxNumber.Text);
-                int minNum = Convert.ToInt32(txtMinNumber.Text);
-                String description = txtDescription.Text;
-                if (maxNum > minNum)
+                var confirmResult = MessageBox.Show("Are you sure to add this ticket type ??",
+"Confirmed",
+MessageBoxButtons.YesNo);
+                if (confirmResult == DialogResult.Yes)
                 {
-                    TicketTypeDTO tt = new TicketTypeDTO();
-                    tt.cost = cost;
-                    tt.description = description;
-                    tt.startNum = minNum;
-                    tt.finalNum = maxNum;
+                    int cost = Convert.ToInt32(txtCost.Text);
+                    int maxNum = Convert.ToInt32(txtMaxNumber.Text);
+                    int minNum = Convert.ToInt32(txtMinNumber.Text);
+                    String description = txtDescription.Text;
+                    if (maxNum > minNum)
+                    {
+                        TicketTypeDTO tt = new TicketTypeDTO();
+                        tt.cost = cost;
+                        tt.description = description;
+                        tt.startNum = minNum;
+                        tt.finalNum = maxNum;
 
-                    tt.Ticket = null;
-                    tt.Event = null;
-                    tt.idEvent = 0;
-                    frmParent.addTicketType(tt);
-                    Close();
-                }
-                else
-                {
-                    MessageBox.Show("Min number should be smaller than Max number");
+                        tt.Ticket = null;
+                        tt.Event = null;
+                        tt.idEvent = 0;
+                        frmParent.addTicketType(tt);
+                        Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Min number should be smaller than Max number");
+                    }
                 }
             }
             //frmParent.addTicketType();

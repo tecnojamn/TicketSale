@@ -52,24 +52,30 @@ namespace AdministrationApp
 
         private void btnBorrar_Click(object sender, EventArgs e)
         {
-            try
+            var confirmResult = MessageBox.Show("Are you sure to delete user ??",
+"Confirmed",
+MessageBoxButtons.YesNo);
+            if (confirmResult == DialogResult.Yes)
             {
-                int index = gvUsers.SelectedCells[0].RowIndex;
-                int idUser = Convert.ToInt32(gvUsers.Rows[index].Cells["Id"].Value.ToString());
-                if (ProxyManager.getUserService().removeUser(idUser))
+                try
                 {
-                    MessageBox.Show("User has been disabled");
-                    userGridLoad();
+                    int index = gvUsers.SelectedCells[0].RowIndex;
+                    int idUser = Convert.ToInt32(gvUsers.Rows[index].Cells["Id"].Value.ToString());
+                    if (ProxyManager.getUserService().removeUser(idUser))
+                    {
+                        MessageBox.Show("User has been disabled");
+                        userGridLoad();
+                    }
+                    else
+                    {
+                        MessageBox.Show("An error has occurred");
+                    }
                 }
-                else
+                catch (Exception)
                 {
+
                     MessageBox.Show("An error has occurred");
                 }
-            }
-            catch (Exception)
-            {
-
-                MessageBox.Show("An error has occurred");
             }
 
         }

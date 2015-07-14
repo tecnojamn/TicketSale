@@ -328,6 +328,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(664, 291);
             this.Controls.Add(this.txtTotal);
             this.Controls.Add(this.label10);
@@ -343,7 +344,7 @@
             this.Controls.Add(this.label1);
             this.Name = "frmReservationPay";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Pago Reserva";
+            this.Text = "Reservation Pay";
             this.Load += new System.EventHandler(this.frmReservationPay_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
