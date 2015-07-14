@@ -283,20 +283,14 @@ namespace BL
                         foreach (TicketType tt in ev.TicketType)
                         {
                             totalCant += tt.finalNum - tt.startNum;
-                        }
-                        List<Payment> payments;
-                        //buscar todos los pagos relacionados al evento
-                        payments = context.Payment.Include("Reservation.SubOrder.Ticket.TicketType.Event")
-                            .Where(p => p.Reservation.SubOrder.FirstOrDefault().Ticket.TicketType.Event.id == ev.id
-                                //&& ev.date.Month == today.Month
-                                && p.Reservation.SubOrder.Where(so => so.active == RESERVATION.SUBORDER.ACTIVE).Count() > 0).ToList();
-                        foreach (Payment p in payments)
-                        {
-                            foreach (SubOrder s in p.Reservation.SubOrder)
+                            foreach (Ticket t in tt.Ticket)
                             {
-                                if (s.active == RESERVATION.SUBORDER.ACTIVE)
+                                foreach (SubOrder so in t.SubOrder)
                                 {
-                                    totalCantSold++;
+                                    if (so.active == RESERVATION.SUBORDER.ACTIVE && so.Reservation.Payment != null)
+                                    {
+                                        totalCantSold += 1;
+                                    }
                                 }
                             }
                         }
@@ -319,15 +313,10 @@ namespace BL
                     }
                     else
                     {
-                        float min = 0;
+                        float min = 100;
                         foreach (float[] ticketInfo in TicketsInfo)
                         {
-                            if (min == 0)
-                            {
-                                idEvent = Convert.ToInt32(ticketInfo[0]);
-                                min = (ticketInfo[2] * 100 / ticketInfo[1]);
-                            }
-                            else if (((ticketInfo[2] * 100) / ticketInfo[1]) <= min)
+                            if (((ticketInfo[2] * 100) / ticketInfo[1]) <= min)
                             {
                                 idEvent = Convert.ToInt32(ticketInfo[0]);
                                 min = (ticketInfo[2] * 100 / ticketInfo[1]);
