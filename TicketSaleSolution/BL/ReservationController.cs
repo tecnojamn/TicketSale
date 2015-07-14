@@ -35,8 +35,40 @@ namespace BL
         //Cancelacion automatica
         public bool autoCancelation()
         {
-            using (DAL.TicketSaleEntities context = new DAL.TicketSaleEntities())
+            try
             {
+
+                using (DAL.TicketSaleEntities context = new DAL.TicketSaleEntities())
+                {
+                    DateTime date = DateTime.Now.AddDays(2);
+                    List<SubOrder> subOrders = new List<SubOrder>();
+                    List<Event> events = null;
+                    events = context.Event.Include("TicketType.Ticket.SubOrder.Reservation.Payment")
+                        .Where(e => e.date <= date && e.date > DateTime.Now && e.enabled == EVENT.STATE.ENABLE).ToList();
+                    foreach (Event e in events)
+                    {
+                        foreach (TicketType tt in e.TicketType)
+                        {
+                            foreach (Ticket t in tt.Ticket)
+                            {
+                                foreach (SubOrder so in t.SubOrder)
+                                {
+                                    if (so.Reservation.Payment == null)
+                                    {
+                                        so.active = 0;
+                                        subOrders.Add(so);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    context.SaveChanges();
+                    return true;
+                }
+            }
+            catch (Exception)
+            {
+                
                 return false;
             }
         }

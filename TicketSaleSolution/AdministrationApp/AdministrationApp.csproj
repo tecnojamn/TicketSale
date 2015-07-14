@@ -118,6 +118,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Service References\ReservationService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\UserService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -187,6 +192,8 @@
     </EmbeddedResource>
     <None Include="Properties\DataSources\DTO.EventDTO.datasource" />
     <None Include="Properties\DataSources\DTO.EventLocationDTO.datasource" />
+    <None Include="Properties\DataSources\DTO.ReservationDTO.datasource" />
+    <None Include="Properties\DataSources\DTO.TicketDTO.datasource" />
     <None Include="Properties\DataSources\DTO.UserDTO.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -208,6 +215,16 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\EventService\EventService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ReservationService\ReservationService.wsdl" />
+    <None Include="Service References\ReservationService\ReservationService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ReservationService\ReservationService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ReservationService\ReservationService2.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\UserService\UserService.wsdl" />
@@ -241,6 +258,7 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\EventService\" />
+    <WCFMetadataStorage Include="Service References\ReservationService\" />
     <WCFMetadataStorage Include="Service References\UserService\" />
   </ItemGroup>
   <ItemGroup>
@@ -269,6 +287,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\UserService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ReservationService\ReservationService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ReservationService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ReservationService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ReservationService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

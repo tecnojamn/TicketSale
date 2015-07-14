@@ -24,7 +24,7 @@ namespace WS
 
             Mapper.CreateMap<SubOrderDTO, SubOrder>()
                 .ForMember(so => so.Reservation, opt => opt.Ignore())
-                .ForMember(so => so.Ticket, opt => opt.MapFrom(x=>x.Ticket));
+                .ForMember(so => so.Ticket, opt => opt.MapFrom(x => x.Ticket));
 
             Mapper.CreateMap<TicketDTO, Ticket>()
                 .ForMember(t => t.SubOrder, opt => opt.Ignore())
@@ -32,7 +32,11 @@ namespace WS
 
             return rc.newReservation(Mapper.Map<Reservation>(resDTO));
         }
-        public bool autoCancelation() { return false; } //Despues se ve
+        public bool autoCancelation()
+        {
+            ReservationController rc = new ReservationController();
+            return rc.autoCancelation();
+        } //Despues se ve
         public List<ReservationDTO> getReservationsByUser(int idUser, int page, int pageSize, bool onlyPayments = false)
         {
             ReservationController rc = new ReservationController();

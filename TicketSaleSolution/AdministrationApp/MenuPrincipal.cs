@@ -145,5 +145,19 @@ namespace AdministrationApp
             frmEventLocation child = new frmEventLocation();
             child.ShowDialog();
         }
+
+        private void cancelExpiredToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("Sure", "Cancel expired", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                ProxyManager.getReservationService().autoCancelation();
+                //do something
+            }
+            else if (dialogResult == DialogResult.No)
+            {
+                //do something else
+            }
+        }
     }
 }

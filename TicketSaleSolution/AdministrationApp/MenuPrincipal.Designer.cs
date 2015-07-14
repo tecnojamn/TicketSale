@@ -40,6 +40,8 @@
             this.clientsPreferencialesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.peorEspectáculoDelMesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ventaDeEntradasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.rservationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cancelExpiredToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
@@ -55,7 +57,8 @@
             this.eventosToolStripMenuItem,
             this.lugarDeEventoToolStripMenuItem,
             this.pagosToolStripMenuItem,
-            this.reportesToolStripMenuItem});
+            this.reportesToolStripMenuItem,
+            this.rservationToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
@@ -137,6 +140,21 @@
             this.ventaDeEntradasToolStripMenuItem.Text = "&Sold ticket";
             this.ventaDeEntradasToolStripMenuItem.Click += new System.EventHandler(this.ventaDeEntradasToolStripMenuItem_Click);
             // 
+            // rservationToolStripMenuItem
+            // 
+            this.rservationToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cancelExpiredToolStripMenuItem});
+            this.rservationToolStripMenuItem.Name = "rservationToolStripMenuItem";
+            this.rservationToolStripMenuItem.Size = new System.Drawing.Size(98, 24);
+            this.rservationToolStripMenuItem.Text = "Reservation";
+            // 
+            // cancelExpiredToolStripMenuItem
+            // 
+            this.cancelExpiredToolStripMenuItem.Name = "cancelExpiredToolStripMenuItem";
+            this.cancelExpiredToolStripMenuItem.Size = new System.Drawing.Size(176, 24);
+            this.cancelExpiredToolStripMenuItem.Text = "Cancel expired";
+            this.cancelExpiredToolStripMenuItem.Click += new System.EventHandler(this.cancelExpiredToolStripMenuItem_Click);
+            // 
             // statusStrip
             // 
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -193,6 +211,8 @@
         private System.Windows.Forms.ToolStripMenuItem clientsPreferencialesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem peorEspectáculoDelMesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ventaDeEntradasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem rservationToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cancelExpiredToolStripMenuItem;
     }
 }
 

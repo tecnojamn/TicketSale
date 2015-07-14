@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BL", "BL\BL.csproj", "{F69A46A4-6EF3-48C2-91DE-3A77385CA933}"
 EndProject
@@ -24,6 +24,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Paypal", "Paypal\Paypal.csproj", "{98A7B828-20A2-46FA-A8ED-1B414C85F179}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdministrationApp", "AdministrationApp\AdministrationApp.csproj", "{25330C4C-EB70-4F11-9B6D-20E7A477AB3D}"
+	ProjectSection(ProjectDependencies) = postProject
+		{2A3394E0-2664-49E5-8209-4A4F8E2FA6C1} = {2A3394E0-2664-49E5-8209-4A4F8E2FA6C1}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SalesApp", "SalesApp\SalesApp.csproj", "{C28E0D6E-A3CF-4BCA-A46C-98B832CAF7A6}"
 EndProject

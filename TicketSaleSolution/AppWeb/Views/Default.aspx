@@ -33,7 +33,7 @@
                     
                     <ItemTemplate>
                         <div class="col-lg-6"  >  
-                            <div class="jsEventContainer" style="overflow:hidden;display:none;background-color: #2980B9;  padding: 30px 20px;   line-height: 1.214;">
+                            <div class="jsEventContainer" style="overflow:hidden;display:none;background-color: #2980B9;  padding: 30px 20px;  height: 330px;   line-height: 1.214;">
                              <asp:ImageButton CssClass="col-lg-6" style="" ID="imgbtnLogo" OnCommand="linkEvent_Click" CommandArgument='<%#Eval("id")%>' ImageUrl='<%#IMG_PATH+""+Eval("id")+".jpg"%>'  runat="server" />
                            <div class="col-lg-6"  >  
                             <asp:LinkButton ID="linkEvent" style="  display: block;  margin-bottom: 20px;font-size: 25px;  font-weight: bold;  color: rgb(26, 188, 156);" OnCommand="linkEvent_Click" CommandArgument='<%#Eval("id")%>' runat="server"><%#Eval("name") %></asp:LinkButton>
