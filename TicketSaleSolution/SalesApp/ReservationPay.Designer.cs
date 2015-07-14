@@ -88,6 +88,7 @@
             this.txtIdReserva.Name = "txtIdReserva";
             this.txtIdReserva.Size = new System.Drawing.Size(105, 20);
             this.txtIdReserva.TabIndex = 2;
+            this.txtIdReserva.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtIdReserva_KeyPress);
             // 
             // label2
             // 

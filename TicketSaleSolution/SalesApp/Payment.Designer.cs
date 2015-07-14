@@ -35,6 +35,7 @@
             // 
             // cblocation
             // 
+            this.cblocation.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cblocation.FormattingEnabled = true;
             this.cblocation.Location = new System.Drawing.Point(76, 12);
             this.cblocation.Name = "cblocation";
