@@ -1,4 +1,5 @@
-﻿using DTO;
+﻿using COM;
+using DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +19,7 @@ namespace AppWeb.Views.Paypal
             double amount = 0;
             foreach (SubOrderDTO so in resDTO.SubOrder)
             {
-                amount += so.Ticket.TicketType.cost;
+                amount += so.active == RESERVATION.SUBORDER.ACTIVE ? so.Ticket.TicketType.cost : 0;
             }
             lblMail.Text = resDTO.User.mail;
             lblEvent.Text = resDTO.SubOrder.First().Ticket.TicketType.Event.name;

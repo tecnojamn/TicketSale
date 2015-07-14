@@ -39,13 +39,13 @@ namespace AppWeb.Views
             }
             return _amount;
         }
-        public string isPaid(PaymentDTO p, int itemIndex)
+        public string getPaymentInfo(PaymentDTO p)
         {
             if (p == null)
             {
                 //Sin pagar
                
-                return "PAGAR";
+                return "";
               
             }
             else
@@ -54,26 +54,26 @@ namespace AppWeb.Views
                 if (p.CashPayment != null)
                 {
 
-                    return "PAGA (EFECTIVO: " + p.date.ToString("dd/MM/yyyy") + ")";
+                    return "PAGA EFECTIVO: " + p.date.ToString("dd/MM/yyyy");
                 }
 
                 else
                 {
-                    return "PAGA (PAYPAL: " + p.date.ToString("dd/MM/yyyy") + ")";
+                    return "PAGA PAYPAL: " + p.date.ToString("dd/MM/yyyy");
                 }
             }
         }
-        public string alreadyCanceled(ICollection<SubOrderDTO> subOrders)
-        {
-            if (subOrders.Where(so => so.active == RESERVATION.SUBORDER.ACTIVE).Count() == 0)
-            {
-                return "CANCELADA";
-            }
-            else
-            {
-                return "CANCELAR";
-            }
-        }
+        //public string alreadyCanceled(ICollection<SubOrderDTO> subOrders)
+        //{
+        //    if (subOrders.Where(so => so.active == RESERVATION.SUBORDER.ACTIVE).Count() == 0)
+        //    {
+        //        return "CANCELADA";
+        //    }
+        //    else
+        //    {
+        //        return "CANCELAR";
+        //    }
+        //}
         public List<ReservationDTO> lvReservations_GetData(int startRowIndex, int maximumRows, out int totalRowCount)
         {
             
@@ -164,7 +164,7 @@ namespace AppWeb.Views
                     case "Cancelada":
                         Literal lc = new Literal()
                         {
-                            Text = "<div style='background-color:#e74c3c'>Cancelada</div>"
+                            Text = "<div style='color:#e74c3c'><b>Cancelada</b></div>"
 
                         };
                         gvSubOrders.Rows[i].Cells[3].Controls.Add(lc);

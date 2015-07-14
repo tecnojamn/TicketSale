@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Reservations.aspx.cs" Inherits="AppWeb.Views.Reservations" %>
 
 <%@ Import Namespace="DTO" %>
+<%@ Import Namespace="COM" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style>
         li {
@@ -41,7 +42,7 @@
                 dataType: "json",
                 success: function (response) {
                     if (response.d == "true") {
-                        $("#ContentPlaceHolder_lvReservations_gvSubOrders_" + lvItemIndex + "_btnCancelSubOrder_" + rowIndex).replaceWith('<div style="background-color:#e74c3c" >Cancelada</div>');
+                        $("#ContentPlaceHolder_lvReservations_gvSubOrders_" + lvItemIndex + "_btnCancelSubOrder_" + rowIndex).replaceWith('<div style="color:#e74c3c" ><b>Cancelada</b></div>');
                     } else {
                         // Error al intentar cancelar.
                     }
@@ -72,46 +73,54 @@
         }
 
     </script>
-    <div class="row" style="min-height:800px">
-    <div class="col-lg-10 col-lg-offset-1">
-        
-        <ul style="text-align:center;padding:0;">
-            <ol style="  padding: 0;">
-            <li style="text-align: center;  background-color: rgba(26, 188, 156, 0.29);  margin-top: 10px;" class="col-lg-1">#</li>
-            <li style="text-align: center;  background-color: rgba(26, 188, 156, 0.29);  margin-top: 10px;" class="col-lg-2">Fecha</li>
-            <li style="text-align: center;  background-color: rgba(26, 188, 156, 0.29);  margin-top: 10px;" class="col-lg-2">Total</li>
-            <li style="text-align: center;  background-color: rgba(26, 188, 156, 0.29);  margin-top: 10px;" class="col-lg-3">Nombre de Evento</li>
-            <li style="text-align: center;  background-color: rgba(26, 188, 156, 0.29);  margin-top: 10px;" class="col-lg-4">Acciones</li>
+    <div class="row" style="min-height: 800px">
+        <div class="col-lg-10 col-lg-offset-1">
+
+            <ul style="text-align: center; padding: 0;">
+                <ol style="padding: 0;">
+                    <li style="text-align: center; background-color: rgba(26, 188, 156, 0.29); margin-top: 10px;" class="col-lg-1">#</li>
+                    <li style="text-align: center; background-color: rgba(26, 188, 156, 0.29); margin-top: 10px;" class="col-lg-2">Fecha</li>
+                    <li style="text-align: center; background-color: rgba(26, 188, 156, 0.29); margin-top: 10px;" class="col-lg-2">Total</li>
+                    <li style="text-align: center; background-color: rgba(26, 188, 156, 0.29); margin-top: 10px;" class="col-lg-3">Nombre de Evento</li>
+                    <li style="text-align: center; background-color: rgba(26, 188, 156, 0.29); margin-top: 10px;" class="col-lg-4">Acciones</li>
                 </ol>
-    </ul>
-            
-    <asp:ListView ID="lvReservations" runat="server" GroupItemCount="1" ItemType="DTO.ReservationDTO" SelectMethod="lvReservations_GetData" OnDataBinding="lvReservations_DataBinding">
-        <EmptyDataTemplate>
-            <h4 style="font-size:16px">No hay datos para mostrar</h4>
-        </EmptyDataTemplate>
-        <ItemTemplate>
-            <ul style="text-align:center;padding:0;">
-                <li style="  padding: 0;  background-color: rgb(245, 245, 245);" class="col-lg-1"><%#Eval("id")%></li>
-                <li style="  padding: 0;  background-color: rgb(245, 245, 245);" class="col-lg-2"><%#((DateTime)Eval("date")).ToString("dd/MM/yyyy")%></li>
-                <li style="  padding: 0;  background-color: rgb(245, 245, 245);" class="col-lg-2"><%# getTotalAmount((ICollection<SubOrderDTO>)Eval("SubOrder")) %></li>
-                <li style="  padding: 0;  background-color: rgb(245, 245, 245);" class="col-lg-4"><%#((ICollection<SubOrderDTO>)Eval("SubOrder")).First().Ticket.TicketType.Event.name%></li>
-                <li style="  padding: 0;  background-color: rgb(245, 245, 245);" class="col-lg-3">
-                    <asp:LinkButton CssClass="jsBtnShowSubOrders btn btn-default btn-xs" ID="showSubOrders" Text="" title="Ver subordenes" CommandArgument='<%# Container.DataItemIndex + ";" + Eval("id") %> ' OnCommand="showSubOrders_Command" runat="server">Detalle</asp:LinkButton>
-                    <asp:LinkButton CssClass="btn btn-info btn-xs" ID="btnDoPayment" runat="server" CommandArgument='<%#Eval("id") %>' OnCommand="btnDoPayment_Command" ><%#isPaid((PaymentDTO)Eval("Payment"),Container.DataItemIndex)%></asp:LinkButton>
-                     <asp:LinkButton CssClass='<%#isPaid((PaymentDTO)Eval("Payment"),Container.DataItemIndex).Equals("PAGAR")?"btn btn-danger btn-xs":"hidden"%>' ID="btnCancelAllSubOrders" runat="server"  CommandArgument='<%# Container.DataItemIndex + ";" + Eval("id") %>' OnCommand="btnCancelAllSubOrders_Command" ><%#alreadyCanceled((ICollection<SubOrderDTO>)Eval("SubOrder"))%></asp:LinkButton>
-                </li>
             </ul>
-        </ItemTemplate>
-    </asp:ListView>
-               
-   </div>
-        <div class="col-lg-10 col-lg-offset-1" style="margin-top:20px;">
-    <asp:DataPager class="paginator" ID="lvDataPager" runat="server" PagedControlID="lvReservations" PageSize="10">
-        <Fields>
-            <asp:NumericPagerField ButtonType="Link" />
-        </Fields>
-    </asp:DataPager>
-   </div>
-    <asp:ScriptManager ID="scm" runat="server" EnablePageMethods="true" />
+
+            <asp:ListView ID="lvReservations" runat="server" GroupItemCount="1" ItemType="DTO.ReservationDTO" SelectMethod="lvReservations_GetData" OnDataBinding="lvReservations_DataBinding">
+                <EmptyDataTemplate>
+                    <h4 style="font-size: 16px">No hay datos para mostrar</h4>
+                </EmptyDataTemplate>
+                <ItemTemplate>
+                    <ul style="text-align: center; padding: 0;">
+                        <li style="padding: 0; background-color: rgb(245, 245, 245);" class="col-lg-1"><%#Eval("id")%></li>
+                        <li style="padding: 0; background-color: rgb(245, 245, 245);" class="col-lg-2"><%#((DateTime)Eval("date")).ToString("dd/MM/yyyy")%></li>
+                        <li style="padding: 0; background-color: rgb(245, 245, 245);" class="col-lg-1"><%# getTotalAmount((ICollection<SubOrderDTO>)Eval("SubOrder")) %></li>
+                        <li style="padding: 0; background-color: rgb(245, 245, 245);" class="col-lg-3"><%#((ICollection<SubOrderDTO>)Eval("SubOrder")).First().Ticket.TicketType.Event.name%></li>
+                        <li style="padding: 0; background-color: rgb(245, 245, 245);" class="col-lg-2">
+                            <asp:LinkButton CssClass="jsBtnShowSubOrders btn btn-default btn-xs" ID="showSubOrders" Text="" title="Ver subordenes" CommandArgument='<%# Container.DataItemIndex + ";" + Eval("id") %> ' OnCommand="showSubOrders_Command" runat="server">Detalle</asp:LinkButton>
+                        </li>
+                        <li style="padding: 0; background-color: rgb(245, 245, 245);" class="col-lg-3">
+                            <asp:LinkButton ID="btnDoPayment" CssClass="btn btn-info btn-xs" Visible="<%#Item.Payment==null&&Item.SubOrder.Where(so=>so.active==RESERVATION.SUBORDER.ACTIVE).Count()!=0 %>" CommandArgument='<%#Eval("id") %>' OnCommand="btnDoPayment_Command" runat="server" Text="PAGAR"></asp:LinkButton>
+                            <asp:LinkButton ID="btnCancelAllSubOrders" CssClass="btn btn-danger btn-xs" Visible="<%#Item.Payment==null&&Item.SubOrder.Where(so=>so.active==RESERVATION.SUBORDER.ACTIVE).Count()>0%>" CommandArgument='<%# Container.DataItemIndex + ";" + Eval("id") %>' OnCommand="btnCancelAllSubOrders_Command" Text="CANCELAR" runat="server"></asp:LinkButton>
+                            <asp:Label ID="lblPaymentInfo" Visible="<%#Item.Payment!=null %>" runat="server" Text="<%#getPaymentInfo(Item.Payment) %>"></asp:Label>
+                            <asp:Label ID="lblCanceled" Visible="<%#Item.SubOrder.Where(so=>so.active==RESERVATION.SUBORDER.ACTIVE).Count()==0 %>" runat="server" Text="CANCELADA"></asp:Label>
+
+                            <%--<asp:LinkButton CssClass="jsBtnShowSubOrders btn btn-default btn-xs" ID="showSubOrders" Text="" title="Ver subordenes" CommandArgument='<%# Container.DataItemIndex + ";" + Eval("id") %> ' OnCommand="showSubOrders_Command" runat="server">Detalle</asp:LinkButton>
+                    <asp:LinkButton CssClass="btn btn-info btn-xs" ID="btnDoPayment" runat="server" CommandArgument='<%#Eval("id") %>' OnCommand="btnDoPayment_Command" ><%#isPaid((PaymentDTO)Eval("Payment"),Container.DataItemIndex)%></asp:LinkButton>
+                     <asp:LinkButton CssClass='<%#isPaid((PaymentDTO)Eval("Payment"),Container.DataItemIndex).Equals("PAGAR")?"btn btn-danger btn-xs":"hidden"%>' ID="btnCancelAllSubOrders" runat="server"  CommandArgument='<%# Container.DataItemIndex + ";" + Eval("id") %>' OnCommand="btnCancelAllSubOrders_Command" ><%#alreadyCanceled((ICollection<SubOrderDTO>)Eval("SubOrder"))%></asp:LinkButton>--%>
+                        </li>
+                    </ul>
+                </ItemTemplate>
+            </asp:ListView>
+
+        </div>
+        <div class="col-lg-10 col-lg-offset-1" style="margin-top: 20px;">
+            <asp:DataPager class="paginator" ID="lvDataPager" runat="server" PagedControlID="lvReservations" PageSize="10">
+                <Fields>
+                    <asp:NumericPagerField ButtonType="Link" />
+                </Fields>
+            </asp:DataPager>
+        </div>
+        <asp:ScriptManager ID="scm" runat="server" EnablePageMethods="true" />
     </div>
 </asp:Content>
