@@ -24,21 +24,28 @@ namespace AdministrationApp
 
         private void btnModify_Click(object sender, EventArgs e)
         {
+
             if (txtName.Text != "" && txtAddress.Text != "" && txtPhoneNumber.Text != "")
             {
-                eventLocation.name = txtName.Text;
-                eventLocation.address = txtAddress.Text;
-                eventLocation.phoneNumber = Convert.ToInt32(txtPhoneNumber.Text);
-                eventLocation.Event = null;
-                if (ProxyManager.getEventService().updateEventLocation(eventLocation))
+                var confirmResult = MessageBox.Show("Are you sure to modify this event location ??",
+"Confirmed",
+MessageBoxButtons.YesNo);
+                if (confirmResult == DialogResult.Yes)
                 {
-                    MessageBox.Show("Event location modify successfully");
-                    parent.gvEventLocatioLoad();
-                    Close();
-                }
-                else
-                {
-                    MessageBox.Show("An erro has ocurred");
+                    eventLocation.name = txtName.Text;
+                    eventLocation.address = txtAddress.Text;
+                    eventLocation.phoneNumber = Convert.ToInt32(txtPhoneNumber.Text);
+                    eventLocation.Event = null;
+                    if (ProxyManager.getEventService().updateEventLocation(eventLocation))
+                    {
+                        MessageBox.Show("Event location modify successfully");
+                        parent.gvEventLocatioLoad();
+                        Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("An erro has ocurred");
+                    }
                 }
             }
             else
@@ -49,7 +56,13 @@ namespace AdministrationApp
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            Close();
+            var confirmResult = MessageBox.Show("Are you sure to close this window ??",
+"Confirmed",
+MessageBoxButtons.YesNo);
+            if (confirmResult == DialogResult.Yes)
+            {
+                Close();
+            }
         }
 
         private void txtPhoneNumber_KeyPress(object sender, KeyPressEventArgs e)

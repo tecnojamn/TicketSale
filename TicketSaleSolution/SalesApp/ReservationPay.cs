@@ -66,26 +66,32 @@ namespace SalesApp
                 if (res == null || res.id != Convert.ToInt32(txtIdReserva.Text))
                 {
                     res = ProxyManager.getReservationService().getReservation(Convert.ToInt32(txtIdReserva.Text));
-                    this.txtFechaReserva.Text = res.date.ToString("dd/MM/yyyy");
-                    this.txtUsuario.Text = res.User.name + " " + res.User.lastName;
-                    this.txtNombreEvento.Text = res.SubOrder.Where(s => s.active == COM.RESERVATION.SUBORDER.ACTIVE).FirstOrDefault().Ticket.TicketType.Event.name;
-                    this.txtDireccionEvento.Text = res.SubOrder.First().Ticket.TicketType.Event.EventLocation.address;
-                    this.txtFechaEvento.Text = res.SubOrder.First().Ticket.TicketType.Event.date.ToString("dd/MM/yyyy");
-                    this.txtLugarEvento.Text = res.SubOrder.First().Ticket.TicketType.Event.EventLocation.name;
-                    this.txtTipoEvento.Text = res.SubOrder.First().Ticket.TicketType.Event.type;
-                    this.txtNroTelefono.Text = res.SubOrder.First().Ticket.TicketType.Event.EventLocation.phoneNumber.ToString();
-
-                    double total = 0;
-
-                    foreach (var so in res.SubOrder)
+                    if (res != null)
                     {
-                        if (so.active == COM.RESERVATION.SUBORDER.ACTIVE)
+                        this.txtFechaReserva.Text = res.date.ToString("dd/MM/yyyy");
+                        this.txtUsuario.Text = res.User.name + " " + res.User.lastName;
+                        this.txtNombreEvento.Text = res.SubOrder.Where(s => s.active == COM.RESERVATION.SUBORDER.ACTIVE).FirstOrDefault().Ticket.TicketType.Event.name;
+                        this.txtDireccionEvento.Text = res.SubOrder.First().Ticket.TicketType.Event.EventLocation.address;
+                        this.txtFechaEvento.Text = res.SubOrder.First().Ticket.TicketType.Event.date.ToString("dd/MM/yyyy");
+                        this.txtLugarEvento.Text = res.SubOrder.First().Ticket.TicketType.Event.EventLocation.name;
+                        this.txtTipoEvento.Text = res.SubOrder.First().Ticket.TicketType.Event.type;
+                        this.txtNroTelefono.Text = res.SubOrder.First().Ticket.TicketType.Event.EventLocation.phoneNumber.ToString();
+
+                        double total = 0;
+
+                        foreach (var so in res.SubOrder)
                         {
-                            gvTickets.Rows.Add(so.Ticket.number, so.Ticket.TicketType.cost, so.Ticket.TicketType.description);
-                            total += so.Ticket.TicketType.cost;
+                            if (so.active == COM.RESERVATION.SUBORDER.ACTIVE)
+                            {
+                                gvTickets.Rows.Add(so.Ticket.number, so.Ticket.TicketType.cost, so.Ticket.TicketType.description);
+                                total += so.Ticket.TicketType.cost;
+                            }
                         }
+                        txtTotal.Text = total.ToString();
                     }
-                    txtTotal.Text = total.ToString();
+                    else
+                        MessageBox.Show("Such a reservation does not exist");
+
                 }
                 
 
@@ -117,6 +123,16 @@ namespace SalesApp
         private void frmReservationPay_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void txtIdReserva_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(char.IsNumber(e.KeyChar)) && (e.KeyChar != (char)Keys.Back))
+            {
+                MessageBox.Show("Only numbers", "Danger!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                e.Handled = true;
+                return;
+            }
         }
     }
 }

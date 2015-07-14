@@ -36,9 +36,15 @@ namespace AdministrationApp
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            frmParent.Close();
-            canClose = true;
-            Close();
+                                    var confirmResult = MessageBox.Show("Are you sure to close this window ??",
+"Confirmed",
+MessageBoxButtons.YesNo);
+                                    if (confirmResult == DialogResult.Yes)
+                                    {
+                                        frmParent.Close();
+                                        canClose = true;
+                                        Close();
+                                    }
         }
 
         private void btnLogin_Click(object sender, EventArgs e)

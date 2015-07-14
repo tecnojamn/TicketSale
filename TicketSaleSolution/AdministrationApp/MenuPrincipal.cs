@@ -145,5 +145,10 @@ namespace AdministrationApp
             frmEventLocation child = new frmEventLocation();
             child.ShowDialog();
         }
+
+        private void MenuPrincipal_FormClosing(object sender, FormClosingEventArgs e)
+        {
+
+        }
     }
 }

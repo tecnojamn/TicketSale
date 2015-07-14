@@ -63,40 +63,45 @@ namespace AdministrationApp
             {
                 if (Convert.ToInt32(txtYear.Text) < (DateTime.Now.Year - 18))
                 {
-
-                    user.name = txtName.Text;
-                    user.lastName = txtLastName.Text;
-                    user.mail = txtMail.Text;
-                    if (txtPassword.Text != "")
+                    var confirmResult = MessageBox.Show("Are you sure to modify this user ??",
+"Confirmed",
+MessageBoxButtons.YesNo);
+                    if (confirmResult == DialogResult.Yes)
                     {
-                        user.password = txtPassword.Text;
-                    }
-                    try
-                    {
-                        DateTime birthday = new DateTime(Convert.ToInt32(txtYear.Text), Convert.ToInt32(txtMonth.Text), Convert.ToInt32(txtDay.Text), 0, 0, 0);
-                        user.dateBirth = birthday;
+                        user.name = txtName.Text;
+                        user.lastName = txtLastName.Text;
+                        user.mail = txtMail.Text;
+                        if (txtPassword.Text != "")
+                        {
+                            user.password = txtPassword.Text;
+                        }
                         try
                         {
-                            if (ProxyManager.getUserService().updateUser(user))
+                            DateTime birthday = new DateTime(Convert.ToInt32(txtYear.Text), Convert.ToInt32(txtMonth.Text), Convert.ToInt32(txtDay.Text), 0, 0, 0);
+                            user.dateBirth = birthday;
+                            try
                             {
-                                MessageBox.Show("User updated succefully");
-                                frmParent.userGridLoad();
-                                Close();
+                                if (ProxyManager.getUserService().updateUser(user))
+                                {
+                                    MessageBox.Show("User updated succefully");
+                                    frmParent.userGridLoad();
+                                    Close();
+                                }
+                                else
+                                {
+                                    MessageBox.Show("An error has ocurred");
+                                }
                             }
-                            else
+                            catch (Exception)
                             {
                                 MessageBox.Show("An error has ocurred");
                             }
                         }
                         catch (Exception)
                         {
-                            MessageBox.Show("An error has ocurred");
-                        }
-                    }
-                    catch (Exception)
-                    {
 
-                        MessageBox.Show("Incorrect date");
+                            MessageBox.Show("Incorrect date");
+                        }
                     }
                 }
                 else
@@ -112,7 +117,13 @@ namespace AdministrationApp
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Close();
+                                    var confirmResult = MessageBox.Show("Are you sure to close this window ??",
+"Confirmed",
+MessageBoxButtons.YesNo);
+                                    if (confirmResult == DialogResult.Yes)
+                                    {
+                                        Close();
+                                    }
         }
     }
 }

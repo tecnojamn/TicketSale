@@ -60,6 +60,8 @@ namespace SalesApp
             }
             cashPayment.cod = Convert.ToInt32(COM.SECURITY.GENERATE_CODE());
             ProxyManager.getPaymentService().newCashPayment(cashPayment);
+            MessageBox.Show("You have payed correctly, have a nice day");
+            this.Close();
         }
     }
 }

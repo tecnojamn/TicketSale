@@ -39,20 +39,28 @@ namespace AdministrationApp
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            Close();
+            var confirmResult = MessageBox.Show("Are you sure to close this window ??",
+"Confirmed",
+MessageBoxButtons.YesNo);
+            if (confirmResult == DialogResult.Yes)
+            {
+                Close();
+            }
         }
 
         private void btnModify_Click(object sender, EventArgs e)
         {
-            EventLocationDTO el = new EventLocationDTO();
-            int index = gvEventLocation.SelectedCells[0].RowIndex;
-            el.address = gvEventLocation.Rows[index].Cells["address"].Value.ToString();
-            el.name = gvEventLocation.Rows[index].Cells["name"].Value.ToString();
-            el.id = Convert.ToInt32(gvEventLocation.Rows[index].Cells["id"].Value.ToString());
-            el.phoneNumber = Convert.ToInt32(gvEventLocation.Rows[index].Cells["phoneNumber"].Value.ToString());
 
-            frmModifyEventLocation child = new frmModifyEventLocation(el, this);
-            child.ShowDialog();
+                EventLocationDTO el = new EventLocationDTO();
+                int index = gvEventLocation.SelectedCells[0].RowIndex;
+                el.address = gvEventLocation.Rows[index].Cells["address"].Value.ToString();
+                el.name = gvEventLocation.Rows[index].Cells["name"].Value.ToString();
+                el.id = Convert.ToInt32(gvEventLocation.Rows[index].Cells["id"].Value.ToString());
+                el.phoneNumber = Convert.ToInt32(gvEventLocation.Rows[index].Cells["phoneNumber"].Value.ToString());
+
+                frmModifyEventLocation child = new frmModifyEventLocation(el, this);
+                child.ShowDialog();
+            
         }
     }
 }

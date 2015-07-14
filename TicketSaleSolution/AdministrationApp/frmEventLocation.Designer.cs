@@ -41,9 +41,10 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(635, 22);
+            this.btnAdd.Location = new System.Drawing.Point(455, 10);
+            this.btnAdd.Margin = new System.Windows.Forms.Padding(2);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(100, 49);
+            this.btnAdd.Size = new System.Drawing.Size(75, 40);
             this.btnAdd.TabIndex = 1;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
@@ -51,9 +52,10 @@
             // 
             // btnModify
             // 
-            this.btnModify.Location = new System.Drawing.Point(635, 77);
+            this.btnModify.Location = new System.Drawing.Point(455, 54);
+            this.btnModify.Margin = new System.Windows.Forms.Padding(2);
             this.btnModify.Name = "btnModify";
-            this.btnModify.Size = new System.Drawing.Size(100, 49);
+            this.btnModify.Size = new System.Drawing.Size(75, 40);
             this.btnModify.TabIndex = 2;
             this.btnModify.Text = "Modify";
             this.btnModify.UseVisualStyleBackColor = true;
@@ -61,9 +63,10 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(635, 189);
+            this.btnClose.Location = new System.Drawing.Point(455, 154);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(2);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(100, 49);
+            this.btnClose.Size = new System.Drawing.Size(75, 40);
             this.btnClose.TabIndex = 3;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
@@ -79,10 +82,11 @@
             this.name,
             this.phoneNumber,
             this.address});
-            this.gvEventLocation.Location = new System.Drawing.Point(12, 12);
+            this.gvEventLocation.Location = new System.Drawing.Point(9, 10);
+            this.gvEventLocation.Margin = new System.Windows.Forms.Padding(2);
             this.gvEventLocation.Name = "gvEventLocation";
             this.gvEventLocation.RowTemplate.Height = 24;
-            this.gvEventLocation.Size = new System.Drawing.Size(604, 226);
+            this.gvEventLocation.Size = new System.Drawing.Size(442, 184);
             this.gvEventLocation.TabIndex = 4;
             // 
             // id
@@ -111,13 +115,15 @@
             // 
             // frmEventLocation
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(747, 250);
+            this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.ClientSize = new System.Drawing.Size(534, 203);
             this.Controls.Add(this.gvEventLocation);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnModify);
             this.Controls.Add(this.btnAdd);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmEventLocation";
             this.Text = "Event Location";
             this.Load += new System.EventHandler(this.EventLocation_Load);

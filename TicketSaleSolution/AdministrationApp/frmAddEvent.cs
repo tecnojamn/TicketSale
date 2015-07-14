@@ -84,91 +84,115 @@ namespace AdministrationApp
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            Close();
+            var confirmResult = MessageBox.Show("Are you sure to close this window ??",
+"Confirmed",
+MessageBoxButtons.YesNo);
+            if (confirmResult == DialogResult.Yes)
+            {
+                Close();
+            }
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-
-            int day = Convert.ToInt32(cbDay.Text);
-            int month = Convert.ToInt32(cbMonth.Text);
-            int year = Convert.ToInt32(cbYear.Text);
-            int minute = Convert.ToInt32(cbMinutes.Text);
-            int hour = Convert.ToInt32(cbHour.Text);
-
-            DateTime date = new DateTime(year, month, day, hour, minute, 0);//0 es la cantidad de segundos
-
-            //fecha menor a la de hoy
-            if (date > DateTime.Now)
+            var confirmResult = MessageBox.Show("Are you sure to add this event ??",
+                                     "Confirmed",
+                                     MessageBoxButtons.YesNo);
+            if (confirmResult == DialogResult.Yes)
             {
-                EventLocationDTO el = null;
-                el = (EventLocationDTO)cbEventLocation.SelectedValue;
+                int day = Convert.ToInt32(cbDay.Text);
+                int month = Convert.ToInt32(cbMonth.Text);
+                int year = Convert.ToInt32(cbYear.Text);
+                int minute = Convert.ToInt32(cbMinutes.Text);
+                int hour = Convert.ToInt32(cbHour.Text);
 
-                EventDTO newEvent = new EventDTO();
-                newEvent.date = date;
-                newEvent.name = txtName.Text;
-                newEvent.description = txtDescripcion.Text;
-                newEvent.enabled = EVENT.STATE.ENABLE;
-                newEvent.type = cbType.Text;
-                newEvent.EventLocation = el;
-                newEvent.idEventLocation = el.id;
-                //Si tiene almenos 1 ticket type asociado
-                if (cbTicketType.Items.Count != 0)
+                DateTime date = new DateTime(year, month, day, hour, minute, 0);//0 es la cantidad de segundos
+
+                //fecha menor a la de hoy
+                if (date > DateTime.Now)
                 {
-                    newEvent.TicketType = null;
-                    foreach (Object tt in cbTicketType.Items)
-                    {
-                        TicketTypeDTO ticketType = (TicketTypeDTO)tt;
-                        if (newEvent.TicketType == null)
-                        {
-                            List<TicketTypeDTO> ttList = new List<TicketTypeDTO>();
-                            newEvent.TicketType = ttList;
-                        }
-                        newEvent.TicketType.Add(ticketType);
-                    }
-                    int eventId = ProxyManager.getEventService().newEvent(newEvent);
-                    if (eventId != 0)
-                    {
-                        if (imgPath != "")
-                        {
-                            string[] fname;
-                            fname = imgPath.Split('.');
-                            //Obtiene la ruta en donde se guardan las imagenes
-                            string targetDir = Directory.GetParent(Directory.GetParent(Directory.GetParent(Path.GetDirectoryName(Application.ExecutablePath)).ToString()).ToString()).ToString() + "\\AppWeb\\uploads\\events\\";
-                            File.Copy(imgPath, targetDir + eventId + "." + fname[fname.Length - 1]);
-                        }
-                        DialogResult dResult = MessageBox.Show("Event added successfully");
+                    EventLocationDTO el = null;
+                    el = (EventLocationDTO)cbEventLocation.SelectedValue;
 
-                        if (dResult == DialogResult.OK)
+                    EventDTO newEvent = new EventDTO();
+                    newEvent.date = date;
+                    newEvent.name = txtName.Text;
+                    newEvent.description = txtDescripcion.Text;
+                    newEvent.enabled = EVENT.STATE.ENABLE;
+                    newEvent.type = cbType.Text;
+                    newEvent.EventLocation = el;
+                    newEvent.idEventLocation = el.id;
+                    //Si tiene almenos 1 ticket type asociado
+                    if (cbTicketType.Items.Count != 0)
+                    {
+                        newEvent.TicketType = null;
+                        foreach (Object tt in cbTicketType.Items)
                         {
-                            Close();
+                            TicketTypeDTO ticketType = (TicketTypeDTO)tt;
+                            if (newEvent.TicketType == null)
+                            {
+                                List<TicketTypeDTO> ttList = new List<TicketTypeDTO>();
+                                newEvent.TicketType = ttList;
+                            }
+                            newEvent.TicketType.Add(ticketType);
+                        }
+                        int eventId = ProxyManager.getEventService().newEvent(newEvent);
+                        if (eventId != 0)
+                        {
+                            if (imgPath != "")
+                            {
+                                string[] fname;
+                                fname = imgPath.Split('.');
+                                //Obtiene la ruta en donde se guardan las imagenes
+                                string targetDir = Directory.GetParent(Directory.GetParent(Directory.GetParent(Path.GetDirectoryName(Application.ExecutablePath)).ToString()).ToString()).ToString() + "\\AppWeb\\uploads\\events\\";
+                                File.Copy(imgPath, targetDir + eventId + "." + fname[fname.Length - 1]);
+                            }
+                            DialogResult dResult = MessageBox.Show("Event added successfully");
+
+                            if (dResult == DialogResult.OK)
+                            {
+                                Close();
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("An error has ocurred");
                         }
                     }
                     else
                     {
-                        MessageBox.Show("An error has ocurred");
+                        MessageBox.Show("Add at least 1 ticket type");
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Add at least 1 ticket type");
+                    MessageBox.Show("Incorrect date");
                 }
             }
             else
             {
-                MessageBox.Show("Incorrect date");
+
             }
+
         }
 
         private void btnAddTicketType_Click(object sender, EventArgs e)
         {
-            frmAddTicketType formAdd = new frmAddTicketType(this);
-            formAdd.ShowDialog();
+
+                frmAddTicketType formAdd = new frmAddTicketType(this);
+                formAdd.ShowDialog();
         }
 
         private void btnDeleteTicketType_Click(object sender, EventArgs e)
         {
-            cbTicketType.Items.Remove(cbTicketType.SelectedIndex);
+            var confirmResult = MessageBox.Show("Are you sure to delete this ticket type ??",
+"Confirmed",
+MessageBoxButtons.YesNo);
+            if (confirmResult == DialogResult.Yes)
+            {
+                cbTicketType.Items.Remove(cbTicketType.SelectedIndex);
+
+            }
         }
 
         private void btnBrowse_Click(object sender, EventArgs e)
@@ -196,7 +220,7 @@ namespace AdministrationApp
                 }
                 setDay(28, day);
             }
-            else if ( month == 4 || month == 6 || month == 9 || month == 11)
+            else if (month == 4 || month == 6 || month == 9 || month == 11)
             {
                 if (day > 30)
                 {
@@ -208,8 +232,8 @@ namespace AdministrationApp
             {
                 setDay(31, day);
             }
-            
-            
+
+
         }
     }
 }

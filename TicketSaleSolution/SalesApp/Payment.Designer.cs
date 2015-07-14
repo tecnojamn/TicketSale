@@ -35,6 +35,7 @@
             // 
             // cblocation
             // 
+            this.cblocation.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cblocation.FormattingEnabled = true;
             this.cblocation.Location = new System.Drawing.Point(76, 12);
             this.cblocation.Name = "cblocation";
@@ -65,13 +66,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(210, 87);
             this.Controls.Add(this.btnConfirmar);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.cblocation);
             this.Name = "frmPayment";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Pago";
+            this.Text = "Payment";
             this.Load += new System.EventHandler(this.frmPayment_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
